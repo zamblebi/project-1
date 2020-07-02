@@ -1,13 +1,18 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap');
 // Variables
 @import 'variables';
+
+
 
 // Fonts
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
+
+
+
 
 body{
     margin: 0;
@@ -63,6 +68,8 @@ body{
     }
 }
 
+
+//Intro style
 .intro{
     background-image: url('/images/img1.jpg');
     background-position: center;
@@ -78,7 +85,7 @@ body{
         // height: 50%;
     }
     background-size: cover;
-    padding: 70px 0 30px 0px;
+    padding: 70px 0 120px 0px;
     margin: 0;
     color: #ffffff;
     text-align: center;
@@ -91,7 +98,7 @@ body{
             padding: .9rem 2.8rem;
             margin: 0;
             text-decoration: none;
-            background: #11af22;
+            background: $green;
             color: #ffffff;
             font-family: sans-serif;
             font-size: 1rem;
@@ -103,11 +110,11 @@ body{
             -moz-appearance: none;
 
             &:hover{
-                background: #0c8119;
+            background: $green-bold;
             }
             
             &:focus {
-                background: #0c8119;
+                background: $green-bold;
                 outline: 1px solid #fff;
                 outline-offset: -4px;
             }
@@ -124,3 +131,68 @@ body{
     }
 }
 
+//End style intro
+
+//Service style
+
+.services{
+    padding: 27px 0;
+    text-align: center;
+    ul{
+        padding: 0;
+        list-style: none;
+        img{
+            width: 60px;
+        }
+    }
+
+}
+
+//Title
+.about-us,.services{
+    .title{
+        font-size: 2em;
+        font-family: 'Nunito', sans-serif;
+    }
+
+}
+
+
+// About style
+
+.about-us{
+    padding: 20px 20px;
+    background-color: #F0F2F4;
+    text-align: left;
+    .about-us-list{
+        .small-details-title{
+            font-size: 1.5em;
+        }
+        ul{
+            display: flex;
+            flex-direction: column;
+
+            li{
+                // display: grid;
+                // grid-template-columns: 30px 1fr;
+                // grid-template-rows: 1fr 1fr;
+                display: flex;
+            }
+            .details{
+                padding-left: 10px;
+            }
+            padding: 0;
+            list-style: none;
+            img{
+                width: 60px;
+            }
+            .small-title{
+                font-size: 1.2em;
+            }
+            .small-details{
+                color: $green;
+                // grid-column-start: 2;
+            }
+        }
+    }
+}
