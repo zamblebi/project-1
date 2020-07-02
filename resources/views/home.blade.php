@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('Bienvenue vous etes connecter!') }}
+                        
                 </div>
             </div>
         </div>
