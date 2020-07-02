@@ -1,17 +1,9 @@
-<template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
+<style>
+    
+</style>
 
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<template>
+    <img src="/icons/menu.svg" alt="">
 </template>
 
 <script>
@@ -20,4 +12,10 @@
             console.log('Component mounted.')
         }
     }
+    // var app = new Vue({
+    // el: '#app-2',
+    // data: {
+    //     message: 'Hello Vue!'
+    // }
+    // })
 </script>

@@ -15,6 +15,9 @@
                     @endif
 
                     {{ __('Bienvenue vous etes connecter!') }}
+                        <div id="app">
+                            <example-component></example-component>
+                        </div>
                 </div>
             </div>
         </div>
