@@ -23,7 +23,7 @@ body{
 .header-bar{
     background-color: #ffffff;
     width: 100%;
-    position: fixed;
+    // position: fixed;
     display: flex;
     padding: 0 5px;
     justify-content: space-between;
@@ -85,6 +85,8 @@ body{
     // text-shadow: 1px 1px 5px black;
 
     .cta{
-
+        #geolocalization{
+            border-top-right-radius: 25px;
+        }
     }
 }

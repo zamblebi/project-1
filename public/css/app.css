@@ -15,7 +15,6 @@
 .header-bar {
   background-color: #ffffff;
   width: 100%;
-  position: fixed;
   display: flex;
   padding: 0 5px;
   justify-content: space-between;
@@ -73,5 +72,9 @@
   top: 0;
   left: 0;
   width: 100%;
+}
+
+.intro .cta #geolocalization {
+  border-top-right-radius: 25px;
 }
 
