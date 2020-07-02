@@ -30,7 +30,7 @@
                 <p>Nous recuperons et livrons vos vetements </p>
                 
                 <div class="cta">
-                    <input class="geolocalization" type="text" placeholder="Saisissez votre adresse" name="maps"> <button class="btn">Reserver votre crenaux</button>
+                    <input class="geolocalization" type="text" placeholder="Saisissez votre adresse" name="maps"> <a href="#" class="btn">Reserver votre crenaux</a>
                 </div>
                 
             </div>
