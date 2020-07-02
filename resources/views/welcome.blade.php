@@ -24,11 +24,14 @@
             
             {{-- Pages heros --}}
             <div class="intro">
+                <div class="layer"></div>
                 <h1>Pressing a domicile haute qualiter livre partout a abidjan </h1>
                 
-                <h4>Nous recuperons et livrons vos vetements </h4>
+                <p>Nous recuperons et livrons vos vetements </p>
                 
-                <input type="text" placeholder="Saisissez votre adresse"> <button class="btn">Reserver votre crenaux</button>
+                <div class="cta">
+                    <input type="text" placeholder="Saisissez votre adresse"> <button class="btn">Reserver votre crenaux</button>
+                </div>
                 
             </div>
             
