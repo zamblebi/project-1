@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Project 01</title>
 
         <!-- Fonts -->
 
@@ -28,7 +28,7 @@
                 
                 <h4>Nous recuperons et livrons vos vetements </h4>
                 
-                <input type="text" placeholder="Saisissez votre adresse"> <button>Reserver votre crenaux</button>
+                <input type="text" placeholder="Saisissez votre adresse"> <button class="btn">Reserver votre crenaux</button>
                 
             </div>
             

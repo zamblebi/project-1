@@ -24,39 +24,35 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{-- {{ config('app.name', 'Acceuil') }} --}}Acceuil
+                    {{-- {{ config('app.name', 'Acceuil') }} --}}Pressings 
                 </a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    {{-- <ul class="navbar-nav mr-auto"> --}}
                         
-                        {{-- </ul> --}}
-                        
-                        <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        
+                    <ul class="navbar-nav">
 
-                        @section('navigation-bar')
+                        {{-- @section('navigation-bar')
                                             
                             <nav class="navBar"> 
                                 {{-- brand --}}
-                            <div><span>Pressing</span></div>
+                            {{-- <div><span>Pressing</span></div>
                                 @if (Route::has('login'))
                                     <div class="top-right links">
                                         @auth
+                                        <li class="nav-item">
                                             <a href="{{ url('/home') }}">Home</a>
-                                        @else
+                                        </li>
+                                        {{-- @else
                                             <a href="{{ route('login') }}">Connexion</a>
                     
                                             @if (Route::has('register'))
                                                 <a href="{{ route('register') }}">Inscription</a>
-                                            @endif
-                                        @endauth
+                                            @endif --}}
+                                        {{-- @endauth --}}
                     
-                                    </div>
-                                @endif
-                            </nav>
-                        @show
+                                    {{-- </div>
+                                @endif --}}
+                            {{-- </nav> --}} 
+                        {{-- @show --}}
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -74,11 +70,13 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Deconnection') }}
-                                    </a>
+                                   <li class="nav-item">
+                                       <a class="dropdown-item" href="{{ route('logout') }}"
+                                          onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                           {{ __('Deconnection') }}
+                                       </a>
+                                   </li>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
