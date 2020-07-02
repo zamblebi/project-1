@@ -12,6 +12,10 @@
         <!-- Fonts -->
 
         <!-- Styles -->
+        {{-- slide library --}}
+        <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+        {{-- // Add the new slick-theme.css if you want the default styling --}}
+        <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
     </head>
     <body>
         {{-- Navigation bars --}}
@@ -100,15 +104,46 @@
             </section>
             
             {{-- Section command  --}}
-            <section class="commands">
-                <div class="commands-list">
-                    
+            <section>
+                <div class="commands">
+                    <h1 class="title">Nos tarifs</h1>
+                    <div class="details">
+                        <ul>
+                            <li>
+                                <img src="/icons/tshirt.svg" alt="">
+                                <p class="name-article">Chemise pliée</p>
+                                <h4 class="prices">500 f</h4>
+                            </li>
+                            <li>
+                                <img src="/icons/uniform.svg" alt="">
+                                <p class="name-article">Costume</p>
+                                <h4 class="prices"> 2000 f</h4>
+                            </li>
+                            <li>
+                                <img src="/icons/suit.svg" alt="">
+                                <p class="name-article">Veste</p>
+                                <h4 class="prices">1000 f</h4>
+                            </li>
+                            <li>
+                                <img src="/icons/sneakers.svg" alt="">
+                                <p class="name-article">Sneakers</p>
+                                <h4 class="prices">300 f</h4>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="button">
+                        <a href="#" class="commander">Passer une commande</a>
+                    </div>
                 </div>
             </section>
             
             {{-- Section temoignage --}}
+            <div class="slide">
+                <div>your content</div>
+                <div>your content</div>
+                <div>your content</div>
+              </div>
             <section class="temoignage">
-                
             </section>
             
             {{-- Section about us  --}}
@@ -123,6 +158,23 @@
         </div>
         @endsection
 
+        <script>
+            $(document).ready(function(){
+            $('.slide').slick({
+                dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            adaptiveHeight: true
+
+            });
+            });
+                    
+        </script>
+
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="slick/slick.min.js"></script>
     </body>
     </html>
     

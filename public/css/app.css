@@ -126,7 +126,8 @@
 }
 
 .about-us .title,
-.services .title {
+.services .title,
+.commands .title {
   font-size: 2em;
   font-family: "Nunito", sans-serif;
 }
@@ -166,5 +167,66 @@
 
 .about-us .about-us-list ul .small-details {
   color: #11af22;
+}
+
+.commands {
+  padding: 30px 10px;
+}
+
+.commands .button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.commands .details {
+  padding: 20px;
+}
+
+.commands .details .name-article {
+  color: #11af22;
+}
+
+.commands .commander {
+  display: inline-block;
+  border: none;
+  padding: 0.9rem 2rem;
+  margin: 0;
+  text-decoration: none;
+  background: #11af22;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.commands .commander:hover {
+  background: #0c8119;
+}
+
+.commands .commander:focus {
+  background: #0c8119;
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+.commands .commander:active {
+  transform: scale(0.99);
+}
+
+.commands ul {
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+}
+
+.commands ul li img {
+  width: 80px;
 }
 
