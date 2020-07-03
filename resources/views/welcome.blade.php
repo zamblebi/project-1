@@ -26,11 +26,13 @@
                 
             
             {{-- Pages heros --}}
-            <div class="intro">
+            <div class="intro wrapper">
                 <div class="layer"></div>
-                <h1>Pressing a domicile haute qualiter livre partout a abidjan </h1>
-                
-                <p>Nous recuperons et livrons vos vetements </p>
+                <div class="groups-intro">
+                    <h1>Pressing a domicile haute qualiter livre partout a abidjan </h1>
+                    
+                    <p>Nous recuperons et livrons vos vetements </p>
+                </div>
                 
                 <div class="cta">
                     <input class="geolocalization" type="text" placeholder="Saisissez votre adresse" name="maps"> <a href="#" class="btn">Reserver votre crenaux</a>
@@ -39,7 +41,7 @@
             </div>
             
             {{-- Section services --}}
-            <section >
+            <section class="wrapper">
                 <div class="services">
                     <h1 class="title title-services">Comment ca marche ?</h1>
                     <div class="list-service">
@@ -62,10 +64,12 @@
             </section>
             
             {{-- Section About us  --}}
-            <section class="about-us">
-                <div class="about-us-list">
-                    <h1 class="title title-about-us">Pressing</h1>
-                <p class="small-details-title">Les services d'un pressing de haute qualite a votre porte</p>
+            <section class="about-us ">
+                <div class="about-us-list wrapper">
+                    <div class="groups-title">
+                        <h1 class="title title-about-us">Pressing</h1>
+                    <p class="small-details-title">Les services d'un pressing de haute qualite a votre porte</p>
+                    </div>
                     <ul>
                         <li class="about-item">
                             <img src="/icons/thunder.svg" alt="">

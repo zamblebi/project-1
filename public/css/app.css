@@ -54,16 +54,25 @@ body {
   color: red;
 }
 
+.navbar-nav-desktop {
+  display: none;
+}
+
 .intro {
   background-image: url("/images/img1.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 0 1000px rgba(6, 72, 83, 0.7);
   background-size: cover;
   padding: 70px 0 120px 0px;
   margin: 0;
   color: #ffffff;
   text-align: center;
+}
+
+.intro .groups-intro h1 {
+  font-family: "Noboto", sans-serif;
+  font-size: 2em;
 }
 
 .intro .layer {
@@ -233,8 +242,8 @@ body {
 
 .feedback {
   text-align: center;
-  color: #ffffff;
-  background-color: #1283DA;
+  color: black;
+  background-color: #F0F2F4;
   padding-bottom: 30px;
 }
 
@@ -243,7 +252,7 @@ body {
 }
 
 .contact-us {
-  background-color: #F0F2F4;
+  background-color: #343A40;
   padding: 40px;
   text-align: center;
 }
@@ -254,8 +263,8 @@ body {
   padding: 0.9rem 2.8rem;
   margin: 0;
   text-decoration: none;
-  background: #11af22;
-  color: #ffffff;
+  background: #ffff;
+  color: #343A40;
   font-family: sans-serif;
   font-size: 1rem;
   cursor: pointer;
@@ -266,11 +275,11 @@ body {
 }
 
 .contact-us .btn:hover {
-  background: #0c8119;
+  background: #dfdfdf;
 }
 
 .contact-us .btn:focus {
-  background: #0c8119;
+  background: #F0F2F4;
   outline: 1px solid #fff;
   outline-offset: -4px;
 }
@@ -316,5 +325,112 @@ footer .social-networks li a i {
 .slide-wrapper {
   overflow: hidden;
   width: 100%;
+}
+
+@media (min-width: 505px) {
+  .intro .cta .btn {
+    padding: 0.66em 2.5em;
+  }
+}
+
+@media (min-width: 805px) {
+  .toggle-menu {
+    display: none;
+  }
+
+  .navbar-nav {
+    display: block;
+  }
+
+  .navbar-nav-desktop {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+  }
+
+  .navbar-nav-desktop a {
+    text-decoration: none;
+    color: #111111;
+  }
+
+  .navbar-nav-desktop li {
+    padding: 0 12px;
+  }
+
+  .wrapper {
+    padding: 0 100px;
+  }
+
+  .intro {
+    padding: 220px 0;
+  }
+
+  .intro .groups-intro {
+    line-height: 10px;
+    padding-bottom: 40px;
+  }
+
+  .commands .title {
+    text-align: center;
+  }
+
+  .commands ul li img {
+    width: 160px;
+  }
+
+  .services ul {
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+  }
+
+  .services ul li {
+    padding: 0 30px;
+  }
+
+  .services ul li img {
+    width: 70px;
+  }
+
+  .about-us {
+    padding: 56px 0;
+  }
+
+  .about-us .about-us-list .groups-title {
+    line-height: 20px;
+    text-align: center;
+  }
+
+  .about-us .about-us-list .small-details-title {
+    padding-bottom: 20px;
+  }
+
+  .about-us .about-us-list ul {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .about-us .about-us-list ul li .small-title {
+    font-family: "Nunito", sans-serif;
+    padding: 0 10px;
+  }
+
+  .about-us .about-us-list ul li .small-details,
+  .about-us .about-us-list ul li .small-title {
+    margin: 0;
+  }
+
+  .about-us .about-us-list ul li img {
+    width: 60px;
+  }
+
+  .about-us .about-us-list ul li .details {
+    padding: 0;
+  }
+
+  .about-us .about-us-list ul li .small-details {
+    padding: 0 10px;
+  }
 }
 
