@@ -138,7 +138,7 @@
             
             {{-- Section temoignage --}}
             <section>
-                <div class="temoignage">
+                <div class="feedback">
                     <h1 class="title">Ils nous ont fait confiance</h1>
                     <p class="small-details">et ne le regrettent pas !</p>
                             <div class="slide">
@@ -159,12 +159,12 @@
             
             {{-- Section about us  --}}
             <section class="contact-us">
-                <a href="#" class="cta">Nous contactez</a>
+                <a href="#" class="btn">Nous contactez</a>
             </section>
             
             {{-- Footer  --}}
             <footer>
-                <ul>
+                <ul class="contacts">
                     <li>
                         <p><i class="fa fa-envelope-o"></i> exemple@gmail.com</p>
                     </li>

@@ -149,7 +149,7 @@ body{
 }
 
 //Title
-.about-us,.services,.commands{
+.about-us,.services,.commands, .feedback{
     .title{
         font-size: 2em;
         font-family: 'Nunito', sans-serif;
@@ -162,7 +162,7 @@ body{
 
 .about-us{
     padding: 20px 20px;
-    background-color: #F0F2F4;
+    background-color: $gray;
     text-align: left;
     .about-us-list{
         .small-details-title{
@@ -201,6 +201,9 @@ body{
 
 //Command style
 .commands{
+    .title{
+        // text-align: center;
+    }
     .button{
         display: flex;
         flex-direction: column;
@@ -261,3 +264,97 @@ body{
         }
     }
 }
+
+
+//Feedback style
+.feedback{
+    text-align: center;
+    color: #ffffff;
+    background-color: #1283DA;
+    .title{
+        // padding: 40px 0;
+        padding: 30px 0 ;
+    }
+    padding-bottom: 30px;
+}
+//End feedback style
+
+//Contact style
+.contact-us{
+    background-color: $gray;
+    padding: 40px;
+    // hr{
+    //     width: 100px;
+    //     margin-top: 50px;
+    //     margin-bottom: 50px;
+    // }
+    text-align: center;
+    .btn{
+        display: inline-block;
+        border: none;
+        padding: .9rem 2.8rem;
+        margin: 0;
+        text-decoration: none;
+        background: $green;
+        color: #ffffff;
+        font-family: sans-serif;
+        font-size: 1rem;
+        cursor: pointer;
+        text-align: center;
+        transition: background 250ms ease-in-out, 
+                    transform 150ms ease;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        &:hover{
+        background: $green-bold;
+        }
+        
+        &:focus {
+            background: $green-bold;
+            outline: 1px solid #fff;
+            outline-offset: -4px;
+        }
+
+        &:active {
+            transform: scale(0.99);
+        }
+    }
+}
+
+//End contact style
+
+
+//Footer style
+footer{
+    .contacts{
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    padding: 20px 0;
+    p{
+        margin: 0;
+        text-align: center;
+    }
+    // background-color: $gray;
+    ul{
+        list-style: none;
+    }
+    .social-networks{
+        padding-left: 0;
+        display: flex;
+        justify-content: center;
+        li{
+            a{
+                i{
+                    color: black;
+                }
+            }
+            padding: 0 20px;
+        }
+    }
+}
+
+//End footer style
