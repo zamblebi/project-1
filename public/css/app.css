@@ -313,3 +313,8 @@ footer .social-networks li a i {
   color: black;
 }
 
+.slide-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+

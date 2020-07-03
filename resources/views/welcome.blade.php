@@ -141,16 +141,19 @@
                 <div class="feedback">
                     <h1 class="title">Ils nous ont fait confiance</h1>
                     <p class="small-details">et ne le regrettent pas !</p>
+                        <div class="slide-wrapper">
                             <div class="slide">
-                                <div class="slide-item">content 1</div>
+                                <div class="slide-item initial">content 1</div>
                                 <div class="slide-item">content 2</div>
                                 <div class="slide-item">content 3</div>
-                              </div>
-                              <div class="dots">
-                                  <div class="dot-item" onclick="currentSlide(1)"></div>
-                                  <div class="dot-item" onclick="currentSlide(2)"></div>
-                                  <div class="dot-item" onclick="currentSlide(3)"></div>
-                              </div>
+                             </div>
+
+                             <div class="dots">
+                                 <div class="dot-item" onclick="currentSlide(1)"></div>
+                                 <div class="dot-item" onclick="currentSlide(2)"></div>
+                                 <div class="dot-item" onclick="currentSlide(3)"></div>
+                             </div>
+                        </div>
                 </div>
 
 

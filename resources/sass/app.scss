@@ -283,11 +283,6 @@ body{
 .contact-us{
     background-color: $gray;
     padding: 40px;
-    // hr{
-    //     width: 100px;
-    //     margin-top: 50px;
-    //     margin-bottom: 50px;
-    // }
     text-align: center;
     .btn{
         display: inline-block;
@@ -358,3 +353,14 @@ footer{
 }
 
 //End footer style
+
+
+
+//Slider
+.slide-wrapper{
+    overflow: hidden;
+    width: 100%;
+    // .slide{
+
+    // }
+}
