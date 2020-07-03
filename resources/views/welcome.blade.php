@@ -12,10 +12,9 @@
         <!-- Fonts -->
 
         <!-- Styles -->
-        {{-- slide library --}}
-        <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-        {{-- // Add the new slick-theme.css if you want the default styling --}}
-        <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+        {{-- font-awesome --}}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+       
     </head>
     <body>
         {{-- Navigation bars --}}
@@ -138,43 +137,60 @@
             </section>
             
             {{-- Section temoignage --}}
-            <div class="slide">
-                <div>your content</div>
-                <div>your content</div>
-                <div>your content</div>
-              </div>
-            <section class="temoignage">
+            <section>
+                <div class="temoignage">
+                    <h1 class="title">Ils nous ont fait confiance</h1>
+                    <p class="small-details">et ne le regrettent pas !</p>
+                            <div class="slide">
+                                <div class="slide-item">content 1</div>
+                                <div class="slide-item">content 2</div>
+                                <div class="slide-item">content 3</div>
+                              </div>
+                              <div class="dots">
+                                  <div class="dot-item" onclick="currentSlide(1)"></div>
+                                  <div class="dot-item" onclick="currentSlide(2)"></div>
+                                  <div class="dot-item" onclick="currentSlide(3)"></div>
+                              </div>
+                </div>
+
+
             </section>
+
             
             {{-- Section about us  --}}
             <section class="contact-us">
-                
+                <a href="#" class="cta">Nous contactez</a>
             </section>
             
             {{-- Footer  --}}
             <footer>
-                
+                <ul>
+                    <li>
+                        <p><i class="fa fa-envelope-o"></i> exemple@gmail.com</p>
+                    </li>
+                    <li>
+                        <p><i class="fa fa-phone"></i> 99 002 22 33</p>
+                    </li>
+                    <li>
+                        <p><i class="fa fa-map-marker"></i> Abidjan, Rivera Abatta</p>
+                    </li>
+                </ul>
+                <ul class="social-networks">
+                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                </ul>
+                <p>®Tous droits réservés Pressing 2020 </p>
             </footer>
         </div>
         @endsection
 
+    
         <script>
-            $(document).ready(function(){
-            $('.slide').slick({
-                dots: true,
-            infinite: true,
-            speed: 300,
-            slidesToShow: 1,
-            adaptiveHeight: true
-
-            });
-            });
+                
+            console.log('Hello world')
                     
         </script>
-
-        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script type="text/javascript" src="slick/slick.min.js"></script>
     </body>
     </html>
     

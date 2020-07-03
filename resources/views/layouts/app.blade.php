@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/script.js') }}" defer></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
 
     <!-- Fonts -->
@@ -24,23 +25,18 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             {{-- <menu-component></menu-component> --}}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="container">
                 <div class="header-bar">
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{-- {{ config('app.name', 'Acceuil') }} --}}Pressings 
+                        Pressings 
                     </a>
                     <div>
-                        <img id="menu-burger"src="/icons/menu.svg" alt="">
+                        <img id="menu-burger" src="/icons/menu.svg" alt="">
                     </div>
                 </div>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
-                        
-                        {{-- @section('navigation-bar')
-                        
-                        <nav class="navBar"> 
-                            {{-- brand --}}
-                            {{-- <div><span>Pressing</span></div> --}}
+                <ul class="navbar-nav">
+                    
                                 @if (Route::has('login'))
                                 <div class="top-right links">
                                     @auth
@@ -103,6 +99,6 @@
         </main>
     </div>
     
-    <script src="/js/script.js"></script>
+
 </body>
 </html>
