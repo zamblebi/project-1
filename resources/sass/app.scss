@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap');
 // Variables
 @import 'variables';
+@import 'connection';
 
 
 
@@ -42,6 +43,7 @@ body{
 }
 
 .navbar{
+//    box-shadow: 0px 0px 2px black;
     .navbar-brand{
         text-decoration: none;
         color: black;
@@ -55,7 +57,9 @@ body{
         text-align: left;
         list-style: none;
         font-size: 1.2em;
+        padding-left: 17px;
         a{
+            font-family: 'Nunito' sans-serif;
             color: black;
             text-decoration: none;
         }
@@ -278,6 +282,34 @@ body{
 
 //Feedback style
 .feedback{
+    padding: 70px 0;
+    .feedback-groups{
+        padding: 10px 0;
+        line-height: 30px;
+        h1{
+            margin: 0;
+            padding: 0;
+        }
+        p{
+            margin: 0;
+        }
+    }
+    .comments{
+        ul{
+            display: flex;
+            flex-direction: column;
+            padding-left: 0;
+            list-style: none;
+            li{
+                border: 2px solid #2e425562;
+                padding: 0 20px;
+                margin: 10px;
+                p{
+                    opacity: 0.66;
+                }
+            }
+        }
+    }
     text-align: center;
     color: black;
     background-color: $gray;
@@ -392,13 +424,13 @@ footer{
 //Desktop Responsive
 
 @media(min-width: 805px){
+
     .toggle-menu{
         display: none;
     }
-    .navbar-nav{
-        display: block;
-    }
+    
     .navbar-nav-desktop{
+        font-family: 'Nonito', sans-serif;
         display: flex;
         flex-direction: row;
         list-style: none;
@@ -449,6 +481,14 @@ footer{
                     }
             }
             // flex-direction: column;
+        }
+    }
+
+    .feedback{
+        .comments{
+            ul{
+                flex-direction: row;
+            }
         }
     }
     

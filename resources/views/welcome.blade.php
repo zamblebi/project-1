@@ -143,20 +143,25 @@
             {{-- Section temoignage --}}
             <section>
                 <div class="feedback">
-                    <h1 class="title">Ils nous ont fait confiance</h1>
-                    <p class="small-details">et ne le regrettent pas !</p>
-                        <div class="slide-wrapper">
-                            <div class="slide">
-                                <div class="slide-item initial">content 1</div>
-                                <div class="slide-item">content 2</div>
-                                <div class="slide-item">content 3</div>
-                             </div>
-
-                             <div class="dots">
-                                 <div class="dot-item" onclick="currentSlide(1)"></div>
-                                 <div class="dot-item" onclick="currentSlide(2)"></div>
-                                 <div class="dot-item" onclick="currentSlide(3)"></div>
-                             </div>
+                    <div class="feedback-groups">
+                        <h1 class="title">Ils nous ont fait confiance</h1>
+                        <p class="small-details">et ne le regrettent pas !</p>
+                    </div>
+                        <div class="comments wrapper">
+                            <ul>
+                                <li>
+                                    <h4>Sophi Koudio</h4>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima perspiciatis beatae quisquam reprehenderit, doloribus odio illo quod et natus. Mollitia dolores nostrum veniam dignissimos quod, nemo esse ea atque quis.</p>
+                                </li>
+                                <li>
+                                    <h4>Alice Nadine</h4>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima perspiciatis beatae quisquam reprehenderit, doloribus odio illo quod et natus. Mollitia dolores nostrum veniam dignissimos quod, nemo esse ea atque quis.</p>
+                                </li>
+                                <li>
+                                    <h4>Jacob Williams</h4>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima perspiciatis beatae quisquam reprehenderit, doloribus odio illo quod et natus. Mollitia dolores nostrum veniam dignissimos quod, nemo esse ea atque quis.</p>
+                                </li>
+                            </ul>
                         </div>
                 </div>
 
