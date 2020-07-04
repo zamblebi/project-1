@@ -68,6 +68,18 @@
   padding: 30px 0;
 }
 
+@media (min-width: 605px) {
+  .connection .connection-form form input[type=text],
+  .connection .connection-form form input[type=email],
+  .connection .connection-form form input[type=password] {
+    width: 430px;
+    height: 30px;
+    border-radius: none;
+    padding: 3px 10px;
+    border: 1px solid #11111177;
+  }
+}
+
 .toggle {
   display: flex;
 }
