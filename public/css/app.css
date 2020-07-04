@@ -230,10 +230,6 @@
   }
 }
 
-.toggle {
-  display: flex;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -245,13 +241,18 @@ body {
 }
 
 .header-bar {
+  position: relative;
   background-color: #ffffff;
   width: 100%;
+  z-index: 12;
   display: flex;
   padding: 0 5px;
   justify-content: space-between;
-  padding: 7px 0;
-  opacity: 0.6;
+}
+
+.header-bar .navbar-brand,
+.header-bar .toggle-menu {
+  padding: 7px 10px;
 }
 
 .header-bar #menu-burger {
@@ -265,8 +266,17 @@ body {
 }
 
 .navbar .navbar-nav {
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  padding: 20px 0;
+  background-color: #F0F2F4;
+  top: -150px;
+  border-bottom: 1px solid gray;
   padding-left: 0;
-  display: none;
+  display: flex;
+  margin: 0;
+  transition: all 500ms;
   flex-direction: column;
   text-align: left;
   list-style: none;
@@ -286,6 +296,10 @@ body {
 
 .navbar .nav-item {
   color: red;
+}
+
+.navbar .nav-item a {
+  font-family: "Nunito", sans-serif;
 }
 
 .navbar-nav-desktop {

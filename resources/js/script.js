@@ -7,11 +7,12 @@ var stateNav = false
 menu.addEventListener("click",(e) =>{
     if(stateNav == false){
         let nav = document.querySelector('.navbar-nav')
-        nav.style.display = "flex"
+    nav.style.top = '47px'
         stateNav = true
     }else{
         let nav = document.querySelector('.navbar-nav')
-        nav.style.display = "none"
+        // nav.style.display = "none"
+        nav.style.top = "-150px"
         stateNav = false
     }
 }, false)

@@ -100,12 +100,13 @@ var stateNav = false; // ajouter un evenement click qui detectera l'evenement au
 menu.addEventListener("click", function (e) {
   if (stateNav == false) {
     var nav = document.querySelector('.navbar-nav');
-    nav.style.display = "flex";
+    nav.style.top = '47px';
     stateNav = true;
   } else {
-    var _nav = document.querySelector('.navbar-nav');
+    var _nav = document.querySelector('.navbar-nav'); // nav.style.display = "none"
 
-    _nav.style.display = "none";
+
+    _nav.style.top = "-150px";
     stateNav = false;
   }
 }, false); // Slider app
