@@ -17,5 +17,17 @@ menu.addEventListener("click",(e) =>{
     }
 }, false)
 
-// Slider app
+// loader
+
+// loader end
+
+
+
+
+//ajax request
+
+//end ajax request
+
+
+
 
