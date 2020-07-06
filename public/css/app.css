@@ -1,11 +1,239 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap);@import url(https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap);body {
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap);@import url(https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap);.inscription {
+  text-align: center;
+}
+
+.inscription .inscription-form {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  line-height: 35px;
+}
+
+.inscription .inscription-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 2rem;
+  padding: 30px 0;
+}
+
+.inscription form label {
+  opacity: 0.75;
+}
+
+.inscription form input[type=text],
+.inscription form input[type=email],
+.inscription form input[type=password] {
+  width: 270px;
+  height: 30px;
+  border-radius: none;
+  padding: 3px 10px;
+  border: 1px solid #11111177;
+}
+
+.inscription form .form-button {
+  padding-top: 20px;
+}
+
+.inscription form button[type=submit] {
+  display: inline-block;
+  border: none;
+  padding: 0.9rem 2.8rem;
+  margin: 0;
+  text-decoration: none;
+  background: #11af22;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.inscription form button[type=submit]:hover {
+  background: #0c8119;
+}
+
+.inscription form button[type=submit]:focus {
+  background: #0c8119;
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+.inscription form button[type=submit]:active {
+  transform: scale(0.99);
+}
+
+@media (min-width: 605px) {
+  .inscription .inscription-form form input[type=text],
+  .inscription .inscription-form form input[type=email],
+  .inscription .inscription-form form input[type=password] {
+    width: 430px;
+    height: 30px;
+    border-radius: none;
+    padding: 3px 10px;
+    border: 1px solid #11111177;
+  }
+}
+
+.connection {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  line-height: 35px;
+}
+
+.connection .connection-form form label {
+  opacity: 0.75;
+}
+
+.connection .connection-form form .buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.connection .connection-form form input[type=text],
+.connection .connection-form form input[type=email],
+.connection .connection-form form input[type=password] {
+  width: 270px;
+  height: 30px;
+  border-radius: none;
+  padding: 3px 10px;
+  border: 1px solid #11111177;
+}
+
+.connection .connection-form form button[type=submit] {
+  display: inline-block;
+  border: none;
+  padding: 0.9rem 2.8rem;
+  margin: 0;
+  text-decoration: none;
+  background: #11af22;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.connection .connection-form form button[type=submit]:hover {
+  background: #0c8119;
+}
+
+.connection .connection-form form button[type=submit]:focus {
+  background: #0c8119;
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+.connection .connection-form form button[type=submit]:active {
+  transform: scale(0.99);
+}
+
+.connection .connection-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 2rem;
+  padding: 30px 0;
+}
+
+@media (min-width: 605px) {
+  .connection .connection-form form input[type=text],
+  .connection .connection-form form input[type=email],
+  .connection .connection-form form input[type=password] {
+    width: 430px;
+    height: 30px;
+    border-radius: none;
+    padding: 3px 10px;
+    border: 1px solid #11111177;
+  }
+}
+
+.password-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.form-password {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.form-password form label {
+  opacity: 0.75;
+}
+
+.form-password form input[type=email] {
+  width: 270px;
+  height: 30px;
+  border-radius: none;
+  padding: 3px 10px;
+  border: 1px solid #11111177;
+}
+
+.form-password form .form-button {
+  padding: 20px 0;
+}
+
+.form-password form button[type=submit] {
+  display: inline-block;
+  border: none;
+  padding: 0.9rem 2.8rem;
+  margin: 0;
+  text-decoration: none;
+  background: #11af22;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.form-password form button[type=submit]:hover {
+  background: #0c8119;
+}
+
+.form-password form button[type=submit]:focus {
+  background: #0c8119;
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+.form-password form button[type=submit]:active {
+  transform: scale(0.99);
+}
+
+@media (min-width: 600px) {
+  .form-password form input[type=text],
+  .form-password form input[type=email],
+  .form-password form input[type=password] {
+    width: 430px;
+    height: 30px;
+    border-radius: none;
+    padding: 3px 10px;
+    border: 1px solid #11111177;
+  }
+}
+
+body {
   margin: 0;
   padding: 0;
   font-family: "Raleway", sans-serif;
-}
-
-.toggle {
-  display: none;
 }
 
 .menu-all {
@@ -13,13 +241,18 @@
 }
 
 .header-bar {
+  position: relative;
   background-color: #ffffff;
   width: 100%;
+  z-index: 12;
   display: flex;
   padding: 0 5px;
   justify-content: space-between;
-  padding: 7px 0;
-  opacity: 0.6;
+}
+
+.header-bar .navbar-brand,
+.header-bar .toggle-menu {
+  padding: 7px 10px;
 }
 
 .header-bar #menu-burger {
@@ -33,15 +266,26 @@
 }
 
 .navbar .navbar-nav {
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  padding: 20px 0;
+  background-color: #F0F2F4;
+  top: -150px;
+  border-bottom: 1px solid gray;
   padding-left: 0;
   display: flex;
+  margin: 0;
+  transition: all 500ms;
   flex-direction: column;
   text-align: left;
   list-style: none;
   font-size: 1.2em;
+  padding-left: 17px;
 }
 
 .navbar .navbar-nav a {
+  font-family: "Nunito" sans-serif;
   color: black;
   text-decoration: none;
 }
@@ -54,16 +298,29 @@
   color: red;
 }
 
+.navbar .nav-item a {
+  font-family: "Nunito", sans-serif;
+}
+
+.navbar-nav-desktop {
+  display: none;
+}
+
 .intro {
   background-image: url("/images/img1.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 0 1000px rgba(6, 72, 83, 0.7);
   background-size: cover;
   padding: 70px 0 120px 0px;
   margin: 0;
   color: #ffffff;
   text-align: center;
+}
+
+.intro .groups-intro h1 {
+  font-family: "Noboto", sans-serif;
+  font-size: 2em;
 }
 
 .intro .layer {
@@ -127,7 +384,8 @@
 
 .about-us .title,
 .services .title,
-.commands .title {
+.commands .title,
+.feedback .title {
   font-size: 2em;
   font-family: "Nunito", sans-serif;
 }
@@ -228,5 +486,232 @@
 
 .commands ul li img {
   width: 80px;
+}
+
+.feedback {
+  padding: 70px 0;
+  text-align: center;
+  color: black;
+  background-color: #F0F2F4;
+  padding-bottom: 30px;
+}
+
+.feedback .feedback-groups {
+  padding: 10px 0;
+  line-height: 30px;
+}
+
+.feedback .feedback-groups h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.feedback .feedback-groups p {
+  margin: 0;
+}
+
+.feedback .comments ul {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  list-style: none;
+}
+
+.feedback .comments ul li {
+  border: 2px solid #2e425562;
+  padding: 0 20px;
+  margin: 10px;
+}
+
+.feedback .comments ul li p {
+  opacity: 0.66;
+}
+
+.feedback .title {
+  padding: 30px 0;
+}
+
+.contact-us {
+  background-color: #343A40;
+  padding: 40px;
+  text-align: center;
+}
+
+.contact-us .btn {
+  display: inline-block;
+  border: none;
+  padding: 0.9rem 2.8rem;
+  margin: 0;
+  text-decoration: none;
+  background: #ffff;
+  color: #343A40;
+  font-family: sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.contact-us .btn:hover {
+  background: #dfdfdf;
+}
+
+.contact-us .btn:focus {
+  background: #F0F2F4;
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+.contact-us .btn:active {
+  transform: scale(0.99);
+}
+
+footer {
+  padding: 20px 0;
+}
+
+footer .contacts {
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer p {
+  margin: 0;
+  text-align: center;
+}
+
+footer ul {
+  list-style: none;
+}
+
+footer .social-networks {
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+footer .social-networks li {
+  padding: 0 20px;
+}
+
+footer .social-networks li a i {
+  color: black;
+}
+
+.slide-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+@media (min-width: 505px) {
+  .intro .cta .btn {
+    padding: 0.66em 2.5em;
+  }
+}
+
+@media (min-width: 805px) {
+  .toggle-menu {
+    display: none;
+  }
+
+  .navbar-nav-desktop {
+    font-family: "Nonito", sans-serif;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+  }
+
+  .navbar-nav-desktop a {
+    text-decoration: none;
+    color: #111111;
+  }
+
+  .navbar-nav-desktop li {
+    padding: 0 12px;
+  }
+
+  .wrapper {
+    padding: 0 100px;
+  }
+
+  .intro {
+    padding: 220px 0;
+  }
+
+  .intro .groups-intro {
+    line-height: 10px;
+    padding-bottom: 40px;
+  }
+
+  .commands .title {
+    text-align: center;
+  }
+
+  .commands ul li img {
+    width: 160px;
+  }
+
+  .services ul {
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+  }
+
+  .services ul li {
+    padding: 0 30px;
+  }
+
+  .services ul li img {
+    width: 70px;
+  }
+
+  .feedback .comments ul {
+    flex-direction: row;
+  }
+
+  .about-us {
+    padding: 56px 0;
+  }
+
+  .about-us .about-us-list .groups-title {
+    line-height: 20px;
+    text-align: center;
+  }
+
+  .about-us .about-us-list .small-details-title {
+    padding-bottom: 20px;
+  }
+
+  .about-us .about-us-list ul {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .about-us .about-us-list ul li .small-title {
+    font-family: "Nunito", sans-serif;
+    padding: 0 10px;
+  }
+
+  .about-us .about-us-list ul li .small-details,
+  .about-us .about-us-list ul li .small-title {
+    margin: 0;
+  }
+
+  .about-us .about-us-list ul li img {
+    width: 60px;
+  }
+
+  .about-us .about-us-list ul li .details {
+    padding: 0;
+  }
+
+  .about-us .about-us-list ul li .small-details {
+    padding: 0 10px;
+  }
 }
 

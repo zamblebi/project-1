@@ -1,19 +1,21 @@
-// var menu = document.getElementById('menu-burger')
+// burger menu
 
-// function clickHandle(){
-//     return true
-// }
-// var ok = menu.addEventListener("click",clickHandle)
+var menu = document.querySelector('#menu-burger')
 
-// console.log(ok)
+var stateNav = false
+// ajouter un evenement click qui detectera l'evenement au moment du click
+menu.addEventListener("click",(e) =>{
+    if(stateNav == false){
+        let nav = document.querySelector('.navbar-nav')
+    nav.style.top = '47px'
+        stateNav = true
+    }else{
+        let nav = document.querySelector('.navbar-nav')
+        // nav.style.display = "none"
+        nav.style.top = "-150px"
+        stateNav = false
+    }
+}, false)
 
-$(document).ready(function() {
-    $("#menu-burger").click(function() {
-        if($('.menu-all').hasClass('.toggle')){
-            $('.menu-all').removeClass('toggle')
-        }else if($('.menu-all').hasClass('.toggle')){
-            $('.menu-all').addClass('toggle')
-        }
-    console.log('clicked')
-    });
-});
+// Slider app
+

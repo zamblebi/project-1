@@ -12,10 +12,9 @@
         <!-- Fonts -->
 
         <!-- Styles -->
-        {{-- slide library --}}
-        <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-        {{-- // Add the new slick-theme.css if you want the default styling --}}
-        <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+        {{-- font-awesome --}}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+       
     </head>
     <body>
         {{-- Navigation bars --}}
@@ -27,11 +26,13 @@
                 
             
             {{-- Pages heros --}}
-            <div class="intro">
+            <div class="intro wrapper">
                 <div class="layer"></div>
-                <h1>Pressing a domicile haute qualiter livre partout a abidjan </h1>
-                
-                <p>Nous recuperons et livrons vos vetements </p>
+                <div class="groups-intro">
+                    <h1>Pressing a domicile haute qualiter livre partout a abidjan </h1>
+                    
+                    <p>Nous recuperons et livrons vos vetements </p>
+                </div>
                 
                 <div class="cta">
                     <input class="geolocalization" type="text" placeholder="Saisissez votre adresse" name="maps"> <a href="#" class="btn">Reserver votre crenaux</a>
@@ -40,7 +41,7 @@
             </div>
             
             {{-- Section services --}}
-            <section >
+            <section class="wrapper">
                 <div class="services">
                     <h1 class="title title-services">Comment ca marche ?</h1>
                     <div class="list-service">
@@ -63,10 +64,12 @@
             </section>
             
             {{-- Section About us  --}}
-            <section class="about-us">
-                <div class="about-us-list">
-                    <h1 class="title title-about-us">Pressing</h1>
-                <p class="small-details-title">Les services d'un pressing de haute qualite a votre porte</p>
+            <section class="about-us ">
+                <div class="about-us-list wrapper">
+                    <div class="groups-title">
+                        <h1 class="title title-about-us">Pressing</h1>
+                    <p class="small-details-title">Les services d'un pressing de haute qualite a votre porte</p>
+                    </div>
                     <ul>
                         <li class="about-item">
                             <img src="/icons/thunder.svg" alt="">
@@ -138,43 +141,68 @@
             </section>
             
             {{-- Section temoignage --}}
-            <div class="slide">
-                <div>your content</div>
-                <div>your content</div>
-                <div>your content</div>
-              </div>
-            <section class="temoignage">
+            <section>
+                <div class="feedback">
+                    <div class="feedback-groups">
+                        <h1 class="title">Ils nous ont fait confiance</h1>
+                        <p class="small-details">et ne le regrettent pas !</p>
+                    </div>
+                        <div class="comments wrapper">
+                            <ul>
+                                <li>
+                                    <h4>Sophi Koudio</h4>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima perspiciatis beatae quisquam reprehenderit, doloribus odio illo quod et natus. Mollitia dolores nostrum veniam dignissimos quod, nemo esse ea atque quis.</p>
+                                </li>
+                                <li>
+                                    <h4>Alice Nadine</h4>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima perspiciatis beatae quisquam reprehenderit, doloribus odio illo quod et natus. Mollitia dolores nostrum veniam dignissimos quod, nemo esse ea atque quis.</p>
+                                </li>
+                                <li>
+                                    <h4>Jacob Williams</h4>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima perspiciatis beatae quisquam reprehenderit, doloribus odio illo quod et natus. Mollitia dolores nostrum veniam dignissimos quod, nemo esse ea atque quis.</p>
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+
+
             </section>
+
             
             {{-- Section about us  --}}
             <section class="contact-us">
-                
+                <a href="#" class="btn">Nous contactez</a>
             </section>
             
             {{-- Footer  --}}
             <footer>
-                
+                <ul class="contacts">
+                    <li>
+                        <p><i class="fa fa-envelope-o"></i> exemple@gmail.com</p>
+                    </li>
+                    <li>
+                        <p><i class="fa fa-phone"></i> 99 002 22 33</p>
+                    </li>
+                    <li>
+                        <p><i class="fa fa-map-marker"></i> Abidjan, Rivera Abatta</p>
+                    </li>
+                </ul>
+                <ul class="social-networks">
+                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                </ul>
+                <p>®Tous droits réservés Pressing 2020 </p>
             </footer>
         </div>
         @endsection
 
+    
         <script>
-            $(document).ready(function(){
-            $('.slide').slick({
-                dots: true,
-            infinite: true,
-            speed: 300,
-            slidesToShow: 1,
-            adaptiveHeight: true
-
-            });
-            });
+                
+            console.log('Hello world')
                     
         </script>
-
-        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script type="text/javascript" src="slick/slick.min.js"></script>
     </body>
     </html>
     

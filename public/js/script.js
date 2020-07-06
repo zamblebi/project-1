@@ -93,23 +93,23 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// var menu = document.getElementById('menu-burger')
-// function clickHandle(){
-//     return true
-// }
-// var ok = menu.addEventListener("click",clickHandle)
-// console.log(ok)
-$(document).ready(function () {
-  $("#menu-burger").click(function () {
-    if ($('.menu-all').hasClass('.toggle')) {
-      $('.menu-all').removeClass('toggle');
-    } else if ($('.menu-all').hasClass('.toggle')) {
-      $('.menu-all').addClass('toggle');
-    }
+// burger menu
+var menu = document.querySelector('#menu-burger');
+var stateNav = false; // ajouter un evenement click qui detectera l'evenement au moment du click
 
-    console.log('clicked');
-  });
-});
+menu.addEventListener("click", function (e) {
+  if (stateNav == false) {
+    var nav = document.querySelector('.navbar-nav');
+    nav.style.top = '47px';
+    stateNav = true;
+  } else {
+    var _nav = document.querySelector('.navbar-nav'); // nav.style.display = "none"
+
+
+    _nav.style.top = "-150px";
+    stateNav = false;
+  }
+}, false); // Slider app
 
 /***/ }),
 
