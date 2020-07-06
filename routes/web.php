@@ -21,6 +21,8 @@ Route::get('/home', function(){
     return view('home');
 });
 
+// Route::post('')
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

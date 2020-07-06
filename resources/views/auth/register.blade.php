@@ -11,12 +11,25 @@
                         @csrf
 
                         <div class="form-name-inscription">
-                            <label for="name">{{ __('Nom') }}</label>
+                            <label for="lastName">{{ __('Nom') }}</label>
 
                             <div class="">
-                                <input id="name" placeholder="Kouadio" type="text" class="@error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="lastName" placeholder="Kouadio" type="text" class="@error('lastName') is-invalid @enderror" name="lastName" value="{{ old('lastName') }}" required autocomplete="lastName" autofocus>
 
-                                @error('name')
+                                @error('lastName')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-name-inscription">
+                            <label for="firstName">{{ __('Prenom') }}</label>
+
+                            <div class="">
+                                <input id="firstName" placeholder="Leandre" type="text" class="@error('FistName') is-invalid @enderror" name="firstName" value="{{ old('firstaName') }}" required autocomplete="fitstName" autofocus>
+
+                                @error('firstName')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -31,6 +44,20 @@
                                 <input id="email" type="email" placeholder="exemple@exemple.com" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        <div class="form-email-inscription">
+                            <label for="phone_number">{{ __('Numero de telephone') }}</label>
+
+                            <div class="">
+                                <input id="phone_number" type="text" placeholder="012345678" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number">
+
+                                @error('phone_number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -60,6 +87,8 @@
                             </div>
                         </div>
 
+                {{-- <form action="{{ route('adresse.store') }}" method="post"></form> --}}
+                            {{-- <input type="hidden" name="adresse_id" value="1"> --}}
                         <div class="form-button">
                             <div class="button-submit">
                                 <button type="submit" class="btn btn-primary">
