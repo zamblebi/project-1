@@ -1,12 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container wrapper">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
-
+                    <div class="small-menu-dashboard">
+                        <ul>
+                            <li><a href="#">Toutes mes commandes</a></li>
+                        <li><a href="/cooordonnees/{{Auth::user()->id}}">Cooordonnees</a></li>
+                            <li><a href="#">Adresses</a></li>
+                            <li><a href="#">Mot de passe</a></li>
+                        </ul>
+                    </div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">

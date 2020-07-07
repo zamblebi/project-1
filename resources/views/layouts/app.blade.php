@@ -39,7 +39,7 @@
                             @if (Route::has('login'))
                                         @auth
                                         <li class="nav-item">
-                                                <a href="{{ url('/home') }}">Home</a>
+                                                <a href="{{ url('/home') }}">Mon Profils</a>
                                             </li>
                                             {{-- @else
                                                 <a href="{{ route('login') }}">Connexion</a>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,12 @@ Route::get('/home', function(){
     return view('home');
 });
 
-// Route::post('')
+
+//Modification des cooordonnees de l'utilisateur
+Route::get('/cooordonnees/{id}', 'UserController@edit')->name('cooordonnees');
+Route::post('update/', 'UserController@update');
+
+
 
 Auth::routes();
 
