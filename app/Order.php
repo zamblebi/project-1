@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
    
-    
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['total'];
 
-    public function clothing(){
-        return $this->hasMany('App\Clothing');
+    public function clothings(){
+        return $this->belongsToMany('App\Clothing');
     }
 }

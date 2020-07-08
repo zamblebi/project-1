@@ -25,8 +25,10 @@ Route::get('/home', function(){
 
 //Modification des cooordonnees de l'utilisateur
 Route::get('/cooordonnees/{id}', 'UserController@edit')->name('cooordonnees');
-Route::post('update/', 'UserController@update');
+Route::post('update/{id}', 'UserController@update');
 
+//Order
+Route::get('/order', 'OrdersController@index')->name('order');
 
 
 Auth::routes();

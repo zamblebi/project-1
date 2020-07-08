@@ -84,7 +84,7 @@ protected function validator(array $data)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,User $user)
+    public function update(Request $request,$id)
     {       
              $request->validate([
             'firstName' => 'required|max:150',
@@ -93,9 +93,9 @@ protected function validator(array $data)
             'phone_number' => 'required|numeric',
         ]);
 
-
+        $user = 'App\User';
         $data = request()->except(['_token']);
-        $user::where($user->id)->update($data);
+        $user::find($id)->update($data);
             // $user
             // $user->save();
 

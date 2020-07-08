@@ -14,7 +14,7 @@ class UserCanHaveManyOrder extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-           $table->foreignId('order_id')->constrained();
+           $table->foreignId('order_id')->nullable()->constrained();
         });
     }
 
