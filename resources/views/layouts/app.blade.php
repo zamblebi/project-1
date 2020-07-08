@@ -41,6 +41,11 @@
                                         <li class="nav-item">
                                                 <a href="{{ url('/home') }}">Mon Profils</a>
                                             </li>
+                                            @if(Auth::user()->usertype == 'admin')
+                                                <li class="nav-item">
+                                                    <a href="{{url('dashboard')}}">Dashboard</a>
+                                                </li>
+                                            @endif    
                                             {{-- @else
                                                 <a href="{{ route('login') }}">Connexion</a>
                                                 

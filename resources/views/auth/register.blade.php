@@ -78,7 +78,6 @@
                                 @enderror
                             </div>
                         </div>
-                        <input type="hidden" value="simple" name="type2">
                         <div class="form-password-confirm-inscription">
                             <label for="password-confirm">{{ __('Confirmer le mot de passe') }}</label>
 

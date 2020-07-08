@@ -14,8 +14,7 @@ class UserCanHaveDiffrentProfil extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-           $table->string('type1')->nullable(); 
-           $table->string('type2')->nullable();
+           $table->string('usertype')->nullable();
         });
     }
 
