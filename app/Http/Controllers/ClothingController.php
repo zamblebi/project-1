@@ -87,7 +87,7 @@ class ClothingController extends Controller
         ]);
         $clothing = Clothing::find($id);
         $clothing->update($request->all());
-        return redirect('/dashboard/clothing')->with('update', 'Le vetement mis a jour');
+        return back()->with('update', 'Le vetement mis a jour');
     }
 
     /**

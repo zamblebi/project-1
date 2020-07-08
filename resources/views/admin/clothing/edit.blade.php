@@ -2,6 +2,17 @@
 
 @section('content')
 
+    @if($flash = session('update'))
+            <div class="alert alert-success">
+                <span>{{ $flash }}</span>
+            </div>
+    @endif
+
+    <div class="text-center">
+        <h6>Icone du vetements</h6>
+    <img src="/icons/{{$clothing->icon}}.svg" style="width: 200px" class="rounded" alt="{{$clothing->icon}}">
+    </div>
+
 <form action="{{ route('update-clothing', $clothing->id)}}" method="post">
     @csrf
   <div class="form-group">
@@ -22,6 +33,15 @@
       </span>
     @enderror
 </div>
+<div class="form-group">
+    <h6>Selectioner nouvelle icones</h6>
+        <select name="icon" class="custom-select">
+            <option value="tshirt">Tshirt</option>
+            <option value="uniform">Chemise</option>
+            <option value="suit">Veste</option>
+            <option value="suit">Costume</option>
+        </select>
+  </div>
 
   <div class="form-group">
         <button class="btn btn-primary">Ajouter</button>

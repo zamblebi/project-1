@@ -9,10 +9,6 @@
         <div class="alert alert-danger">
             <span>{{ $flash }}</span>
         </div>
-    @elseif($flash = session('update'))
-        <div class="alert alert-success">
-            <span>{{ $flash }}</span>
-        </div>
     @endif
 <form action="{{ route('add-clothing')}}" method="post">
     @csrf
@@ -34,7 +30,15 @@
       </span>
     @enderror
 </div>
-
+    <div class="form-group">
+        <select name="icon" class="custom-select">
+            {{-- <option selected>Open this select menu</option> --}}
+            <option value="uniform">Chemise</option>
+            <option value="tshirt">Tshirt</option>
+            <option value="suit">Veste</option>
+            <option value="suit">Costume</option>
+        </select>
+    </div>
   <div class="form-group">
         <button class="btn btn-primary">Ajouter</button>
   </div>
