@@ -22,6 +22,18 @@ Route::get('/home', function(){
     return view('home');
 });
 
+//Admin dashboard
+Route::group(['middleware' => ['auth', 'admin']] , function() {
+    Route::get('dashboard', function () {
+        return view('admin.dashboard');
+    });
+} );
+
+//Clothing
+
+Route::get('/dashboard/clothing', 'ClothingController@create');
+
+
 
 //Modification des cooordonnees de l'utilisateur
 Route::get('/cooordonnees/{id}', 'UserController@edit')->name('cooordonnees');
