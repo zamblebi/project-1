@@ -22,7 +22,8 @@
                                 <br>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        {{-- <strong>{{ $message }}</strong> --}}
+                                        <strong style="color: red">Votre Email ou Mot de passe est incorrect!</strong>
                                     </span>
                                 @enderror
                             </div>

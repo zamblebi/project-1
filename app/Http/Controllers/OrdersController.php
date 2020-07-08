@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 
-use Auth;
-use Illuminate\Support\Facades\Validator;;
-use App\User;
+use App\Clothing;
+use App\Order;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +15,16 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $clothings = new Clothing;
+        // $orders = new Order;
+        // $orders->clothings();
+        // foreach($order->clothing as $c){
+
+        // }
+       return view('orders.index', ['clothings' => $clothings]);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -27,6 +32,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -39,7 +45,7 @@ class UserController extends Controller
     {
         //
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -48,8 +54,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        //
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -58,25 +65,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = Auth::user();
-        return view('cooordonnees.index', ['user' => $user]);
+        //
     }
 
-/**
- * Get a validator for an incoming registration request.
- *
- * @param  array  $data
- * @return \Illuminate\Contracts\Validation\Validator
- */
-protected function validator(array $data)
-{
-    return Validator::make($data, [
-        
-        ]);
-    }
-    
-
-    
     /**
      * Update the specified resource in storage.
      *
@@ -84,22 +75,9 @@ protected function validator(array $data)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
-    {       
-             $request->validate([
-            'firstName' => 'required|max:150',
-            'lastName' => 'required|max:150',
-            'email' => 'required|email',
-            'phone_number' => 'required|numeric',
-        ]);
-
-        $user = 'App\User';
-        $data = request()->except(['_token']);
-        $user::find($id)->update($data);
-            // $user
-            // $user->save();
-
-        return back()->with('ok', __('Le profil a bien été mis à jour'));
+    public function update(Request $request, $id)
+    {
+        //
     }
 
     /**
