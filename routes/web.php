@@ -30,9 +30,15 @@ Route::group(['middleware' => ['auth', 'admin']] , function() {
 } );
 
 //Clothing
-
 Route::get('/dashboard/clothing', 'ClothingController@create');
-
+//Add clothing
+Route::post('/dashboard/clothing/add-clothing', 'ClothingController@store')->name('add-clothing');
+//Delete clothing
+Route::post('/dashboard/clothing/detete-clothing/{id}', 'ClothingController@destroy')->name('delete-clothing');
+//Edit clothing
+Route::get('/dashboard/clothing/edit-clothing/{id}', 'ClothingController@edit')->name('edit-clothing');
+//Update clothing
+Route::post('/dashboard/clothing/update-clothing/{id}', 'ClothingController@update')->name('update-clothing');
 
 
 //Modification des cooordonnees de l'utilisateur

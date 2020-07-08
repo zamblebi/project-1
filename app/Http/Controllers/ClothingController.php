@@ -14,9 +14,8 @@ class ClothingController extends Controller
      */
     public function index()
     {
-        //
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +23,10 @@ class ClothingController extends Controller
      */
     public function create()
     {
-       return view('admin.clothing.add'); 
+        $clothings = Clothing::orderBy('id','desc')->get();
+        // $clothing->all();
+        return view('admin.clothing.add', ['clothings' => $clothings]); 
+    //    return view('admin.clothing.add'); 
     }
 
     /**
@@ -35,8 +37,15 @@ class ClothingController extends Controller
      */
     public function store(Request $request)
     {
-        // $clothing = new Clothing;
-        // $clothing = $request
+        $request->validate([
+            'name' => 'required|max:255',
+            'prix' => 'required|numeric|min:500'
+        ]);
+        $clothing = new Clothing;
+        $clothing->create($request->all());
+        // $clothing->save();
+
+        return redirect()->back()->with('status', 'Vetements bien ajouter');
 
     }
 
@@ -59,7 +68,8 @@ class ClothingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $clothing = Clothing::find($id);
+        return view('admin.clothing.edit', ['clothing' => $clothing]);
     }
 
     /**
@@ -71,7 +81,13 @@ class ClothingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+            'prix' => 'required|numeric|min:500'
+        ]);
+        $clothing = Clothing::find($id);
+        $clothing->update($request->all());
+        return redirect('/dashboard/clothing')->with('update', 'Le vetement mis a jour');
     }
 
     /**
@@ -82,6 +98,8 @@ class ClothingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $clothing = Clothing::find($id);
+        $clothing->delete();
+        return redirect()->back()->with('delete', 'Vetement supprimer');
     }
 }
