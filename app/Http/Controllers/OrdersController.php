@@ -16,7 +16,7 @@ class OrdersController extends Controller
      */
     public function index()
     {   
-        $clothings = new Clothing;
+        $clothings = Clothing::all();
         // $orders = new Order;
         // $orders->clothings();
         // foreach($order->clothing as $c){

@@ -13,15 +13,13 @@
 
         <!-- Styles -->
         {{-- font-awesome --}}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
        
     </head>
     <body>
         {{-- Navigation bars --}}
-        @section('navigation-bar')
+        {{-- @section('navigation-bar') --}}
             {{-- @parent        --}}
-
-            @section('content')
+@section('content')
         <div class="content">
                 
             
@@ -135,7 +133,7 @@
                         </ul>
                     </div>
                     <div class="button">
-                        <a href="#" class="commander">Passer une commande</a>
+                    <a href="{{route('new-order')}}" class="commander">Passer une commande</a>
                     </div>
                 </div>
             </section>
@@ -174,35 +172,28 @@
                 <a href="#" class="btn">Nous contactez</a>
             </section>
             
-            {{-- Footer  --}}
+            
+            
             <footer>
-                <ul class="contacts">
-                    <li>
-                        <p><i class="fa fa-envelope-o"></i> exemple@gmail.com</p>
-                    </li>
-                    <li>
-                        <p><i class="fa fa-phone"></i> 99 002 22 33</p>
-                    </li>
-                    <li>
-                        <p><i class="fa fa-map-marker"></i> Abidjan, Rivera Abatta</p>
-                    </li>
-                </ul>
-                <ul class="social-networks">
-                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                </ul>
-                <p>®Tous droits réservés Pressing 2020 </p>
-            </footer>
-        </div>
-        @endsection
+                   <ul class="contacts">
+                       <li>
+                           <p><i class="fa fa-envelope-o"></i> exemple@gmail.com</p>
+                       </li>
+                       <li>
+                           <p><i class="fa fa-phone"></i> 99 002 22 33</p>
+                       </li>
+                       <li>
+                           <p><i class="fa fa-map-marker"></i> Abidjan, Rivera Abatta</p>
+                       </li>
+                   </ul>
+                   <ul class="social-networks">
+                       <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                       <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                       <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                   </ul>
+                   <p>®Tous droits réservés Pressing 2020 </p>
+               </footer>
+@endsection
 
-    
-        <script>
-                
-            console.log('Hello world')
-                    
-        </script>
-    </body>
-    </html>
+
     

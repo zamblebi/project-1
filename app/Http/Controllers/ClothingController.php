@@ -14,6 +14,7 @@ class ClothingController extends Controller
      */
     public function index()
     {
+        
     }
     
     /**
@@ -101,5 +102,13 @@ class ClothingController extends Controller
         $clothing = Clothing::find($id);
         $clothing->delete();
         return redirect()->back()->with('delete', 'Vetement supprimer');
+    }
+
+
+
+
+    public function addToCart(Request $request, $id){
+        $clothing = Clothing::find($id);
+        
     }
 }

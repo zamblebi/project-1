@@ -44,7 +44,7 @@
   </div>
 
   <div class="form-group">
-        <button class="btn btn-primary">Ajouter</button>
+        <button class="btn btn-primary">Modifier</button>
   </div>
 </form>
     

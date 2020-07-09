@@ -6,6 +6,7 @@
 @import 'inscription';
 @import 'connection';
 @import 'resetpassword';
+@import 'order';
 
 
 
@@ -13,9 +14,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
-
+html,body{
+    height: 100%;
+}
 
 body{
+    overflow-x: hidden;
+      min-height: 100%;
     margin: 0;
     padding: 0;
     font-family: 'Raleway', sans-serif;
@@ -377,14 +382,21 @@ body{
 
 
 //Footer style
+#footer{
+    // margin-top: 300px;
+}
 footer{
+    // position: fixed;
+    width: 100%;
+    text-align: center;
+}
     .contacts{
         padding-left: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 0;
     }
-    padding: 20px 0;
     p{
         margin: 0;
         text-align: center;
@@ -406,7 +418,7 @@ footer{
             padding: 0 20px;
         }
     }
-}
+
 
 //End footer style
 
@@ -432,6 +444,12 @@ footer{
                 padding: .66em 2.5em;
             }
 
+        }
+    }
+    .commands{
+        ul{
+              display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
         }
     }
 }
@@ -473,6 +491,10 @@ footer{
             text-align: center;
         }
         ul{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+          
+
             li{
                 img{
         

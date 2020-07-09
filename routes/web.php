@@ -46,7 +46,7 @@ Route::get('/cooordonnees/{id}', 'UserController@edit')->name('cooordonnees');
 Route::post('update/{id}', 'UserController@update');
 
 //Order
-Route::get('/order', 'OrdersController@index')->name('order');
+Route::get('/order', 'OrdersController@index')->name('new-order');
 
 
 Auth::routes();

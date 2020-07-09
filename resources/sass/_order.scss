@@ -1,0 +1,61 @@
+.order-clothing-list{
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    text-align: center;
+    .btn{
+        display: inline-block;
+                border: none;
+                padding: .9rem 2.8rem;
+                margin: 0;
+                text-decoration: none;
+                background: $green;
+                color: #ffffff;
+                font-family: sans-serif;
+                font-size: 1rem;
+                cursor: pointer;
+                text-align: center;
+                transition: background 250ms ease-in-out, 
+                            transform 150ms ease;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+    
+                &:hover{
+                background: $green-bold;
+                }
+                
+                &:focus {
+                    background: $green-bold;
+                    outline: 1px solid #fff;
+                    outline-offset: -4px;
+                }
+    
+                &:active {
+                    transform: scale(0.99);
+                }
+}
+
+
+.list-clothing{
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    li{
+        img{
+            width: 200px;
+        }
+        }
+    }
+}
+
+
+@media(max-width: 800px)
+{
+    .order-clothing-list{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
