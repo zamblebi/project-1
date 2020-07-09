@@ -109,7 +109,10 @@ menu.addEventListener("click", function (e) {
     _nav.style.top = "-150px";
     stateNav = false;
   }
-}, false); // Slider app
+}, false); // loader
+// loader end
+//ajax request
+//end ajax request
 
 /***/ }),
 

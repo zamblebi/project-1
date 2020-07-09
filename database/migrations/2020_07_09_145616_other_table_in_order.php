@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAdressForeignKeyToUsersTable extends Migration
+class OtherTableInOrder extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddAdressForeignKeyToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-           $table->foreignId('adresse_id')->nullable()->constrained('adresses'); 
+        Schema::table('orders', function (Blueprint $table) {
+           $table->foreignId('user_id')->constrained();
+           $table->string('adress');
         });
     }
 
@@ -25,9 +26,8 @@ class AddAdressForeignKeyToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('adresse_id');
-            // Schema::drop('users');
+        Schema::table('orders', function (Blueprint $table) {
+            //
         });
     }
 }
