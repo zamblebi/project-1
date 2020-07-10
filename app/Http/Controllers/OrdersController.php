@@ -90,4 +90,7 @@ class OrdersController extends Controller
     {
         //
     }
+    public function slotsChoice(){
+        return view('orders.slots');
+    }
 }

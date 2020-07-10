@@ -50,6 +50,8 @@ Route::get('/order', 'OrdersController@index')->name('new-order');
 
 //Add to cart
 Route::get('/add-to-cart/{id}', 'ClothingController@addToCart')->name('cart');
+//Slots Choix
+Route::get('/slots-choice', 'OrdersController@slotsChoice')->name('slots.choice');
 
 Auth::routes();
 

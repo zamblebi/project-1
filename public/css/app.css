@@ -287,6 +287,22 @@
   }
 }
 
+.container-slots {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+}
+
+@media (max-width: 670px) {
+  .container-slots {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row: 1fr 1fr;
+  }
+}
+
 html,
 body {
   height: 100%;

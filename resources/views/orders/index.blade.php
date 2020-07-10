@@ -52,7 +52,7 @@
 
             </p>
             <hr>
-            <a class="btn">Passer la commande</a>
+        <a href="{{route('slots.choice')}}" class="btn">Passer la commande</a>
         </div>
     </div>
 </div>
