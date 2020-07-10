@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Clothing;
+use Session;
+use App\Cart;
 
 class ClothingController extends Controller
 {
@@ -104,11 +106,29 @@ class ClothingController extends Controller
         return redirect()->back()->with('delete', 'Vetement supprimer');
     }
 
-
+    public function getContentCart(){
+        if(!Session::has('cart')){
+            return view('orders.index');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        
+        return view('orders.index', ['items' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+    }
 
 
     public function addToCart(Request $request, $id){
         $clothing = Clothing::find($id);
-        
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->add($clothing, $clothing->id);
+        $request->session()->put('cart',$cart);
+        $cartView = $request->session()->get('cart');
+        // if(Session::has('cart')){
+            // dd(session()->get('cart'));
+            // dd($cart->items);
+        // }
+        return redirect()->back();
+        // return view('orders.index',);
     }
 }

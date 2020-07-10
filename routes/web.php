@@ -48,6 +48,8 @@ Route::post('update/{id}', 'UserController@update');
 //Order
 Route::get('/order', 'OrdersController@index')->name('new-order');
 
+//Add to cart
+Route::get('/add-to-cart/{id}', 'ClothingController@addToCart')->name('cart');
 
 Auth::routes();
 
