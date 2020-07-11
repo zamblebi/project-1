@@ -57,5 +57,10 @@
     .order-clothing-list{
         display: grid;
         grid-template-columns: 1fr;
+        ul{
+            li{
+                padding: 35px 0;
+            }
+        }
     }
 }

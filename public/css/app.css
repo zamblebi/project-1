@@ -285,21 +285,67 @@
     display: grid;
     grid-template-columns: 1fr;
   }
+
+  .order-clothing-list ul li {
+    padding: 35px 0;
+  }
 }
 
-.container-slots {
+.delivery-title {
+  text-align: center;
+  padding: 30px 0;
+}
+
+.total-price-delivery {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.container-deliverys {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: center;
   text-align: center;
 }
 
+.container-deliverys .icon-delivery {
+  width: 200px;
+  padding: 26px 0;
+}
+
+.container-deliverys .delivery {
+  margin: 0 30px;
+  padding: 12px 15px;
+  border: 3px solid #11af22;
+}
+
+.container-deliverys .simple .frais,
+.container-deliverys .express .frais {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.container-deliverys .simple .frais h4,
+.container-deliverys .express .frais h4 {
+  margin: 0;
+}
+
+.container-deliverys .simple .frais em,
+.container-deliverys .express .frais em {
+  padding: 0 5px;
+}
+
 @media (max-width: 670px) {
-  .container-slots {
+  .container-deliverys {
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     grid-row: 1fr 1fr;
+  }
+
+  .container-deliverys .delivery {
+    margin: 30px 20px;
   }
 }
 
@@ -314,6 +360,37 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Raleway", sans-serif;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  padding: 0.9rem 2.8rem;
+  margin: 0;
+  text-decoration: none;
+  background: #11af22;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.btn:hover {
+  background: #0c8119;
+}
+
+.btn:focus {
+  background: #0c8119;
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+.btn:active {
+  transform: scale(0.99);
 }
 
 .menu-all {
