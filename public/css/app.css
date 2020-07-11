@@ -276,6 +276,10 @@
   flex-wrap: wrap;
 }
 
+.order-clothing-list .list-clothing li {
+  padding: 20px 0;
+}
+
 .order-clothing-list .list-clothing li img {
   width: 200px;
 }

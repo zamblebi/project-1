@@ -46,7 +46,7 @@
             </strong>
             <p>
 
-                @if(isset($getItems) != [])
+                @if(!empty($getItems) != [])
                     @foreach($getItems as $getItem)
                         <p>{{$getItem['item']['name']}} | quanttiter : {{$getItem['qty']}} </p>
                         <a href="{{route('delete.cart', $getItem['item']['id'] )}}"><i class="fa fa-remove"></i></a>
