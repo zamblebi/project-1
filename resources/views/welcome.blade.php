@@ -33,7 +33,7 @@
                 </div>
                 
                 <div class="cta">
-                     <a href="#" class="btn">Reserver votre crenaux</a>
+                    <a href="{{route('new-order')}}" class="btn">Passer une commande</a>
                 </div>
                 
             </div>

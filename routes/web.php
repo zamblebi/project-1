@@ -50,7 +50,12 @@ Route::get('/order', 'OrdersController@index')->name('new-order');
 
 //Add to cart
 Route::get('/add-to-cart/{id}', 'ClothingController@addToCart')->name('cart');
-
+//Delete Cart
+Route::get('/delete-on-cart/{id}', 'ClothingController@deleteOnCart')->name('delete.cart');
+//Delivery Choice
+Route::get('/delivery-choice', 'OrdersController@deliveryChoice')->name('delivery.choice');
+Route::get('/add-delivery-simple/', 'OrdersController@addDeliverySimple')->name('add.delivery.simple');
+Route::get('/add-delivery-express/', 'OrdersController@addDeliveryExpress')->name('add.delivery.express');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

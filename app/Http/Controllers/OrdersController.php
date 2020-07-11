@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Clothing;
 use App\Order;
+use Session;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -90,4 +91,56 @@ class OrdersController extends Controller
     {
         //
     }
+    public function deliveryChoice(Request $request){
+        
+        $simplePrice = 2000;
+        $expressPrice = 5000;
+        return view('orders.delivery', ['simple' => $simplePrice, 'express' => $expressPrice]);
+        
+    }
+    
+    public function addDeliverySimple(Request $request){
+        $simple = ['price' => 2000, 'type' => 'simple'];
+        // $addSimple = Session::put('simple', $simple);
+        $request->session()->put('simple', $simple);
+
+        if(Session::has('simple')){
+            if (Session::has('express')) {
+                Session::forget('express');
+            }
+        //  dd(Session::get('simple'));
+        }
+        
+        return redirect()->back();
+    }
+    // public function addDeliveryExpress(Request $request){
+    //     $express = ['price' => 5000, 'type' => 'express'];
+    //     // $addexpress = Session::put('express', $express);
+    //     $request->session()->put('express', $express);
+
+    //     if(Session::has('express')){
+    //         if(Session::has('simple')){
+    //             Session::forget('simple');
+    //         }
+    //     //  dd(Session::get('express'));
+    //     }
+        
+    //     return redirect()->back();
+    // }
+    
+    public function addDeliveryExpress(Request $request){
+        $express = ['price' => 5000, 'type' => 'express'];
+        
+        $request->session()->put('express', $express);
+        
+        if(Session::has('express')){
+            if(Session::has('simple')){
+                Session::forget('simple');
+          }
+        // dd(Session::get('express'));
+        }
+
+        return redirect()->back();
+    }
+    
 }

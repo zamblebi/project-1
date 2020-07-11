@@ -123,12 +123,23 @@ class ClothingController extends Controller
         $cart = new Cart($oldCart);
         $cart->add($clothing, $clothing->id);
         $request->session()->put('cart',$cart);
-        $cartView = $request->session()->get('cart');
         // if(Session::has('cart')){
-            // dd(session()->get('cart'));
+            // dd(session()->pull('cart'));
             // dd($cart->items);
         // }
         return redirect()->back();
         // return view('orders.index',);
+    }
+    
+    
+    public function deleteOnCart(Request $request, $id){
+        $clothing = Clothing::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->delete($clothing->id);
+        $request->session()->put('cart',$cart);
+        return redirect()->back();
+        // dd(Session::get('cart'));
+
     }
 }
