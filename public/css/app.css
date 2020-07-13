@@ -305,6 +305,12 @@
   padding: 40px 0;
 }
 
+.delivery-btn {
+  justify-content: center;
+  display: flex;
+  padding: 40px 0;
+}
+
 .container-deliverys {
   width: 100%;
   display: flex;

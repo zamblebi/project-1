@@ -46,7 +46,7 @@ Route::get('/cooordonnees/{id}', 'UserController@edit')->name('cooordonnees');
 Route::post('update/{id}', 'UserController@update');
 
 //Order
-Route::get('/order', 'OrdersController@index')->name('new-order');
+Route::get('/order/', 'OrdersController@index')->name('new-order');
 
 //Add to cart
 Route::get('/add-to-cart/{id}', 'ClothingController@addToCart')->name('cart');

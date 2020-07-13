@@ -42,7 +42,8 @@
             </strong>
 
             <hr>
-        <a href="#" class="btn">Passer la commande</a>
+            <router-link to="/order-deliverable">Passer une commande</router-link>
+        <!-- <a href="#" class="btn">Passer la commande</a> -->
         </div>
     </div>
 
