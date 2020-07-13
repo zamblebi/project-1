@@ -59,3 +59,12 @@ Route::get('/add-delivery-express/', 'OrdersController@addDeliveryExpress')->nam
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+
+
+// APi get clothing
+
+Route::get('/clothing-lists', 'ClothingController@index');
