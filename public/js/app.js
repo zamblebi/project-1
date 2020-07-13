@@ -1963,11 +1963,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      clothings: ''
+      clothings: '',
+      carts: [],
+      cartAdd: {
+        id: '',
+        name: '',
+        price: '',
+        qty: '',
+        item: ''
+      },
+      totalPrice: '0',
+      totalQuantity: '0'
     };
   },
   mounted: function mounted() {
@@ -1978,6 +1995,38 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       return console.log("Il y'a eu une erreur a la reccuperation " + error);
     });
+    this.viewCart();
+  },
+  methods: {
+    addInCart: function addInCart(clothing) {
+      this.cartAdd.id = clothing.id;
+      this.cartAdd.name = clothing.name;
+      this.cartAdd.price = clothing.prix;
+      this.cartAdd.icon = clothing.icon;
+      this.carts.push(this.cartAdd);
+      this.cart = {};
+      this.storeCart(); // localStorage.setItem('cart', JSON.stringify(this.carts))
+      // console.log(JSON.parse(localStorage.getItem('cart')))
+    },
+    storeCart: function storeCart() {
+      var parsed = JSON.stringify(this.carts);
+      localStorage.setItem('carts', parsed);
+      this.viewCart();
+    },
+    removeCart: function removeCart(clot) {
+      this.carts.splice(clot, 1);
+      this.storeCart();
+    },
+    viewCart: function viewCart() {
+      if (localStorage.getItem('carts')) {
+        this.carts = JSON.parse(localStorage.getItem('carts'));
+        this.totalQuantity = this.carts.length;
+        this.totalPrice = this.carts.reduce(function (total, clothing) {
+          return total + clothing.price;
+        }, 0);
+        console.log('Hello ', this.carts);
+      }
+    }
   }
 });
 
@@ -2527,40 +2576,79 @@ var render = function() {
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
-            _c("a", { staticClass: "btn", attrs: { href: "#" } }, [
-              _vm._v("Ajouter")
-            ])
+            _c(
+              "button",
+              {
+                staticClass: "btn",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.addInCart(clothing)
+                  }
+                }
+              },
+              [_vm._v("Ajouter")]
+            )
           ])
         }),
         0
       ),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", [
+        _c("h3", [_vm._v("Estimation du prix (hors livraison)")]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("strong", [
+          _c("p", [_vm._v("Quantiter Total : " + _vm._s(_vm.totalQuantity))]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Prix : " + _vm._s(this.totalPrice) + "f")]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            _vm._l(_vm.carts, function(cart, c) {
+              return _c("li", { key: cart.iD }, [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(cart.name) +
+                    "\n                        "
+                ),
+                _c(
+                  "button",
+                  {
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.removeCart(c)
+                      }
+                    }
+                  },
+                  [_vm._v("X")]
+                ),
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(c) +
+                    "\n                    "
+                )
+              ])
+            }),
+            0
+          )
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn", attrs: { href: "#" } }, [
+          _vm._v("Passer la commande")
+        ])
+      ])
     ]),
     _vm._v(" "),
     _c("ul")
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h3", [_vm._v("Estimation du prix (hors livraison)")]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("strong", [_c("p", [_vm._v("Quantiter Total : ")])]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("a", { staticClass: "btn", attrs: { href: "#" } }, [
-        _vm._v("Passer la commande")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
