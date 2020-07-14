@@ -8,10 +8,16 @@
 
 window.Vue = require('vue');
 import VueRouter from 'vue-router'
-
+import VCalendar from 'v-calendar';
+import VueCtkDateTimePicker from 'vue-ctk-date-time-picker';
+import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';
 
 
 Vue.use(VueRouter)
+Vue.use(VCalendar, {
+  componentPrefix: 'vc',
+});
+Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -29,7 +35,6 @@ import SlotsComponent from './components/SlotsComponent';
 
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-// Vue.component('menu-component', require('./components/MenuBar.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

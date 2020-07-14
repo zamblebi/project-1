@@ -33,16 +33,18 @@
                 <p>Quantiter Total : {{totalQuantity}}</p>
                     <p>Prix : {{this.totalPrice}}f</p>
                     <ul>
-                        <li v-for="(cart, c) in carts" :key="cart.iD">
-                            {{cart.name}}
-                            <button type="button" @click="removeCart(c)">X</button>
-                            {{c}}
+                        <li v-for="(cart, c) in carts" :key="c">
+                            <!-- <div v-if="cart.qty > 0"> -->
+                              {{cart.price * cart.qty != 0 ? cart.price * cart.qty : '' }}  {{cart.name}} {{cart.qty}}
+                                <a type="button" @click="removeCart(c)"><i class="fa fa-remove"></i></a>
+                            <!-- </div> -->
+
                         </li>
                     </ul>
             </strong>
 
             <hr>
-            <router-link to="/order-deliverable">Passer une commande</router-link>
+            <router-link to="/order-deliverable" class="btn">Passer une commande</router-link>
         <!-- <a href="#" class="btn">Passer la commande</a> -->
         </div>
     </div>
@@ -71,12 +73,12 @@
                     id: '',
                     name: '',
                     price: '',
-                    qty: '',
-                    item: '',
+                    qty: 0,
 
                 },
                 totalPrice: '0',
-                totalQuantity: '0',
+                totalQuantity: 0,
+                
 
             }
         },
@@ -87,42 +89,75 @@
             this.viewCart()
         },
         methods:{
-            
+
             addInCart(clothing){
-                
+
                     this.cartAdd.id = clothing.id;
                     this.cartAdd.name = clothing.name;
                     this.cartAdd.price = clothing.prix;
                     this.cartAdd.icon = clothing.icon;
-                    
-                    this.carts.push(this.cartAdd)
-                    this.cart = {}
-                    this.storeCart();
-                    // localStorage.setItem('cart', JSON.stringify(this.carts))
-                    // console.log(JSON.parse(localStorage.getItem('cart')))
+                    this.cartAdd.qty = 1;
+                    var trouver = this.carts.find((element)=>{
+                         if(element.id == clothing.id){
+
+                             return element.qty += 1;
+                         }
+                            // console.log(element.name);
+                        })
+
+                    if(trouver){
+                        console.log('duplicate')
+                        this.totalQuantity++
+                             this.storeCart()
+                      // this.cartAdd = this.carts[clothing.id] 
+                    }else{
+
+                        this.carts.push(this.cartAdd)
+                        this.cartAdd = {}
+                        this.storeCart();
+                        // console.log('false value is ', clothing.id)
+                    }
 
             },
+            
             storeCart(){
                 let parsed = JSON.stringify(this.carts)
                 localStorage.setItem('carts', parsed)
                 this.viewCart();
             },
+
             removeCart(clot){
-                this.carts.splice(clot,1)
-                this.storeCart();
+                if(this.carts[clot].qty > 0){
+                    this.carts[clot].qty--
+                    console.log(this.carts[clot].qty)
+                    this.storeCart()
+                }else if(this.carts[clot].qty == 0){
+                    this.carts.splice(clot,1)
+                    this.storeCart();                    
+                    console.log(this.carts)
+                    // this.storeCart()
+                }
+
+
             },
+
             viewCart(){
                 if(localStorage.getItem('carts')){
                     this.carts = JSON.parse(localStorage.getItem('carts'))
-                    this.totalQuantity = this.carts.length
+                    this.totalQuantity = this.carts.reduce((cart, clothing) => {
+                        
+                    return cart + clothing.qty
+                       
+                    },0)
+
                     this.totalPrice = this.carts.reduce((total, clothing) => {
-                        return total + clothing.price
+                        return total + clothing.price * clothing.qty
                     }, 0)
-                        console.log('Hello ' , this.carts)
+                        // console.log('Hello ' , this.carts)
                 }
 
             }
-            
+
         }
     }
 </script>
