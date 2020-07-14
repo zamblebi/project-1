@@ -32,9 +32,10 @@ Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);
 import ClothingComponent from './components/ClothingComponent';
 import DeliverableComponent from './components/DeliverableComponent';
 import SlotsComponent from './components/SlotsComponent';
+import MapsComponent from './components/MapsComponent';
 
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -47,6 +48,7 @@ const routes = [
     {path: '/', component: ClothingComponent },
     {path: '/order-deliverable', component: DeliverableComponent },
     {path: '/order-slots', component: SlotsComponent },
+    {path: '/maps-order', component: MapsComponent },
 
 ]
 
