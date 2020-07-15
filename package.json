@@ -25,6 +25,7 @@
     "dependencies": {
         "v-calendar": "^1.0.0-beta.23",
         "vue-ctk-date-time-picker": "^2.5.0",
-        "vue-router": "^3.3.4"
+        "vue-router": "^3.3.4",
+        "vue2-google-maps": "^0.10.7"
     }
 }

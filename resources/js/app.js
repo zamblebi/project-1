@@ -11,12 +11,21 @@ import VueRouter from 'vue-router'
 import VCalendar from 'v-calendar';
 import VueCtkDateTimePicker from 'vue-ctk-date-time-picker';
 import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';
-
+import * as VueGoogleMaps from "vue2-google-maps";
 
 Vue.use(VueRouter)
 Vue.use(VCalendar, {
   componentPrefix: 'vc',
 });
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: "AIzaSyDD96yZ7ysQwWIpzGuOqXecQMBbjjziyhk",
+    libraries: "places" // necessary for places input
+  }
+});
+
+
 Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);
 /**
  * The following block of code may be used to automatically register your
@@ -32,7 +41,7 @@ Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);
 import ClothingComponent from './components/ClothingComponent';
 import DeliverableComponent from './components/DeliverableComponent';
 import SlotsComponent from './components/SlotsComponent';
-import MapsComponent from './components/MapsComponent';
+import AdressComponent from './components/AdressComponent';
 
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
@@ -48,7 +57,7 @@ const routes = [
     {path: '/', component: ClothingComponent },
     {path: '/order-deliverable', component: DeliverableComponent },
     {path: '/order-slots', component: SlotsComponent },
-    {path: '/maps-order', component: MapsComponent },
+    {path: '/maps-order', component: AdressComponent },
 
 ]
 
@@ -64,5 +73,6 @@ const app = new Vue({
        'clothing-component': ClothingComponent,
        'deliverable-component': DeliverableComponent,
        'slots-component': DeliverableComponent,
+       'adress-component': AdressComponent,
     }
 });
