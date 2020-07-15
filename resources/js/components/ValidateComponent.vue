@@ -71,7 +71,7 @@ export default {
             .catch(error => console.log(error))
 
             localStorage.clear();
-            window.location.href = '/'
+            window.location.href = '/home'
 
         }
     }

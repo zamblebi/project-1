@@ -10,7 +10,7 @@
                         <ul>
                             <li><a href="/order">Toutes mes commandes</a></li>
                             <li><a href="/cooordonnees/{{Auth::user()->id}}">Cooordonnees</a></li>
-                            <li><a href="#">Adresses</a></li>
+                            {{-- <li><a href="#">Adresses</a></li> --}}
                             <li><a href="#">Mot de passe</a></li>
                         </ul>
                     </div>

@@ -2470,7 +2470,7 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(error);
       });
       localStorage.clear();
-      window.location.href = '/';
+      window.location.href = '/home';
     }
   }
 });
