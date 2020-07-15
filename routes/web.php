@@ -29,6 +29,8 @@ Route::group(['middleware' => ['auth', 'admin']] , function() {
     });
 } );
 
+Route::get('dashboard', 'OrdersController@getOrder')->name('dashboard');
+
 //Clothing
 Route::get('/dashboard/clothing', 'ClothingController@create');
 //Add clothing

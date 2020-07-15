@@ -11,13 +11,15 @@
     </tr>
   </thead>
   <tbody>
+    @foreach ($orders as $order)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+    <th scope="row">{{$order->id}}</th>
+      <td>{{$order->user->firstName}}</td>
+      <td>{{json_decode($order->adress_maps)->long_name}}</td>
+      <td>{{$order->deliver == 0 ? 'Non' : 'Oui' }}</td>
     </tr>
-    <tr>
+    @endforeach
+    {{-- <tr>
       <th scope="row">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
@@ -28,7 +30,7 @@
       <td>Larry</td>
       <td>the Bird</td>
       <td>@twitter</td>
-    </tr>
+    </tr> --}}
   </tbody>
 </table>
 
