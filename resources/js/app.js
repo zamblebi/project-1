@@ -42,6 +42,7 @@ import ClothingComponent from './components/ClothingComponent';
 import DeliverableComponent from './components/DeliverableComponent';
 import SlotsComponent from './components/SlotsComponent';
 import AdressComponent from './components/AdressComponent';
+import ValidateComponent from './components/ValidateComponent';
 
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
@@ -58,6 +59,7 @@ const routes = [
     {path: '/order-deliverable', component: DeliverableComponent },
     {path: '/order-slots', component: SlotsComponent },
     {path: '/maps-order', component: AdressComponent },
+    {path: '/order-validate', component: ValidateComponent },
 
 ]
 

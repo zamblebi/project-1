@@ -68,7 +68,8 @@ export default {
         this.center = this.marker;
         this.currentPlace = null;
         localStorage.adressMaps = JSON.stringify(this.places[0].address_components[0]);
-      console.log('Place' , JSON.stringify(this.places[0].address_components[0]))
+        console.log('Place' , JSON.stringify(this.places[0].address_components[0]))
+        this.$emit('clicked', 'Sa marche')
       }
     },
 
