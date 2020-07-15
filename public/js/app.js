@@ -2440,8 +2440,7 @@ __webpack_require__.r(__webpack_exports__);
       dateChoose: localStorage.dateStored,
       adress_details: localStorage.allOtherAdress,
       carts: localStorage.getItem('carts'),
-      user_id: '',
-      messageSuccess: ''
+      user_id: ''
     };
   },
   mounted: function mounted() {
