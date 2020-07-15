@@ -16,7 +16,9 @@ class ClothingController extends Controller
      */
     public function index()
     {
-        
+       $clothings = Clothing::all();
+       
+       return response()->json($clothings);
     }
     
     /**

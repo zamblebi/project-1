@@ -46,16 +46,26 @@ Route::get('/cooordonnees/{id}', 'UserController@edit')->name('cooordonnees');
 Route::post('update/{id}', 'UserController@update');
 
 //Order
-Route::get('/order', 'OrdersController@index')->name('new-order');
-
+Route::get('/order/', 'OrdersController@index')->name('new-order');
+// Store Order 
+Route::post('/order/commander', 'OrdersController@store');
+Route::get('/order/commander', 'OrdersController@getUser');
 //Add to cart
-Route::get('/add-to-cart/{id}', 'ClothingController@addToCart')->name('cart');
+// Route::get('/add-to-cart/{id}', 'ClothingController@addToCart')->name('cart');
 //Delete Cart
-Route::get('/delete-on-cart/{id}', 'ClothingController@deleteOnCart')->name('delete.cart');
+// Route::get('/delete-on-cart/{id}', 'ClothingController@deleteOnCart')->name('delete.cart');
 //Delivery Choice
-Route::get('/delivery-choice', 'OrdersController@deliveryChoice')->name('delivery.choice');
-Route::get('/add-delivery-simple/', 'OrdersController@addDeliverySimple')->name('add.delivery.simple');
-Route::get('/add-delivery-express/', 'OrdersController@addDeliveryExpress')->name('add.delivery.express');
+// Route::get('/delivery-choice', 'OrdersController@deliveryChoice')->name('delivery.choice');
+// Route::get('/add-delivery-simple/', 'OrdersController@addDeliverySimple')->name('add.delivery.simple');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+
+
+// APi get clothing
+
+Route::get('/clothing-lists', 'ClothingController@index');

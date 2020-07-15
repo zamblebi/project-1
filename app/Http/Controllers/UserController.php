@@ -91,6 +91,7 @@ protected function validator(array $data)
             'lastName' => 'required|max:150',
             'email' => 'required|email',
             'phone_number' => 'required|numeric',
+            // 'order_id' => 
         ]);
 
         $user = 'App\User';
