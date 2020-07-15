@@ -5,8 +5,9 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Articles</th>
+      <th scope="col">Nom du clients</th>
       <th scope="col">Adresse</th>
+      <th scope="col">Prix total</th>
       <th scope="col">Livrer</th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
     <th scope="row">{{$order->id}}</th>
       <td>{{$order->user->firstName}}</td>
       <td>{{json_decode($order->adress_maps)->long_name}}</td>
+      <td>{{$order->all_prices}}</td>
       <td>{{$order->deliver == 0 ? 'Non' : 'Oui' }}</td>
     </tr>
     @endforeach
