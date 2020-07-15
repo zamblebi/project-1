@@ -305,6 +305,12 @@
   padding: 40px 0;
 }
 
+.delivery-btn {
+  justify-content: center;
+  display: flex;
+  padding: 40px 0;
+}
+
 .container-deliverys {
   width: 100%;
   display: flex;
@@ -351,6 +357,12 @@
   .container-deliverys .delivery {
     margin: 30px 20px;
   }
+}
+
+.add-date {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0;
 }
 
 html,

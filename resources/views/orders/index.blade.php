@@ -11,7 +11,9 @@
 
 <div class="wrapper " id="app">
 
-    <clothing-component></clothing-component>
+    
+    <router-view></router-view>
+    {{-- <clothing-component></clothing-component> --}}
   
 </div>
 

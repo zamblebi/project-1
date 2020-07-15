@@ -1,0 +1,93 @@
+<template>
+    <div class="maps_details">
+        <!-- <h2>Votre adresse : </h2> -->
+           <!-- <input type="text" class="search_maps">
+            <button type="button" class="btn">Valider</button> -->
+
+        <div>
+            <label>
+                <gmap-autocomplete class="search_ maps"
+                :options="{fields: ['geometry', 'address_components']}"
+                @place_changed="setPlace">
+                </gmap-autocomplete>
+                <button class="btn" @click="addMarker">Ajouter</button>
+            </label>
+            <br/>
+
+            </div>
+            <br>
+            <gmap-map
+            :center="center"
+            :zoom="12"
+            style="width:100%;  height: 400px;" 
+            >
+            <gmap-marker
+                :key="marker.lat"
+                :position="marker"
+                @click="center=marker"
+            ></gmap-marker>
+            </gmap-map>
+
+    </div>
+
+    
+</template>
+<script>
+export default {
+    name: 'GoogleMaps',
+    data() {
+    return {
+      // default to montreal to keep it simple
+      // change this to whatever makes sense
+      center: { lat: 5.3599517, lng: -4.0082563 },
+      marker: '',
+      places: [],
+      currentPlace: null
+    };
+  },
+
+  mounted() {
+    // this.geolocate();
+  },
+
+  methods: {
+    setPlace(place) {
+      this.currentPlace = place;
+    },
+    addMarker() {
+      if (this.currentPlace) {
+        this.marker = {
+          lat: this.currentPlace.geometry.location.lat(),
+          lng: this.currentPlace.geometry.location.lng()
+        };
+        // this.markers.push({ position: marker });
+    console.log(this.marker)
+        this.places.push(this.currentPlace);
+        this.center = this.marker;
+        this.currentPlace = null;
+      }
+    },
+    // geolocate: function() {
+    //   navigator.geolocation.getCurrentPosition(marker => {
+    //     this.center = {
+    //       lat: marker.coords.latitude,
+    //       lng: marker.coords.longitude
+    //     };
+    //   });
+    // }
+  }
+}
+</script>
+
+<style>
+    .maps_details{
+        text-align: center;
+    }
+    .search_ .maps{
+        width: 270px;
+        height: 40px;
+        border-radius: none;
+        padding: 3px 10px;
+        border: 1px solid #11111177;
+    }
+</style>
