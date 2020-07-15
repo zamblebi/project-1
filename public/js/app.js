@@ -2395,6 +2395,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2416,17 +2418,59 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      adress: JSON.parse(localStorage.adressMaps).long_name,
+      adressMaps: localStorage.adressMaps,
       allPrice: localStorage.totalPrice,
       deliverableType: localStorage.deliverableType,
       dateChoose: localStorage.dateStored,
-      adress_details: JSON.parse(localStorage.allOtherAdress)
+      adress_details: localStorage.allOtherAdress,
+      carts: localStorage.getItem('carts'),
+      user_id: ''
     };
   },
-  methods: {}
+  mounted: function mounted() {
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/order/commander/').then(function (response) {
+      _this.user_id = response.data.id;
+      console.log(response.data);
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+  },
+  methods: {
+    orderStore: function orderStore() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/order/commander/', {
+        user_id: this.user_id,
+        carts: this.carts,
+        adress_maps: this.adressMaps,
+        adress_details: this.adress_details,
+        deliverable_date: this.dateChoose,
+        deliverable_type: this.deliverableType,
+        all_prices: this.allPrice,
+        deliver: false
+      }).then(function (response) {
+        return console.log(response);
+      })["catch"](function (error) {
+        return console.log(error);
+      }); // localStorage.clear();
+    }
+  }
 });
 
 /***/ }),
@@ -30934,7 +30978,7 @@ var render = function() {
     _c("h1", [_vm._v("Validation de la commande")]),
     _vm._v(" "),
     _c("label", [_vm._v("Adresse :")]),
-    _vm._v("\n    " + _vm._s(_vm.adress) + "\n    "),
+    _vm._v("\n    " + _vm._s(_vm.adressMaps) + "\n    "),
     _c("br"),
     _vm._v("\n    Prix total des article: " + _vm._s(_vm.allPrice) + "\n    "),
     _c("br"),
@@ -30951,25 +30995,53 @@ var render = function() {
         _vm._s(_vm.adress_details.lieu) +
         ", Details => " +
         _vm._s(_vm.adress_details.other_adress) +
-        "\n    "
+        "\n        "
     ),
-    _c("br"),
     _vm._v(" "),
-    _vm._m(0)
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("button", { staticClass: "btn", attrs: { type: "button" } }, [
-        _vm._v("Commender")
+    _c("br"),
+    _vm._v("\n    " + _vm._s(_vm.user_id) + "\n    "),
+    _vm._v(" "),
+    _c("form", [
+      _c("input", {
+        attrs: { type: "hidden", name: "adress_maps" },
+        domProps: { value: _vm.adressMaps }
+      }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: "adress_details" },
+        domProps: { value: _vm.adress_details }
+      }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: "all_prices" },
+        domProps: { value: _vm.allPrice }
+      }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: "carts" },
+        domProps: { value: _vm.carts }
+      }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: "deliverable_date" },
+        domProps: { value: _vm.dateChoose }
+      }),
+      _vm._v(" "),
+      _c("div", [
+        _c(
+          "button",
+          {
+            staticClass: "btn",
+            attrs: { type: "button" },
+            on: { click: _vm.orderStore }
+          },
+          [_vm._v("Commender")]
+        )
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

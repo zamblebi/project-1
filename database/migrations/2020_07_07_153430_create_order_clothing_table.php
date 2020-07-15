@@ -15,8 +15,8 @@ class CreateOrderClothingTable extends Migration
     {
         Schema::create('order_clothing', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained();
-            $table->foreignId('clothing')->constrained();
+            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->foreignId('clothing')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 
 use App\Clothing;
 use App\Order;
-use Session;
+use App\User;
+// use Session;
+use Auth;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Auth;
 
 class OrdersController extends Controller
 {
@@ -17,15 +20,25 @@ class OrdersController extends Controller
      */
     public function index()
     {   
-        $clothings = Clothing::all();
-        // $orders = new Order;
+        // $clothings = Clothing::all();
+        // $user = Order::all();
         // $orders->clothings();
+        $user = User::find(Auth::user()->id);
         // foreach($order->clothing as $c){
+            dd($user->orders);
+            // foreach($user as $u){
+            //     dd($u->id);
 
+            // }
         // }
        return view('orders.index', ['clothings' => $clothings]);
     }
 
+    public function getUser(){
+        $user = Auth::user();
+
+        return response()->json($user);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -44,7 +57,21 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return redirect('/',['orders' => $orders]);
+        // dd($orders->getAttributes());
+        if(Auth::check())
+        {
+            $user = User::find(Auth::user()->id);
+            
+            $orders = new Order();
+            $orders->create($request->all());
+
+            // $user->order_id = 12;
+            // $user->save();
+            // $user-->save();
+            // $user->orders()->associate(($orders));
+        }
+        
     }
 
     /**
@@ -91,56 +118,8 @@ class OrdersController extends Controller
     {
         //
     }
-    public function deliveryChoice(Request $request){
-        
-        $simplePrice = 2000;
-        $expressPrice = 5000;
-        return view('orders.delivery', ['simple' => $simplePrice, 'express' => $expressPrice]);
-        
-    }
     
-    public function addDeliverySimple(Request $request){
-        $simple = ['price' => 2000, 'type' => 'simple'];
-        // $addSimple = Session::put('simple', $simple);
-        $request->session()->put('simple', $simple);
-
-        if(Session::has('simple')){
-            if (Session::has('express')) {
-                Session::forget('express');
-            }
-        //  dd(Session::get('simple'));
-        }
-        
-        return redirect()->back();
-    }
-    // public function addDeliveryExpress(Request $request){
-    //     $express = ['price' => 5000, 'type' => 'express'];
-    //     // $addexpress = Session::put('express', $express);
-    //     $request->session()->put('express', $express);
-
-    //     if(Session::has('express')){
-    //         if(Session::has('simple')){
-    //             Session::forget('simple');
-    //         }
-    //     //  dd(Session::get('express'));
-    //     }
-        
-    //     return redirect()->back();
-    // }
-    
-    public function addDeliveryExpress(Request $request){
-        $express = ['price' => 5000, 'type' => 'express'];
-        
-        $request->session()->put('express', $express);
-        
-        if(Session::has('express')){
-            if(Session::has('simple')){
-                Session::forget('simple');
-          }
-        // dd(Session::get('express'));
-        }
-
-        return redirect()->back();
-    }
+   
+  
     
 }
