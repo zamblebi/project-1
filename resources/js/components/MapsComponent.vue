@@ -48,6 +48,7 @@ export default {
 
   mounted() {
     // this.geolocate();
+    // this.mapStored();
   },
 
   methods: {
@@ -61,12 +62,22 @@ export default {
           lng: this.currentPlace.geometry.location.lng()
         };
         // this.markers.push({ position: marker });
-    console.log(this.marker)
-        this.places.push(this.currentPlace);
+    // this.mapStored();
+    // console.log(this.marker)
+        this.places[0] = this.currentPlace;
         this.center = this.marker;
         this.currentPlace = null;
+        localStorage.adressMaps = JSON.stringify(this.places[0].address_components[0]);
+        console.log('Place' , JSON.stringify(this.places[0].address_components[0]))
+        this.$emit('clicked', 'Sa marche')
       }
     },
+
+    // mapStored(){
+    //   if(localStorage.adressMaps){
+    //     this.places = localStorage.adressMaps
+    //   }
+    // }
     // geolocate: function() {
     //   navigator.geolocation.getCurrentPosition(marker => {
     //     this.center = {

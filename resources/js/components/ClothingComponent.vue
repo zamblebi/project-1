@@ -153,8 +153,9 @@
                     this.totalPrice = this.carts.reduce((total, clothing) => {
                         return total + clothing.price * clothing.qty
                     }, 0)
-                        // console.log('Hello ' , this.carts)
-                }
+                                // console.log('Hello ' , this.carts)
+                    localStorage.totalPrice = this.totalPrice
+}
 
             }
 
