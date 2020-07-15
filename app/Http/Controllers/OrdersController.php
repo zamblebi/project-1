@@ -49,6 +49,12 @@ class OrdersController extends Controller
         //
     }
 
+    public function getOrder(){
+        $orders = Order::all();
+
+        return view('admin.dashboard', ['orders' => $orders]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -70,7 +76,7 @@ class OrdersController extends Controller
             // $user->save();
             // $user-->save();
             // $user->orders()->associate(($orders));
-            return redire
+            // return redire
             
         }
         

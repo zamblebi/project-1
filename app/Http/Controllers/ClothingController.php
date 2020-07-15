@@ -7,6 +7,7 @@ use App\Clothing;
 use Session;
 use App\Cart;
 
+
 class ClothingController extends Controller
 {
     /**
