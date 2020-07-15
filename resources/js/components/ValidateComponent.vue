@@ -43,7 +43,8 @@ export default {
             dateChoose: localStorage.dateStored,
             adress_details: localStorage.allOtherAdress,
             carts: localStorage.getItem('carts'),
-            user_id : ''
+            user_id : '',
+            messageSuccess : '',
         }
     },
     mounted(){
@@ -70,7 +71,8 @@ export default {
             .then(response => console.log(response))
             .catch(error => console.log(error))
 
-            // localStorage.clear();
+            localStorage.clear();
+            window.location.href = '/'
 
         }
     }

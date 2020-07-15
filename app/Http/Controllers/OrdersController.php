@@ -20,12 +20,12 @@ class OrdersController extends Controller
      */
     public function index()
     {   
-        // $clothings = Clothing::all();
+        $clothings = Clothing::all();
         // $user = Order::all();
         // $orders->clothings();
-        $user = User::find(Auth::user()->id);
+        // $user = User::find(Auth::user()->id);
         // foreach($order->clothing as $c){
-            dd($user->orders);
+            // dd($user->orders);
             // foreach($user as $u){
             //     dd($u->id);
 
@@ -70,6 +70,7 @@ class OrdersController extends Controller
             // $user->save();
             // $user-->save();
             // $user->orders()->associate(($orders));
+            
         }
         
     }

@@ -2440,7 +2440,8 @@ __webpack_require__.r(__webpack_exports__);
       dateChoose: localStorage.dateStored,
       adress_details: localStorage.allOtherAdress,
       carts: localStorage.getItem('carts'),
-      user_id: ''
+      user_id: '',
+      messageSuccess: ''
     };
   },
   mounted: function mounted() {
@@ -2468,7 +2469,9 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(response);
       })["catch"](function (error) {
         return console.log(error);
-      }); // localStorage.clear();
+      });
+      localStorage.clear();
+      window.location.href = '/';
     }
   }
 });
