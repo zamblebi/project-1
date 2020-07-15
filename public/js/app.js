@@ -2257,6 +2257,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {// this.geolocate();
+    // this.mapStored();
   },
   methods: {
     setPlace: function setPlace(place) {
@@ -2268,13 +2269,21 @@ __webpack_require__.r(__webpack_exports__);
           lat: this.currentPlace.geometry.location.lat(),
           lng: this.currentPlace.geometry.location.lng()
         }; // this.markers.push({ position: marker });
+        // this.mapStored();
+        // console.log(this.marker)
 
-        console.log(this.marker);
-        this.places.push(this.currentPlace);
+        this.places[0] = this.currentPlace;
         this.center = this.marker;
         this.currentPlace = null;
+        localStorage.adressMaps = JSON.stringify(this.places[0].address_components[0]);
+        console.log('Place', JSON.stringify(this.places[0].address_components[0]));
       }
-    } // geolocate: function() {
+    } // mapStored(){
+    //   if(localStorage.adressMaps){
+    //     this.places = localStorage.adressMaps
+    //   }
+    // }
+    // geolocate: function() {
     //   navigator.geolocation.getCurrentPosition(marker => {
     //     this.center = {
     //       lat: marker.coords.latitude,
