@@ -14,7 +14,7 @@
           <div class="add-date">
                 <button class="btn" @click="addDate">Ajouter</button>
               <div style="padding: 0 60px">
-                  <router-link class="btn" to="/maps-order">Continuer</router-link>
+                  <router-link class="btn" to="/order-maps">Continuer</router-link>
               </div>
           </div>
     </div>

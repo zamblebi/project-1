@@ -6,6 +6,8 @@
 
 // require('./bootstrap');
 
+import SuccesComponent from "./components/SuccesComponent";
+
 window.Vue = require('vue');
 import VueRouter from 'vue-router'
 import VCalendar from 'v-calendar';
@@ -43,6 +45,10 @@ import DeliverableComponent from './components/DeliverableComponent';
 import SlotsComponent from './components/SlotsComponent';
 import AdressComponent from './components/AdressComponent';
 import ValidateComponent from './components/ValidateComponent';
+import UserProfilComponent from './components/profils/UserProfilComponent';
+import EditProfilComponent from './components/profils/EditProfilComponent';
+import EditPasswordComponent from './components/profils/EditPasswordComponent';
+import OrderProfilComponent from './components/profils/OrderProfilComponent';
 
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
@@ -55,15 +61,21 @@ import ValidateComponent from './components/ValidateComponent';
 
 
 const routes = [
-    {path: '/', component: ClothingComponent },
+    {path: '/order', component: ClothingComponent },
     {path: '/order-deliverable', component: DeliverableComponent },
     {path: '/order-slots', component: SlotsComponent },
-    {path: '/maps-order', component: AdressComponent },
+    {path: '/order-maps', component: AdressComponent },
     {path: '/order-validate', component: ValidateComponent },
+    {path: '/order-success', component: SuccesComponent },
+    {path: '/home/profil', component: ValidateComponent },
+    {path: '/home/edit-profil', component: EditProfilComponent },
+    {path: '/home/edit-password', component: EditPasswordComponent },
+    {path: '/home/my-order-list', component: OrderProfilComponent },
 
 ]
 
 const router = new VueRouter({
+    mode: 'history',
     routes
 })
 
@@ -76,5 +88,6 @@ const app = new Vue({
        'deliverable-component': DeliverableComponent,
        'slots-component': DeliverableComponent,
        'adress-component': AdressComponent,
+       'user-profil': UserProfilComponent,
     }
 });

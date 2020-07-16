@@ -13,7 +13,7 @@
 
         <!-- Styles -->
         {{-- font-awesome --}}
-       
+
     </head>
     <body>
         {{-- Navigation bars --}}
@@ -21,23 +21,23 @@
             {{-- @parent        --}}
 @section('content')
         <div class="content">
-                
-            
+
+
             {{-- Pages heros --}}
             <div class="intro wrapper">
                 <div class="layer"></div>
                 <div class="groups-intro">
                     <h1>Pressing a domicile haute qualiter livre partout a abidjan </h1>
-                    
+
                     <p>Nous recuperons et livrons vos vetements </p>
                 </div>
-                
+
                 <div class="cta">
-                    <a href="{{route('new-order')}}" class="btn">Passer une commande</a>
+                    <a href="{{url('order')}}" class="btn">Passer une commande</a>
                 </div>
-                
+
             </div>
-            
+
             {{-- Section services --}}
             <section class="wrapper">
                 <div class="services">
@@ -60,7 +60,7 @@
                     </div>
                 </div>
             </section>
-            
+
             {{-- Section About us  --}}
             <section class="about-us ">
                 <div class="about-us-list wrapper">
@@ -103,7 +103,7 @@
                     </ul>
                 </div>
             </section>
-            
+
             {{-- Section command  --}}
             <section>
                 <div class="commands">
@@ -133,11 +133,11 @@
                         </ul>
                     </div>
                     <div class="button">
-                    <a href="{{route('new-order')}}" class="commander">Passer une commande</a>
+                    <a href="{{url('order')}}" class="commander">Passer une commande</a>
                     </div>
                 </div>
             </section>
-            
+
             {{-- Section temoignage --}}
             <section>
                 <div class="feedback">
@@ -166,14 +166,14 @@
 
             </section>
 
-            
+
             {{-- Section about us  --}}
             <section class="contact-us">
                 <a href="#" class="btn">Nous contactez</a>
             </section>
-            
-            
-            
+
+
+
             <footer>
                    <ul class="contacts">
                        <li>
@@ -196,4 +196,3 @@
 @endsection
 
 
-    

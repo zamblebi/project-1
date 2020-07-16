@@ -35,7 +35,7 @@
                     <ul>
                         <li v-for="(cart, c) in carts" :key="c">
                             <!-- <div v-if="cart.qty > 0"> -->
-                              {{cart.price * cart.qty != 0 ? cart.price * cart.qty : '' }}  {{cart.name}} {{cart.qty}}
+                              {{cart.price * cart.qty != 0 ? cart.price * cart.qty : '' }}f -  {{cart.name}} {{cart.qty}}
                                 <a type="button" @click="removeCart(c)"><i class="fa fa-remove"></i></a>
                             <!-- </div> -->
 
@@ -78,7 +78,7 @@
                 },
                 totalPrice: '0',
                 totalQuantity: 0,
-                
+
 
             }
         },
@@ -109,7 +109,7 @@
                         console.log('duplicate')
                         this.totalQuantity++
                              this.storeCart()
-                      // this.cartAdd = this.carts[clothing.id] 
+                      // this.cartAdd = this.carts[clothing.id]
                     }else{
 
                         this.carts.push(this.cartAdd)
@@ -119,7 +119,7 @@
                     }
 
             },
-            
+
             storeCart(){
                 let parsed = JSON.stringify(this.carts)
                 localStorage.setItem('carts', parsed)
@@ -133,7 +133,7 @@
                     this.storeCart()
                 }else if(this.carts[clot].qty == 0){
                     this.carts.splice(clot,1)
-                    this.storeCart();                    
+                    this.storeCart();
                     console.log(this.carts)
                     // this.storeCart()
                 }
@@ -145,9 +145,9 @@
                 if(localStorage.getItem('carts')){
                     this.carts = JSON.parse(localStorage.getItem('carts'))
                     this.totalQuantity = this.carts.reduce((cart, clothing) => {
-                        
+
                     return cart + clothing.qty
-                       
+
                     },0)
 
                     this.totalPrice = this.carts.reduce((total, clothing) => {
