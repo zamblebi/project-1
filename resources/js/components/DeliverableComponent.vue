@@ -6,7 +6,7 @@
                         <h4>
                             Type de livraison choisie : {{deliverableType}}
                         </h4>
-                        
+
         <div class="container-deliverys">
             <div class="simple">
 
@@ -21,11 +21,11 @@
                         </strong>
                     </div>
                     <div class="frais">
-                        
+
                         <h4>Frais de transport : </h4> <em> {{deliverablePrices.simple}} f </em>
-                        
+
                     </div>
-                    <button type="button" @click="addDeliverable('simple')" class="btn">Sélectionner</button>
+                    <button type="button" @click="addDeliverable('Simple')" class="btn">Sélectionner</button>
                 </div>
                 </div>
                 <div class="express">
@@ -40,7 +40,7 @@
                         <div class="frais">
                             <h4>Frais de transport : </h4> <em> {{deliverablePrices.express}} f </em>
                         </div>
-                        <button type="button" @click="addDeliverable('express')" class="btn">Sélectionner</button>
+                        <button type="button" @click="addDeliverable('Express')" class="btn">Sélectionner</button>
                     </div>
             </div>
         </div>

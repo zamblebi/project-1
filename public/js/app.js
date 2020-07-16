@@ -1934,13 +1934,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      allOtherAdress: '',
       other_details: '',
-      lieu: '',
-      allOtherAdress: ''
+      options: [{
+        lieu: 'Aucun',
+        value: 'pas choisi'
+      }, {
+        lieu: 'Domicile',
+        value: 'Domicile'
+      }, {
+        lieu: 'Bureau',
+        value: 'Bureau'
+      }]
     };
   },
   mounted: function mounted() {
@@ -1958,8 +1969,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     addOtherAdress: function addOtherAdress() {
       this.allOtherAdress = {
-        'lieu': this.lieu,
-        'other_adress': this.other_details
+        lieu: this.lieu,
+        other_adress: this.other_details
       };
       localStorage.setItem('allOtherAdress', JSON.stringify(this.allOtherAdress));
     }
@@ -2352,13 +2363,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2426,6 +2430,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
 //
 //
 //
@@ -30834,18 +30841,23 @@ var render = function() {
           "select",
           {
             staticClass: "lieu",
-            attrs: { name: "lieu", id: "" },
+            attrs: { name: "lieu" },
             on: {
               change: function($event) {
                 return _vm.onChange($event)
               }
             }
           },
-          [
-            _c("option", { attrs: { value: "bureau" } }, [_vm._v("Bureau")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "domicile" } }, [_vm._v("Domicile")])
-          ]
+          _vm._l(_vm.options, function(option) {
+            return _c("option", { domProps: { value: option.value } }, [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(option.lieu) +
+                  "\n                "
+              )
+            ])
+          }),
+          0
         )
       ]),
       _vm._v(" "),
@@ -31070,7 +31082,7 @@ var render = function() {
                 attrs: { type: "button" },
                 on: {
                   click: function($event) {
-                    return _vm.addDeliverable("simple")
+                    return _vm.addDeliverable("Simple")
                   }
                 }
               },
@@ -31105,7 +31117,7 @@ var render = function() {
                 attrs: { type: "button" },
                 on: {
                   click: function($event) {
-                    return _vm.addDeliverable("express")
+                    return _vm.addDeliverable("Express")
                   }
                 }
               },
@@ -31399,9 +31411,17 @@ var render = function() {
       _c("strong", [_vm._v("Details de l'adresses :")]),
       _vm._v(
         " Lieu => " +
-          _vm._s(JSON.parse(_vm.adress_details).lieu) +
-          ", Details => " +
-          _vm._s(JSON.parse(_vm.adress_details).other_adress) +
+          _vm._s(
+            !JSON.parse(_vm.adress_details).lieu
+              ? "Aucun"
+              : JSON.parse(_vm.adress_details).lieu
+          ) +
+          ", Details du lieu => " +
+          _vm._s(
+            JSON.parse(_vm.adress_details).other_adress
+              ? JSON.parse(_vm.adress_details).other_adress
+              : "Aucun"
+          ) +
           "\n\n        "
       ),
       _vm._v(" "),
@@ -31414,9 +31434,26 @@ var render = function() {
             )
           ])
         : _vm._e(),
-      _vm._v("\n    " + _vm._s(_vm.user_id) + "\n    "),
       _vm._v(" "),
-      _vm.user_id
+      !_vm.carts
+        ? _c("h3", [_vm._v("Aucun vetement n'a ete choisi")])
+        : _vm._e(),
+      _vm._v(" "),
+      !_vm.deliverableType
+        ? _c("h3", [_vm._v("Veillez Choisir un type de livraison")])
+        : _vm._e(),
+      _vm._v(" "),
+      !_vm.dateChoose
+        ? _c("h3", [_vm._v("Veillez Choisir une date de recuperation")])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _vm.user_id &&
+      _vm.carts &&
+      _vm.allPrice &&
+      _vm.deliverableType &&
+      _vm.dateChoose
         ? _c(
             "div",
             [

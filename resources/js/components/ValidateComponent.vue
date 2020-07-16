@@ -11,16 +11,19 @@
     <br>
     <strong>Date de recuperation : {{dateChoose}}</strong>  |   <router-link to="/order-slots">Modifier</router-link>
     <br>
-    <strong>Details de l'adresses :</strong> Lieu => {{JSON.parse(adress_details).lieu}}, Details => {{JSON.parse(adress_details).other_adress}}
+    <strong>Details de l'adresses :</strong> Lieu => {{!JSON.parse(adress_details).lieu ? 'Aucun' : JSON.parse(adress_details).lieu}}, Details du lieu => {{JSON.parse(adress_details).other_adress ? JSON.parse(adress_details).other_adress : 'Aucun'}}
 
         <!-- <p>{{carts}}</p> -->
     <br>
     <h3 v-if="!user_id">Veillez vous connecter sinon votre commande ne sera pas valide</h3>
-    {{user_id}}
-    <!-- Post all -->
+<!--    {{user_id}}-->
+    <!-- Post al -->
+    <h3 v-if="!carts">Aucun vetement n'a ete choisi</h3>
+    <h3 v-if="!deliverableType">Veillez Choisir un type de livraison</h3>
+    <h3 v-if="!dateChoose">Veillez Choisir une date de recuperation</h3>
 
-
-        <div v-if="user_id">
+    <br>
+        <div v-if="user_id && carts && allPrice && deliverableType && dateChoose">
             <router-link class="btn" @click.native="orderStore" to="/order-success">
                 <span  >Commender</span>
             </router-link>

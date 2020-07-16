@@ -5,12 +5,14 @@
         <br>
         <div class="more_details">
             <label for="">Détails supplémentaires</label> <br>
-            <input class="search_" v-model="other_details" type="text" placeholder="Etage, Code porte, Batiment,Quartier">
+            <input class="search_"  v-model="other_details"  type="text" placeholder="Etage, Code porte, Batiment,Quartier">
+
             <br>
             <label for="">Lieu</label> <br>
-            <select class="lieu" name="lieu" @change="onChange($event)" id="">
-                <option value="bureau">Bureau</option>
-                <option value="domicile">Domicile</option>
+            <select class="lieu" name="lieu" @change="onChange($event)"  >
+                <option v-for="option in options" v-bind:value="option.value">
+                    {{option.lieu}}
+                </option>
             </select>
         </div>
         <br>
@@ -28,9 +30,13 @@ import MapsComponent from './MapsComponent'
 export default {
     data(){
         return{
+            allOtherAdress: '',
             other_details: '',
-            lieu: '',
-            allOtherAdress: ''
+            options: [
+                {lieu : 'Aucun', value: 'pas choisi' },
+                {lieu : 'Domicile', value: 'Domicile' },
+                {lieu : 'Bureau', value: 'Bureau' },
+            ]
         }
     },
     mounted(){
@@ -47,8 +53,7 @@ export default {
             this.lieu = event.target.value
         },
         addOtherAdress(){
-            this.allOtherAdress= ({'lieu':this.lieu, 'other_adress': this.other_details})
-            
+            this.allOtherAdress= {lieu:this.lieu, other_adress: this.other_details}
             localStorage.setItem('allOtherAdress',JSON.stringify(this.allOtherAdress))
         }
     }
