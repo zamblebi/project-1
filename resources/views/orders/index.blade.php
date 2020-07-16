@@ -10,11 +10,7 @@
     @endphp
 
 <div class="wrapper " id="app">
-
-    
-    <router-view></router-view>
-    {{-- <clothing-component></clothing-component> --}}
-  
+    <global-order></global-order>
 </div>
 
 <div id="footer">

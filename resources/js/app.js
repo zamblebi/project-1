@@ -49,6 +49,7 @@ import UserProfilComponent from './components/profils/UserProfilComponent';
 import EditProfilComponent from './components/profils/EditProfilComponent';
 import EditPasswordComponent from './components/profils/EditPasswordComponent';
 import OrderProfilComponent from './components/profils/OrderProfilComponent';
+import GlobalOrderComponent from "./components/GlobalOrderComponent";
 
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
@@ -89,5 +90,6 @@ const app = new Vue({
        'slots-component': DeliverableComponent,
        'adress-component': AdressComponent,
        'user-profil': UserProfilComponent,
+        'global-order': GlobalOrderComponent,
     }
 });
