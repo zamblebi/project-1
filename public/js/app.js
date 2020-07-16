@@ -2453,6 +2453,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -31356,55 +31359,96 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h1", [_vm._v("Validation de la commande")]),
-    _vm._v(" "),
-    _c("label", [_vm._v("Adresse :")]),
-    _vm._v("\n    " + _vm._s(_vm.adressMaps) + "\n    "),
-    _c("br"),
-    _vm._v("\n    Prix total des article: " + _vm._s(_vm.allPrice) + "\n    "),
-    _c("br"),
-    _vm._v(
-      "\n    Type de livraison choisie: " +
-        _vm._s(_vm.deliverableType) +
-        "\n    "
-    ),
-    _c("br"),
-    _vm._v("\n    Date de recuperation: " + _vm._s(_vm.dateChoose) + "\n    "),
-    _c("br"),
-    _vm._v(
-      "\n    Details de l'adresses: Lieu => " +
-        _vm._s(_vm.adress_details.lieu) +
-        ", Details => " +
-        _vm._s(_vm.adress_details.other_adress) +
-        "\n        "
-    ),
-    _vm._v(" "),
-    _c("br"),
-    _vm._v("\n    " + _vm._s(_vm.user_id) + "\n    "),
-    _vm._v(" "),
-    _c(
-      "div",
-      [
-        _c(
-          "router-link",
-          {
-            staticClass: "btn",
-            attrs: { to: "/order-success" },
-            nativeOn: {
-              click: function($event) {
-                return _vm.orderStore($event)
-              }
-            }
-          },
-          [_c("span", [_vm._v("Commender")])]
-        )
-      ],
-      1
-    )
-  ])
+  return _c(
+    "div",
+    [
+      _c("h1", [_vm._v("Validation de la commande")]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(_vm._s(JSON.parse(_vm.adressMaps).long_name) + " | "),
+      _c("router-link", { attrs: { to: "/order-maps" } }, [_vm._v("Modifier")]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("strong", [_vm._v("Prix total des article :  ")]),
+      _vm._v(" " + _vm._s(_vm.allPrice) + " |  "),
+      _c("router-link", { attrs: { to: "/order" } }, [_vm._v("Modifier")]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("strong", [
+        _vm._v("Type de livraison choisie : " + _vm._s(_vm.deliverableType))
+      ]),
+      _vm._v("  | "),
+      _c("router-link", { attrs: { to: "/order-deliverable" } }, [
+        _vm._v("Modifier")
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("strong", [
+        _vm._v("Date de recuperation : " + _vm._s(_vm.dateChoose))
+      ]),
+      _vm._v("  |   "),
+      _c("router-link", { attrs: { to: "/order-slots" } }, [
+        _vm._v("Modifier")
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("strong", [_vm._v("Details de l'adresses :")]),
+      _vm._v(
+        " Lieu => " +
+          _vm._s(JSON.parse(_vm.adress_details).lieu) +
+          ", Details => " +
+          _vm._s(JSON.parse(_vm.adress_details).other_adress) +
+          "\n\n        "
+      ),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      !_vm.user_id
+        ? _c("h3", [
+            _vm._v(
+              "Veillez vous connecter sinon votre commande ne sera pas valide"
+            )
+          ])
+        : _vm._e(),
+      _vm._v("\n    " + _vm._s(_vm.user_id) + "\n    "),
+      _vm._v(" "),
+      _vm.user_id
+        ? _c(
+            "div",
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn",
+                  attrs: { to: "/order-success" },
+                  nativeOn: {
+                    click: function($event) {
+                      return _vm.orderStore($event)
+                    }
+                  }
+                },
+                [_c("span", [_vm._v("Commender")])]
+              )
+            ],
+            1
+          )
+        : _vm._e()
+    ],
+    1
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [_c("label", [_vm._v("Adresse : ")])])
+  }
+]
 render._withStripped = true
 
 
