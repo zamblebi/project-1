@@ -5,14 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            <div class="card-header"><h2>{{ __('Mon compte') }}</h2></div>
+            <div class="card-header"><h2>{{ __( 'Mon compte') }}</h2></div>
                     <div class="small-menu-dashboard">
-                        <ul>
-                            <li><a href="/order">Toutes mes commandes</a></li>
-                            <li><a href="/cooordonnees/{{Auth::user()->id}}">Cooordonnees</a></li>
-                            {{-- <li><a href="#">Adresses</a></li> --}}
-                            <li><a href="#">Mot de passe</a></li>
-                        </ul>
+                       <user-profil></user-profil> 
                     </div>
                 <div class="card-body">
                     @if (session('status'))
@@ -21,7 +16,7 @@
                         </div>
                     @endif
 
-                    {{ __('Bienvenue vous etes connecter!') }}
+                    {{-- {{ __('Bienvenue vous etes connecter!') }} --}}
                         
                 </div>
             </div>

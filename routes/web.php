@@ -48,26 +48,31 @@ Route::get('/cooordonnees/{id}', 'UserController@edit')->name('cooordonnees');
 Route::post('update/{id}', 'UserController@update');
 
 //Order
-Route::get('/order/', 'OrdersController@index')->name('new-order');
-// Store Order 
+//Route::get('/order', 'OrdersController@index')->name('new-order');
+Route::get('/order{opt?}', function (){
+    return view("orders.index");
+})->where('opt', '.*');
+
+// Store Order
 Route::post('/order/commander', 'OrdersController@store');
 Route::get('/order/commander', 'OrdersController@getUser');
-//Add to cart
-// Route::get('/add-to-cart/{id}', 'ClothingController@addToCart')->name('cart');
-//Delete Cart
-// Route::get('/delete-on-cart/{id}', 'ClothingController@deleteOnCart')->name('delete.cart');
-//Delivery Choice
-// Route::get('/delivery-choice', 'OrdersController@deliveryChoice')->name('delivery.choice');
-// Route::get('/add-delivery-simple/', 'OrdersController@addDeliverySimple')->name('add.delivery.simple');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+//
+Route::get('/home/{vue_capture?}', function(){
+    return view('home');
+})->where('vue_capture', '.*');
 
-
-
+Route::redirect('/home', '/home/my-order-list');
+//Router
 
 
 
 // APi get clothing
 
 Route::get('/clothing-lists', 'ClothingController@index');
+
+//Get order of user
+Route::get('/get-user-order/', 'OrdersController@getOrderOfUser');
+Route::get('/get-user', 'OrdersController@getUser');

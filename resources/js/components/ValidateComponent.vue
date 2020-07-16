@@ -16,18 +16,12 @@
     {{user_id}}
     <!-- Post all -->
 
-    <form>
-        <input type="hidden" name="adress_maps" :value="adressMaps">
-        <input type="hidden" name="adress_details" :value="adress_details">
-        <input type="hidden" name="all_prices" :value="allPrice">
-        <input type="hidden" name="carts" :value="carts">
-        <input type="hidden" name="deliverable_date" :value="dateChoose">
-        <div>
-            
-        <button type="button" class="btn" @click="orderStore">Commender</button>
 
+        <div>
+            <router-link class="btn" @click.native="orderStore" to="/order-success">
+                <span  >Commender</span>
+            </router-link>
         </div>
-    </form>
 
 </div>
 </template>
@@ -47,7 +41,7 @@ export default {
         }
     },
     mounted(){
-        axios.get('/order/commander/').then(response => {
+        axios.get('/get-user').then(response => {
             this.user_id = response.data.id
             console.log(response.data)
             })
@@ -70,8 +64,8 @@ export default {
             .then(response => console.log(response))
             .catch(error => console.log(error))
 
-            localStorage.clear();
-            window.location.href = '/home'
+            // localStorage.clear();
+            // window.location.href = '/success-order'
 
         }
     }

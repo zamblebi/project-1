@@ -22,7 +22,7 @@ class AdminMiddleware
             // return ($request)
         }else
         {
-            return  redirect('/home')->with('status', 'Sorry your are not admin');
+            return  redirect('/home')->with('status', "Desoler vous n'est pas administrateur");
         }
     }
 }

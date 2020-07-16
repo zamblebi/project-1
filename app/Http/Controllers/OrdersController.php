@@ -19,7 +19,7 @@ class OrdersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $clothings = Clothing::all();
         // $user = Order::all();
         // $orders->clothings();
@@ -39,10 +39,19 @@ class OrdersController extends Controller
 
         return response()->json($user);
     }
+
+
+    public function getOrderOfUser(){
+        $user = Auth::user()->id;
+        $user_order = Order::where('user_id',$user)->get();
+
+        return response()->json($user_order);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function create()
     {
@@ -68,7 +77,7 @@ class OrdersController extends Controller
         if(Auth::check())
         {
             $user = User::find(Auth::user()->id);
-            
+
             $orders = new Order();
             $orders->create($request->all());
 
@@ -77,9 +86,9 @@ class OrdersController extends Controller
             // $user-->save();
             // $user->orders()->associate(($orders));
             // return redire
-            
+
         }
-        
+
     }
 
     /**
@@ -126,8 +135,8 @@ class OrdersController extends Controller
     {
         //
     }
-    
-   
-  
-    
+
+
+
+
 }
