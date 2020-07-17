@@ -24,12 +24,12 @@ Route::get('/home', function(){
 
 //Admin dashboard
 Route::group(['middleware' => ['auth', 'admin']] , function() {
-    Route::get('dashboard', function () {
+    Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });
 } );
 
-Route::get('dashboard', 'OrdersController@getOrder')->name('dashboard');
+Route::get('/dashboard', 'OrdersController@getOrder')->name('dashboard');
 
 //Clothing
 Route::get('/dashboard/clothing', 'ClothingController@create');

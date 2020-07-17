@@ -31806,19 +31806,22 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c(
-        "li",
-        [
-          _c("router-link", { attrs: { to: "/home/edit-password" } }, [
-            _vm._v("Modifier votre mot de passe")
-          ])
-        ],
-        1
-      )
+      _vm._m(0)
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "/password/reset" } }, [
+        _vm._v("Modifier votre mot de passe")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
