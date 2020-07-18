@@ -359,6 +359,63 @@
   }
 }
 
+.change_password {
+  text-align: center;
+}
+
+.change_password form label {
+  opacity: 0.75;
+}
+
+.change_password form input[type=text],
+.change_password form input[type=email],
+.change_password form input[type=password] {
+  width: 270px;
+  height: 30px;
+  border-radius: none;
+  padding: 3px 10px;
+  border: 1px solid #11111177;
+}
+
+.change_password form .form-button {
+  padding-top: 20px;
+}
+
+.change_password form button[type=submit] {
+  display: inline-block;
+  border: none;
+  padding: 0.9rem 2.8rem;
+  margin: 0;
+  text-decoration: none;
+  background: #11af22;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.change_password form button[type=submit]:hover {
+  background: #0c8119;
+}
+
+.change_password form button[type=submit]:focus {
+  background: #0c8119;
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+.change_password form button[type=submit]:active {
+  transform: scale(0.99);
+}
+
+.change_password form .submit-button {
+  margin-top: 16px;
+}
+
 .add-date {
   display: flex;
   justify-content: center;

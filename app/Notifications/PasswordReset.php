@@ -45,7 +45,7 @@ class PasswordReset extends Notification
         return (new MailMessage)
                     ->from('test@example.com', 'Example')
                     ->line('Renitialisation de mot de passe')
-                    ->action('Lien pour la renitialisation de mot de passe', url('/').route('password.reset',$this->token,false))
+                    ->action('Lien pour la renitialisation de mot de passe', url('/').route('password.update',$this->token,false))
                     ->line("Merci d'utiliser notre application application!");
     }
 
