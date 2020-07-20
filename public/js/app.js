@@ -31381,75 +31381,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("ul", { staticClass: "order-menu" }, [
-        _vm.carts
-          ? _c(
-              "li",
-              [
-                _c("router-link", { attrs: { to: "/order" } }, [
-                  _vm._v("Vetement")
-                ])
-              ],
-              1
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.deliverableType
-          ? _c(
-              "li",
-              [
-                _c("router-link", { attrs: { to: "/order-deliverable" } }, [
-                  _vm._v("Livraison")
-                ])
-              ],
-              1
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.dateChoose
-          ? _c(
-              "li",
-              [
-                _c("router-link", { attrs: { to: "/order-slots" } }, [
-                  _vm._v("Choix de date de recuperation")
-                ])
-              ],
-              1
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.adressMaps
-          ? _c(
-              "li",
-              [
-                _c("router-link", { attrs: { to: "/order-maps" } }, [
-                  _vm._v("Adresse")
-                ])
-              ],
-              1
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.deliverableType && _vm.dateChoose && _vm.adressMaps
-          ? _c(
-              "li",
-              [
-                _c("router-link", { attrs: { to: "/order-validate" } }, [
-                  _vm._v("Validation")
-                ])
-              ],
-              1
-            )
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("router-view")
-    ],
-    1
-  )
+  return _c("div", [_c("router-view")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
