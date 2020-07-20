@@ -45,14 +45,17 @@
                     <div class="list-service">
                         <ul>
                             <li>
+                                <p class="step">Etape  1</p>
                                 <img class="icon-item" src="/icons/phone.svg" alt="phone">
                                 <p>Réservez en ligne votre créneau</p>
                             </li>
                             <li>
+                                <p class="step">Etape  2</p>
                                 <img class="icon-item" src="/icons/iron.svg" alt="iron">
                                 <p>Confiez-nous votre linge</p>
                             </li>
                             <li>
+                                <p class="step">Etape  3</p>
                                 <img class="icon-item" src="/icons/suit.svg" alt="suit">
                                 <p>Récupérez votre linge propre </p>
                             </li>

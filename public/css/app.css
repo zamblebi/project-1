@@ -621,6 +621,17 @@ body {
   list-style: none;
 }
 
+.services ul li {
+  padding-top: 30px;
+}
+
+.services ul li .step {
+  font-weight: bold;
+  font-size: 1.3em;
+  padding-bottom: 7px;
+  color: #333;
+}
+
 .services ul img {
   width: 60px;
 }
@@ -652,7 +663,12 @@ body {
 }
 
 .about-us .about-us-list ul li {
+  padding: 8px 5px;
   display: flex;
+}
+
+.about-us .about-us-list ul li .small-title {
+  font-weight: bold;
 }
 
 .about-us .about-us-list ul .details {
@@ -665,6 +681,7 @@ body {
 
 .about-us .about-us-list ul .small-title {
   font-size: 1.2em;
+  padding: 0 10px;
 }
 
 .about-us .about-us-list ul .small-details {
@@ -673,6 +690,10 @@ body {
 
 .commands {
   padding: 30px 10px;
+}
+
+.commands h1 {
+  margin: 0 !important;
 }
 
 .commands .button {
@@ -930,7 +951,7 @@ ul {
   }
 
   .about-us {
-    padding: 56px 0;
+    padding: 25px 0px 0px 56px 0px !important;
   }
 
   .about-us .about-us-list .groups-title {
@@ -948,9 +969,13 @@ ul {
     width: 100%;
   }
 
+  .about-us .about-us-list ul li {
+    padding: 5px 30px !important;
+  }
+
   .about-us .about-us-list ul li .small-title {
     font-family: "Nunito", sans-serif;
-    padding: 0 10px;
+    padding: 8px 10px;
   }
 
   .about-us .about-us-list ul li .small-details,
@@ -959,7 +984,7 @@ ul {
   }
 
   .about-us .about-us-list ul li img {
-    width: 60px;
+    width: 50px;
   }
 
   .about-us .about-us-list ul li .details {
