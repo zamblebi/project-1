@@ -18,7 +18,7 @@
                         @csrf
 
                         <div class="form-email-password">
-                            <label for="email" >{{ __('E-Mail Address') }}</label>
+                            <label for="email" >{{ __('Votre adresse email') }}</label>
 
                             <div class="">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>

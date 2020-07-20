@@ -24,12 +24,12 @@ Route::get('/home', function(){
 
 //Admin dashboard
 Route::group(['middleware' => ['auth', 'admin']] , function() {
-    Route::get('dashboard', function () {
+    Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });
 } );
 
-Route::get('dashboard', 'OrdersController@getOrder')->name('dashboard');
+Route::get('/dashboard', 'OrdersController@getOrder')->name('dashboard');
 
 //Clothing
 Route::get('/dashboard/clothing', 'ClothingController@create');
@@ -76,3 +76,8 @@ Route::get('/clothing-lists', 'ClothingController@index');
 //Get order of user
 Route::get('/get-user-order/', 'OrdersController@getOrderOfUser');
 Route::get('/get-user', 'OrdersController@getUser');
+
+//Changer de mot de passe
+
+Route::get('change-password','ChangePasswordController@index');
+Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
