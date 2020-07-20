@@ -2,7 +2,7 @@
     <div>
         <h2 class="date-title">Choisissez la date et l'heure de recuperation des vetements </h2>
         <h4>Date choisi: {{dateStored}}</h4>
-        <VueCtkDateTimePicker locale="fr" :inline="true" color="green" button-now-translation="Maintenant" format="DD-MM-YYYY HH:mm" v-model="date" />
+        <VueCtkDateTimePicker locale="fr" :inline="true" color="#D65047" button-now-translation="Maintenant" format="DD-MM-YYYY HH:mm" v-model="date" />
 
           <div class="add-date">
                 <button class="btn" @click="addDate">Ajouter</button>

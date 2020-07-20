@@ -31491,7 +31491,7 @@ var render = function() {
         attrs: {
           locale: "fr",
           inline: true,
-          color: "green",
+          color: "#D65047",
           "button-now-translation": "Maintenant",
           format: "DD-MM-YYYY HH:mm"
         },

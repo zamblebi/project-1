@@ -29,15 +29,16 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             {{-- <menu-component></menu-component> --}}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="container">
+                <div class="container wrapper">
                     <div class="header-bar">
 
                         {{-- header brand  --}}
-                    <a class="navbar-brand wrapper"  href="{{ url('/') }}">
-                        Pressings
+                    <a class="navbar-brand"  href="{{ url('/') }}">
+                        <img class="logo" src="/logo.png" alt="">
+                       Mon Pressing 
                     </a>
                     {{-- Desktop menu  --}}
-                        <ul class="navbar-nav-desktop wrapper" >
+                        <ul class="navbar-nav-desktop" >
 
                             @if (Route::has('login'))
                                         @auth
