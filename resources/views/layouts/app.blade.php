@@ -110,7 +110,7 @@
                                 <div class="top-right links">
                                     @auth
                                     <li class="nav-item">
-                                        <a href="{{ url('/home') }}">Home</a>
+                                        <a href="{{ url('/home') }}">Mon profil</a>
                                     </li>
                                     {{-- @else
                                             <a href="{{ route('login') }}">Connexion</a>
