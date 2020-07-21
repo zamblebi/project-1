@@ -92,7 +92,7 @@ body{
     .navbar-brand{
         text-decoration: none;
         color: $green;
-        font-size: 1.2em;
+        font-size: .9em;
         display: flex;
         font-weight: bold;
         align-items: center;
@@ -127,10 +127,16 @@ body{
             display: none;
         }
     }
+    ul{
+        padding-left: 0 !important;
+    }
     .nav-item{
         color: red;
+        text-align: center;
+        padding-top: 25px;
         a{
             font-family: 'Nunito', sans-serif;
+            font-size: 1.3em;
         }
     }
 }
@@ -362,7 +368,11 @@ body{
 
 //Feedback style
 .feedback{
-    padding: 70px 0;
+    padding: 10px 0 0 0;
+    .small-details{
+        padding-top: 4px;
+        font-size: 1.5em;
+    }
     .feedback-groups{
         padding: 10px 0;
         line-height: 30px;
@@ -382,7 +392,7 @@ body{
             list-style: none;
             li{
                 border: 2px solid #2e425562;
-                padding: 0 20px;
+                padding: 30px 20px;
                 margin: 10px;
                 p{
                     opacity: 0.66;
@@ -443,9 +453,7 @@ body{
 
 
 //Footer style
-#footer{
-    // margin-top: 300px;
-}
+
 footer{
     // position: fixed;
     width: 100%;
@@ -572,9 +580,16 @@ footer{
             justify-content: center;
             padding: 30px 0;
             li{
+                padding-right: 25px;
+                display: flex;
+                // align-items: center;
+                div{
+                    padding-top: 20px;
+                }
                 padding: 0 30px;
                     img{
-                       width: 70px;
+                        padding-right: 23px;
+                       width: 100px;
                     }
             }
             // flex-direction: column;

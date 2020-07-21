@@ -35,7 +35,7 @@
                         {{-- header brand  --}}
                     <a class="navbar-brand"  href="{{ url('/') }}">
                         <img class="logo" src="/logo.png" alt="">
-                       Mon Pressing 
+                      MON PRESSING 
                     </a>
                     {{-- Desktop menu  --}}
                         <ul class="navbar-nav-desktop" >

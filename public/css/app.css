@@ -20,6 +20,10 @@
   padding: 30px 0;
 }
 
+.inscription form {
+  padding-bottom: 60px;
+}
+
 .inscription form label {
   opacity: 0.75;
 }
@@ -494,7 +498,7 @@ body {
 .navbar .navbar-brand {
   text-decoration: none;
   color: #D65047;
-  font-size: 1.2em;
+  font-size: 0.9em;
   display: flex;
   font-weight: bold;
   align-items: center;
@@ -533,12 +537,19 @@ body {
   display: none;
 }
 
+.navbar ul {
+  padding-left: 0 !important;
+}
+
 .navbar .nav-item {
   color: red;
+  text-align: center;
+  padding-top: 25px;
 }
 
 .navbar .nav-item a {
   font-family: "Nunito", sans-serif;
+  font-size: 1.3em;
 }
 
 .navbar-nav-desktop {
@@ -754,11 +765,16 @@ body {
 }
 
 .feedback {
-  padding: 70px 0;
+  padding: 10px 0 0 0;
   text-align: center;
   color: black;
   background-color: #F0F2F4;
   padding-bottom: 30px;
+}
+
+.feedback .small-details {
+  padding-top: 4px;
+  font-size: 1.5em;
 }
 
 .feedback .feedback-groups {
@@ -784,7 +800,7 @@ body {
 
 .feedback .comments ul li {
   border: 2px solid #2e425562;
-  padding: 0 20px;
+  padding: 30px 20px;
   margin: 10px;
 }
 
@@ -939,11 +955,18 @@ ul {
   }
 
   .services ul li {
+    padding-right: 25px;
+    display: flex;
     padding: 0 30px;
   }
 
+  .services ul li div {
+    padding-top: 20px;
+  }
+
   .services ul li img {
-    width: 70px;
+    padding-right: 23px;
+    width: 100px;
   }
 
   .feedback .comments ul {
