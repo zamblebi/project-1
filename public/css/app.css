@@ -20,6 +20,10 @@
   padding: 30px 0;
 }
 
+.inscription form {
+  padding-bottom: 60px;
+}
+
 .inscription form label {
   opacity: 0.75;
 }
@@ -754,11 +758,16 @@ body {
 }
 
 .feedback {
-  padding: 70px 0;
+  padding: 10px 0 0 0;
   text-align: center;
   color: black;
   background-color: #F0F2F4;
   padding-bottom: 30px;
+}
+
+.feedback .small-details {
+  padding-top: 4px;
+  font-size: 1.5em;
 }
 
 .feedback .feedback-groups {
@@ -784,7 +793,7 @@ body {
 
 .feedback .comments ul li {
   border: 2px solid #2e425562;
-  padding: 0 20px;
+  padding: 30px 20px;
   margin: 10px;
 }
 
