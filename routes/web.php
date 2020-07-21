@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,24 +25,33 @@ Route::get('/home', function(){
 });
 
 //Admin dashboard
-Route::group(['middleware' => ['auth', 'admin']] , function() {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    });
-} );
+Route::middleware('auth','admin')->group(function() {
+    Route::get('/dashboard', 'AdminController@index');
+});
 
-Route::get('/dashboard', 'OrdersController@getOrder')->name('dashboard');
+
+
+if(Auth::check())
+{
+    
+}
+// Route::get('/dashboard', function(){
+//     return view('admin.dashboard');
+// });
+// Route::get('/dashboard')->middleware('auth');
+
+Route::get('/dashboard', 'OrdersController@getOrder')->name('dashboard')->middleware('auth');
 
 //Clothing
-Route::get('/dashboard/clothing', 'ClothingController@create');
+Route::get('/dashboard/clothing', 'ClothingController@create')->middleware("auth");
 //Add clothing
-Route::post('/dashboard/clothing/add-clothing', 'ClothingController@store')->name('add-clothing');
+Route::post('/dashboard/clothing/add-clothing', 'ClothingController@store')->middleware("auth")->name('add-clothing');
 //Delete clothing
-Route::post('/dashboard/clothing/detete-clothing/{id}', 'ClothingController@destroy')->name('delete-clothing');
+Route::post('/dashboard/clothing/detete-clothing/{id}', 'ClothingController@destroy')->middleware("auth")->name('delete-clothing');
 //Edit clothing
-Route::get('/dashboard/clothing/edit-clothing/{id}', 'ClothingController@edit')->name('edit-clothing');
+Route::get('/dashboard/clothing/edit-clothing/{id}', 'ClothingController@edit')->middleware("auth")->name('edit-clothing');
 //Update clothing
-Route::post('/dashboard/clothing/update-clothing/{id}', 'ClothingController@update')->name('update-clothing');
+Route::post('/dashboard/clothing/update-clothing/{id}', 'ClothingController@update')->middleware("auth")->name('update-clothing');
 
 
 //Modification des cooordonnees de l'utilisateur
@@ -62,10 +73,10 @@ Auth::routes();
 //
 Route::get('/home/{vue_capture?}', function(){
     return view('home');
-})->where('vue_capture', '.*');
+})->middleware('auth')->where('vue_capture', '.*');
 
-Route::redirect('/home', '/home/my-order-list');
-//Router
+Route::redirect('/home', '/home/my-order-list')->middleware('auth');
+//Router->middle
 
 
 
