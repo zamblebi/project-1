@@ -24,6 +24,7 @@ html,body{
 
 body{
     overflow-x: hidden;
+    // overflow-x: hidden;
       min-height: 100%;
     margin: 0;
     padding: 0;
@@ -67,6 +68,10 @@ body{
     display: none;
 }
 .header-bar{
+
+    padding-left: 0px;
+    padding-right: 0px;
+
     .navbar-brand, .toggle-menu{
         padding: 7px 10px;
     }
@@ -416,6 +421,25 @@ body{
     background-color: #343A40;
     padding: 40px;
     text-align: center;
+    .ct-us{
+        color: #ffff;
+        border-bottom: 2px solid $green;
+        font-weight: bold;
+        font-family: sans-serif;
+        border-width: 1px;
+    }
+    ul{
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding-left: 0;
+        li{
+            padding: 30px 30px 0 30px;
+            img{
+                width: 70px;
+            }
+        }
+    }
     .btn{
         display: inline-block;
         border: none;
@@ -433,19 +457,7 @@ body{
         -webkit-appearance: none;
         -moz-appearance: none;
 
-        &:hover{
-        background: rgb(223, 223, 223);
-        }
         
-        &:focus {
-            background: $gray;
-            outline: 1px solid #fff;
-            outline-offset: -4px;
-        }
-
-        &:active {
-            transform: scale(0.99);
-        }
     }
 }
 
@@ -507,6 +519,7 @@ footer{
 //Tablette Responsive
 
 @media(min-width: 505px){
+    
     .intro{
         .cta{
             .btn{
@@ -646,6 +659,23 @@ footer{
                    
                 }
             }
+            }
+        }
+    }
+}
+
+
+@media(min-width: 200px){
+    .about-us{
+        .about-us-list{
+            ul{
+                li{
+                    padding: 25px 0;
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                    align-items: center;
+                }
             }
         }
     }
