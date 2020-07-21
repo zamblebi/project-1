@@ -574,9 +574,16 @@ footer{
             justify-content: center;
             padding: 30px 0;
             li{
+                padding-right: 25px;
+                display: flex;
+                // align-items: center;
+                div{
+                    padding-top: 20px;
+                }
                 padding: 0 30px;
                     img{
-                       width: 70px;
+                        padding-right: 23px;
+                       width: 100px;
                     }
             }
             // flex-direction: column;

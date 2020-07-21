@@ -948,11 +948,18 @@ ul {
   }
 
   .services ul li {
+    padding-right: 25px;
+    display: flex;
     padding: 0 30px;
   }
 
+  .services ul li div {
+    padding-top: 20px;
+  }
+
   .services ul li img {
-    width: 70px;
+    padding-right: 23px;
+    width: 100px;
   }
 
   .feedback .comments ul {
