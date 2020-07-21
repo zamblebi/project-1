@@ -537,12 +537,19 @@ body {
   display: none;
 }
 
+.navbar ul {
+  padding-left: 0 !important;
+}
+
 .navbar .nav-item {
   color: red;
+  text-align: center;
+  padding-top: 25px;
 }
 
 .navbar .nav-item a {
   font-family: "Nunito", sans-serif;
+  font-size: 1.3em;
 }
 
 .navbar-nav-desktop {
