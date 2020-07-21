@@ -178,7 +178,11 @@
 
             {{-- Section about us  --}}
             <section class="contact-us">
-                <a href="#" class="btn">Nous contactez</a>
+                <h2  class="ct-us">Nous contactez</h2>
+                <ul>
+                    <li class="contact-us-item"><img src="/icons/whatsapp.svg" alt="whatsapp"></li>
+                    <li class="contact-us-item"><img src="/icons/messenger.svg" alt="messenger"></li>
+                </ul>
             </section>
 
 
