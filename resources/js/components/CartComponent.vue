@@ -12,7 +12,7 @@
                                 <!-- {{cart.product.prix}} -->
                                 <!-- {{cart.name}} -->
                               {{cart.product.prix * cart.quantity != 0 ? cart.product.prix * cart.quantity : '' }}f -  {{cart.product.name}} <input type="number" v-model="cart.quantity" @input="changeProductQuantity({cart,n})">
-                                <a type="button" ><i class="fa fa-remove"></i></a>
+                                <a type="button" @click="removeOnCart(n)" ><i class="fa fa-remove"></i></a>
                             <!-- </div> -->
                             <!-- {{debugger}} -->
                         <!-- <button >Change</button> -->
@@ -40,7 +40,7 @@ export default {
     },
     props: ['cltQtyAll','cltInCarts'],
     methods: mapActions(
-        'carts', ['changeProductQuantity']
+        'carts', ['changeProductQuantity', 'removeOnCart']
     )
 }
 </script>

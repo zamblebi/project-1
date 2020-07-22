@@ -2027,7 +2027,7 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   props: ['cltQtyAll', 'cltInCarts'],
-  methods: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('carts', ['changeProductQuantity'])
+  methods: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('carts', ['changeProductQuantity', 'removeOnCart'])
 });
 
 /***/ }),
@@ -31131,7 +31131,18 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _vm._m(0, true)
+              _c(
+                "a",
+                {
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.removeOnCart(n)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fa fa-remove" })]
+              )
             ])
           }),
           0
@@ -31149,16 +31160,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { type: "button" } }, [
-      _c("i", { staticClass: "fa fa-remove" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -52273,13 +52275,14 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*!*****************************************************!*\
   !*** ./resources/js/store/modules/carts/actions.js ***!
   \*****************************************************/
-/*! exports provided: addProductToCart, changeProductQuantity */
+/*! exports provided: addProductToCart, changeProductQuantity, removeOnCart */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addProductToCart", function() { return addProductToCart; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeProductQuantity", function() { return changeProductQuantity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeOnCart", function() { return removeOnCart; });
 /* harmony import */ var _products__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../products */ "./resources/js/store/modules/products/index.js");
  // export const addProductToCart = ({commit}, product) => {
 //     commit("ADD_PRODUCT_TO_CART", product)
@@ -52307,6 +52310,10 @@ var changeProductQuantity = function changeProductQuantity(_ref2, _ref3) {
     cartQty: cart.quantity
   });
 };
+var removeOnCart = function removeOnCart(_ref4, index) {
+  var commit = _ref4.commit;
+  commit("DELETE_ON_CART", index);
+};
 
 /***/ }),
 
@@ -52326,8 +52333,8 @@ var clothingQty = function clothingQty(state) {
 };
 var totalPrice = function totalPrice(state) {
   return state.carts.reduce(total, function (item) {
-    total + item * state.carts.product.price;
-  });
+    total + item.product.prix;
+  }, 0);
 };
 
 /***/ }),
@@ -52363,13 +52370,16 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************************!*\
   !*** ./resources/js/store/modules/carts/mutations.js ***!
   \*******************************************************/
-/*! exports provided: PUSH_PRODUCT_ON_CART, CHANGE_QUANTITY */
+/*! exports provided: PUSH_PRODUCT_ON_CART, CHANGE_QUANTITY, DELETE_ON_CART */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PUSH_PRODUCT_ON_CART", function() { return PUSH_PRODUCT_ON_CART; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_QUANTITY", function() { return CHANGE_QUANTITY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_ON_CART", function() { return DELETE_ON_CART; });
+/* harmony import */ var _products_state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../products/state */ "./resources/js/store/modules/products/state.js");
+
 var PUSH_PRODUCT_ON_CART = function PUSH_PRODUCT_ON_CART(state, product) {
   state.carts.push({
     product: product,
@@ -52381,6 +52391,9 @@ var CHANGE_QUANTITY = function CHANGE_QUANTITY(state, _ref) {
   var cartIndex = _ref.cartIndex,
       cartQty = _ref.cartQty;
   state.carts[cartIndex].quantity = cartQty;
+};
+var DELETE_ON_CART = function DELETE_ON_CART(state, cartIndex) {
+  state.carts.splice(cartIndex, 1);
 };
 
 /***/ }),
