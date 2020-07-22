@@ -484,7 +484,6 @@ body {
   width: 100%;
   z-index: 12;
   display: flex;
-  padding: 0 5px;
   justify-content: space-between;
 }
 

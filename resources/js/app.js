@@ -28,6 +28,7 @@ Vue.use(VueGoogleMaps, {
 });
 
 
+
 Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);
 /**
  * The following block of code may be used to automatically register your
@@ -41,6 +42,7 @@ Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 import ClothingComponent from './components/ClothingComponent';
+import CartComponent from './components/CartComponent';
 import DeliverableComponent from './components/DeliverableComponent';
 import SlotsComponent from './components/SlotsComponent';
 import AdressComponent from './components/AdressComponent';
@@ -51,6 +53,9 @@ import EditPasswordComponent from './components/profils/EditPasswordComponent';
 import OrderProfilComponent from './components/profils/OrderProfilComponent';
 import GlobalOrderComponent from "./components/GlobalOrderComponent";
 
+
+
+import store from './store'
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
@@ -84,12 +89,14 @@ const router = new VueRouter({
 const app = new Vue({
     router,
     el: '#app',
+    store,
     components: {
        'clothing-component': ClothingComponent,
+       'cart-component': CartComponent,
        'deliverable-component': DeliverableComponent,
        'slots-component': DeliverableComponent,
        'adress-component': AdressComponent,
        'user-profil': UserProfilComponent,
-        'global-order': GlobalOrderComponent,
+       'global-order': GlobalOrderComponent,
     }
 });
