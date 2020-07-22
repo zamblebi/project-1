@@ -7,31 +7,41 @@
                 <p>Type de vetement Total : {{cltQtyAll}}</p>
                     <p>Prix : f</p>
                     <ul>
-                        <li >
+                        <li v-for="(cart, n) in cltInCarts" :key="cart.id">
                             <!-- <div v-if="cart.qty > 0"> -->
-                              <!-- {{cart.price * cart.qty != 0 ? cart.price * cart.qty : '' }}f -  {{cart.name}} <input type="number" v-model="augQty"> -->
+                                <!-- {{cart.product.prix}} -->
+                                <!-- {{cart.name}} -->
+                              {{cart.product.prix * cart.quantity != 0 ? cart.product.prix * cart.quantity : '' }}f -  {{cart.product.name}} <input type="number" v-model="cart.quantity">
                                 <a type="button" ><i class="fa fa-remove"></i></a>
                             <!-- </div> -->
+                            <!-- {{debugger}} -->
+                        <button @click="changeProductQuantity({cart,n})">Change</button>
 
                         </li>
                     </ul>
             </strong>
 
+
             <hr>
-            <router-link to="/order-deliverable" class="btn" @click="saveQty()">Passer une commande</router-link>
+            <router-link to="/order-deliverable" class="btn" >Passer une commande</router-link>
         <!-- <a href="#" class="btn">Passer la commande</a> -->
         </div>
 
 
 </template>
 <script>
+import { mapActions } from 'vuex'
+    // console.log(ctlInCarts)
 export default {
     data(){
         return {
 
         }
     },
-    props: ['cltQtyAll']
+    props: ['cltQtyAll','cltInCarts'],
+    methods: mapActions(
+        'carts', ['changeProductQuantity']
+    )
 }
 </script>
 <style lang="scss">

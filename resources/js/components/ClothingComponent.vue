@@ -25,7 +25,7 @@
                 </li>
 
         </ul>
-        <cart-component :clt-qty-all="clothingQty" ></cart-component>
+        <cart-component :clt-qty-all="clothingQty" :clt-in-carts="carts" ></cart-component>
         
     </div>
 
@@ -48,13 +48,15 @@
         },
         computed:{ 
             ...mapState({
-                products : state => state.products.products
+                products : state => state.products.products,
+                carts : state => state.carts.carts
             }),
             
             ...mapGetters(
                 'carts', ['clothingQty']
             )},
         mounted(){
+            // console.log(this.carts),
             this.$store.dispatch('products/getProducts')
         },
         methods: mapActions(

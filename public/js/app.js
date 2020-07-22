@@ -1988,6 +1988,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -2014,11 +2015,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+ // console.log(ctlInCarts)
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
   },
-  props: ['cltQtyAll']
+  props: ['cltQtyAll', 'cltInCarts'],
+  methods: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('carts', ['changeProductQuantity'])
 });
 
 /***/ }),
@@ -2087,9 +2096,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])({
     products: function products(state) {
       return state.products.products;
+    },
+    carts: function carts(state) {
+      return state.carts.carts;
     }
   })), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])('carts', ['clothingQty'])),
   mounted: function mounted() {
+    // console.log(this.carts),
     this.$store.dispatch('products/getProducts');
   },
   methods: Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])('carts', ['addProductToCart'])
@@ -31077,22 +31090,66 @@ var render = function() {
         _vm._v(" "),
         _c("p", [_vm._v("Prix : f")]),
         _vm._v(" "),
-        _vm._m(0)
+        _c(
+          "ul",
+          _vm._l(_vm.cltInCarts, function(cart, n) {
+            return _c("li", { key: cart.id }, [
+              _vm._v(
+                "\n                          " +
+                  _vm._s(
+                    cart.product.prix * cart.quantity != 0
+                      ? cart.product.prix * cart.quantity
+                      : ""
+                  ) +
+                  "f -  " +
+                  _vm._s(cart.product.name) +
+                  " "
+              ),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: cart.quantity,
+                    expression: "cart.quantity"
+                  }
+                ],
+                attrs: { type: "number" },
+                domProps: { value: cart.quantity },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(cart, "quantity", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(0, true),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.changeProductQuantity({ cart: cart, n: n })
+                    }
+                  }
+                },
+                [_vm._v("Change")]
+              )
+            ])
+          }),
+          0
+        )
       ]),
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
       _c(
         "router-link",
-        {
-          staticClass: "btn",
-          attrs: { to: "/order-deliverable" },
-          on: {
-            click: function($event) {
-              return _vm.saveQty()
-            }
-          }
-        },
+        { staticClass: "btn", attrs: { to: "/order-deliverable" } },
         [_vm._v("Passer une commande")]
       )
     ],
@@ -31104,12 +31161,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", [
-      _c("li", [
-        _c("a", { attrs: { type: "button" } }, [
-          _c("i", { staticClass: "fa fa-remove" })
-        ])
-      ])
+    return _c("a", { attrs: { type: "button" } }, [
+      _c("i", { staticClass: "fa fa-remove" })
     ])
   }
 ]
@@ -31188,7 +31241,9 @@ var render = function() {
           0
         ),
         _vm._v(" "),
-        _c("cart-component", { attrs: { "clt-qty-all": _vm.clothingQty } })
+        _c("cart-component", {
+          attrs: { "clt-qty-all": _vm.clothingQty, "clt-in-carts": _vm.carts }
+        })
       ],
       1
     )
@@ -52225,12 +52280,13 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*!*****************************************************!*\
   !*** ./resources/js/store/modules/carts/actions.js ***!
   \*****************************************************/
-/*! exports provided: addProductToCart */
+/*! exports provided: addProductToCart, changeProductQuantity */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addProductToCart", function() { return addProductToCart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeProductQuantity", function() { return changeProductQuantity; });
 /* harmony import */ var _products__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../products */ "./resources/js/store/modules/products/index.js");
  // export const addProductToCart = ({commit}, product) => {
 //     commit("ADD_PRODUCT_TO_CART", product)
@@ -52246,6 +52302,17 @@ var addProductToCart = function addProductToCart(_ref, product) {
   if (cartItem == undefined) {
     commit("PUSH_PRODUCT_ON_CART", product);
   }
+}; //cart == cart object // n == index of cart
+
+var changeProductQuantity = function changeProductQuantity(_ref2, _ref3) {
+  var commit = _ref2.commit;
+  var cart = _ref3.cart,
+      n = _ref3.n;
+  //get product index and get quantity of product give by user
+  commit("CHANGE_QUANTITY", {
+    cartIndex: n,
+    cartQty: cart.quantity
+  });
 };
 
 /***/ }),
@@ -52254,14 +52321,20 @@ var addProductToCart = function addProductToCart(_ref, product) {
 /*!*****************************************************!*\
   !*** ./resources/js/store/modules/carts/getters.js ***!
   \*****************************************************/
-/*! exports provided: clothingQty */
+/*! exports provided: clothingQty, totalPrice */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clothingQty", function() { return clothingQty; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "totalPrice", function() { return totalPrice; });
 var clothingQty = function clothingQty(state) {
   return state.carts.length;
+};
+var totalPrice = function totalPrice(state) {
+  return state.carts.reduce(total, function (item) {
+    total + item * state.carts.product.price;
+  });
 };
 
 /***/ }),
@@ -52278,7 +52351,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/store/modules/carts/state.js");
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actions */ "./resources/js/store/modules/carts/actions.js");
 /* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mutations */ "./resources/js/store/modules/carts/mutations.js");
-/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./getters */ "./resources/js/store/modules/carts/getters.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getters */ "./resources/js/store/modules/carts/getters.js");
 
 
 
@@ -52288,7 +52361,7 @@ __webpack_require__.r(__webpack_exports__);
   state: _state__WEBPACK_IMPORTED_MODULE_0__["default"],
   actions: _actions__WEBPACK_IMPORTED_MODULE_1__,
   mutations: _mutations__WEBPACK_IMPORTED_MODULE_2__,
-  getters: _getters__WEBPACK_IMPORTED_MODULE_4__
+  getters: _getters__WEBPACK_IMPORTED_MODULE_3__
 });
 
 /***/ }),
@@ -52297,17 +52370,24 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************************!*\
   !*** ./resources/js/store/modules/carts/mutations.js ***!
   \*******************************************************/
-/*! exports provided: PUSH_PRODUCT_ON_CART */
+/*! exports provided: PUSH_PRODUCT_ON_CART, CHANGE_QUANTITY */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PUSH_PRODUCT_ON_CART", function() { return PUSH_PRODUCT_ON_CART; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_QUANTITY", function() { return CHANGE_QUANTITY; });
 var PUSH_PRODUCT_ON_CART = function PUSH_PRODUCT_ON_CART(state, product) {
   state.carts.push({
     product: product,
     quantity: 1
   });
+}; //change value quantity on the state
+
+var CHANGE_QUANTITY = function CHANGE_QUANTITY(state, _ref) {
+  var cartIndex = _ref.cartIndex,
+      cartQty = _ref.cartQty;
+  state.carts[cartIndex].quantity = cartQty;
 };
 
 /***/ }),
@@ -52339,8 +52419,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProducts", function() { return getProducts; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! . */ "./resources/js/store/modules/products/index.js");
-
 
 var getProducts = function getProducts(_ref) {
   var commit = _ref.commit;

@@ -1,5 +1,4 @@
 import axios from 'axios'
-import products from '.'
 
 export const getProducts = ({commit}) => {
     axios.get('/clothing-lists')
