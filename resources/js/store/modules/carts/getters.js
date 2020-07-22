@@ -3,7 +3,7 @@ export const clothingQty = (state) => {
 }
 
 export const totalPrice = (state) => {
-    return state.carts.reduce(total, item => {
-        total + item * state.carts.product.price 
-    })
+    return state.carts.reduce(total , item => {
+        total +  item.product.prix 
+    }, 0)
 }

@@ -19,3 +19,7 @@ export const changeProductQuantity = ({commit}, {cart, n}) => {
     //get product index and get quantity of product give by user
     commit("CHANGE_QUANTITY", {cartIndex: n,cartQty: cart.quantity})
 }
+
+export const removeOnCart = ({commit}, index) => {
+    commit("DELETE_ON_CART", index)
+}
