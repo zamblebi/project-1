@@ -31117,28 +31117,21 @@ var render = function() {
                 attrs: { type: "number" },
                 domProps: { value: cart.quantity },
                 on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                  input: [
+                    function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(cart, "quantity", $event.target.value)
+                    },
+                    function($event) {
+                      return _vm.changeProductQuantity({ cart: cart, n: n })
                     }
-                    _vm.$set(cart, "quantity", $event.target.value)
-                  }
+                  ]
                 }
               }),
               _vm._v(" "),
-              _vm._m(0, true),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  on: {
-                    click: function($event) {
-                      return _vm.changeProductQuantity({ cart: cart, n: n })
-                    }
-                  }
-                },
-                [_vm._v("Change")]
-              )
+              _vm._m(0, true)
             ])
           }),
           0

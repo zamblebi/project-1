@@ -11,11 +11,11 @@
                             <!-- <div v-if="cart.qty > 0"> -->
                                 <!-- {{cart.product.prix}} -->
                                 <!-- {{cart.name}} -->
-                              {{cart.product.prix * cart.quantity != 0 ? cart.product.prix * cart.quantity : '' }}f -  {{cart.product.name}} <input type="number" v-model="cart.quantity">
+                              {{cart.product.prix * cart.quantity != 0 ? cart.product.prix * cart.quantity : '' }}f -  {{cart.product.name}} <input type="number" v-model="cart.quantity" @input="changeProductQuantity({cart,n})">
                                 <a type="button" ><i class="fa fa-remove"></i></a>
                             <!-- </div> -->
                             <!-- {{debugger}} -->
-                        <button @click="changeProductQuantity({cart,n})">Change</button>
+                        <!-- <button >Change</button> -->
 
                         </li>
                     </ul>
