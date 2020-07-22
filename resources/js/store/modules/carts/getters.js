@@ -1,9 +1,23 @@
+
+
 export const clothingQty = (state) => {
    return state.carts.length
 }
 
-export const totalPrice = (state) => {
-    return state.carts.reduce(total , item => {
-        total +  item.product.prix 
-    }, 0)
+
+export const priceClt = (state) => cart  => {
+   
+   
+    if(cart.price){
+        return cart.price * cart.quantity
+    } 
+    
 }
+
+
+
+// export const totalPrice = (state) => {
+//      state.carts.reduce(item => {
+//         console.log(item)
+//     })
+// }

@@ -5,13 +5,13 @@
             <strong>
              <!-- Voir la quantiter total -->
                 <p>Type de vetement Total : {{cltQtyAll}}</p>
-                    <p>Prix : f</p>
                     <ul>
+                    <p>Prix : {{totalPrice}}f</p>
                         <li v-for="(cart, n) in cltInCarts" :key="cart.id">
                             <!-- <div v-if="cart.qty > 0"> -->
                                 <!-- {{cart.product.prix}} -->
                                 <!-- {{cart.name}} -->
-                              {{cart.product.prix * cart.quantity != 0 ? cart.product.prix * cart.quantity : '' }}f -  {{cart.product.name}} <input type="number" v-model="cart.quantity" @input="changeProductQuantity({cart,n})">
+                              {{priceClt(cart)}}f -  {{cart.product.name}} <input type="number" v-model="cart.quantity" @input="changeProductQuantity({cart,n})">
                                 <a type="button" @click="removeOnCart(n)" ><i class="fa fa-remove"></i></a>
                             <!-- </div> -->
                             <!-- {{debugger}} -->
@@ -30,14 +30,18 @@
 
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
     // console.log(ctlInCarts)
+    // console.log(priceClt(n))
 export default {
     data(){
         return {
-
-        }
+            
+            }
     },
+    computed: {...mapGetters(
+        'carts', ['priceClt', 'totalPrice']
+    ) },
     props: ['cltQtyAll','cltInCarts'],
     methods: mapActions(
         'carts', ['changeProductQuantity', 'removeOnCart']

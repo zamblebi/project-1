@@ -1989,6 +1989,12 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2021,11 +2027,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
  // console.log(ctlInCarts)
+// console.log(priceClt(n))
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
   },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('carts', ['priceClt', 'totalPrice'])),
   props: ['cltQtyAll', 'cltInCarts'],
   methods: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('carts', ['changeProductQuantity', 'removeOnCart'])
 });
@@ -2049,9 +2057,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
 //
 //
 //
@@ -31088,64 +31093,62 @@ var render = function() {
       _c("strong", [
         _c("p", [_vm._v("Type de vetement Total : " + _vm._s(_vm.cltQtyAll))]),
         _vm._v(" "),
-        _c("p", [_vm._v("Prix : f")]),
-        _vm._v(" "),
         _c(
           "ul",
-          _vm._l(_vm.cltInCarts, function(cart, n) {
-            return _c("li", { key: cart.id }, [
-              _vm._v(
-                "\n                          " +
-                  _vm._s(
-                    cart.product.prix * cart.quantity != 0
-                      ? cart.product.prix * cart.quantity
-                      : ""
-                  ) +
-                  "f -  " +
-                  _vm._s(cart.product.name) +
-                  " "
-              ),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: cart.quantity,
-                    expression: "cart.quantity"
-                  }
-                ],
-                attrs: { type: "number" },
-                domProps: { value: cart.quantity },
-                on: {
-                  input: [
-                    function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(cart, "quantity", $event.target.value)
-                    },
-                    function($event) {
-                      return _vm.changeProductQuantity({ cart: cart, n: n })
+          [
+            _c("p", [_vm._v("Prix : " + _vm._s(_vm.totalPrice) + "f")]),
+            _vm._v(" "),
+            _vm._l(_vm.cltInCarts, function(cart, n) {
+              return _c("li", { key: cart.id }, [
+                _vm._v(
+                  "\n                          " +
+                    _vm._s(_vm.priceClt(cart)) +
+                    "f -  " +
+                    _vm._s(cart.product.name) +
+                    " "
+                ),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: cart.quantity,
+                      expression: "cart.quantity"
                     }
-                  ]
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  attrs: { type: "button" },
+                  ],
+                  attrs: { type: "number" },
+                  domProps: { value: cart.quantity },
                   on: {
-                    click: function($event) {
-                      return _vm.removeOnCart(n)
-                    }
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(cart, "quantity", $event.target.value)
+                      },
+                      function($event) {
+                        return _vm.changeProductQuantity({ cart: cart, n: n })
+                      }
+                    ]
                   }
-                },
-                [_c("i", { staticClass: "fa fa-remove" })]
-              )
-            ])
-          }),
-          0
+                }),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.removeOnCart(n)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-remove" })]
+                )
+              ])
+            })
+          ],
+          2
         )
       ]),
       _vm._v(" "),
@@ -31211,9 +31214,7 @@ var render = function() {
               _c("div", [
                 _c("em", [_vm._v(_vm._s(product.prix) + "f")]),
                 _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("strong")
+                _c("br")
               ]),
               _vm._v(" "),
               _c("br"),
@@ -52321,21 +52322,27 @@ var removeOnCart = function removeOnCart(_ref4, index) {
 /*!*****************************************************!*\
   !*** ./resources/js/store/modules/carts/getters.js ***!
   \*****************************************************/
-/*! exports provided: clothingQty, totalPrice */
+/*! exports provided: clothingQty, priceClt */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clothingQty", function() { return clothingQty; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "totalPrice", function() { return totalPrice; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "priceClt", function() { return priceClt; });
 var clothingQty = function clothingQty(state) {
   return state.carts.length;
 };
-var totalPrice = function totalPrice(state) {
-  return state.carts.reduce(total, function (item) {
-    total + item.product.prix;
-  }, 0);
-};
+var priceClt = function priceClt(state) {
+  return function (cart) {
+    if (cart.price) {
+      return cart.price * cart.quantity;
+    }
+  };
+}; // export const totalPrice = (state) => {
+//      state.carts.reduce(item => {
+//         console.log(item)
+//     })
+// }
 
 /***/ }),
 
@@ -52383,7 +52390,8 @@ __webpack_require__.r(__webpack_exports__);
 var PUSH_PRODUCT_ON_CART = function PUSH_PRODUCT_ON_CART(state, product) {
   state.carts.push({
     product: product,
-    quantity: 1
+    quantity: 1,
+    price: product.prix
   });
 }; //change value quantity on the state
 
@@ -52408,7 +52416,8 @@ var DELETE_ON_CART = function DELETE_ON_CART(state, cartIndex) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  carts: []
+  carts: [],
+  allPrice: ''
 });
 
 /***/ }),

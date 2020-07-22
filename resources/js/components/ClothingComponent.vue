@@ -13,9 +13,6 @@
                     <div>
                         <em>{{ product.prix }}f</em>
                         <br>
-                        <strong>
-                            <!-- <em>Quantiter : {{!empty($getSession->items[$clothing->id]['qty']) ? $getSession->items[$clothing->id]['qty'] : '0'}}</em> -->
-                        </strong>
                     </div>
                     <br>
 

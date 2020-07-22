@@ -1,7 +1,7 @@
 import state from "../products/state"
 
 export const PUSH_PRODUCT_ON_CART = (state, product) => {
-    state.carts.push({product, quantity: 1})
+    state.carts.push({product, quantity: 1, price: product.prix})
 }
 
 //change value quantity on the state
