@@ -1,4 +1,4 @@
-import products from "../products"
+
 
 
 // export const addProductToCart = ({commit}, product) => {
@@ -22,4 +22,18 @@ export const changeProductQuantity = ({commit}, {cart, n}) => {
 
 export const removeOnCart = ({commit}, index) => {
     commit("DELETE_ON_CART", index)
+}
+
+
+export const increment = ({commit}, index) => {
+    commit("INCREMENT", index)
+}
+
+export const decrement = ({commit}, index) => {
+    commit("DECREMENT", index)
+}
+
+
+export const count = ({commit}) => {
+    commit("COUNT_ALL")
 }

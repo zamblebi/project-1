@@ -9,15 +9,15 @@ export const priceClt = (state) => cart  => {
    
    
     if(cart.price){
-        return cart.price * cart.quantity
+        return cart.price 
     } 
     
 }
 
+export const totalPrice = (state) => {
+    // if(state.carts != []){
+        console.log(state.allPrice)
 
-
-// export const totalPrice = (state) => {
-//      state.carts.reduce(item => {
-//         console.log(item)
-//     })
-// }
+    // }
+    // console.log(state.carts) 
+}

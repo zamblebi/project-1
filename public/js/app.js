@@ -2026,6 +2026,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
  // console.log(ctlInCarts)
 // console.log(priceClt(n))
 
@@ -2035,7 +2036,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('carts', ['priceClt', 'totalPrice'])),
   props: ['cltQtyAll', 'cltInCarts'],
-  methods: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('carts', ['changeProductQuantity', 'removeOnCart'])
+  methods: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('carts', ['changeProductQuantity', 'removeOnCart', 'increment', 'decrement', 'count'])
 });
 
 /***/ }),
@@ -31107,31 +31108,59 @@ var render = function() {
                     _vm._s(cart.product.name) +
                     " "
                 ),
+                _c(
+                  "button",
+                  {
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.increment(n)
+                      }
+                    }
+                  },
+                  [_vm._v(" + ")]
+                ),
+                _vm._v(" "),
                 _c("input", {
                   directives: [
                     {
                       name: "model",
-                      rawName: "v-model",
+                      rawName: "v-model.number",
                       value: cart.quantity,
-                      expression: "cart.quantity"
+                      expression: "cart.quantity",
+                      modifiers: { number: true }
                     }
                   ],
-                  attrs: { type: "number" },
+                  attrs: { type: "text" },
                   domProps: { value: cart.quantity },
                   on: {
-                    input: [
-                      function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(cart, "quantity", $event.target.value)
-                      },
-                      function($event) {
-                        return _vm.changeProductQuantity({ cart: cart, n: n })
+                    change: function($event) {
+                      return _vm.changeProductQuantity(cart.quantity)
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
                       }
-                    ]
+                      _vm.$set(cart, "quantity", _vm._n($event.target.value))
+                    },
+                    blur: function($event) {
+                      return _vm.$forceUpdate()
+                    }
                   }
                 }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.decrement(n)
+                      }
+                    }
+                  },
+                  [_vm._v(" - ")]
+                ),
                 _vm._v(" "),
                 _c(
                   "a",
@@ -31150,6 +31179,10 @@ var render = function() {
           ],
           2
         )
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn", on: { click: _vm.count } }, [
+        _vm._v("Calculer")
       ]),
       _vm._v(" "),
       _c("hr"),
@@ -52276,7 +52309,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*!*****************************************************!*\
   !*** ./resources/js/store/modules/carts/actions.js ***!
   \*****************************************************/
-/*! exports provided: addProductToCart, changeProductQuantity, removeOnCart */
+/*! exports provided: addProductToCart, changeProductQuantity, removeOnCart, increment, decrement, count */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52284,11 +52317,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addProductToCart", function() { return addProductToCart; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeProductQuantity", function() { return changeProductQuantity; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeOnCart", function() { return removeOnCart; });
-/* harmony import */ var _products__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../products */ "./resources/js/store/modules/products/index.js");
- // export const addProductToCart = ({commit}, product) => {
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "increment", function() { return increment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decrement", function() { return decrement; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "count", function() { return count; });
+// export const addProductToCart = ({commit}, product) => {
 //     commit("ADD_PRODUCT_TO_CART", product)
 // }
-
 var addProductToCart = function addProductToCart(_ref, product) {
   var state = _ref.state,
       commit = _ref.commit;
@@ -52315,6 +52349,18 @@ var removeOnCart = function removeOnCart(_ref4, index) {
   var commit = _ref4.commit;
   commit("DELETE_ON_CART", index);
 };
+var increment = function increment(_ref5, index) {
+  var commit = _ref5.commit;
+  commit("INCREMENT", index);
+};
+var decrement = function decrement(_ref6, index) {
+  var commit = _ref6.commit;
+  commit("DECREMENT", index);
+};
+var count = function count(_ref7) {
+  var commit = _ref7.commit;
+  commit("COUNT_ALL");
+};
 
 /***/ }),
 
@@ -52322,27 +52368,29 @@ var removeOnCart = function removeOnCart(_ref4, index) {
 /*!*****************************************************!*\
   !*** ./resources/js/store/modules/carts/getters.js ***!
   \*****************************************************/
-/*! exports provided: clothingQty, priceClt */
+/*! exports provided: clothingQty, priceClt, totalPrice */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clothingQty", function() { return clothingQty; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "priceClt", function() { return priceClt; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "totalPrice", function() { return totalPrice; });
 var clothingQty = function clothingQty(state) {
   return state.carts.length;
 };
 var priceClt = function priceClt(state) {
   return function (cart) {
     if (cart.price) {
-      return cart.price * cart.quantity;
+      return cart.price;
     }
   };
-}; // export const totalPrice = (state) => {
-//      state.carts.reduce(item => {
-//         console.log(item)
-//     })
-// }
+};
+var totalPrice = function totalPrice(state) {
+  // if(state.carts != []){
+  console.log(state.allPrice); // }
+  // console.log(state.carts) 
+};
 
 /***/ }),
 
@@ -52377,7 +52425,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************************!*\
   !*** ./resources/js/store/modules/carts/mutations.js ***!
   \*******************************************************/
-/*! exports provided: PUSH_PRODUCT_ON_CART, CHANGE_QUANTITY, DELETE_ON_CART */
+/*! exports provided: PUSH_PRODUCT_ON_CART, CHANGE_QUANTITY, DELETE_ON_CART, INCREMENT, DECREMENT, COUNT_ALL */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52385,6 +52433,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PUSH_PRODUCT_ON_CART", function() { return PUSH_PRODUCT_ON_CART; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_QUANTITY", function() { return CHANGE_QUANTITY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_ON_CART", function() { return DELETE_ON_CART; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "INCREMENT", function() { return INCREMENT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DECREMENT", function() { return DECREMENT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "COUNT_ALL", function() { return COUNT_ALL; });
 /* harmony import */ var _products_state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../products/state */ "./resources/js/store/modules/products/state.js");
 
 var PUSH_PRODUCT_ON_CART = function PUSH_PRODUCT_ON_CART(state, product) {
@@ -52398,10 +52449,36 @@ var PUSH_PRODUCT_ON_CART = function PUSH_PRODUCT_ON_CART(state, product) {
 var CHANGE_QUANTITY = function CHANGE_QUANTITY(state, _ref) {
   var cartIndex = _ref.cartIndex,
       cartQty = _ref.cartQty;
-  state.carts[cartIndex].quantity = cartQty;
+  // state.carts[cartIndex].quantity = 
+  console.log(cartQty); // state.allPrice.push(state.carts[cartIndex].price)
 };
 var DELETE_ON_CART = function DELETE_ON_CART(state, cartIndex) {
   state.carts.splice(cartIndex, 1);
+};
+var INCREMENT = function INCREMENT(state, n) {
+  state.carts[n].quantity++; // debugger
+
+  state.carts[n].price = state.carts[n].product.prix * state.carts[n].quantity;
+};
+var DECREMENT = function DECREMENT(state, n) {
+  if (state.carts[n].quantity != 1) {
+    state.carts[n].quantity--;
+    state.carts[n].price -= state.carts[n].product.prix;
+  }
+};
+var COUNT_ALL = function COUNT_ALL(state) {
+  // console.log(state.carts)
+  // state.carts.forEach(element => {
+  var singlePrice; // singlePrice = element.price * element.quantity
+  // state.allPrice.push(singlePrice)
+
+  for (var i = 0; i < state.carts.lengh; i++) {
+    console.log(carts[i]);
+  } // if
+  //         console.log(state.allPrice)
+  //    console.log(element.quantity, element.price) 
+  // });
+
 };
 
 /***/ }),
@@ -52417,7 +52494,7 @@ var DELETE_ON_CART = function DELETE_ON_CART(state, cartIndex) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   carts: [],
-  allPrice: ''
+  allPrice: []
 });
 
 /***/ }),
