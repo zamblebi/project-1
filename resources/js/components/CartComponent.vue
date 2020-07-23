@@ -39,6 +39,7 @@ export default {
         return {
             
             }
+            
     },
     computed: {...mapGetters(
         'carts', ['priceClt', 'totalPrice','getAllCarts']

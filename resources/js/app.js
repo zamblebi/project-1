@@ -56,7 +56,13 @@ import GlobalOrderComponent from "./components/GlobalOrderComponent";
 
 
 import store from './store'
+import state from "./store/modules/carts/state";
+import mutation from "./store/modules/carts/mutations";
 
+// debugger
+store.subscribe((mutation,state) => {
+  localStorage.setItem('store', JSON.stringify(state))
+})
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
@@ -90,6 +96,12 @@ const app = new Vue({
     router,
     el: '#app',
     store,
+    beforeCreate(){
+      // debugger
+      this.$store.commit('carts/INITIALISE_STORE')
+      
+
+    },
     components: {
        'clothing-component': ClothingComponent,
        'cart-component': CartComponent,

@@ -1,3 +1,5 @@
+import { expr } from "jquery"
+import store from "../../../store"
 
 
 export const PUSH_PRODUCT_ON_CART = (state, product) => {
@@ -7,8 +9,8 @@ export const PUSH_PRODUCT_ON_CART = (state, product) => {
 //change value quantity on the state
 export const CHANGE_QUANTITY = (state, {cartIndex,cartQty}) => {
     state.carts[cartIndex].quantity = cartQty 
- console.log(cartQty)
- state.carts[cartIndex].price = state.carts[cartIndex].product.prix * state.carts[cartIndex].quantity  
+    console.log(cartQty)
+    state.carts[cartIndex].price = state.carts[cartIndex].product.prix * state.carts[cartIndex].quantity  
     // state.allPrice.push(state.carts[cartIndex].price)
 }
 
@@ -40,4 +42,16 @@ export const COUNT_ALL = (state) => {
         console.log(total += element.price)
     });
     state.allPrice = total
+}
+
+
+export const INITIALISE_STORE = (state) => {
+    var self = this
+    if(localStorage.getItem('store')){
+        // debugger
+        store.replaceState(
+            Object.assign(state, JSON.parse(localStorage.getItem('store')))
+        )
+    }
+    console.log(JSON.parse(localStorage.getItem('store')).carts)
 }
