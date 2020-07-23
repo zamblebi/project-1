@@ -63,5 +63,15 @@
     }
 </script>
 <style lang="scss">
-   
+  .clothing-title{
+      text-align: center;
+  } 
+  .list-clothing{
+      li{
+          padding: 20px 10px !important;
+          img{
+              width: 132px !important;
+            }
+      }
+  }
 </style>
