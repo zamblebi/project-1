@@ -11,7 +11,7 @@
                             <!-- <div v-if="cart.qty > 0"> -->
                                 <!-- {{cart.product.prix}} -->
                                 <!-- {{cart.name}} -->
-                              {{priceClt(cart)}}f -  {{cart.product.name}} <button @click="increment(n)" type="button" > + </button> <input type="text" v-model.number="cart.quantity">  <button @click="decrement(n)" type="button" > - </button>
+                              {{priceClt(cart)}}f -  {{cart.product.name}} <button @click="increment(n)" type="button" > + </button> <input type="text" v-model.number="cart.quantity" @input="changeProductQuantity({cart, n})">  <button @click="decrement(n)" type="button" > - </button>
                                 <a type="button" @click="removeOnCart(n)" ><i class="fa fa-remove"></i></a>
                             <!-- </div> -->
                             <!-- {{debugger}} -->

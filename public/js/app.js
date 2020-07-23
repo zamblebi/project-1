@@ -31134,12 +31134,17 @@ var render = function() {
                   attrs: { type: "text" },
                   domProps: { value: cart.quantity },
                   on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(cart, "quantity", _vm._n($event.target.value))
+                      },
+                      function($event) {
+                        return _vm.changeProductQuantity({ cart: cart, n: n })
                       }
-                      _vm.$set(cart, "quantity", _vm._n($event.target.value))
-                    },
+                    ],
                     blur: function($event) {
                       return _vm.$forceUpdate()
                     }
@@ -52454,8 +52459,9 @@ var PUSH_PRODUCT_ON_CART = function PUSH_PRODUCT_ON_CART(state, product) {
 var CHANGE_QUANTITY = function CHANGE_QUANTITY(state, _ref) {
   var cartIndex = _ref.cartIndex,
       cartQty = _ref.cartQty;
-  // state.carts[cartIndex].quantity = 
-  console.log(cartQty); // state.allPrice.push(state.carts[cartIndex].price)
+  state.carts[cartIndex].quantity = cartQty;
+  console.log(cartQty);
+  state.carts[cartIndex].price = state.carts[cartIndex].product.prix * state.carts[cartIndex].quantity; // state.allPrice.push(state.carts[cartIndex].price)
 };
 var DELETE_ON_CART = function DELETE_ON_CART(state, cartIndex) {
   state.carts.splice(cartIndex, 1);
