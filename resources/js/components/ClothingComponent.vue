@@ -17,6 +17,7 @@
                     <br>
 
                      <!-- Le bouton pour ajouter un vetement a la cart -->
+
                         <button type="button" @click="addProductToCart(product)"  class="btn">Ajouter</button>
 
                 </li>
