@@ -2519,8 +2519,8 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(response);
       })["catch"](function (error) {
         return console.log(error);
-      }); // localStorage.clear();
-      // window.location.href = '/success-order'
+      });
+      localStorage.clear(); // window.location.href = '/success-order'
     }
   }
 });
