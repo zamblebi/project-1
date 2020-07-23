@@ -2486,11 +2486,11 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       adressMaps: localStorage.adressMaps,
-      allPrice: localStorage.totalPrice,
+      allPrice: JSON.parse(localStorage.getItem('store')).carts.allPrice,
       deliverableType: localStorage.deliverableType,
       dateChoose: localStorage.dateStored,
       adress_details: localStorage.allOtherAdress,
-      carts: localStorage.getItem('carts'),
+      carts: JSON.parse(localStorage.getItem('store')).carts,
       user_id: ''
     };
   },
@@ -2508,7 +2508,7 @@ __webpack_require__.r(__webpack_exports__);
     orderStore: function orderStore() {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/order/commander/', {
         user_id: this.user_id,
-        carts: this.carts,
+        carts: JSON.stringify(this.carts),
         adress_maps: this.adressMaps,
         adress_details: this.adress_details,
         deliverable_date: this.dateChoose,
@@ -63384,7 +63384,7 @@ var INITIALISE_STORE = function INITIALISE_STORE(state) {
     _store__WEBPACK_IMPORTED_MODULE_1__["default"].replaceState(Object.assign(state, JSON.parse(localStorage.getItem('store'))));
   }
 
-  console.log(JSON.parse(localStorage.getItem('store')).carts);
+  console.log([JSON.parse(localStorage.getItem('store')).carts]);
 };
 
 /***/ }),
