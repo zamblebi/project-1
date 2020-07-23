@@ -1,5 +1,10 @@
 <template>
    <div>
+           <transition name="fade">
+       <p v-if="show" style="color: green"  v-on:click="show = !show">
+           Modification reussi
+       </p>
+           </transition>
        <form>
             <h1>Modifier mon Profil</h1>
             Votre nom <input type="text" v-model="user.lastName">
@@ -21,11 +26,17 @@ export default {
     data(){
         return{
             user: '',
+            show: false
             // lastName: user.lastName,
             // firstName: '',
             // email: '',
             // phone_number: '',
         }
+    },
+    updated(){
+        setTimeout(()=> {
+            this.show = false
+        }, 3000)
     },
     mounted() {
         axios.get('/get-user')
@@ -41,9 +52,18 @@ export default {
                 email: this.user.email,
                 phone_number: this.user.phone_number,
             })
-            .then(response => console.log(response))
+            .then(response => this.show = true)
             .catch(error => console.log(error))
         }
     }
 }
 </script>
+
+<style lang="scss">
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+</style>
