@@ -26,14 +26,23 @@ export default {
         }
 
         },
+        
         mounted(){
+            if(localStorage.dateStored){
+                this.dateStored = localStorage.dateStored
+                console.log('date', this.dateStored)
+            }
             this.viewDate()
             },
         methods: {
             addDate(){
-                localStorage.dateStored = this.date
-                console.log(this.date)
-                this.viewDate();
+                if(this.dateStored && this.date == ''){
+                    localStorage.dateStored = this.dateStored   
+                }else{
+                    localStorage.dateStored = this.date
+                    console.log(this.date)
+                }
+                    this.viewDate();
             },
             viewDate(){
                 if(localStorage.dateStored){

@@ -142,7 +142,7 @@
                         </ul>
                     </div>
                     <div class="button">
-                    <a href="{{url('order')}}" class="commander">Passer une commande</a>
+                    <a href="{{url('order')}}" class="btn">Passer une commande</a>
                     </div>
                 </div>
             </section>

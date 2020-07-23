@@ -2439,12 +2439,22 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
+    if (localStorage.dateStored) {
+      this.dateStored = localStorage.dateStored;
+      console.log('date', this.dateStored);
+    }
+
     this.viewDate();
   },
   methods: {
     addDate: function addDate() {
-      localStorage.dateStored = this.date;
-      console.log(this.date);
+      if (this.dateStored && this.date == '') {
+        localStorage.dateStored = this.dateStored;
+      } else {
+        localStorage.dateStored = this.date;
+        console.log(this.date);
+      }
+
       this.viewDate();
     },
     viewDate: function viewDate() {
@@ -2889,7 +2899,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".qty_ {\n  width: 20px;\n  height: 23px;\n}\n.btn_button {\n  display: inline-block;\n  border: none;\n  padding: 5px 10px;\n  margin: 0;\n  text-decoration: none;\n  background: #D65047;\n  color: #ffffff;\n  font-family: sans-serif;\n  font-size: 1rem;\n  cursor: pointer;\n  text-align: center;\n  transition: background 250ms ease-in-out, transform 150ms ease;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n}\n.btn_button:hover {\n  background: #b8524b;\n}\n.btn_button:focus {\n  background: #b8524b;\n  outline: 1px solid #fff;\n  outline-offset: -4px;\n}\n.btn_button:active {\n  transform: scale(0.99);\n}\n.all_price {\n  padding-top: 5px;\n}\n.clothing_list {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n}\n@media (max-width: 800px) {\n.all_clothing_list {\n    display: grid;\n    place-items: center;\n}\n.all_clothing_list .clothing_list {\n    padding-left: 0;\n}\n.all_clothing_list .clothing_list li {\n    padding: 0 !important;\n}\n}", ""]);
+exports.push([module.i, ".qty_ {\n  width: 20px;\n  height: 23px;\n}\n.btn_button {\n  display: inline-block;\n  border: none;\n  border-radius: 7px;\n  padding: 5px 10px;\n  margin: 0;\n  text-decoration: none;\n  background: #D65047;\n  color: #ffffff;\n  font-family: sans-serif;\n  font-size: 1rem;\n  cursor: pointer;\n  text-align: center;\n  transition: background 250ms ease-in-out, transform 150ms ease;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n}\n.btn_button:hover {\n  background: #b8524b;\n}\n.btn_button:focus {\n  background: #b8524b;\n  outline: 1px solid #fff;\n  outline-offset: -4px;\n}\n.btn_button:active {\n  transform: scale(0.99);\n}\n.all_price {\n  padding-top: 5px;\n}\n.clothing_list {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n}\n.clothing_list li {\n  padding: 3px 0 !important;\n}\n@media (max-width: 800px) {\n.all_clothing_list {\n    display: grid;\n    place-items: center;\n}\n.all_clothing_list .clothing_list {\n    padding-left: 0;\n}\n.all_clothing_list .clothing_list li {\n    padding: 3px 0 !important;\n}\n}", ""]);
 
 // exports
 

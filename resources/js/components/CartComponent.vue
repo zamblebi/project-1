@@ -71,6 +71,7 @@ $orange-bold: #b8524b;
  .btn_button{
             display: inline-block;
             border: none;
+            border-radius: 7px;
             padding: 5px 10px;
             margin: 0;
             text-decoration: none;
@@ -106,6 +107,10 @@ $orange-bold: #b8524b;
      display: flex;
      flex-direction: column;
      align-items: flex-end;
+     li{
+         padding: 3px 0 !important;
+
+     }
  }
  @media(max-width: 800px){
      .all_clothing_list{
@@ -116,8 +121,7 @@ $orange-bold: #b8524b;
           padding-left: 0;
          li{
              //  margin: 0 auto;
-             
-             padding: 0 !important;
+             padding: 3px 0 !important;
          }
      }
 }
