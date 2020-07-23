@@ -1,6 +1,6 @@
 export default{
     carts: [],
-    allPrice: []
+    allPrice: 0 
 
 
 

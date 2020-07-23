@@ -2034,7 +2034,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {};
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('carts', ['priceClt', 'totalPrice'])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('carts', ['priceClt', 'totalPrice', 'getAllCarts'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('carts', ['allPrice'])),
   props: ['cltQtyAll', 'cltInCarts'],
   methods: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('carts', ['changeProductQuantity', 'removeOnCart', 'increment', 'decrement', 'count'])
 });
@@ -31097,7 +31097,7 @@ var render = function() {
         _c(
           "ul",
           [
-            _c("p", [_vm._v("Prix : " + _vm._s(_vm.totalPrice) + "f")]),
+            _c("p", [_vm._v("Prix : " + _vm._s(_vm.allPrice) + "f")]),
             _vm._v(" "),
             _vm._l(_vm.cltInCarts, function(cart, n) {
               return _c("li", { key: cart.id }, [
@@ -31134,15 +31134,17 @@ var render = function() {
                   attrs: { type: "text" },
                   domProps: { value: cart.quantity },
                   on: {
-                    change: function($event) {
-                      return _vm.changeProductQuantity(cart.quantity)
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(cart, "quantity", _vm._n($event.target.value))
+                      },
+                      function($event) {
+                        return _vm.changeProductQuantity({ cart: cart, n: n })
                       }
-                      _vm.$set(cart, "quantity", _vm._n($event.target.value))
-                    },
+                    ],
                     blur: function($event) {
                       return _vm.$forceUpdate()
                     }
@@ -52368,14 +52370,15 @@ var count = function count(_ref7) {
 /*!*****************************************************!*\
   !*** ./resources/js/store/modules/carts/getters.js ***!
   \*****************************************************/
-/*! exports provided: clothingQty, priceClt, totalPrice */
+/*! exports provided: clothingQty, priceClt */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clothingQty", function() { return clothingQty; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "priceClt", function() { return priceClt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "totalPrice", function() { return totalPrice; });
+/* harmony import */ var _products__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../products */ "./resources/js/store/modules/products/index.js");
+
 var clothingQty = function clothingQty(state) {
   return state.carts.length;
 };
@@ -52385,12 +52388,21 @@ var priceClt = function priceClt(state) {
       return cart.price;
     }
   };
-};
-var totalPrice = function totalPrice(state) {
-  // if(state.carts != []){
-  console.log(state.allPrice); // }
-  // console.log(state.carts) 
-};
+}; // export const totalPrice = (state, getters, rootState) => {
+//     // debugger
+//      state.carts.reduce((total, cart) => {
+//        return console.log(total + cart.price)
+//        }, 0)
+//         // console.log(state.)
+//     // }
+//     // console.log(state.carts) 
+// }
+// export const getAllCarts = (state, getters, rootState) => {
+//     return state.carts.map((id) => {
+//         const cart = rootState.carts.carts.find(cart => cart.id == id)
+//         return console.log(cart)
+//     })
+// }
 
 /***/ }),
 
@@ -52436,8 +52448,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "INCREMENT", function() { return INCREMENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DECREMENT", function() { return DECREMENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "COUNT_ALL", function() { return COUNT_ALL; });
-/* harmony import */ var _products_state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../products/state */ "./resources/js/store/modules/products/state.js");
-
 var PUSH_PRODUCT_ON_CART = function PUSH_PRODUCT_ON_CART(state, product) {
   state.carts.push({
     product: product,
@@ -52449,36 +52459,34 @@ var PUSH_PRODUCT_ON_CART = function PUSH_PRODUCT_ON_CART(state, product) {
 var CHANGE_QUANTITY = function CHANGE_QUANTITY(state, _ref) {
   var cartIndex = _ref.cartIndex,
       cartQty = _ref.cartQty;
-  // state.carts[cartIndex].quantity = 
-  console.log(cartQty); // state.allPrice.push(state.carts[cartIndex].price)
+  state.carts[cartIndex].quantity = cartQty;
+  console.log(cartQty);
+  state.carts[cartIndex].price = state.carts[cartIndex].product.prix * state.carts[cartIndex].quantity; // state.allPrice.push(state.carts[cartIndex].price)
 };
 var DELETE_ON_CART = function DELETE_ON_CART(state, cartIndex) {
   state.carts.splice(cartIndex, 1);
-};
+}; // incrementer la quantiter
+
 var INCREMENT = function INCREMENT(state, n) {
   state.carts[n].quantity++; // debugger
 
   state.carts[n].price = state.carts[n].product.prix * state.carts[n].quantity;
-};
+}; // decrementer la quantiter
+
 var DECREMENT = function DECREMENT(state, n) {
   if (state.carts[n].quantity != 1) {
     state.carts[n].quantity--;
     state.carts[n].price -= state.carts[n].product.prix;
   }
-};
+}; //calculer le prix total
+
 var COUNT_ALL = function COUNT_ALL(state) {
   // console.log(state.carts)
-  // state.carts.forEach(element => {
-  var singlePrice; // singlePrice = element.price * element.quantity
-  // state.allPrice.push(singlePrice)
-
-  for (var i = 0; i < state.carts.lengh; i++) {
-    console.log(carts[i]);
-  } // if
-  //         console.log(state.allPrice)
-  //    console.log(element.quantity, element.price) 
-  // });
-
+  var total = 0;
+  state.carts.forEach(function (element) {
+    console.log(total += element.price);
+  });
+  state.allPrice = total;
 };
 
 /***/ }),
@@ -52494,7 +52502,7 @@ var COUNT_ALL = function COUNT_ALL(state) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   carts: [],
-  allPrice: []
+  allPrice: 0
 });
 
 /***/ }),
