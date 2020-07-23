@@ -2,18 +2,20 @@
    <div>
        <h1>Mes Commandes : </h1>
        <ul class="all_orders">
-            <li v-for="order in my_order">
+            <li v-for="(order, n) in my_order" :key="n">
                 <h4>
                     Vetements et Quantiter:
+                    {{order.carts.carts}}
                 </h4>
-                <div v-for="cart in JSON.parse(order.carts)">
+                <div v-for="(cart, n) in JSON.parse(order.carts).carts" :key="n">
 
-                    <p> <em>{{cart.name}}</em></p>
-                    <p> <strong>Quantiter :</strong>  {{cart.qty}}</p>
+                    Nom du vetement : {{cart.product.name}}
+                    <p> <em>Prix de lavage du Vetement: {{cart.price}}</em></p>
+                    <p> <strong>Quantiter :</strong>  {{cart.quantity}}</p>
                     <br>
                 </div>
                 <br>
-                <p> <strong> Prix : </strong>{{order.all_prices}} f</p>
+                <p> <strong> Prix total de la commande : </strong>{{order.all_prices}} f</p>
 <!--                <p>Mon adresse de livraison et de recuperation : {{JSON.parse(order.adress_maps).long_name}}</p>-->
                <p> <strong>Type de livraison :</strong> {{order.deliverable_type}}</p>
                <p> <strong>Date de livraison :</strong>{{order.deliverable_date}}</p>
