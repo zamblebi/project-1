@@ -2692,6 +2692,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -42901,23 +42903,35 @@ var render = function() {
     _c(
       "ul",
       { staticClass: "all_orders" },
-      _vm._l(_vm.my_order, function(order) {
+      _vm._l(_vm.my_order, function(order, n) {
         return _c(
           "li",
+          { key: n },
           [
             _c("h4", [
               _vm._v(
-                "\n                    Vetements et Quantiter:\n                "
+                "\n                    Vetements et Quantiter:\n                    " +
+                  _vm._s(order.carts.carts) +
+                  "\n                "
               )
             ]),
             _vm._v(" "),
-            _vm._l(JSON.parse(order.carts), function(cart) {
-              return _c("div", [
-                _c("p", [_c("em", [_vm._v(_vm._s(cart.name))])]),
+            _vm._l(JSON.parse(order.carts).carts, function(cart, n) {
+              return _c("div", { key: n }, [
+                _vm._v(
+                  "\n\n                    Nom du vetement : " +
+                    _vm._s(cart.product.name) +
+                    "\n                    "
+                ),
+                _c("p", [
+                  _c("em", [
+                    _vm._v("Prix de lavage du Vetement: " + _vm._s(cart.price))
+                  ])
+                ]),
                 _vm._v(" "),
                 _c("p", [
                   _c("strong", [_vm._v("Quantiter :")]),
-                  _vm._v("  " + _vm._s(cart.qty))
+                  _vm._v("  " + _vm._s(cart.quantity))
                 ]),
                 _vm._v(" "),
                 _c("br")
@@ -42927,7 +42941,7 @@ var render = function() {
             _c("br"),
             _vm._v(" "),
             _c("p", [
-              _c("strong", [_vm._v(" Prix : ")]),
+              _c("strong", [_vm._v(" Prix total de la commande : ")]),
               _vm._v(_vm._s(order.all_prices) + " f")
             ]),
             _vm._v(" "),
