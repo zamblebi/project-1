@@ -5,7 +5,7 @@
             <li v-for="(order, n) in my_order" :key="n">
                 <h4>
                     Vetements et Quantiter:
-                    {{order.carts.carts}}
+                    <!-- {{order.carts.carts}} -->
                 </h4>
                 <div v-for="(cart, n) in JSON.parse(order.carts).carts" :key="n">
 
@@ -34,7 +34,6 @@
     export default {
         data(){
             return{
-
                 user: '',
                 my_order: ''
             }
@@ -43,7 +42,7 @@
             axios.get('/get-user')
                 .then(response => {
                     this.user = response.data.id
-                    console.log('la reponse est : ' + this.user)
+                    // console.log('la reponse est : ' + this.user)
                 })
                 .catch(error => console.log(error))
 
@@ -52,7 +51,7 @@
             axios.get("/get-user-order")
                 .then(response => {
                     this.my_order = response.data
-                    console.log(response.data)
+                    // console.log(response.data)
                 })
                 .catch(error => console.log(error, this.user));
         }

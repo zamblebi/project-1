@@ -2606,11 +2606,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      user: ''
+      user: '' // lastName: user.lastName,
+      // firstName: '',
+      // email: '',
+      // phone_number: '',
+
     };
   },
   mounted: function mounted() {
@@ -2619,6 +2629,20 @@ __webpack_require__.r(__webpack_exports__);
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/get-user').then(function (response) {
       _this.user = response.data;
     });
+  },
+  methods: {
+    editProfil: function editProfil() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/update/".concat(this.user.id), {
+        lastName: this.user.lastName,
+        firstName: this.user.firstName,
+        email: this.user.email,
+        phone_number: this.user.phone_number
+      }).then(function (response) {
+        return console.log(response);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    }
   }
 });
 
@@ -2706,16 +2730,14 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/get-user').then(function (response) {
-      _this.user = response.data.id;
-      console.log('la reponse est : ' + _this.user);
+      _this.user = response.data.id; // console.log('la reponse est : ' + this.user)
     })["catch"](function (error) {
       return console.log(error);
     }); // get user
     // get order
 
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/get-user-order").then(function (response) {
-      _this.my_order = response.data;
-      console.log(response.data);
+      _this.my_order = response.data; // console.log(response.data)
     })["catch"](function (error) {
       return console.log(error, _this.user);
     });
@@ -42794,26 +42816,115 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("Modifier mon Profil")]),
-    _vm._v("\n    Votre nom "),
-    _c("input", {
-      attrs: { type: "text" },
-      domProps: { value: _vm.user.lastName }
-    }),
-    _vm._v(" "),
-    _c("br"),
-    _vm._v("\n    Votre prenom "),
-    _c("input", {
-      attrs: { type: "text" },
-      domProps: { value: _vm.user.firstName }
-    }),
-    _vm._v(" "),
-    _c("br"),
-    _vm._v("\n    Votre email "),
-    _c("input", {
-      attrs: { type: "text" },
-      domProps: { value: _vm.user.email }
-    })
+    _c("form", [
+      _c("h1", [_vm._v("Modifier mon Profil")]),
+      _vm._v("\n         Votre nom "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.user.lastName,
+            expression: "user.lastName"
+          }
+        ],
+        attrs: { type: "text" },
+        domProps: { value: _vm.user.lastName },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.user, "lastName", $event.target.value)
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v("\n         Votre prenom "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.user.firstName,
+            expression: "user.firstName"
+          }
+        ],
+        attrs: { type: "text" },
+        domProps: { value: _vm.user.firstName },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.user, "firstName", $event.target.value)
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v("\n         Votre email "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.user.email,
+            expression: "user.email"
+          }
+        ],
+        attrs: { type: "text" },
+        domProps: { value: _vm.user.email },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.user, "email", $event.target.value)
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v("\n         Votre numero de telephone "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.user.phone_number,
+            expression: "user.phone_number"
+          }
+        ],
+        attrs: { type: "text" },
+        domProps: { value: _vm.user.phone_number },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.user, "phone_number", $event.target.value)
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.editProfil($event)
+            }
+          }
+        },
+        [_vm._v("Modifier")]
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -42910,9 +43021,7 @@ var render = function() {
           [
             _c("h4", [
               _vm._v(
-                "\n                    Vetements et Quantiter:\n                    " +
-                  _vm._s(order.carts.carts) +
-                  "\n                "
+                "\n                    Vetements et Quantiter:\n                    "
               )
             ]),
             _vm._v(" "),
