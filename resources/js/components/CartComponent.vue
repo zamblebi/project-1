@@ -6,12 +6,12 @@
              <!-- Voir la quantiter total -->
                 <p>Type de vetement Total : {{cltQtyAll}}</p>
                     <ul>
-                    <p>Prix : {{totalPrice}}f</p>
+                    <p>Prix : {{allPrice}}f</p>
                         <li v-for="(cart, n) in cltInCarts" :key="cart.id">
                             <!-- <div v-if="cart.qty > 0"> -->
                                 <!-- {{cart.product.prix}} -->
                                 <!-- {{cart.name}} -->
-                              {{priceClt(cart)}}f -  {{cart.product.name}} <button @click="increment(n)" type="button" > + </button> <input type="text" v-model.number="cart.quantity" @change="changeProductQuantity(cart.quantity)">  <button @click="decrement(n)" type="button" > - </button>
+                              {{priceClt(cart)}}f -  {{cart.product.name}} <button @click="increment(n)" type="button" > + </button> <input type="text" v-model.number="cart.quantity">  <button @click="decrement(n)" type="button" > - </button>
                                 <a type="button" @click="removeOnCart(n)" ><i class="fa fa-remove"></i></a>
                             <!-- </div> -->
                             <!-- {{debugger}} -->
@@ -31,7 +31,7 @@
 
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
     // console.log(ctlInCarts)
     // console.log(priceClt(n))
 export default {
@@ -41,8 +41,11 @@ export default {
             }
     },
     computed: {...mapGetters(
-        'carts', ['priceClt', 'totalPrice']
-    ) },
+        'carts', ['priceClt', 'totalPrice','getAllCarts']
+    ),
+    ...mapState(
+        'carts', ['allPrice']
+    )},
     props: ['cltQtyAll','cltInCarts'],
     methods: mapActions(
         'carts', ['changeProductQuantity', 'removeOnCart', 'increment', 'decrement', 'count']
