@@ -5,13 +5,13 @@
             <strong>
              <!-- Voir la quantiter total -->
                 <p>Type de vetement Total : {{cltQtyAll}}</p>
-                    <p>Prix : f</p>
                     <ul>
+                    <p>Prix : {{totalPrice}}f</p>
                         <li v-for="(cart, n) in cltInCarts" :key="cart.id">
                             <!-- <div v-if="cart.qty > 0"> -->
                                 <!-- {{cart.product.prix}} -->
                                 <!-- {{cart.name}} -->
-                              {{cart.product.prix * cart.quantity != 0 ? cart.product.prix * cart.quantity : '' }}f -  {{cart.product.name}} <input type="number" v-model="cart.quantity" @input="changeProductQuantity({cart,n})">
+                              {{priceClt(cart)}}f -  {{cart.product.name}} <button @click="increment(n)" type="button" > + </button> <input type="text" v-model.number="cart.quantity" @change="changeProductQuantity(cart.quantity)">  <button @click="decrement(n)" type="button" > - </button>
                                 <a type="button" @click="removeOnCart(n)" ><i class="fa fa-remove"></i></a>
                             <!-- </div> -->
                             <!-- {{debugger}} -->
@@ -21,6 +21,7 @@
                     </ul>
             </strong>
 
+                <button @click="count" class="btn">Calculer</button>
 
             <hr>
             <router-link to="/order-deliverable" class="btn" >Passer une commande</router-link>
@@ -30,17 +31,21 @@
 
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
     // console.log(ctlInCarts)
+    // console.log(priceClt(n))
 export default {
     data(){
         return {
-
-        }
+            
+            }
     },
+    computed: {...mapGetters(
+        'carts', ['priceClt', 'totalPrice']
+    ) },
     props: ['cltQtyAll','cltInCarts'],
     methods: mapActions(
-        'carts', ['changeProductQuantity', 'removeOnCart']
+        'carts', ['changeProductQuantity', 'removeOnCart', 'increment', 'decrement', 'count']
     )
 }
 </script>
