@@ -53,5 +53,5 @@ export const INITIALISE_STORE = (state) => {
             Object.assign(state, JSON.parse(localStorage.getItem('store')))
         )
     }
-    console.log(JSON.parse(localStorage.getItem('store')).carts)
+    console.log([JSON.parse(localStorage.getItem('store')).carts])
 }

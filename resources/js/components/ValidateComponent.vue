@@ -38,11 +38,11 @@ export default {
     data(){
         return{
             adressMaps: localStorage.adressMaps,
-            allPrice: localStorage.totalPrice,
+            allPrice: JSON.parse(localStorage.getItem('store')).carts.allPrice,
             deliverableType: localStorage.deliverableType,
             dateChoose: localStorage.dateStored,
             adress_details: localStorage.allOtherAdress,
-            carts: localStorage.getItem('carts'),
+            carts: JSON.parse(localStorage.getItem('store')).carts,
             user_id : '',
         }
     },
@@ -58,7 +58,7 @@ export default {
         orderStore(){
             axios.post('/order/commander/',{
                 user_id: this.user_id,
-                carts: this.carts,
+                carts: JSON.stringify(this.carts),
                 adress_maps: this.adressMaps,
                 adress_details: this.adress_details,
                 deliverable_date: this.dateChoose,
