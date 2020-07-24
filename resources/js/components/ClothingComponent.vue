@@ -75,6 +75,8 @@
       text-align: center;
   } 
   .list-clothing{
+      @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap');
+       font-family: 'Quicksand', sans-serif;;
       li{
               border-radius: 7px;
     background-color: #d650471f;
@@ -103,11 +105,25 @@
           }
       }
   }
-  @media(max-width: 800px){
+  @media(max-width: 900px){
+     .carts_list_clothing{
+         margin: 0 15px;
+     } 
       .list-clothing{
+          overflow: hidden !important;
           li{
-              width: 90%;
+              width: 80%;
           }
+      }
+  }
+  @media(max-width: 420px){
+      .btn{
+          font-size: .7rem;
+        padding: 0.7rem 1.4rem !important;
+      }
+      .info_clothing{
+          padding-left: 10px ;
+          font-size: .7rem;
       }
   }
 </style>
