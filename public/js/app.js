@@ -2586,8 +2586,12 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    if (localStorage.deliverableType) {
+    if (localStorage.deliverableType == 'Express') {
       this.allPrice *= 2;
+    } else if (localStorage.deliverableType == 'Simple') {
+      if (this.allPrice > 5000) {
+        this.allPrice += 1000;
+      }
     }
 
     this.details_adress = localStorage.details_adress;
