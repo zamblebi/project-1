@@ -1,10 +1,14 @@
 <template>
     <div class="success-order">
-        <h1>Commander effectuez !</h1>
+        <transition name="fade">
+            <img  :src="'/icons/check.svg'" alt="check">
+        </transition>
         <br>
-        <img :src="'/icons/check.svg'" alt="check">
+        <h1>Commande effectuez !</h1>
         <br>
         <router-link class="btn" to="home/my-order-list">Continuer</router-link>
+        <!-- <div class="loader"></div> -->
+        <div class="space"></div>
     </div>
 </template>
 
@@ -13,14 +17,24 @@
         name: "SuccesComponent.vue",
         data(){
             return{
-
+                show: false
                 // img_src = ''
             }
+        },
+        mounted(){
+            setTimeout(()=> {
+                this.show = true
+
+            },1000)
         }
+
     }
 </script>
 
 <style lang="scss">
+    .space{
+        margin-bottom: 150px;
+    }
     .success-order{
         text-align: center;
         img{
@@ -28,4 +42,5 @@
             padding-bottom: 30px;
         }
     }
+       
 </style>

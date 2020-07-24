@@ -20,7 +20,11 @@
     <h3 v-if="!user_id">Veillez vous connecter sinon votre commande ne sera pas valide</h3>
 <!--    {{user_id}}-->
     <!-- Post al -->
-    <h3 v-if="!carts">Aucun vetement n'a ete choisi</h3>
+    <span v-if="allPrice == 0">
+        <h3 >Veillez calculer votre commande dans <router-link to="/order">Le panier</router-link></h3>
+            ou
+        <h3>Aucun vetement n'a ete choisi</h3>
+    </span>
     <h3 v-if="!deliverableType">Veillez Choisir un type de livraison</h3>
     <h3 v-if="!dateChoose">Veillez Choisir une date de recuperation</h3>
     <!-- <div>

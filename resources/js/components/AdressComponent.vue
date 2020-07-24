@@ -26,7 +26,7 @@
         <br>
         <div class="button">
             
-            <div class="router" >
+            <div class="router" v-if="mapsPosition">
                 <router-link to="/order-validate" class="btn" >Continuer</router-link>
             </div>
         </div>
@@ -42,6 +42,7 @@ export default {
             details_lieu: '',
             other_details: '',
             // checkedLieu: '',
+            mapsPosition: '',
             adress: localStorage.adress,
             selected: "Domicile",
             options: [
@@ -59,7 +60,12 @@ export default {
         if(localStorage.details_lieu){
               localStorage.details_lieu = this.details_lieu
         }
+        if(localStorage.adressMaps){
+            this.mapsPosition = localStorage.adressMaps
+            
+        }
     },
+    
     mounted(){
         
         if(localStorage.adressMaps){
