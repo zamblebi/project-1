@@ -2064,6 +2064,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
  // console.log(ctlInCarts)
 // console.log(priceClt(n))
 
@@ -2907,7 +2910,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".qty_ {\n  width: 20px;\n  height: 23px;\n}\n.btn_button {\n  display: inline-block;\n  border: none;\n  border-radius: 7px;\n  padding: 5px 10px;\n  margin: 0;\n  text-decoration: none;\n  background: #D65047;\n  color: #ffffff;\n  font-family: sans-serif;\n  font-size: 1rem;\n  cursor: pointer;\n  text-align: center;\n  transition: background 250ms ease-in-out, transform 150ms ease;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n}\n.btn_button:hover {\n  background: #b8524b;\n}\n.btn_button:focus {\n  background: #b8524b;\n  outline: 1px solid #fff;\n  outline-offset: -4px;\n}\n.btn_button:active {\n  transform: scale(0.99);\n}\n.all_price {\n  padding-top: 5px;\n}\n.clothing_list {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n}\n.clothing_list li {\n  padding: 3px 0 !important;\n}\n@media (max-width: 800px) {\n.all_clothing_list {\n    display: grid;\n    place-items: center;\n}\n.all_clothing_list .clothing_list {\n    padding-left: 0;\n}\n.all_clothing_list .clothing_list li {\n    padding: 3px 0 !important;\n}\n}", ""]);
+exports.push([module.i, ".qty_ {\n  width: 20px;\n  height: 23px;\n}\n.btn_button {\n  display: inline-block;\n  border: none;\n  border-radius: 7px;\n  padding: 5px 10px;\n  margin: 0;\n  text-decoration: none;\n  background: #D65047;\n  color: #ffffff;\n  font-family: sans-serif;\n  font-size: 1rem;\n  cursor: pointer;\n  text-align: center;\n  transition: background 250ms ease-in-out, transform 150ms ease;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n}\n.btn_button:hover {\n  background: #b8524b;\n}\n.btn_button:focus {\n  background: #b8524b;\n  outline: 1px solid #fff;\n  outline-offset: -4px;\n}\n.btn_button:active {\n  transform: scale(0.99);\n}\n.all_price {\n  padding-top: 5px;\n}\n.clothing_list {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n}\n.clothing_list li {\n  padding: 3px 0 !important;\n}\n.carts_list_clothing {\n  padding: 40px 20px;\n  color: #fff;\n  border-radius: 7px;\n  background-color: #8C4452;\n}\n@media (max-width: 800px) {\n.all_clothing_list {\n    display: grid;\n    place-items: center;\n}\n.all_clothing_list .clothing_list {\n    padding-left: 0;\n}\n.all_clothing_list .clothing_list li {\n    padding: 3px 0 !important;\n}\n}", ""]);
 
 // exports
 
@@ -2923,10 +2926,10 @@ exports.push([module.i, ".qty_ {\n  width: 20px;\n  height: 23px;\n}\n.btn_butto
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
-
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap);", ""]);
 
 // module
-exports.push([module.i, ".clothing-title {\n  text-align: center;\n}\n.list-clothing li {\n  border-radius: 7px;\n  background-color: #d650471f;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: nowrap;\n  width: 70%;\n  margin: 10px 0;\n  padding: 20px 10px !important;\n}\n.list-clothing li img {\n  width: 72px !important;\n}\n.list-clothing .clothing_info {\n  display: flex;\n  align-items: center;\n}\n.list-clothing .clothing_info h3 {\n  margin: 0;\n}\n.list-clothing .clothing_info .info_clothing {\n  padding-left: 15px;\n}\n@media (max-width: 800px) {\n.list-clothing li {\n    width: 90%;\n}\n}", ""]);
+exports.push([module.i, ".clothing-title {\n  text-align: center;\n}\n.list-clothing {\n  font-family: \"Quicksand\", sans-serif;\n}\n.list-clothing li {\n  border-radius: 7px;\n  background-color: #d650471f;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: nowrap;\n  width: 70%;\n  margin: 10px 0;\n  padding: 20px 10px !important;\n}\n.list-clothing li img {\n  width: 72px !important;\n}\n.list-clothing .clothing_info {\n  display: flex;\n  align-items: center;\n}\n.list-clothing .clothing_info h3 {\n  margin: 0;\n}\n.list-clothing .clothing_info .info_clothing {\n  padding-left: 15px;\n}\n@media (max-width: 900px) {\n.carts_list_clothing {\n    margin: 0 15px;\n}\n.list-clothing {\n    overflow: hidden !important;\n}\n.list-clothing li {\n    width: 80%;\n}\n}\n@media (max-width: 420px) {\n.btn {\n    font-size: 0.7rem;\n    padding: 0.7rem 1.4rem !important;\n}\n.info_clothing {\n    padding-left: 10px;\n    font-size: 0.7rem;\n}\n}", ""]);
 
 // exports
 
@@ -42368,111 +42371,117 @@ var render = function() {
     [
       _c("h3", [_vm._v("Estimation du prix (hors livraison)")]),
       _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("strong", [
-        _c("p", [_vm._v("Type de vetement Total : " + _vm._s(_vm.cltQtyAll))]),
-        _vm._v(" "),
-        _c("div", { staticClass: "all_clothing_list" }, [
-          _c("p", { staticClass: "all_price" }, [
-            _vm._v("Prix : " + _vm._s(_vm.allPrice) + "f")
+      _c("div", { staticClass: "carts_list_clothing" }, [
+        _c("strong", [
+          _c("p", [
+            _vm._v("Type de vetement Total : " + _vm._s(_vm.cltQtyAll))
           ]),
           _vm._v(" "),
-          _c(
-            "ul",
-            { staticClass: "clothing_list" },
-            _vm._l(_vm.cltInCarts, function(cart, n) {
-              return _c("li", { key: cart.id }, [
-                _vm._v(
-                  "\n                            " +
-                    _vm._s(_vm.priceClt(cart)) +
-                    "f -  " +
-                    _vm._s(cart.product.name) +
-                    " \n                            "
-                ),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn_button",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        return _vm.increment(n)
-                      }
-                    }
-                  },
-                  [_vm._v(" + ")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
+          _c("div", { staticClass: "all_clothing_list" }, [
+            _c("p", { staticClass: "all_price" }, [
+              _vm._v("Prix : " + _vm._s(_vm.allPrice) + "f")
+            ]),
+            _vm._v(" "),
+            _c(
+              "ul",
+              { staticClass: "clothing_list" },
+              _vm._l(_vm.cltInCarts, function(cart, n) {
+                return _c("li", { key: cart.id }, [
+                  _vm._v(
+                    "\n                                " +
+                      _vm._s(_vm.priceClt(cart)) +
+                      "f -  " +
+                      _vm._s(cart.product.name) +
+                      " \n                                "
+                  ),
+                  _c(
+                    "button",
                     {
-                      name: "model",
-                      rawName: "v-model.number",
-                      value: cart.quantity,
-                      expression: "cart.quantity",
-                      modifiers: { number: true }
-                    }
-                  ],
-                  staticClass: "qty_",
-                  attrs: { type: "text" },
-                  domProps: { value: cart.quantity },
-                  on: {
-                    input: [
-                      function($event) {
-                        if ($event.target.composing) {
-                          return
+                      staticClass: "btn_button",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.increment(n)
                         }
-                        _vm.$set(cart, "quantity", _vm._n($event.target.value))
-                      },
-                      function($event) {
-                        return _vm.changeProductQuantity({ cart: cart, n: n })
+                      }
+                    },
+                    [_vm._v(" + ")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model.number",
+                        value: cart.quantity,
+                        expression: "cart.quantity",
+                        modifiers: { number: true }
                       }
                     ],
-                    blur: function($event) {
-                      return _vm.$forceUpdate()
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn_button",
-                    attrs: { type: "button" },
+                    staticClass: "qty_",
+                    attrs: { type: "text" },
+                    domProps: { value: cart.quantity },
                     on: {
-                      click: function($event) {
-                        return _vm.decrement(n)
+                      input: [
+                        function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            cart,
+                            "quantity",
+                            _vm._n($event.target.value)
+                          )
+                        },
+                        function($event) {
+                          return _vm.changeProductQuantity({ cart: cart, n: n })
+                        }
+                      ],
+                      blur: function($event) {
+                        return _vm.$forceUpdate()
                       }
                     }
-                  },
-                  [_vm._v(" - ")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        return _vm.removeOnCart(n)
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn_button",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.decrement(n)
+                        }
                       }
-                    }
-                  },
-                  [_c("i", { staticClass: "fa fa-remove" })]
-                )
-              ])
-            }),
-            0
-          )
+                    },
+                    [_vm._v(" - ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.removeOnCart(n)
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fa fa-remove" })]
+                  )
+                ])
+              }),
+              0
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn", on: { click: _vm.count } }, [
+          _vm._v("Calculer")
         ])
       ]),
       _vm._v(" "),
-      _c("button", { staticClass: "btn", on: { click: _vm.count } }, [
-        _vm._v("Calculer")
-      ]),
-      _vm._v(" "),
-      _c("hr"),
+      _c("br"),
       _vm._v(" "),
       _c(
         "router-link",
@@ -42860,7 +42869,7 @@ var render = function() {
             inline: true,
             color: "#D65047",
             "button-now-translation": "Maintenant",
-            format: "DD-MM-YYYY HH:mm"
+            format: "DD-MM-YYYY"
           },
           model: {
             value: _vm.date,

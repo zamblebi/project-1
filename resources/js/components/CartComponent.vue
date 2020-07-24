@@ -1,37 +1,40 @@
 <template>
     <div>
             <h3>Estimation du prix (hors livraison)</h3>
-            <hr>
-            <strong>
-             <!-- Voir la quantiter total -->
-             
-                <p>Type de vetement Total : {{cltQtyAll}}</p>
+            <!-- <hr> -->
+            <div class="carts_list_clothing">
+                <strong>
+                <!-- Voir la quantiter total -->
+                
+                    <p>Type de vetement Total : {{cltQtyAll}}</p>
 
-                    <div class="all_clothing_list">
+                        <div class="all_clothing_list">
 
-                        <p class="all_price">Prix : {{allPrice}}f</p>
-                        <ul class="clothing_list">
-                            <li v-for="(cart, n) in cltInCarts" :key="cart.id">
-                                <!-- <div v-if="cart.qty > 0"> -->
-                                    <!-- {{cart.product.prix}} -->
-                                    <!-- {{cart.name}} -->
-                                {{priceClt(cart)}}f -  {{cart.product.name}} 
-                                <button class="btn_button" @click="increment(n)" type="button" > + </button>
-                                    <input  type="text" class="qty_" v-model.number="cart.quantity" @input="changeProductQuantity({cart, n})"> 
-                                <button class="btn_button" @click="decrement(n)" type="button" > - </button>
-                                <a type="button" @click="removeOnCart(n)" ><i class="fa fa-remove"></i></a>
-                                <!-- </div> -->
-                                    <!-- {{debugger}} -->
-                            <!-- <button >Change</button> -->
+                            <p class="all_price">Prix : {{allPrice}}f</p>
+                            <ul class="clothing_list">
+                                <li v-for="(cart, n) in cltInCarts" :key="cart.id">
+                                    <!-- <div v-if="cart.qty > 0"> -->
+                                        <!-- {{cart.product.prix}} -->
+                                        <!-- {{cart.name}} -->
+                                    {{priceClt(cart)}}f -  {{cart.product.name}} 
+                                    <button class="btn_button" @click="increment(n)" type="button" > + </button>
+                                        <input  type="text" class="qty_" v-model.number="cart.quantity" @input="changeProductQuantity({cart, n})"> 
+                                    <button class="btn_button" @click="decrement(n)" type="button" > - </button>
+                                    <a type="button" @click="removeOnCart(n)" ><i class="fa fa-remove"></i></a>
+                                    <!-- </div> -->
+                                        <!-- {{debugger}} -->
+                                <!-- <button >Change</button> -->
 
-                            </li>
-                    </ul>
-                    </div>
-            </strong>
+                                </li>
+                        </ul>
+                        </div>
+                </strong>
 
                 <button @click="count" class="btn">Calculer</button>
 
-            <hr>
+            </div>
+            <!-- <hr> -->
+            <br>
             <router-link to="/order-deliverable" class="btn" >Passer une commande</router-link>
         <!-- <a href="#" class="btn">Passer la commande</a> -->
         </div>
@@ -111,6 +114,13 @@ $orange-bold: #b8524b;
          padding: 3px 0 !important;
 
      }
+ }
+ .carts_list_clothing{
+    padding: 40px 20px;
+    color: #fff;
+    border-radius: 7px;
+    background-color: #8C4452;
+
  }
  @media(max-width: 800px){
      .all_clothing_list{
