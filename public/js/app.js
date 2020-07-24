@@ -3067,7 +3067,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".space {\n  margin-bottom: 150px;\n}\n.success-order {\n  text-align: center;\n}\n.success-order img {\n  width: 200px;\n  padding-bottom: 30px;\n}", ""]);
+exports.push([module.i, ".space {\n  margin-bottom: 150px;\n}\n.success-order {\n  margin-top: 50px;\n  text-align: center;\n}\n.success-order img {\n  width: 200px;\n  padding-bottom: 30px;\n}", ""]);
 
 // exports
 

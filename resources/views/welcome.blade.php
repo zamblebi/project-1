@@ -93,7 +93,7 @@
                         <li>
                             <img src="/icons/quality.svg" alt="">
                             <div class="details">
-                                <p class="small-title">40 ans de qualitél</p>
+                                <p class="small-title">10 ans de qualité</p>
                                 <p class="small-details">
                                     Pressing haute qualité depuis 40 ans.
                                     Maintenant profitez de nos services, sans vous déplacer !
@@ -118,28 +118,24 @@
             {{-- Section command  --}}
             <section>
                 <div class="commands">
-                    <h1 class="title">Nos tarifs</h1>
+                    <h1 class="title">Nos services</h1>
                     <div class="details">
                         <ul>
                             <li>
                                 <img src="/icons/tshirt.svg" alt="">
-                                <p class="name-article">Chemise pliée</p>
-                                <h4 class="prices">500 f</h4>
-                            </li>
-                            <li>
-                                <img src="/icons/uniform.svg" alt="">
-                                <p class="name-article">Costume</p>
-                                <h4 class="prices"> 2000 f</h4>
+                                <p class="name-article">Pressing</p>
                             </li>
                             <li>
                                 <img src="/icons/suit.svg" alt="">
-                                <p class="name-article">Veste</p>
-                                <h4 class="prices">1000 f</h4>
+                                <p class="name-article">Laverie</p>
+                            </li>
+                            <li>
+                                <img src="/icons/uniform.svg" alt="">
+                                <p class="name-article">Repassage</p>
                             </li>
                             <li>
                                 <img src="/icons/sneakers.svg" alt="">
-                                <p class="name-article">Sneakers</p>
-                                <h4 class="prices">300 f</h4>
+                                <p class="name-article">Netoyage Chaussure</p>
                             </li>
                         </ul>
                     </div>
