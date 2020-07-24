@@ -2128,6 +2128,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2919,7 +2926,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".clothing-title {\n  text-align: center;\n}\n.list-clothing li {\n  padding: 20px 10px !important;\n}\n.list-clothing li img {\n  width: 132px !important;\n}", ""]);
+exports.push([module.i, ".clothing-title {\n  text-align: center;\n}\n.list-clothing li {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: nowrap;\n  width: 70%;\n  padding: 20px 10px !important;\n}\n.list-clothing li img {\n  width: 72px !important;\n}\n.list-clothing .clothing_info {\n  display: flex;\n  align-items: center;\n}\n.list-clothing .clothing_info h3 {\n  margin: 0;\n}\n.list-clothing .clothing_info .info_clothing {\n  padding-left: 15px;\n}\n@media (max-width: 800px) {\n.list-clothing li {\n    width: 90%;\n}\n}", ""]);
 
 // exports
 
@@ -42512,22 +42519,26 @@ var render = function() {
           { staticClass: "list-clothing" },
           _vm._l(_vm.products, function(product) {
             return _c("li", { key: product.id }, [
-              _c("img", {
-                attrs: { src: "/icons/" + product.icon + ".svg", alt: "" }
-              }),
-              _vm._v(" "),
-              _c("h3", [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(product.name) +
-                    "\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", [
-                _c("em", [_vm._v(_vm._s(product.prix) + "f")]),
+              _c("div", { staticClass: "clothing_info" }, [
+                _c("img", {
+                  attrs: { src: "/icons/" + product.icon + ".svg", alt: "" }
+                }),
                 _vm._v(" "),
-                _c("br")
+                _c("div", { staticClass: "info_clothing" }, [
+                  _c("h3", [
+                    _vm._v(
+                      "\n                                    " +
+                        _vm._s(product.name) +
+                        "\n                                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("em", [_vm._v(_vm._s(product.prix) + "f")]),
+                    _vm._v(" "),
+                    _c("br")
+                  ])
+                ])
               ]),
               _vm._v(" "),
               _c("br"),
