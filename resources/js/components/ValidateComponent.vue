@@ -55,10 +55,21 @@ export default {
     },
     created(){
 
+        if(localStorage.deliverableType == 'Express'){
+           this.allPrice *= 2
+        }else if(localStorage.deliverableType == 'Simple'){
+            if(this.allPrice > 5000){
+                this.allPrice += 1000
+            }
+        }
+
         this.details_adress = localStorage.details_adress 
         this.details_lieu = localStorage.details_lieu 
     },
+    
     mounted(){
+
+
         axios.get('/get-user').then(response => {
             this.user_id = response.data.id
             console.log(response.data)

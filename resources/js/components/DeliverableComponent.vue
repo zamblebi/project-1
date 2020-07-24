@@ -21,8 +21,12 @@
                         </strong>
                     </div>
                     <div class="frais">
-
-                        <h4>Frais de transport : </h4> <em> {{deliverablePrices.simple}} f </em>
+                            <span v-if="deliverablePrices.simple == 'Gratuit' ">
+                                <h4>Frais de transport Gratuit</h4>
+                            </span>
+                            <span v-if="deliverablePrices.simple != 'Gratuit'" class="simple_del">
+                                 <h4 >Frais de transport : </h4> <em> {{deliverablePrices.simple}} f </em>
+                            </span>
 
                     </div>
                     <router-link to="/order-slots" @click.native="addDeliverable('Simple')" class="btn">Sélectionner</router-link>
@@ -38,7 +42,8 @@
                             </strong>
                         </div>
                         <div class="frais">
-                            <h4>Frais de transport : </h4> <em> {{deliverablePrices.express}} f </em>
+                            
+                            <em> {{deliverablePrices.express}}f x 2 </em>
                         </div>
                         <router-link to="/order-slots" @click.native="addDeliverable('Express')" class="btn">Sélectionner</router-link>
                     </div>
@@ -57,7 +62,7 @@ export default {
     data(){
         return{
             deliverablePrices : {
-                simple : 1000,
+                simple : 'Gratuit',
                 express: 5000
             },
             deliverableType: '',
@@ -66,6 +71,12 @@ export default {
     },
     mounted(){
         this.viewDeliverable()
+        if(localStorage.getItem('store')){
+            if(JSON.parse(localStorage.getItem('store')).carts.allPrice > 5000){
+                this.deliverablePrices.simple = 1000 
+            }
+            this.deliverablePrices.express = JSON.parse(localStorage.getItem('store')).carts.allPrice
+        }
     },
     methods: {
         addDeliverable(type){
@@ -97,5 +108,8 @@ export default {
 }
 .delivery-title{
     margin: 0;
+}
+.simple_del{
+    display: flex;
 }
 </style>
