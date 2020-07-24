@@ -2226,11 +2226,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       deliverablePrices: {
-        simple: 1000,
+        simple: 'Gratuit',
         express: 5000
       },
       deliverableType: '' // typeD : ''
@@ -2239,6 +2244,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.viewDeliverable();
+
+    if (localStorage.getItem('store')) {
+      if (JSON.parse(localStorage.getItem('store')).carts.allPrice > 5000) {
+        this.deliverablePrices.simple = 1000;
+      }
+
+      this.deliverablePrices.express = JSON.parse(localStorage.getItem('store')).carts.allPrice;
+    }
   },
   methods: {
     addDeliverable: function addDeliverable(type) {
@@ -2573,6 +2586,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
+    if (localStorage.deliverableType) {
+      this.allPrice *= 2;
+    }
+
     this.details_adress = localStorage.details_adress;
     this.details_lieu = localStorage.details_lieu;
   },
@@ -2948,7 +2965,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".display_subtitle {\n  text-align: center;\n  margin-top: 0;\n  padding-bottom: 20px;\n}\n.delivery-title {\n  margin: 0;\n}", ""]);
+exports.push([module.i, ".display_subtitle {\n  text-align: center;\n  margin-top: 0;\n  padding-bottom: 20px;\n}\n.delivery-title {\n  margin: 0;\n}\n.simple_del {\n  display: flex;\n}", ""]);
 
 // exports
 
@@ -42630,11 +42647,23 @@ var render = function() {
               _vm._m(0),
               _vm._v(" "),
               _c("div", { staticClass: "frais" }, [
-                _c("h4", [_vm._v("Frais de transport : ")]),
+                _vm.deliverablePrices.simple == "Gratuit"
+                  ? _c("span", [
+                      _c("h4", [_vm._v("Frais de transport Gratuit")])
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
-                _c("em", [
-                  _vm._v(" " + _vm._s(_vm.deliverablePrices.simple) + " f ")
-                ])
+                _vm.deliverablePrices.simple != "Gratuit"
+                  ? _c("span", { staticClass: "simple_del" }, [
+                      _c("h4", [_vm._v("Frais de transport : ")]),
+                      _vm._v(" "),
+                      _c("em", [
+                        _vm._v(
+                          " " + _vm._s(_vm.deliverablePrices.simple) + " f "
+                        )
+                      ])
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c(
@@ -42670,10 +42699,8 @@ var render = function() {
               _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "frais" }, [
-                _c("h4", [_vm._v("Frais de transport : ")]),
-                _vm._v(" "),
                 _c("em", [
-                  _vm._v(" " + _vm._s(_vm.deliverablePrices.express) + " f ")
+                  _vm._v(" " + _vm._s(_vm.deliverablePrices.express) + "f x 2 ")
                 ])
               ]),
               _vm._v(" "),
