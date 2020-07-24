@@ -757,7 +757,14 @@ body {
 }
 
 .commands .details .name-article {
-  color: #D65047;
+  color: rgba(24, 22, 22, 0.616);
+}
+
+.commands .details li {
+  background-color: #d650471f;
+  border-radius: 7px;
+  padding: 20px 0px;
+  margin: 10px 10px;
 }
 
 .commands ul {
@@ -807,7 +814,9 @@ body {
 }
 
 .feedback .comments ul li {
-  border: 2px solid #2e425562;
+  background-color: #1c2d34;
+  color: #fff;
+  border-radius: 7px;
   padding: 30px 20px;
   margin: 10px;
 }
@@ -821,14 +830,15 @@ body {
 }
 
 .contact-us {
-  background-color: #343A40;
+  color: #1c2d34;
+  background-color: #fff;
   padding: 40px;
   text-align: center;
 }
 
 .contact-us .ct-us {
-  color: #ffff;
-  border-bottom: 2px solid #D65047;
+  color: #1c2d34;
+  border-bottom: 2px solid #333;
   font-weight: bold;
   font-family: sans-serif;
   border-width: 1px;
@@ -867,6 +877,11 @@ body {
 }
 
 footer {
+  background-color: #1c2d34;
+  width: 100%;
+  text-align: center;
+  color: #ffff;
+  padding: 50px 0;
   width: 100%;
   text-align: center;
 }
@@ -899,7 +914,7 @@ ul {
 }
 
 .social-networks li a i {
-  color: black;
+  color: #fff;
 }
 
 .slide-wrapper {

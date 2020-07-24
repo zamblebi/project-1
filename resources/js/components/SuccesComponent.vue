@@ -36,6 +36,7 @@
         margin-bottom: 150px;
     }
     .success-order{
+        margin-top: 50px;
         text-align: center;
         img{
             width: 200px;
