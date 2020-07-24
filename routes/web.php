@@ -92,3 +92,20 @@ Route::get('/get-user', 'OrdersController@getUser');
 
 Route::get('change-password','ChangePasswordController@index');
 Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
+
+
+
+//Category
+Route::get('dashboard/category', 'CategoryController@create')->name('category');
+
+//add new category
+Route::post('dashboard/category/add', 'CategoryController@store')->name('add-category');
+
+//remove category
+Route::post('dashboard/category/remove/{id}', 'CategoryController@destroy')->name('remove-category');
+
+//edit category
+Route::get('dashboard/category/edit/{id}', 'CategoryController@edit')->name('edit-category');
+
+//Update
+Route::post('dashboard/category/update/{id}', 'CategoryController@update')->name('update-category');
