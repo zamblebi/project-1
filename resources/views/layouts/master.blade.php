@@ -107,6 +107,7 @@
           <a class="collapse-item" href="{{url('/home')}}">Mon profile utilisateur</a>
           <a class="collapse-item" href="{{url('/')}}">Acceuil</a>
           <a class="collapse-item" href="{{url('/dashboard/clothing')}}">Ajouter des vetements</a>
+          <a class="collapse-item" href="{{url('/dashboard/category')}}">Ajouter des Catégories</a>
             {{-- <a class="collapse-item" href="register.html">Register</a> --}}
             {{-- <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
             <div class="collapse-divider"></div>

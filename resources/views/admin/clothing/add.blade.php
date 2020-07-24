@@ -39,6 +39,16 @@
             <option value="suit">Costume</option>
         </select>
     </div>
+    <div class="form-group">
+      <label>Choisir une categorie *</label>
+      <select class="custom-select" name="category_id" id="">
+        @foreach ($categories as $category)
+        <option value="{{ $category->id }}">
+          {{ $category->name }}
+        </option>
+        @endforeach
+      </select>
+    </div>
   <div class="form-group">
         <button class="btn btn-primary">Ajouter</button>
   </div>

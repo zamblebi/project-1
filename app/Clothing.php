@@ -12,10 +12,16 @@ class Clothing extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'prix', 'icon'];
+    protected $fillable = ['name', 'prix', 'icon', 'category_id'];
 
     public function orders()
     {
         return $this->belongsToMany('App\Order');
+    }
+
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
     }
 }

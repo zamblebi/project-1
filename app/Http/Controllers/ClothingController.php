@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Clothing;
+use App\Category;
 use Session;
 use App\Cart;
 
@@ -31,7 +32,8 @@ class ClothingController extends Controller
     {
         $clothings = Clothing::orderBy('id','desc')->get();
         // $clothing->all();
-        return view('admin.clothing.add', ['clothings' => $clothings]); 
+        $categories = Category::all();
+        return view('admin.clothing.add', ['clothings' => $clothings, 'categories' => $categories]); 
     //    return view('admin.clothing.add'); 
     }
 
