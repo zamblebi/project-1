@@ -42899,8 +42899,24 @@ var render = function() {
             locale: "fr",
             inline: true,
             color: "#D65047",
+            minuteInterval: "30",
+            "disabled-hours": [
+              "00",
+              "01",
+              "02",
+              "03",
+              "04",
+              "05",
+              "06",
+              "07",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23"
+            ],
             "button-now-translation": "Maintenant",
-            format: "DD-MM-YYYY"
+            format: "DD-MM-YYYY HH:mm"
           },
           model: {
             value: _vm.date,
