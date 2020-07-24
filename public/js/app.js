@@ -2926,7 +2926,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".clothing-title {\n  text-align: center;\n}\n.list-clothing li {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: nowrap;\n  width: 70%;\n  padding: 20px 10px !important;\n}\n.list-clothing li img {\n  width: 72px !important;\n}\n.list-clothing .clothing_info {\n  display: flex;\n  align-items: center;\n}\n.list-clothing .clothing_info h3 {\n  margin: 0;\n}\n.list-clothing .clothing_info .info_clothing {\n  padding-left: 15px;\n}\n@media (max-width: 800px) {\n.list-clothing li {\n    width: 90%;\n}\n}", ""]);
+exports.push([module.i, ".clothing-title {\n  text-align: center;\n}\n.list-clothing li {\n  border-radius: 7px;\n  background-color: #d650471f;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: nowrap;\n  width: 70%;\n  margin: 10px 0;\n  padding: 20px 10px !important;\n}\n.list-clothing li img {\n  width: 72px !important;\n}\n.list-clothing .clothing_info {\n  display: flex;\n  align-items: center;\n}\n.list-clothing .clothing_info h3 {\n  margin: 0;\n}\n.list-clothing .clothing_info .info_clothing {\n  padding-left: 15px;\n}\n@media (max-width: 800px) {\n.list-clothing li {\n    width: 90%;\n}\n}", ""]);
 
 // exports
 

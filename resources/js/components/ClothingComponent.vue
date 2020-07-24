@@ -76,12 +76,15 @@
   } 
   .list-clothing{
       li{
+              border-radius: 7px;
+    background-color: #d650471f;
       display: flex;
       align-items: center;
       justify-content: space-between;
     flex-wrap: nowrap;
 
     width: 70%;
+    margin: 10px 0;
           padding: 20px 10px !important;
           img{
               width: 72px !important;
