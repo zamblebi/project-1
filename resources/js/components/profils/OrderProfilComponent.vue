@@ -19,6 +19,7 @@
 <!--                <p>Mon adresse de livraison et de recuperation : {{JSON.parse(order.adress_maps).long_name}}</p>-->
                <p> <strong>Type de livraison :</strong> {{order.deliverable_type}}</p>
                <p> <strong>Date de livraison :</strong>{{order.deliverable_date}}</p>
+               <p> <strong>Lieu de recuperation :</strong>{{JSON.parse(order.adress_details).details_lieu}}</p>
                <hr>
 
 <!--           </div>-->

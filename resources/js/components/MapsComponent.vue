@@ -1,5 +1,9 @@
 <template>
     <div class="maps_details">
+       <h4>L'adresse de recuperation :</h4>
+            <p>
+               {{adress ?  JSON.parse(adress).long_name : "Aucun"}}
+            </p>
         <!-- <h2>Votre adresse : </h2> -->
            <!-- <input type="text" class="search_maps">
             <button type="button" class="btn">Valider</button> -->
@@ -10,23 +14,25 @@
                 :options="{fields: ['geometry', 'address_components']}"
                 @place_changed="setPlace">
                 </gmap-autocomplete>
-                <button class="btn" @click="addMarker">Ajouter</button>
+                <button class="btn add_in_maps" @click="addMarker">Ajouter</button>
             </label>
             <br/>
 
             </div>
             <br>
-            <gmap-map
-            :center="center"
-            :zoom="12"
-            style="width:100%;  height: 400px;" 
-            >
-            <gmap-marker
-                :key="marker.lat"
-                :position="marker"
-                @click="center=marker"
-            ></gmap-marker>
-            </gmap-map>
+            <div class="maps_carte">
+              <gmap-map
+              :center="center"
+              :zoom="12"
+              style="width:100%;  height: 400px;" 
+              >
+              <gmap-marker
+                  :key="marker.lat"
+                  :position="marker"
+                  @click="center=marker"
+              ></gmap-marker>
+              </gmap-map>
+            </div>
 
     </div>
 
@@ -37,17 +43,25 @@ export default {
     name: 'GoogleMaps',
     data() {
     return {
+      adress : '',
       // default to montreal to keep it simple
       // change this to whatever makes sense
       center: { lat: 5.3599517, lng: -4.0082563 },
+      adress: '', 
       marker: '',
       places: [],
       currentPlace: null
     };
   },
+  updated(){
+    this.adress = localStorage.adressMaps
+  },
 
   mounted() {
     // this.geolocate();
+    if(localStorage.adressMaps){
+      this.adress = localStorage.adressMaps
+    }
     // this.mapStored();
   },
 
@@ -90,7 +104,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
     .maps_details{
         text-align: center;
     }
@@ -100,5 +114,15 @@ export default {
         border-radius: none;
         padding: 3px 10px;
         border: 1px solid #11111177;
+    }
+    label{
+      .add_in_maps{
+        margin-top: 20px;
+      }
+    }
+    @media(max-width: 800px){
+      .maps_carte{
+        margin: 0 25px;
+      }
     }
 </style>

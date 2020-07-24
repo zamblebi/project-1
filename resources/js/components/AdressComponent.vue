@@ -1,25 +1,33 @@
 <template>
 <div>
-        <h2>Vos Coordonnees</h2>
+        <h2 class="adress_title">Vos Coordonnees</h2>
         <google-maps/>
         <br>
+        <div class="adress_recup" v-if="adress">
+           
+        </div>
+        <br>
         <div class="more_details">
-            <label for="">Détails supplémentaires</label> <br>
-            <input class="search_"  v-model="other_details"  type="text" placeholder="Etage, Code porte, Batiment,Quartier">
+            <div>
+                <label for="">Détails supplémentaires</label> <br>
+                <input class="search_"  v-model="details_adress"  type="text" placeholder="Etage, Code porte, Batiment,Quartier" @input="addOtherAdress">
+            </div>
 
             <br>
-            <label for="">Lieu</label> <br>
-            <select class="lieu" name="lieu" @change="onChange($event)"  >
-                <option v-for="option in options" v-bind:value="option.value">
-                    {{option.lieu}}
-                </option>
-            </select>
+            <div>
+                <label for="">Lieu</label> <br>
+                <label for="domiciel">Domicile</label>
+               <input type="radio" id="domicile" value="Domicile" v-model="details_lieu" @change="addLieu">
+                <label for="bureau">Bureau</label>
+                <input type="radio" id="bureau" value="Bureau" v-model="details_lieu" @change="addLieu">
+                
+            </div>
         </div>
         <br>
         <div class="button">
-            <button class="btn" @click="addOtherAdress">Ajouter</button>
-            <div class="router">
-                <router-link to="/order-validate" class="btn">Continuer</router-link>
+            
+            <div class="router" >
+                <router-link to="/order-validate" class="btn" >Continuer</router-link>
             </div>
         </div>
 </div>
@@ -30,21 +38,44 @@ import MapsComponent from './MapsComponent'
 export default {
     data(){
         return{
-            allOtherAdress: '',
+            details_adress: '',
+            details_lieu: '',
             other_details: '',
+            // checkedLieu: '',
+            adress: localStorage.adress,
+            selected: "Domicile",
             options: [
                 {lieu : 'Aucun', value: 'pas choisi' },
                 {lieu : 'Domicile', value: 'Domicile' },
                 {lieu : 'Bureau', value: 'Bureau' },
             ]
         }
-    },
-    mounted(){
-        if(localStorage.getItem('allOtherAdress')){
-            this.allOtherAdress = localStorage.getItem('allOtherAdress')
-            console.log(localStorage.getItem('allOtherAdress'))
+    },updated(){
+        if(localStorage.details_adress){
+              localStorage.details_adress = this.details_adress
+            // this.details_lieu = localStorage.details_lieu
+            // console.log(localStorage.getItem('allOtherAdress'))
+        }
+        if(localStorage.details_lieu){
+              localStorage.details_lieu = this.details_lieu
         }
     },
+    mounted(){
+        
+        if(localStorage.adressMaps){
+            this.adress = localStorage.adressMaps
+            // console.log(JSON.parse(this.adress).long_name)
+        }
+        if(localStorage.details_adress){
+            this.details_adress = localStorage.details_adress
+            // this.details_lieu = localStorage.details_lieu
+            // console.log(localStorage.getItem('allOtherAdress'))
+        }
+        if(localStorage.details_lieu){
+            this.details_lieu = localStorage.details_lieu
+        }
+    },
+    
     components: {
         'GoogleMaps' : MapsComponent
     },
@@ -52,22 +83,37 @@ export default {
         onChange(event){
             this.lieu = event.target.value
         },
+        addLieu(){
+          return  localStorage.details_lieu = this.details_lieu
+        },
         addOtherAdress(){
-            this.allOtherAdress= {lieu:this.lieu, other_adress: this.other_details}
-            localStorage.setItem('allOtherAdress',JSON.stringify(this.allOtherAdress))
+           return   localStorage.details_adress = this.details_adress 
+
         }
     }
 }
 </script>
 
-<style>
+<style lang="scss">
+.adress_recup{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .lieu{
     width: 200px;
-    height: 40px;
+    height: 50px;
 }
 .more_details{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+    div{
+        padding: 0 40px;
+    }
+    // flex-direction: column;
 }
 .search_{
         width: 270px;
@@ -78,9 +124,22 @@ export default {
     }
     .button{
         display: flex;
-        /* justify-content: center; */
+         justify-content: center; 
     }
-    .router{
-        margin: 0 40px;
+    // .router{
+    //     margin: 0 40px;
+    // }
+    .adress_title{
+        text-align: center;
+    }
+    @media(max-width: 700px){
+        
+        .more_details{
+            text-align: center;
+            flex-direction: column;
+            .lieu{
+                width: 300px;
+            }
+        }
     }
 </style>

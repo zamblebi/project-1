@@ -11,7 +11,9 @@
     <br>
     <strong>Date de recuperation : {{dateChoose}}</strong>  |   <router-link to="/order-slots">Modifier</router-link>
     <br>
-    <strong>Details de l'adresses :</strong> Lieu => {{!JSON.parse(adress_details).lieu ? 'Aucun' : JSON.parse(adress_details).lieu}}, Details du lieu => {{JSON.parse(adress_details).other_adress ? JSON.parse(adress_details).other_adress : 'Aucun'}}
+        <!-- <div v-if="adress_details"> -->
+            <strong>Details de l'adresses :</strong> Lieu => {{details_lieu ? details_lieu : "Aucun"}}, Details du lieu => {{details_adress ? details_adress : "Aucun"}}
+        <!-- </div> -->
 
         <!-- <p>{{carts}}</p> -->
     <br>
@@ -21,6 +23,10 @@
     <h3 v-if="!carts">Aucun vetement n'a ete choisi</h3>
     <h3 v-if="!deliverableType">Veillez Choisir un type de livraison</h3>
     <h3 v-if="!dateChoose">Veillez Choisir une date de recuperation</h3>
+    <!-- <div>
+    <h3 v-if="!adress_details">Vous n'avez pas preciser les details sur le lieu choisi </h3>
+        <p><router-link to="/order-maps">Voulez vous Modifier ?</router-link></p>
+    </div> -->
 
     <br>
         <div v-if="user_id && carts && allPrice && deliverableType && dateChoose">
@@ -41,10 +47,16 @@ export default {
             allPrice: JSON.parse(localStorage.getItem('store')).carts.allPrice,
             deliverableType: localStorage.deliverableType,
             dateChoose: localStorage.dateStored,
-            adress_details: localStorage.allOtherAdress,
+            details_adress: localStorage.details_adress,
+            details_lieu: localStorage.details_lieu,
             carts: JSON.parse(localStorage.getItem('store')).carts,
             user_id : '',
         }
+    },
+    created(){
+
+        this.details_adress = localStorage.details_adress 
+        this.details_lieu = localStorage.details_lieu 
     },
     mounted(){
         axios.get('/get-user').then(response => {
@@ -60,7 +72,7 @@ export default {
                 user_id: this.user_id,
                 carts: JSON.stringify(this.carts),
                 adress_maps: this.adressMaps,
-                adress_details: this.adress_details,
+                adress_details: JSON.stringify({details_lieu : this.details_lieu,details_adress: this.details_adress}),
                 deliverable_date: this.dateChoose,
                 deliverable_type: this.deliverableType,
                 all_prices: this.allPrice,

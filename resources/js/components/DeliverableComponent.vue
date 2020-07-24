@@ -3,7 +3,7 @@
         <div>
 
      <h1 class="delivery-title">Choisisssez un moyen de livraison</h1>
-                        <h4>
+                        <h4 class="display_subtitle">
                             Type de livraison choisie : {{deliverableType}}
                         </h4>
 
@@ -25,7 +25,7 @@
                         <h4>Frais de transport : </h4> <em> {{deliverablePrices.simple}} f </em>
 
                     </div>
-                    <button type="button" @click="addDeliverable('Simple')" class="btn">Sélectionner</button>
+                    <router-link to="/order-slots" @click.native="addDeliverable('Simple')" class="btn">Sélectionner</router-link>
                 </div>
                 </div>
                 <div class="express">
@@ -40,16 +40,12 @@
                         <div class="frais">
                             <h4>Frais de transport : </h4> <em> {{deliverablePrices.express}} f </em>
                         </div>
-                        <button type="button" @click="addDeliverable('Express')" class="btn">Sélectionner</button>
+                        <router-link to="/order-slots" @click.native="addDeliverable('Express')" class="btn">Sélectionner</router-link>
                     </div>
             </div>
         </div>
 
        </div>
-
-         <div class="delivery-btn">
-            <router-link to="/order-slots" class="btn">Continuer</router-link>
-        </div>
 
         </div>
 
@@ -74,7 +70,7 @@ export default {
     methods: {
         addDeliverable(type){
             localStorage.deliverableType = type
-            console.log(localStorage.deliverableType, localStorage.getItem('carts'));
+            console.log(localStorage.deliverableType);
             this.deliverableType = localStorage.deliverableType
         },
         storedDeliverable(){
@@ -91,3 +87,15 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+.display_subtitle{
+    text-align: center;
+    margin-top: 0;
+    padding-bottom: 20px ;
+    
+}
+.delivery-title{
+    margin: 0;
+}
+</style>

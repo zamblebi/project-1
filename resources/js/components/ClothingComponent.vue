@@ -17,6 +17,7 @@
                     <br>
 
                      <!-- Le bouton pour ajouter un vetement a la cart -->
+
                         <button type="button" @click="addProductToCart(product)"  class="btn">Ajouter</button>
 
                 </li>
@@ -63,5 +64,15 @@
     }
 </script>
 <style lang="scss">
-   
+  .clothing-title{
+      text-align: center;
+  } 
+  .list-clothing{
+      li{
+          padding: 20px 10px !important;
+          img{
+              width: 132px !important;
+            }
+      }
+  }
 </style>
