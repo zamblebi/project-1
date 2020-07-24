@@ -36,6 +36,8 @@
                     <a href="{{url('order')}}" class="btn">Passer une commande</a>
                 </div>
 
+
+        <div class="load"></div>
             </div>
 
             {{-- Section services --}}

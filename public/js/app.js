@@ -1952,6 +1952,7 @@ __webpack_require__.r(__webpack_exports__);
       details_lieu: '',
       other_details: '',
       // checkedLieu: '',
+      mapsPosition: '',
       adress: localStorage.adress,
       selected: "Domicile",
       options: [{
@@ -1974,6 +1975,10 @@ __webpack_require__.r(__webpack_exports__);
 
     if (localStorage.details_lieu) {
       localStorage.details_lieu = this.details_lieu;
+    }
+
+    if (localStorage.adressMaps) {
+      this.mapsPosition = localStorage.adressMaps;
     }
   },
   mounted: function mounted() {
@@ -2511,11 +2516,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SuccesComponent.vue",
   data: function data() {
-    return {// img_src = ''
+    return {
+      show: false // img_src = ''
+
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    setTimeout(function () {
+      _this.show = true;
+    }, 1000);
   }
 });
 
@@ -2532,6 +2550,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
 //
 //
 //
@@ -3045,7 +3067,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".success-order {\n  text-align: center;\n}\n.success-order img {\n  width: 200px;\n  padding-bottom: 30px;\n}", ""]);
+exports.push([module.i, ".space {\n  margin-bottom: 150px;\n}\n.success-order {\n  text-align: center;\n}\n.success-order img {\n  width: 200px;\n  padding-bottom: 30px;\n}", ""]);
 
 // exports
 
@@ -42348,18 +42370,20 @@ var render = function() {
       _c("br"),
       _vm._v(" "),
       _c("div", { staticClass: "button" }, [
-        _c(
-          "div",
-          { staticClass: "router" },
-          [
-            _c(
-              "router-link",
-              { staticClass: "btn", attrs: { to: "/order-validate" } },
-              [_vm._v("Continuer")]
+        _vm.mapsPosition
+          ? _c(
+              "div",
+              { staticClass: "router" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "btn", attrs: { to: "/order-validate" } },
+                  [_vm._v("Continuer")]
+                )
+              ],
+              1
             )
-          ],
-          1
-        )
+          : _vm._e()
       ])
     ],
     1
@@ -42978,11 +43002,13 @@ var render = function() {
     "div",
     { staticClass: "success-order" },
     [
-      _c("h1", [_vm._v("Commander effectuez !")]),
+      _c("transition", { attrs: { name: "fade" } }, [
+        _c("img", { attrs: { src: "/icons/check.svg", alt: "check" } })
+      ]),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _c("img", { attrs: { src: "/icons/check.svg", alt: "check" } }),
+      _c("h1", [_vm._v("Commande effectuez !")]),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
@@ -42990,7 +43016,9 @@ var render = function() {
         "router-link",
         { staticClass: "btn", attrs: { to: "home/my-order-list" } },
         [_vm._v("Continuer")]
-      )
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "space" })
     ],
     1
   )
@@ -43073,8 +43101,21 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      !_vm.carts
-        ? _c("h3", [_vm._v("Aucun vetement n'a ete choisi")])
+      _vm.allPrice == 0
+        ? _c("span", [
+            _c(
+              "h3",
+              [
+                _vm._v("Veillez calculer votre commande dans "),
+                _c("router-link", { attrs: { to: "/order" } }, [
+                  _vm._v("Le panier")
+                ])
+              ],
+              1
+            ),
+            _vm._v("\n            ou\n        "),
+            _c("h3", [_vm._v("Aucun vetement n'a ete choisi")])
+          ])
         : _vm._e(),
       _vm._v(" "),
       !_vm.deliverableType

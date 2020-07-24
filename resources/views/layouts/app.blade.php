@@ -26,6 +26,7 @@
 </head>
 <body>
     <div id="app">
+        <div class="load"></div>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             {{-- <menu-component></menu-component> --}}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -171,6 +172,14 @@
         </div>
     </div>
 
+    <script>
+    //     let loader = document.querySelector('.load')
+    //  var lo = window.onload = (event) => {
+    //      return true
+    // } 
+    // console.log(lo)
+    
+    </script>
 
 </body>
 </html>
