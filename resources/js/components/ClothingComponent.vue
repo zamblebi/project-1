@@ -6,13 +6,20 @@
     <div class="order-clothing-list">
         <ul class="list-clothing">
                 <li v-for="product in products" :key="product.id">
-                <img v-bind:src="'/icons/'+product.icon+'.svg'" alt="">
-                    <h3>
-                        {{product.name}}
-                    </h3>
-                    <div>
-                        <em>{{ product.prix }}f</em>
-                        <br>
+                    <div class="clothing_info">
+                        <img v-bind:src="'/icons/'+product.icon+'.svg'" alt="">
+
+                                <div class="info_clothing">
+                                    <h3>
+                                        {{product.name}}
+                                    </h3>
+                                    <div>
+                                        <em>{{ product.prix }}f</em>
+                                        <br>
+                                    </div>
+
+                                </div>
+
                     </div>
                     <br>
 
@@ -69,10 +76,35 @@
   } 
   .list-clothing{
       li{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    flex-wrap: nowrap;
+
+    width: 70%;
           padding: 20px 10px !important;
           img{
-              width: 132px !important;
+              width: 72px !important;
             }
+      }
+      .clothing_info{
+          display: flex;
+          align-items: center;
+          h3{
+              margin: 0;
+
+          }
+          .info_clothing{
+
+              padding-left: 15px;
+          }
+      }
+  }
+  @media(max-width: 800px){
+      .list-clothing{
+          li{
+              width: 90%;
+          }
       }
   }
 </style>
