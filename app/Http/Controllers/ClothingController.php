@@ -34,9 +34,10 @@ class ClothingController extends Controller
         // $clothing->all();
         $categories = Category::all();
         return view('admin.clothing.add', ['clothings' => $clothings, 'categories' => $categories]); 
-    //    return view('admin.clothing.add'); 
+        
+        //    return view('admin.clothing.add'); 
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -48,12 +49,17 @@ class ClothingController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'prix' => 'required|numeric|min:500'
-        ]);
-        $clothing = new Clothing;
-        $clothing->create($request->all());
-        // $clothing->save();
-
-        return redirect()->back()->with('status', 'Vetements bien ajouter');
+            ]);
+            $clothing = new Clothing;
+            $clothing->create($request->all());
+            // $clothing->save();
+            if($files = $request->file('icon')){
+                $destinationPath = 'public/image_uploaded';
+                $clothingImage = date('YmHis') . '.' . $files->getClientOriginalExtension();
+                $files->move($destinationPath, $clothingImage);
+            }
+            
+            return redirect()->back()->with('status', 'Vetements bien ajouter');
 
     }
 

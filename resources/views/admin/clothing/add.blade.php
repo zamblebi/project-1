@@ -30,15 +30,11 @@
       </span>
     @enderror
 </div>
-    <div class="form-group">
-        <select name="icon" class="custom-select">
-            {{-- <option selected>Open this select menu</option> --}}
-            <option value="uniform">Chemise</option>
-            <option value="tshirt">Tshirt</option>
-            <option value="suit">Veste</option>
-            <option value="suit">Costume</option>
-        </select>
-    </div>
+    
+<div class="form-group">
+  <input type="file" accept="image/*" name="icon">
+</div>
+
     <div class="form-group">
       <label>Choisir une categorie *</label>
       <select class="custom-select" name="category_id" id="">
