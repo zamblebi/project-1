@@ -49,9 +49,17 @@ class ClothingController extends Controller
             'name' => 'required|max:255',
             'prix' => 'required|numeric|min:500'
         ]);
+
+
+
+        // Ajout d'image a un vetement 
+        
+
+
         $clothing = new Clothing;
         $clothing->create($request->all());
         // $clothing->save();
+
 
         return redirect()->back()->with('status', 'Vetements bien ajouter');
 
