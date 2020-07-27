@@ -36,6 +36,10 @@ html,body{
     100% { transform: rotate(360deg); }
   }
 
+  #image_clothing{
+      border-radius: 7px;
+      background-color: $green;
+  }
 body{
     overflow-x: hidden;
     // overflow-x: hidden;

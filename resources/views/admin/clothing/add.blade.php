@@ -10,6 +10,19 @@
             <span>{{ $flash }}</span>
         </div>
     @endif
+
+
+  <style>
+         .image_clothing{border-radius: 7px;
+    background-color: orange;
+    padding: 10px;
+    cursor: pointer; 
+    color: #fff
+}
+    </style>
+
+
+
 <form action="{{ route('add-clothing')}}" enctype="multipart/form-data" method="post">
     @csrf
   <div class="form-group">
@@ -31,9 +44,9 @@
     @enderror
 </div>
     <div class="form-group">
-      <label for="image_clothing">Ajouter une image a l'article</label>
+      <label for="image_clothing" class="image_clothing">Ajouter une image a l'article</label>
       <br>
-       <input type="file" name="image_clothing" id="image_clothing">
+       <input type="file" style="display: none;" name="image_clothing" id="image_clothing">
     </div>
     <div class="form-group">
       <label>Choisir une categorie *</label>
