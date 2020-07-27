@@ -48,32 +48,35 @@ class ClothingController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'prix' => 'required|numeric|min:500',
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048'
+            // 'image' => 'required|image|mimes:jpeg,png,jpg,svg',
         ]);
 
 
 
         // Ajout d'image a un vetement 
         
-        
-        $clothing = new Clothing;
-        if($request->hasFile('image'))
+        if($request->hasFile('image_clothing'))
         {
-            if($request->file('image')->isValid())
+           
+            if($request->file('image_clothing')->isValid())
             {
-                $extension = $request->image->extension();
-                $fileName = 'ok'.'.'.$extension;
-                // $request->image->move(public_path('images/clothing_images', $fileName));
-                $path =  $request->image->storeAs('images/clothing_image', $fileName, 'public' );
-                dd('added image');
-            }
-        }
-        $clothing->create($request->all());
+                $clothing = new Clothing;
+                $imageName = $request->file('image_clothing')->getClientOriginalName();
+                $imageFile = $request->file('image_clothing')->move('images/clothing_images', $imageName);
+                $request['image'] = $imageFile;
+                $clothing->create($request->all());
+    
+
+            // return dd($imageFile);
+
+    // }
+        
+        
         // $clothing->save();
 
-
+        
         return redirect()->back()->with('status', 'Vetements bien ajouter');
-
+        
     }
 
     /**
