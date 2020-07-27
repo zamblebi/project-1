@@ -12,7 +12,7 @@ class Clothing extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'prix', 'icon', 'category_id'];
+    protected $fillable = ['name', 'prix','category_id', 'image'];
 
     public function orders()
     {

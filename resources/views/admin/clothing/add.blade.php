@@ -31,7 +31,9 @@
     @enderror
 </div>
     <div class="form-group">
-       <input type="file" name="image_clothing" id="image_clothing">
+      <label for="image_clothing">Ajouter une image a l'article</label>
+      <br>
+       <input type="file" name="image" id="image_clothing">
     </div>
     <div class="form-group">
       <label>Choisir une categorie *</label>
