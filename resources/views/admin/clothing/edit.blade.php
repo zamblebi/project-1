@@ -10,7 +10,7 @@
 
     <div class="text-center">
         <h6>Icone du vetements</h6>
-    <img src="/icons/{{$clothing->icon}}.svg" style="width: 200px" class="rounded" alt="{{$clothing->icon}}">
+    <img src="/images/clothing_images/{{$clothing->image}}.svg" style="width: 200px" class="rounded" alt="{{$clothing->icon}}">
     </div>
 
 <form action="{{ route('update-clothing', $clothing->id)}}" method="post">

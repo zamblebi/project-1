@@ -42575,7 +42575,7 @@ var render = function() {
             return _c("li", { key: product.id }, [
               _c("div", { staticClass: "clothing_info" }, [
                 _c("img", {
-                  attrs: { src: "/icons/" + product.icon + ".svg", alt: "" }
+                  attrs: { src: "/images/" + product.image, alt: "" }
                 }),
                 _vm._v(" "),
                 _c("div", { staticClass: "info_clothing" }, [

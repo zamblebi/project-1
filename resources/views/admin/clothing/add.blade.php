@@ -10,7 +10,7 @@
             <span>{{ $flash }}</span>
         </div>
     @endif
-<form action="{{ route('add-clothing')}}" method="post">
+<form action="{{ route('add-clothing')}}" enctype="multipart/form-data" method="post">
     @csrf
   <div class="form-group">
     <label for="exampleFormControlInput1">Type de vetement </label>
@@ -33,7 +33,7 @@
     <div class="form-group">
       <label for="image_clothing">Ajouter une image a l'article</label>
       <br>
-       <input type="file" name="image" id="image_clothing">
+       <input type="file" name="image_clothing" id="image_clothing">
     </div>
     <div class="form-group">
       <label>Choisir une categorie *</label>
