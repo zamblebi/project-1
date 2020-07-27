@@ -55,11 +55,8 @@ class ClothingController extends Controller
 
         // Ajout d'image a un vetement 
         
-        if($request->hasFile('image_clothing'))
-        {
-           
-            if($request->file('image_clothing')->isValid())
-            {
+        if ($request->hasFile('image_clothing')) {
+            if ($request->file('image_clothing')->isValid()) {
                 $clothing = new Clothing;
                 $imageName = $request->file('image_clothing')->getClientOriginalName();
                 $imageFile = $request->file('image_clothing')->move('images/clothing_images', $imageName);
@@ -67,17 +64,17 @@ class ClothingController extends Controller
                 $clothing->create($request->all());
     
 
-            // return dd($imageFile);
+                // return dd($imageFile);
 
-    // }
+                return redirect()->back()->with('status', 'Vetements bien ajouter');
+            }
         
         
-        // $clothing->save();
-
+            // $clothing->save();
+        }
         
-        return redirect()->back()->with('status', 'Vetements bien ajouter');
         
-    }
+ }
 
     /**
      * Display the specified resource.
