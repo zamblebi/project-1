@@ -18,9 +18,13 @@ class ClothingController extends Controller
      */
     public function index()
     {
-       $clothings = Clothing::all();
-       
+       $clothings = Clothing::with('category')->get();
        return response()->json($clothings);
+    }
+    
+    public function categoryList(){
+        $categories = Category::all();
+    return response()->json($categories);
     }
     
     /**

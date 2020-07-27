@@ -2143,6 +2143,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2158,11 +2187,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     carts: function carts(state) {
       return state.carts.carts;
+    },
+    categories: function categories(state) {
+      return state.products.categories;
     }
   })), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])('carts', ['clothingQty'])),
   mounted: function mounted() {
-    // console.log(this.carts),
-    this.$store.dispatch('products/getProducts');
+    this.$store.dispatch('products/getProducts'), this.$store.dispatch('products/getCategories'); // console.log(this.categories)
   },
   methods: Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])('carts', ['addProductToCart'])
 });
@@ -2972,7 +3003,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap);", ""]);
 
 // module
-exports.push([module.i, ".clothing-title {\n  text-align: center;\n}\n.list-clothing {\n  font-family: \"Quicksand\", sans-serif;\n}\n.list-clothing li {\n  border-radius: 7px;\n  background-color: #d650471f;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: nowrap;\n  width: 70%;\n  margin: 10px 0;\n  padding: 20px 10px !important;\n}\n.list-clothing li img {\n  width: 72px !important;\n}\n.list-clothing .clothing_info {\n  display: flex;\n  align-items: center;\n}\n.list-clothing .clothing_info h3 {\n  margin: 0;\n}\n.list-clothing .clothing_info .info_clothing {\n  padding-left: 15px;\n}\n@media (max-width: 900px) {\n.carts_list_clothing {\n    margin: 0 15px;\n}\n.list-clothing {\n    overflow: hidden !important;\n}\n.list-clothing li {\n    width: 80%;\n}\n}\n@media (max-width: 420px) {\n.btn {\n    font-size: 0.7rem;\n    padding: 0.7rem 1.4rem !important;\n}\n.info_clothing {\n    padding-left: 10px;\n    font-size: 0.7rem;\n}\n}", ""]);
+exports.push([module.i, ".clothing-title {\n  text-align: center;\n}\n.list-clothing {\n  font-family: \"Quicksand\", sans-serif;\n  flex-direction: column;\n}\n.list-clothing li {\n  border-radius: 7px;\n  background-color: #d650471f;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: nowrap;\n  width: 70%;\n  margin: 10px 0;\n  padding: 20px 10px !important;\n}\n.list-clothing li img {\n  width: 72px !important;\n}\n.list-clothing .clothing_info {\n  display: flex;\n  align-items: center;\n}\n.list-clothing .clothing_info h3 {\n  margin: 0;\n}\n.list-clothing .clothing_info .info_clothing {\n  display: flex;\n  flex-direction: column;\n  /* justify-content: start; */\n  align-items: flex-start;\n  padding-left: 15px;\n}\n@media (max-width: 900px) {\n.carts_list_clothing {\n    margin: 0 15px;\n}\n.list-clothing {\n    overflow: hidden !important;\n}\n.list-clothing li {\n    width: 80%;\n}\n}\n@media (max-width: 420px) {\n.btn {\n    font-size: 0.7rem;\n    padding: 0.7rem 1.4rem !important;\n}\n.info_clothing {\n    padding-left: 10px;\n    font-size: 0.7rem;\n}\n}", ""]);
 
 // exports
 
@@ -42569,46 +42600,74 @@ var render = function() {
       { staticClass: "order-clothing-list" },
       [
         _c(
-          "ul",
-          { staticClass: "list-clothing" },
-          _vm._l(_vm.products, function(product) {
-            return _c("li", { key: product.id }, [
-              _c("div", { staticClass: "clothing_info" }, [
-                _c("img", { attrs: { src: "/" + product.image, alt: "" } }),
+          "div",
+          { staticClass: "list_clothing_position" },
+          _vm._l(_vm.categories, function(category, i) {
+            return _c(
+              "ul",
+              { key: i, staticClass: "list-clothing" },
+              [
+                _c("h4", [_vm._v(_vm._s(category.name))]),
                 _vm._v(" "),
-                _c("div", { staticClass: "info_clothing" }, [
-                  _c("h3", [
-                    _vm._v(
-                      "\n                                    " +
-                        _vm._s(product.name) +
-                        "\n                                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("em", [_vm._v(_vm._s(product.prix) + "f")]),
-                    _vm._v(" "),
-                    _c("br")
+                _c("br"),
+                _vm._v(" "),
+                _vm._l(_vm.products, function(product) {
+                  return _c("div", { key: product.id }, [
+                    product.category_id == category.id
+                      ? _c("li", [
+                          _c("div", { staticClass: "clothing_info" }, [
+                            _c("img", {
+                              attrs: { src: "/" + product.image, alt: "" }
+                            }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "info_clothing" }, [
+                              _c("h3", [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(product.name) +
+                                    "\n                                    "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", [
+                                _c("em", [_vm._v(_vm._s(product.prix) + "f")]),
+                                _vm._v(" "),
+                                _c("br")
+                              ]),
+                              _vm._v(" "),
+                              _c("div", [
+                                _c("p", [
+                                  _vm._v(" category :  "),
+                                  _c("em", [
+                                    _vm._v(_vm._s(product.category.name))
+                                  ])
+                                ])
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.addProductToCart(product)
+                                }
+                              }
+                            },
+                            [_vm._v("Ajouter")]
+                          )
+                        ])
+                      : _vm._e()
                   ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      return _vm.addProductToCart(product)
-                    }
-                  }
-                },
-                [_vm._v("Ajouter")]
-              )
-            ])
+                })
+              ],
+              2
+            )
           }),
           0
         ),
@@ -64132,12 +64191,13 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************************!*\
   !*** ./resources/js/store/modules/products/actions.js ***!
   \********************************************************/
-/*! exports provided: getProducts */
+/*! exports provided: getProducts, getCategories */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProducts", function() { return getProducts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCategories", function() { return getCategories; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -64145,6 +64205,14 @@ var getProducts = function getProducts(_ref) {
   var commit = _ref.commit;
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/clothing-lists').then(function (response) {
     return commit("SET_PRODUCT", response.data);
+  })["catch"](function (error) {
+    return console.log(error);
+  });
+};
+var getCategories = function getCategories(_ref2) {
+  var commit = _ref2.commit;
+  axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/category-lists').then(function (response) {
+    return commit("SET_CATEGORY", response.data);
   })["catch"](function (error) {
     return console.log(error);
   });
@@ -64195,18 +64263,18 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************************!*\
   !*** ./resources/js/store/modules/products/mutations.js ***!
   \**********************************************************/
-/*! exports provided: SET_PRODUCT */
+/*! exports provided: SET_PRODUCT, SET_CATEGORY */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_PRODUCT", function() { return SET_PRODUCT; });
-/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/store/modules/products/state.js");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! . */ "./resources/js/store/modules/products/index.js");
-
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_CATEGORY", function() { return SET_CATEGORY; });
 var SET_PRODUCT = function SET_PRODUCT(state, products) {
   state.products = products;
+};
+var SET_CATEGORY = function SET_CATEGORY(state, categories) {
+  state.categories = categories;
 };
 
 /***/ }),
@@ -64223,7 +64291,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! . */ "./resources/js/store/modules/products/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  products: []
+  products: [],
+  categories: []
 });
 
 /***/ }),

@@ -5,3 +5,10 @@ export const getProducts = ({commit}) => {
     .then(response => commit("SET_PRODUCT", response.data))
     .catch(error => console.log(error))
 }
+
+
+export const getCategories = ({commit}) => {
+    axios.get('/category-lists')
+    .then(response => commit("SET_CATEGORY", response.data))
+    .catch(error => console.log(error))
+}
