@@ -81,8 +81,10 @@ Route::redirect('/home', '/home/my-order-list')->middleware('auth');
 
 
 // APi get clothing
-
 Route::get('/clothing-lists', 'ClothingController@index');
+
+//Api category
+Route::get('/category-lists', 'ClothingController@categoryList');
 
 //Get order of user
 Route::get('/get-user-order/', 'OrdersController@getOrderOfUser');
