@@ -8,12 +8,28 @@
             </div>
     @endif
 
+    <style>
+         .image_clothing{border-radius: 7px;
+    background-color: orange;
+    padding: 10px;
+    cursor: pointer; 
+    color: #fff
+}
+    </style>
+
+
+
+
+
+
+
+
     <div class="text-center">
-        <h6>Icone du vetements</h6>
-    <img src="/images/clothing_images/{{$clothing->image}}.svg" style="width: 200px" class="rounded" alt="{{$clothing->icon}}">
+        <h6>Image du vetements</h6>
+    <img src="/{{$clothing->image}}" style="width: 200px" class="rounded" alt="{{$clothing->icon}}">
     </div>
 
-<form action="{{ route('update-clothing', $clothing->id)}}" method="post">
+<form action="{{ route('update-clothing', $clothing->id)}}" enctype="multipart/form-data" method="post">
     @csrf
   <div class="form-group">
     <label for="exampleFormControlInput1">Type de vetement </label>
@@ -34,13 +50,22 @@
     @enderror
 </div>
 <div class="form-group">
-    <h6>Selectioner nouvelle icones</h6>
-        <select name="icon" class="custom-select">
-            <option value="tshirt">Tshirt</option>
-            <option value="uniform">Chemise</option>
-            <option value="suit">Veste</option>
-            <option value="suit">Costume</option>
-        </select>
+<p>Categorie Choisi : <strong>{{$clothing->category->name}}</strong> </p>
+    <h6>Selectioner nouvelle categorie : </h6>
+        <select class="custom-select" name="category_id" id="">
+
+        @foreach ($categories as $category)
+        <option value="{{ $category->id }}">
+          {{ $category->name }}
+        </option>
+        @endforeach
+      </select>
+  </div>
+
+  <div class="form-group">
+      <label for="image_clothing" class="image_clothing">Changer d'image</label>
+      <br>
+      <input type="file" style="display: none;" id="image_clothing" name="image_clothing" placeholder="Choisir une image">
   </div>
 
   <div class="form-group">
