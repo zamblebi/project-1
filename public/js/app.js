@@ -42574,9 +42574,7 @@ var render = function() {
           _vm._l(_vm.products, function(product) {
             return _c("li", { key: product.id }, [
               _c("div", { staticClass: "clothing_info" }, [
-                _c("img", {
-                  attrs: { src: "/images/" + product.image, alt: "" }
-                }),
+                _c("img", { attrs: { src: "/" + product.image, alt: "" } }),
                 _vm._v(" "),
                 _c("div", { staticClass: "info_clothing" }, [
                   _c("h3", [

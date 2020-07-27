@@ -7,7 +7,7 @@
         <ul class="list-clothing">
                 <li v-for="product in products" :key="product.id">
                     <div class="clothing_info">
-                        <img v-bind:src="'/images/'+product.image" alt="">
+                        <img v-bind:src="'/'+product.image" alt="">
 
                                 <div class="info_clothing">
                                     <h3>
