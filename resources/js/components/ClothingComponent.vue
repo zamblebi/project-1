@@ -1,28 +1,12 @@
 <template>
     <div>
-<!-- 
-        <ul v-for="category in categories" :key="category.id">
-            <li>{{category.name}}</li>
-        </ul> -->
+
+        <!-- <select name="" id="" >
+            <option v-for="(category, k) in categories" :key="k" v-bind:value="category.id">{{category.name}}</option>
+        </select> -->
 
 
-         <!-- <ul >
-            <li v-for="(product, ind) in products" :key="ind"> 
-                <div > 
-                    <h4>{{category.name}}</h4>
-                    <p>{{product.name}}</p>   
-                </div> -->
-                <!-- <div v-else>
-                    Elements non disponible
-                </div> -->
-                <!-- {{product.category_id == category.id ? product.name : ''}}  -->
-            <!-- </li>
-        </ul> -->
-
-
-
-
-      <h2 class="clothing-title">Choisir une quantiter</h2>
+      <h2 class="clothing-title">Choisir une quantité</h2>
     <div class="order-clothing-list">
         <div class="list_clothing_position">
 
@@ -44,7 +28,7 @@
                                         <br>
                                     </div>
                                     <div>
-                                        <p> category :  <em>{{product.category.name}}</em></p>
+                                        <p> Catégorie :  <em>{{product.category.name}}</em></p>
                                     </div>
 
                                 </div>
@@ -75,7 +59,11 @@
 
         data: function(){
             return{
+                value: '',
             } 
+        },
+        updated(){
+            console.log(this.value)
         },
         components: {
             'cart-component' : CartComponent

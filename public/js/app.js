@@ -1944,6 +1944,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2156,27 +2159,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      value: ''
+    };
+  },
+  updated: function updated() {
+    console.log(this.value);
   },
   components: {
     'cart-component': _CartComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -3060,7 +3052,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".maps_details {\n  text-align: center;\n}\n.search_ .maps {\n  width: 270px;\n  height: 40px;\n  border-radius: none;\n  padding: 3px 10px;\n  border: 1px solid #11111177;\n}\nlabel .add_in_maps {\n  margin-top: 20px;\n}\n@media (max-width: 800px) {\n.maps_carte {\n    margin: 0 25px;\n}\n}", ""]);
+exports.push([module.i, ".current_adress {\n  color: #B8524B;\n}\n.maps_details {\n  text-align: center;\n}\n.search_ .maps {\n  width: 270px;\n  height: 40px;\n  border-radius: none;\n  padding: 3px 10px;\n  border: 1px solid #11111177;\n}\nlabel .add_in_maps {\n  margin-top: 20px;\n}\n@media (max-width: 800px) {\n.maps_carte {\n    margin: 0 25px;\n}\n}", ""]);
 
 // exports
 
@@ -42296,7 +42288,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("h2", { staticClass: "adress_title" }, [_vm._v("Vos Coordonnees")]),
+      _c("h2", { staticClass: "adress_title" }, [_vm._v("Vos coordonnées")]),
       _vm._v(" "),
       _c("google-maps"),
       _vm._v(" "),
@@ -42372,6 +42364,8 @@ var render = function() {
               ]
             }
           }),
+          _vm._v(" "),
+          _c("br"),
           _vm._v(" "),
           _c("label", { attrs: { for: "bureau" } }, [_vm._v("Bureau")]),
           _vm._v(" "),
@@ -42592,7 +42586,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("h2", { staticClass: "clothing-title" }, [
-      _vm._v("Choisir une quantiter")
+      _vm._v("Choisir une quantité")
     ]),
     _vm._v(" "),
     _c(
@@ -42623,9 +42617,9 @@ var render = function() {
                             _c("div", { staticClass: "info_clothing" }, [
                               _c("h3", [
                                 _vm._v(
-                                  "\n                                        " +
+                                  "\n                                    " +
                                     _vm._s(product.name) +
-                                    "\n                                    "
+                                    "\n                                "
                                 )
                               ]),
                               _vm._v(" "),
@@ -42637,7 +42631,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("div", [
                                 _c("p", [
-                                  _vm._v(" category :  "),
+                                  _vm._v(" Catégorie :  "),
                                   _c("em", [
                                     _vm._v(_vm._s(product.category.name))
                                   ])
@@ -42878,9 +42872,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "maps_details" }, [
-    _c("h4", [_vm._v("L'adresse de recuperation :")]),
+    _c("h4", [_vm._v("L'adresse de récupération :")]),
     _vm._v(" "),
-    _c("p", [
+    _c("p", { staticClass: "current_adress" }, [
       _vm._v(
         "\n           " +
           _vm._s(_vm.adress ? JSON.parse(_vm.adress).long_name : "Aucun") +
@@ -42964,7 +42958,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("h2", { staticClass: "date-title" }, [
-      _vm._v("Choisissez la date et l'heure de recuperation des vetements ")
+      _vm._v("Choisissez la date et l'heure de récupération des vêtements")
     ]),
     _vm._v(" "),
     _c("h4", { staticClass: "display_subtitle" }, [
@@ -42980,7 +42974,7 @@ var render = function() {
             locale: "fr",
             inline: true,
             color: "#D65047",
-            minuteInterval: "30",
+            minuteInterval: "60",
             "disabled-hours": [
               "00",
               "01",
@@ -43113,7 +43107,7 @@ var render = function() {
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _c("strong", [_vm._v("Prix total des article :  ")]),
+      _c("strong", [_vm._v("Prix total des articles :  ")]),
       _vm._v(" " + _vm._s(_vm.allPrice) + " |  "),
       _c("router-link", { attrs: { to: "/order" } }, [_vm._v("Modifier")]),
       _vm._v(" "),
@@ -43129,9 +43123,7 @@ var render = function() {
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _c("strong", [
-        _vm._v("Date de recuperation : " + _vm._s(_vm.dateChoose))
-      ]),
+      _c("strong", [_vm._v("Date de récupération: " + _vm._s(_vm.dateChoose))]),
       _vm._v("  |   "),
       _c("router-link", { attrs: { to: "/order-slots" } }, [
         _vm._v("Modifier")
@@ -43139,11 +43131,11 @@ var render = function() {
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _c("strong", [_vm._v("Details de l'adresses :")]),
+      _c("strong", [_vm._v("Details de l'adresse :")]),
       _vm._v(
-        " Lieu => " +
+        " Lieu : " +
           _vm._s(_vm.details_lieu ? _vm.details_lieu : "Aucun") +
-          ", Details du lieu => " +
+          ", Details du lieu : " +
           _vm._s(_vm.details_adress ? _vm.details_adress : "Aucun") +
           "\n        "
       ),
@@ -43153,7 +43145,7 @@ var render = function() {
       !_vm.user_id
         ? _c("h3", [
             _vm._v(
-              "Veillez vous connecter sinon votre commande ne sera pas valide"
+              "Veuillez vous connecter sinon votre commande ne sera pas valide"
             )
           ])
         : _vm._e(),
@@ -43163,7 +43155,7 @@ var render = function() {
             _c(
               "h3",
               [
-                _vm._v("Veillez calculer votre commande dans "),
+                _vm._v("Veuillez calculer votre commande dans "),
                 _c("router-link", { attrs: { to: "/order" } }, [
                   _vm._v("Le panier")
                 ])
@@ -43171,7 +43163,7 @@ var render = function() {
               1
             ),
             _vm._v("\n            ou\n        "),
-            _c("h3", [_vm._v("Aucun vetement n'a ete choisi")])
+            _c("h3", [_vm._v("Aucun vêtement n'a ete choisi")])
           ])
         : _vm._e(),
       _vm._v(" "),
@@ -43180,7 +43172,7 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       !_vm.dateChoose
-        ? _c("h3", [_vm._v("Veillez Choisir une date de recuperation")])
+        ? _c("h3", [_vm._v("Veillez Choisir une date de récupération")])
         : _vm._e(),
       _vm._v(" "),
       _c("br"),
