@@ -5,28 +5,28 @@
 
      <strong><label>Adresse : </label></strong>{{JSON.parse(adressMaps).long_name}} | <router-link to="/order-maps">Modifier</router-link>
     <br>
-    <strong>Prix total des article :  </strong> {{allPrice}} |  <router-link to="/order">Modifier</router-link>
+    <strong>Prix total des articles :  </strong> {{allPrice}} |  <router-link to="/order">Modifier</router-link>
     <br>
     <strong>Type de livraison choisie : {{deliverableType}}</strong>  | <router-link to="/order-deliverable">Modifier</router-link>
     <br>
-    <strong>Date de recuperation : {{dateChoose}}</strong>  |   <router-link to="/order-slots">Modifier</router-link>
+    <strong>Date de récupération: {{dateChoose}}</strong>  |   <router-link to="/order-slots">Modifier</router-link>
     <br>
         <!-- <div v-if="adress_details"> -->
-            <strong>Details de l'adresses :</strong> Lieu => {{details_lieu ? details_lieu : "Aucun"}}, Details du lieu => {{details_adress ? details_adress : "Aucun"}}
+            <strong>Details de l'adresse :</strong> Lieu : {{details_lieu ? details_lieu : "Aucun"}}, Details du lieu : {{details_adress ? details_adress : "Aucun"}}
         <!-- </div> -->
 
         <!-- <p>{{carts}}</p> -->
     <br>
-    <h3 v-if="!user_id">Veillez vous connecter sinon votre commande ne sera pas valide</h3>
+    <h3 v-if="!user_id">Veuillez vous connecter sinon votre commande ne sera pas valide</h3>
 <!--    {{user_id}}-->
     <!-- Post al -->
     <span v-if="allPrice == 0">
-        <h3 >Veillez calculer votre commande dans <router-link to="/order">Le panier</router-link></h3>
+        <h3 >Veuillez calculer votre commande dans <router-link to="/order">Le panier</router-link></h3>
             ou
-        <h3>Aucun vetement n'a ete choisi</h3>
+        <h3>Aucun vêtement n'a ete choisi</h3>
     </span>
     <h3 v-if="!deliverableType">Veillez Choisir un type de livraison</h3>
-    <h3 v-if="!dateChoose">Veillez Choisir une date de recuperation</h3>
+    <h3 v-if="!dateChoose">Veillez Choisir une date de récupération</h3>
     <!-- <div>
     <h3 v-if="!adress_details">Vous n'avez pas preciser les details sur le lieu choisi </h3>
         <p><router-link to="/order-maps">Voulez vous Modifier ?</router-link></p>

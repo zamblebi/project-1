@@ -1,6 +1,6 @@
 <template>
 <div>
-        <h2 class="adress_title">Vos Coordonnees</h2>
+        <h2 class="adress_title">Vos coordonnées</h2>
         <google-maps/>
         <br>
         <div class="adress_recup" v-if="adress">
@@ -17,8 +17,11 @@
             <div>
                 <label for="">Lieu</label> <br>
                 <label for="domiciel">Domicile</label>
+                <!-- <br> -->
                <input type="radio" id="domicile" value="Domicile" v-model="details_lieu" @change="addLieu">
+               <br>
                 <label for="bureau">Bureau</label>
+                <!-- <br> -->
                 <input type="radio" id="bureau" value="Bureau" v-model="details_lieu" @change="addLieu">
                 
             </div>

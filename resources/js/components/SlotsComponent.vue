@@ -1,9 +1,9 @@
 <template>
     <div>
-        <h2 class="date-title">Choisissez la date et l'heure de recuperation des vetements </h2>
+        <h2 class="date-title">Choisissez la date et l'heure de récupération des vêtements</h2>
         <h4 class="display_subtitle">Date choisi: {{dateStored}}</h4>
         <div class="date_time">
-            <VueCtkDateTimePicker locale="fr" :inline="true" color="#D65047" minuteInterval="30" :disabled-hours="['00','01','02','03','04','05','06','07','19','20','21','22','23']"  button-now-translation="Maintenant" format="DD-MM-YYYY HH:mm" v-model="date" />
+            <VueCtkDateTimePicker locale="fr" :inline="true" color="#D65047" minuteInterval="60" :disabled-hours="['00','01','02','03','04','05','06','07','19','20','21','22','23']"  button-now-translation="Maintenant" format="DD-MM-YYYY HH:mm" v-model="date" />
         </div>
 
           <div class="add-date">

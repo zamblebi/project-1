@@ -52,7 +52,7 @@ class ClothingController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'prix' => 'required|numeric|min:500',
-            // 'image' => 'required|image|mimes:jpeg,png,jpg,svg',
+            'image_clothing' => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
 

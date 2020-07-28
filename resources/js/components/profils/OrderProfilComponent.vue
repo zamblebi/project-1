@@ -1,17 +1,17 @@
 <template>
-   <div>
-       <h1>Mes Commandes : </h1>
+   <div class="my_order_list_all">
+       <h1 class="my_title_order">Mes Commandes : </h1>
        <ul class="all_orders">
             <li v-for="(order, n) in my_order" :key="n">
-                <h4>
-                    Vetements et Quantiter:
+                <h4 >
+                    Vêtements et Quantiter:
                     <!-- {{order.carts.carts}} -->
                 </h4>
                 <div v-for="(cart, n) in JSON.parse(order.carts).carts" :key="n">
 
-                    Nom du vetement : {{cart.product.name}}
-                    <p> <em>Prix de lavage du Vetement: {{cart.price}}</em></p>
-                    <p> <strong>Quantiter :</strong>  {{cart.quantity}}</p>
+                    Nom du vêtement: {{cart.product.name}}
+                    <p> <em>Prix du service: {{cart.price}}</em></p>
+                    <p> <strong>Quantités :</strong>  {{cart.quantity}}</p>
                     <br>
                 </div>
                 <br>
@@ -19,7 +19,7 @@
 <!--                <p>Mon adresse de livraison et de recuperation : {{JSON.parse(order.adress_maps).long_name}}</p>-->
                <p> <strong>Type de livraison :</strong> {{order.deliverable_type}}</p>
                <p> <strong>Date de livraison :</strong>{{order.deliverable_date}}</p>
-               <p> <strong>Lieu de recuperation :</strong>{{JSON.parse(order.adress_details).details_lieu}}</p>
+               <p> <strong>Lieu de récupération :</strong>{{JSON.parse(order.adress_details).details_lieu}}</p>
                <hr>
 
 <!--           </div>-->
@@ -59,9 +59,21 @@
     }
 </script>
 <style lang="scss">
+    .my_title_order{
+        text-align: center;
+    }
     .all_orders{
+        padding-left: 0;
+        li{
+            margin: 5px 10px;
+            padding: 5px 10px;
+            border-radius: 7px;
+            background-color: #1c2d3417;
+        }
         p{
+
             text-align: left;
         }
     }
+    
 </style>

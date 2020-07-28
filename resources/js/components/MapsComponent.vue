@@ -1,7 +1,7 @@
 <template>
     <div class="maps_details">
-       <h4>L'adresse de recuperation :</h4>
-            <p>
+       <h4>L'adresse de récupération :</h4>
+            <p class="current_adress">
                {{adress ?  JSON.parse(adress).long_name : "Aucun"}}
             </p>
         <!-- <h2>Votre adresse : </h2> -->
@@ -105,6 +105,10 @@ export default {
 </script>
 
 <style lang="scss">
+    $orange : #B8524B;
+    .current_adress{
+      color: $orange;
+    }
     .maps_details{
         text-align: center;
     }
