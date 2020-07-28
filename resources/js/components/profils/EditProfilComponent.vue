@@ -5,8 +5,12 @@
            Modification reussi
        </p>
            </transition>
+    <transition name="slide-fade">
+        <div v-if="showUp">
+
             <h1 class="title_edit_profil">Modifier mon Profil</h1>
-       <form class="edit_profil">
+            
+       <form  class="edit_profil">
             <div>
                 <label for="">Votre nom </label>
                 <!-- <br> -->
@@ -45,6 +49,8 @@
             <br>
             <button class="btn" @click.prevent="editProfil">Modifier</button>
        </form>
+        </div>
+    </transition>
     </div>
 </template>
 
@@ -54,7 +60,8 @@ export default {
     data(){
         return{
             user: '',
-            show: false
+            show: false,
+            showUp: false
             // lastName: user.lastName,
             // firstName: '',
             // email: '',
@@ -67,6 +74,7 @@ export default {
         }, 3000)
     },
     mounted() {
+        this.showUp = true,
         axios.get('/get-user')
         .then(response => {
             this.user = response.data

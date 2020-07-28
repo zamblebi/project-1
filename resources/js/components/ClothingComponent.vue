@@ -7,7 +7,9 @@
 
 
       <h2 class="clothing-title">Choisir une quantité</h2>
-    <div class="order-clothing-list">
+      <transition name="fade">
+
+    <div class="order-clothing-list" v-if="show">
         <div class="list_clothing_position">
 
         <ul class="list-clothing" v-for="(category, i) in categories" :key="i">
@@ -46,6 +48,7 @@
         <cart-component :clt-qty-all="clothingQty" :clt-in-carts="carts" ></cart-component>
         
     </div>
+      </transition>
 
     </div>
 </template>
@@ -60,6 +63,7 @@
         data: function(){
             return{
                 value: '',
+                show: false
             } 
         },
         updated(){
@@ -79,6 +83,7 @@
                 'carts', ['clothingQty']
             )},
         mounted(){
+            this.show = true
             this.$store.dispatch('products/getProducts'),
             this.$store.dispatch('products/getCategories')
             // console.log(this.categories)

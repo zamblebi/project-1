@@ -1947,6 +1947,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1955,6 +1962,7 @@ __webpack_require__.r(__webpack_exports__);
       details_lieu: '',
       other_details: '',
       // checkedLieu: '',
+      show: false,
       mapsPosition: '',
       adress: localStorage.adress,
       selected: "Domicile",
@@ -1985,6 +1993,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+    this.show = true;
+
     if (localStorage.adressMaps) {
       this.adress = localStorage.adressMaps; // console.log(JSON.parse(this.adress).long_name)
     }
@@ -2159,12 +2169,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      value: ''
+      value: '',
+      show: false
     };
   },
   updated: function updated() {
@@ -2185,6 +2199,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   })), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])('carts', ['clothingQty'])),
   mounted: function mounted() {
+    this.show = true;
     this.$store.dispatch('products/getProducts'), this.$store.dispatch('products/getCategories'); // console.log(this.categories)
   },
   methods: Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])('carts', ['addProductToCart'])
@@ -2259,6 +2274,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2266,11 +2284,13 @@ __webpack_require__.r(__webpack_exports__);
         simple: 'Gratuit',
         express: 5000
       },
-      deliverableType: '' // typeD : ''
+      deliverableType: '',
+      show: false // typeD : ''
 
     };
   },
   mounted: function mounted() {
+    this.show = true;
     this.viewDeliverable();
 
     if (localStorage.getItem('store')) {
@@ -2483,14 +2503,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       date: '',
-      dateStored: ''
+      dateStored: '',
+      show: false
     };
   },
   mounted: function mounted() {
+    this.show = true;
+
     if (localStorage.dateStored) {
       this.dateStored = localStorage.dateStored;
       console.log('date', this.dateStored);
@@ -2616,10 +2648,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      show: false,
       adressMaps: localStorage.adressMaps,
       allPrice: JSON.parse(localStorage.getItem('store')).carts.allPrice,
       deliverableType: localStorage.deliverableType,
@@ -2645,6 +2684,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
+    this.show = true;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/get-user').then(function (response) {
       _this.user_id = response.data.id;
       console.log(response.data);
@@ -2796,12 +2836,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       user: '',
-      show: false // lastName: user.lastName,
+      show: false,
+      showUp: false // lastName: user.lastName,
       // firstName: '',
       // email: '',
       // phone_number: '',
@@ -2818,7 +2865,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/get-user').then(function (response) {
+    this.showUp = true, axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/get-user').then(function (response) {
       _this2.user = response.data;
     });
   },
@@ -2913,18 +2960,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       user: '',
-      my_order: ''
+      my_order: '',
+      show: false
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/get-user').then(function (response) {
+    this.show = true, axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/get-user').then(function (response) {
       _this.user = response.data.id; // console.log('la reponse est : ' + this.user)
     })["catch"](function (error) {
       return console.log(error);
@@ -2932,7 +2988,8 @@ __webpack_require__.r(__webpack_exports__);
     // get order
 
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/get-user-order").then(function (response) {
-      _this.my_order = response.data; // console.log(response.data)
+      _this.my_order = response.data;
+      console.log(response.data);
     })["catch"](function (error) {
       return console.log(error, _this.user);
     });
@@ -2967,13 +3024,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      active: false
+      active: false,
+      show: false
     };
   },
+  mounted: function mounted() {
+    this.show = true;
+  },
+  // destroyed(){
+  //     this.active = false
+  // },
   components: {
     'menu-profil': _MenuProfil__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -3116,7 +3185,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".date-title {\n  text-align: center;\n}\n@media (max-width: 800px) {\n.date_time {\n    margin: 0 30px;\n}\n}", ""]);
+exports.push([module.i, ".date-title {\n  text-align: center;\n}\n@media (max-width: 800px) {\n.date_time {\n    margin: 0 30px;\n}\n}\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}", ""]);
 
 // exports
 
@@ -3211,7 +3280,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".my_title_order {\n  text-align: center;\n}\n.all_orders {\n  padding-left: 0;\n}\n.all_orders li {\n  margin: 5px 10px;\n  padding: 5px 10px;\n  border-radius: 7px;\n  background-color: #1c2d3417;\n}\n.all_orders p {\n  text-align: left;\n}", ""]);
+exports.push([module.i, ".my_title_order {\n  text-align: center;\n}\n.all_orders {\n  padding-left: 0;\n}\n.all_orders li {\n  margin: 15px 10px;\n  padding: 5px 10px;\n  border-radius: 7px;\n  background-color: #1c2d3417;\n}\n.all_orders p {\n  text-align: left;\n}\n\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.slide-fade-enter-active {\n  transition: all 0.3s ease;\n}\n.slide-fade-leave-active {\n  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter, .slide-fade-leave-to {\n  transform: translateX(10px);\n  opacity: 0;\n}", ""]);
 
 // exports
 
@@ -3230,7 +3299,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n@media (min-width: 800px) {\n.menu_profil {\n    display: none;\n}\n}\n@media (max-width: 800px) {\n.menu_center {\n    display: grid;\n    place-items: center;\n}\n.menu_profil_desktop {\n    display: none;\n}\n}", ""]);
+exports.push([module.i, ".fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n@media (min-width: 800px) {\n.menu_profil {\n    display: none;\n}\n}\n@media (max-width: 800px) {\n.menu_center {\n    display: grid;\n    place-items: center;\n}\n.menu_profil_desktop {\n    display: none;\n}\n}\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.slide-fade-enter-active {\n  transition: all 0.3s ease;\n}\n.slide-fade-leave-active {\n  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter, .slide-fade-leave-to {\n  transform: translateX(10px);\n  opacity: 0;\n}", ""]);
 
 // exports
 
@@ -42382,123 +42451,150 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("h2", { staticClass: "adress_title" }, [_vm._v("Vos coordonnées")]),
-      _vm._v(" "),
-      _c("google-maps"),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _vm.adress ? _c("div", { staticClass: "adress_recup" }) : _vm._e(),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("div", { staticClass: "more_details" }, [
-        _c("div", [
-          _c("label", { attrs: { for: "" } }, [
-            _vm._v("Détails supplémentaires")
-          ]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.details_adress,
-                expression: "details_adress"
-              }
-            ],
-            staticClass: "search_",
-            attrs: {
-              type: "text",
-              placeholder: "Etage, Code porte, Batiment,Quartier"
-            },
-            domProps: { value: _vm.details_adress },
-            on: {
-              input: [
-                function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.details_adress = $event.target.value
-                },
-                _vm.addOtherAdress
-              ]
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c("div", [
-          _c("label", { attrs: { for: "" } }, [_vm._v("Lieu")]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "domiciel" } }, [_vm._v("Domicile")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.details_lieu,
-                expression: "details_lieu"
-              }
-            ],
-            attrs: { type: "radio", id: "domicile", value: "Domicile" },
-            domProps: { checked: _vm._q(_vm.details_lieu, "Domicile") },
-            on: {
-              change: [
-                function($event) {
-                  _vm.details_lieu = "Domicile"
-                },
-                _vm.addLieu
-              ]
-            }
-          }),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "bureau" } }, [_vm._v("Bureau")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.details_lieu,
-                expression: "details_lieu"
-              }
-            ],
-            attrs: { type: "radio", id: "bureau", value: "Bureau" },
-            domProps: { checked: _vm._q(_vm.details_lieu, "Bureau") },
-            on: {
-              change: [
-                function($event) {
-                  _vm.details_lieu = "Bureau"
-                },
-                _vm.addLieu
-              ]
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("div", { staticClass: "button" }, [
-        _vm.mapsPosition
+      _c("transition", { attrs: { name: "slide-fade" } }, [
+        _vm.show
           ? _c(
               "div",
-              { staticClass: "router" },
               [
-                _c(
-                  "router-link",
-                  { staticClass: "btn", attrs: { to: "/order-validate" } },
-                  [_vm._v("Continuer")]
-                )
+                _c("h2", { staticClass: "adress_title" }, [
+                  _vm._v("Vos coordonnées")
+                ]),
+                _vm._v(" "),
+                _c("google-maps"),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _vm.adress
+                  ? _c("div", { staticClass: "adress_recup" })
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("div", { staticClass: "more_details" }, [
+                  _c("div", [
+                    _c("label", { attrs: { for: "" } }, [
+                      _vm._v("Détails supplémentaires")
+                    ]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.details_adress,
+                          expression: "details_adress"
+                        }
+                      ],
+                      staticClass: "search_",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Etage, Code porte, Batiment,Quartier"
+                      },
+                      domProps: { value: _vm.details_adress },
+                      on: {
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.details_adress = $event.target.value
+                          },
+                          _vm.addOtherAdress
+                        ]
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("label", { attrs: { for: "" } }, [_vm._v("Lieu")]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "domiciel" } }, [
+                      _vm._v("Domicile")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.details_lieu,
+                          expression: "details_lieu"
+                        }
+                      ],
+                      attrs: {
+                        type: "radio",
+                        id: "domicile",
+                        value: "Domicile"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.details_lieu, "Domicile")
+                      },
+                      on: {
+                        change: [
+                          function($event) {
+                            _vm.details_lieu = "Domicile"
+                          },
+                          _vm.addLieu
+                        ]
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "bureau" } }, [
+                      _vm._v("Bureau")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.details_lieu,
+                          expression: "details_lieu"
+                        }
+                      ],
+                      attrs: { type: "radio", id: "bureau", value: "Bureau" },
+                      domProps: { checked: _vm._q(_vm.details_lieu, "Bureau") },
+                      on: {
+                        change: [
+                          function($event) {
+                            _vm.details_lieu = "Bureau"
+                          },
+                          _vm.addLieu
+                        ]
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("div", { staticClass: "button" }, [
+                  _vm.mapsPosition
+                    ? _c(
+                        "div",
+                        { staticClass: "router" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "btn",
+                              attrs: { to: "/order-validate" }
+                            },
+                            [_vm._v("Continuer")]
+                          )
+                        ],
+                        1
+                      )
+                    : _vm._e()
+                ])
               ],
               1
             )
@@ -42678,95 +42774,117 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h2", { staticClass: "clothing-title" }, [
-      _vm._v("Choisir une quantité")
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "order-clothing-list" },
-      [
-        _c(
-          "div",
-          { staticClass: "list_clothing_position" },
-          _vm._l(_vm.categories, function(category, i) {
-            return _c(
-              "ul",
-              { key: i, staticClass: "list-clothing" },
+  return _c(
+    "div",
+    [
+      _c("h2", { staticClass: "clothing-title" }, [
+        _vm._v("Choisir une quantité")
+      ]),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade" } }, [
+        _vm.show
+          ? _c(
+              "div",
+              { staticClass: "order-clothing-list" },
               [
-                _c("h4", [_vm._v(_vm._s(category.name))]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _vm._l(_vm.products, function(product) {
-                  return _c("div", { key: product.id }, [
-                    product.category_id == category.id
-                      ? _c("li", [
-                          _c("div", { staticClass: "clothing_info" }, [
-                            _c("img", {
-                              attrs: { src: "/" + product.image, alt: "" }
-                            }),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "info_clothing" }, [
-                              _c("h3", [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(product.name) +
-                                    "\n                                "
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", [
-                                _c("em", [_vm._v(_vm._s(product.prix) + "f")]),
-                                _vm._v(" "),
-                                _c("br")
-                              ]),
-                              _vm._v(" "),
-                              _c("div", [
-                                _c("p", [
-                                  _vm._v(" Catégorie :  "),
-                                  _c("em", [
-                                    _vm._v(_vm._s(product.category.name))
-                                  ])
+                _c(
+                  "div",
+                  { staticClass: "list_clothing_position" },
+                  _vm._l(_vm.categories, function(category, i) {
+                    return _c(
+                      "ul",
+                      { key: i, staticClass: "list-clothing" },
+                      [
+                        _c("h4", [_vm._v(_vm._s(category.name))]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _vm._l(_vm.products, function(product) {
+                          return _c("div", { key: product.id }, [
+                            product.category_id == category.id
+                              ? _c("li", [
+                                  _c("div", { staticClass: "clothing_info" }, [
+                                    _c("img", {
+                                      attrs: {
+                                        src: "/" + product.image,
+                                        alt: ""
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "info_clothing" },
+                                      [
+                                        _c("h3", [
+                                          _vm._v(
+                                            "\n                                    " +
+                                              _vm._s(product.name) +
+                                              "\n                                "
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("div", [
+                                          _c("em", [
+                                            _vm._v(_vm._s(product.prix) + "f")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("br")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("div", [
+                                          _c("p", [
+                                            _vm._v(" Catégorie :  "),
+                                            _c("em", [
+                                              _vm._v(
+                                                _vm._s(product.category.name)
+                                              )
+                                            ])
+                                          ])
+                                        ])
+                                      ]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn",
+                                      attrs: { type: "button" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.addProductToCart(product)
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Ajouter")]
+                                  )
                                 ])
-                              ])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn",
-                              attrs: { type: "button" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.addProductToCart(product)
-                                }
-                              }
-                            },
-                            [_vm._v("Ajouter")]
-                          )
-                        ])
-                      : _vm._e()
-                  ])
+                              : _vm._e()
+                          ])
+                        })
+                      ],
+                      2
+                    )
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c("cart-component", {
+                  attrs: {
+                    "clt-qty-all": _vm.clothingQty,
+                    "clt-in-carts": _vm.carts
+                  }
                 })
               ],
-              2
+              1
             )
-          }),
-          0
-        ),
-        _vm._v(" "),
-        _c("cart-component", {
-          attrs: { "clt-qty-all": _vm.clothingQty, "clt-in-carts": _vm.carts }
-        })
-      ],
-      1
-    )
-  ])
+          : _vm._e()
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -42790,136 +42908,145 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", [
-      _c("h1", { staticClass: "delivery-title" }, [
-        _vm._v("Choisisssez un moyen de livraison")
-      ]),
-      _vm._v(" "),
-      _c("h4", { staticClass: "display_subtitle" }, [
-        _vm._v(
-          "\n                        Type de livraison choisie : " +
-            _vm._s(_vm.deliverableType) +
-            "\n                    "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "container-deliverys" }, [
-        _c("div", { staticClass: "simple" }, [
-          _c(
-            "div",
-            { staticClass: "delivery" },
-            [
-              _c("h3", [_vm._v("Simple")]),
+  return _c(
+    "div",
+    [
+      _c("transition", { attrs: { name: "slide-fade" } }, [
+        _vm.show
+          ? _c("div", [
+              _c("h1", { staticClass: "delivery-title" }, [
+                _vm._v("Choisisssez un moyen de livraison")
+              ]),
               _vm._v(" "),
-              _c("img", {
-                staticClass: "icon-delivery",
-                attrs: { src: "/icons/delivery.svg", alt: "" }
-              }),
+              _c("h4", { staticClass: "display_subtitle" }, [
+                _vm._v(
+                  "\n                        Type de livraison choisie : " +
+                    _vm._s(_vm.deliverableType) +
+                    "\n                    "
+                )
+              ]),
               _vm._v(" "),
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "frais" }, [
-                _vm.deliverablePrices.simple == "Gratuit"
-                  ? _c("span", [
-                      _c("h4", [_vm._v("Frais de transport Gratuit")])
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.deliverablePrices.simple != "Gratuit"
-                  ? _c("span", { staticClass: "simple_del" }, [
-                      _c("h4", [_vm._v("Frais de transport : ")]),
+              _c("div", { staticClass: "container-deliverys" }, [
+                _c("div", { staticClass: "simple" }, [
+                  _c(
+                    "div",
+                    { staticClass: "delivery" },
+                    [
+                      _c("h3", [_vm._v("Simple")]),
                       _vm._v(" "),
-                      _c("em", [
-                        _vm._v(
-                          " " + _vm._s(_vm.deliverablePrices.simple) + " f "
-                        )
-                      ])
-                    ])
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn",
-                  attrs: { to: "/order-slots" },
-                  nativeOn: {
-                    click: function($event) {
-                      return _vm.addDeliverable("Simple")
-                    }
-                  }
-                },
-                [_vm._v("Sélectionner")]
-              )
-            ],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "express" }, [
-          _c(
-            "div",
-            { staticClass: "delivery" },
-            [
-              _c("h3", [_vm._v("Express")]),
-              _vm._v(" "),
-              _c("img", {
-                staticClass: "icon-delivery",
-                attrs: { src: "/icons/express-delivery.svg", alt: "" }
-              }),
-              _vm._v(" "),
-              _vm._m(1),
-              _vm._v(" "),
-              _c("div", { staticClass: "frais" }, [
-                _c("em", [
-                  _vm._v(" " + _vm._s(_vm.deliverablePrices.express) + "f x 2 ")
+                      _c("img", {
+                        staticClass: "icon-delivery",
+                        attrs: { src: "/icons/delivery.svg", alt: "" }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "small-datails" }, [
+                        _c("strong", [
+                          _c("em", [
+                            _vm._v(
+                              "Votre vetement sera livrer 48h apres recuperation"
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "frais" }, [
+                        _vm.deliverablePrices.simple == "Gratuit"
+                          ? _c("span", [
+                              _c("h4", [_vm._v("Frais de transport Gratuit")])
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.deliverablePrices.simple != "Gratuit"
+                          ? _c("span", { staticClass: "simple_del" }, [
+                              _c("h4", [_vm._v("Frais de transport : ")]),
+                              _vm._v(" "),
+                              _c("em", [
+                                _vm._v(
+                                  " " +
+                                    _vm._s(_vm.deliverablePrices.simple) +
+                                    " f "
+                                )
+                              ])
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "btn",
+                          attrs: { to: "/order-slots" },
+                          nativeOn: {
+                            click: function($event) {
+                              return _vm.addDeliverable("Simple")
+                            }
+                          }
+                        },
+                        [_vm._v("Sélectionner")]
+                      )
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "express" }, [
+                  _c(
+                    "div",
+                    { staticClass: "delivery" },
+                    [
+                      _c("h3", [_vm._v("Express")]),
+                      _vm._v(" "),
+                      _c("img", {
+                        staticClass: "icon-delivery",
+                        attrs: { src: "/icons/express-delivery.svg", alt: "" }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "small-datails" }, [
+                        _c("strong", [
+                          _c("em", [
+                            _vm._v(
+                              "Votre vetement sera livrer 4h apres recuperation"
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "frais" }, [
+                        _c("em", [
+                          _vm._v(
+                            " " +
+                              _vm._s(_vm.deliverablePrices.express) +
+                              "f x 2 "
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "btn",
+                          attrs: { to: "/order-slots" },
+                          nativeOn: {
+                            click: function($event) {
+                              return _vm.addDeliverable("Express")
+                            }
+                          }
+                        },
+                        [_vm._v("Sélectionner")]
+                      )
+                    ],
+                    1
+                  )
                 ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn",
-                  attrs: { to: "/order-slots" },
-                  nativeOn: {
-                    click: function($event) {
-                      return _vm.addDeliverable("Express")
-                    }
-                  }
-                },
-                [_vm._v("Sélectionner")]
-              )
-            ],
-            1
-          )
-        ])
+              ])
+            ])
+          : _vm._e()
       ])
-    ])
-  ])
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "small-datails" }, [
-      _c("strong", [
-        _c("em", [_vm._v("Votre vetement sera livrer 48h apres recuperation")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "small-datails" }, [
-      _c("strong", [
-        _c("em", [_vm._v("Votre vetement sera livrer 4h apres recuperation")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -43050,76 +43177,90 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h2", { staticClass: "date-title" }, [
-      _vm._v("Choisissez la date et l'heure de récupération des vêtements")
-    ]),
-    _vm._v(" "),
-    _c("h4", { staticClass: "display_subtitle" }, [
-      _vm._v("Date choisi: " + _vm._s(_vm.dateStored))
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "date_time" },
-      [
-        _c("VueCtkDateTimePicker", {
-          attrs: {
-            locale: "fr",
-            inline: true,
-            color: "#D65047",
-            minuteInterval: "60",
-            "disabled-hours": [
-              "00",
-              "01",
-              "02",
-              "03",
-              "04",
-              "05",
-              "06",
-              "07",
-              "19",
-              "20",
-              "21",
-              "22",
-              "23"
-            ],
-            "button-now-translation": "Maintenant",
-            format: "DD-MM-YYYY HH:mm"
-          },
-          model: {
-            value: _vm.date,
-            callback: function($$v) {
-              _vm.date = $$v
-            },
-            expression: "date"
-          }
-        })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "add-date" },
-      [
-        _c(
-          "router-link",
-          {
-            staticClass: "btn",
-            attrs: { to: "/order-maps" },
-            nativeOn: {
-              click: function($event) {
-                return _vm.addDate($event)
-              }
-            }
-          },
-          [_vm._v("Continuer")]
-        )
-      ],
-      1
-    )
-  ])
+  return _c(
+    "div",
+    [
+      _c("transition", { attrs: { name: "slide-fade" } }, [
+        _vm.show
+          ? _c("div", [
+              _c("div", [
+                _c("h2", { staticClass: "date-title" }, [
+                  _vm._v(
+                    "Choisissez la date et l'heure de récupération des vêtements"
+                  )
+                ]),
+                _vm._v(" "),
+                _c("h4", { staticClass: "display_subtitle" }, [
+                  _vm._v("Date choisi: " + _vm._s(_vm.dateStored))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "date_time" },
+                  [
+                    _c("VueCtkDateTimePicker", {
+                      attrs: {
+                        locale: "fr",
+                        inline: true,
+                        color: "#D65047",
+                        minuteInterval: "60",
+                        "disabled-hours": [
+                          "00",
+                          "01",
+                          "02",
+                          "03",
+                          "04",
+                          "05",
+                          "06",
+                          "07",
+                          "19",
+                          "20",
+                          "21",
+                          "22",
+                          "23"
+                        ],
+                        "button-now-translation": "Maintenant",
+                        format: "DD-MM-YYYY HH:mm"
+                      },
+                      model: {
+                        value: _vm.date,
+                        callback: function($$v) {
+                          _vm.date = $$v
+                        },
+                        expression: "date"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "add-date" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn",
+                        attrs: { to: "/order-maps" },
+                        nativeOn: {
+                          click: function($event) {
+                            return _vm.addDate($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Continuer")]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ])
+          : _vm._e()
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -43193,121 +43334,134 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("h1", [_vm._v("Validation de la commande")]),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(_vm._s(JSON.parse(_vm.adressMaps).long_name) + " | "),
-      _c("router-link", { attrs: { to: "/order-maps" } }, [_vm._v("Modifier")]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("strong", [_vm._v("Prix total des articles :  ")]),
-      _vm._v(" " + _vm._s(_vm.allPrice) + " |  "),
-      _c("router-link", { attrs: { to: "/order" } }, [_vm._v("Modifier")]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("strong", [
-        _vm._v("Type de livraison choisie : " + _vm._s(_vm.deliverableType))
-      ]),
-      _vm._v("  | "),
-      _c("router-link", { attrs: { to: "/order-deliverable" } }, [
-        _vm._v("Modifier")
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("strong", [_vm._v("Date de récupération: " + _vm._s(_vm.dateChoose))]),
-      _vm._v("  |   "),
-      _c("router-link", { attrs: { to: "/order-slots" } }, [
-        _vm._v("Modifier")
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("strong", [_vm._v("Details de l'adresse :")]),
-      _vm._v(
-        " Lieu : " +
-          _vm._s(_vm.details_lieu ? _vm.details_lieu : "Aucun") +
-          ", Details du lieu : " +
-          _vm._s(_vm.details_adress ? _vm.details_adress : "Aucun") +
-          "\n        "
-      ),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      !_vm.user_id
-        ? _c("h3", [
-            _vm._v(
-              "Veuillez vous connecter sinon votre commande ne sera pas valide"
-            )
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.allPrice == 0
-        ? _c("span", [
-            _c(
-              "h3",
+      _c("transition", { attrs: { name: "slide-fade" } }, [
+        _vm.show
+          ? _c(
+              "div",
               [
-                _vm._v("Veuillez calculer votre commande dans "),
+                _c("h1", [_vm._v("Validation de la commande")]),
+                _vm._v(" "),
+                _c("strong", [_c("label", [_vm._v("Adresse : ")])]),
+                _vm._v(_vm._s(JSON.parse(_vm.adressMaps).long_name) + " | "),
+                _c("router-link", { attrs: { to: "/order-maps" } }, [
+                  _vm._v("Modifier")
+                ]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("strong", [_vm._v("Prix total des articles :  ")]),
+                _vm._v(" " + _vm._s(_vm.allPrice) + " |  "),
                 _c("router-link", { attrs: { to: "/order" } }, [
-                  _vm._v("Le panier")
-                ])
+                  _vm._v("Modifier")
+                ]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("strong", [
+                  _vm._v(
+                    "Type de livraison choisie : " + _vm._s(_vm.deliverableType)
+                  )
+                ]),
+                _vm._v("  | "),
+                _c("router-link", { attrs: { to: "/order-deliverable" } }, [
+                  _vm._v("Modifier")
+                ]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("strong", [
+                  _vm._v("Date de récupération: " + _vm._s(_vm.dateChoose))
+                ]),
+                _vm._v("  |   "),
+                _c("router-link", { attrs: { to: "/order-slots" } }, [
+                  _vm._v("Modifier")
+                ]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("strong", [_vm._v("Details de l'adresse :")]),
+                _vm._v(
+                  " Lieu : " +
+                    _vm._s(_vm.details_lieu ? _vm.details_lieu : "Aucun") +
+                    ", Details du lieu : " +
+                    _vm._s(_vm.details_adress ? _vm.details_adress : "Aucun") +
+                    "\n        "
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                !_vm.user_id
+                  ? _c("h3", [
+                      _vm._v(
+                        "Veuillez vous connecter sinon votre commande ne sera pas valide"
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.allPrice == 0
+                  ? _c("span", [
+                      _c(
+                        "h3",
+                        [
+                          _vm._v("Veuillez calculer votre commande dans "),
+                          _c("router-link", { attrs: { to: "/order" } }, [
+                            _vm._v("Le panier")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v("\n            ou\n        "),
+                      _c("h3", [_vm._v("Aucun vêtement n'a ete choisi")])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                !_vm.deliverableType
+                  ? _c("h3", [_vm._v("Veillez Choisir un type de livraison")])
+                  : _vm._e(),
+                _vm._v(" "),
+                !_vm.dateChoose
+                  ? _c("h3", [
+                      _vm._v("Veillez Choisir une date de récupération")
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _vm.user_id &&
+                _vm.carts &&
+                _vm.allPrice &&
+                _vm.deliverableType &&
+                _vm.dateChoose
+                  ? _c(
+                      "div",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "btn",
+                            attrs: { to: "/order-success" },
+                            nativeOn: {
+                              click: function($event) {
+                                return _vm.orderStore($event)
+                              }
+                            }
+                          },
+                          [_c("span", [_vm._v("Commender")])]
+                        )
+                      ],
+                      1
+                    )
+                  : _vm._e()
               ],
               1
-            ),
-            _vm._v("\n            ou\n        "),
-            _c("h3", [_vm._v("Aucun vêtement n'a ete choisi")])
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      !_vm.deliverableType
-        ? _c("h3", [_vm._v("Veillez Choisir un type de livraison")])
-        : _vm._e(),
-      _vm._v(" "),
-      !_vm.dateChoose
-        ? _c("h3", [_vm._v("Veillez Choisir une date de récupération")])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _vm.user_id &&
-      _vm.carts &&
-      _vm.allPrice &&
-      _vm.deliverableType &&
-      _vm.dateChoose
-        ? _c(
-            "div",
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn",
-                  attrs: { to: "/order-success" },
-                  nativeOn: {
-                    click: function($event) {
-                      return _vm.orderStore($event)
-                    }
-                  }
-                },
-                [_c("span", [_vm._v("Commender")])]
-              )
-            ],
-            1
-          )
-        : _vm._e()
+            )
+          : _vm._e()
+      ])
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("strong", [_c("label", [_vm._v("Adresse : ")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -43464,142 +43618,154 @@ var render = function() {
           : _vm._e()
       ]),
       _vm._v(" "),
-      _c("h1", { staticClass: "title_edit_profil" }, [
-        _vm._v("Modifier mon Profil")
-      ]),
-      _vm._v(" "),
-      _c("form", { staticClass: "edit_profil" }, [
-        _c("div", [
-          _c("label", { attrs: { for: "" } }, [_vm._v("Votre nom ")]),
-          _vm._v(" "),
-          _c("div", [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.user.lastName,
-                  expression: "user.lastName"
-                }
-              ],
-              attrs: { type: "text" },
-              domProps: { value: _vm.user.lastName },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.user, "lastName", $event.target.value)
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("br"),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "" } }, [_vm._v("Votre prénom ")]),
-          _vm._v(" "),
-          _c("div", [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.user.firstName,
-                  expression: "user.firstName"
-                }
-              ],
-              attrs: { type: "text" },
-              domProps: { value: _vm.user.firstName },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.user, "firstName", $event.target.value)
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("br"),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "" } }, [_vm._v("Votre email ")]),
-          _vm._v(" "),
-          _c("div", [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.user.email,
-                  expression: "user.email"
-                }
-              ],
-              attrs: { type: "text" },
-              domProps: { value: _vm.user.email },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.user, "email", $event.target.value)
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("br"),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "" } }, [
-            _vm._v("Votre numéro de téléphone ")
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.user.phone_number,
-                  expression: "user.phone_number"
-                }
-              ],
-              attrs: { type: "text" },
-              domProps: { value: _vm.user.phone_number },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.user, "phone_number", $event.target.value)
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.editProfil($event)
-              }
-            }
-          },
-          [_vm._v("Modifier")]
-        )
+      _c("transition", { attrs: { name: "slide-fade" } }, [
+        _vm.showUp
+          ? _c("div", [
+              _c("h1", { staticClass: "title_edit_profil" }, [
+                _vm._v("Modifier mon Profil")
+              ]),
+              _vm._v(" "),
+              _c("form", { staticClass: "edit_profil" }, [
+                _c("div", [
+                  _c("label", { attrs: { for: "" } }, [_vm._v("Votre nom ")]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.user.lastName,
+                          expression: "user.lastName"
+                        }
+                      ],
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.user.lastName },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.user, "lastName", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "" } }, [
+                    _vm._v("Votre prénom ")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.user.firstName,
+                          expression: "user.firstName"
+                        }
+                      ],
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.user.firstName },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.user, "firstName", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "" } }, [_vm._v("Votre email ")]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.user.email,
+                          expression: "user.email"
+                        }
+                      ],
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.user.email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.user, "email", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "" } }, [
+                    _vm._v("Votre numéro de téléphone ")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.user.phone_number,
+                          expression: "user.phone_number"
+                        }
+                      ],
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.user.phone_number },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.user,
+                            "phone_number",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.editProfil($event)
+                      }
+                    }
+                  },
+                  [_vm._v("Modifier")]
+                )
+              ])
+            ])
+          : _vm._e()
       ])
     ],
     1
@@ -43686,72 +43852,103 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "my_order_list_all" }, [
-    _c("h1", { staticClass: "my_title_order" }, [_vm._v("Mes Commandes : ")]),
-    _vm._v(" "),
-    _c(
-      "ul",
-      { staticClass: "all_orders" },
-      _vm._l(_vm.my_order, function(order, n) {
-        return _c(
-          "li",
-          { key: n },
-          [
-            _c("h4", [
-              _vm._v(
-                "\n                    Vêtements et Quantiter:\n                    "
-              )
-            ]),
-            _vm._v(" "),
-            _vm._l(JSON.parse(order.carts).carts, function(cart, n) {
+  return _c("transition", { attrs: { name: "slide-fade" } }, [
+    _vm.show
+      ? _c("div", { staticClass: "my_order_list_all" }, [
+          _c("h1", { staticClass: "my_title_order" }, [
+            _vm._v("Mes Commandes : ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "all_orders" },
+            _vm._l(_vm.my_order, function(order, n) {
               return _c("div", { key: n }, [
-                _vm._v(
-                  "\n\n                    Nom du vêtement: " +
-                    _vm._s(cart.product.name) +
-                    "\n                    "
-                ),
-                _c("p", [
-                  _c("em", [_vm._v("Prix du service: " + _vm._s(cart.price))])
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("strong", [_vm._v("Quantités :")]),
-                  _vm._v("  " + _vm._s(cart.quantity))
-                ]),
-                _vm._v(" "),
-                _c("br")
+                order.deliver == 0
+                  ? _c(
+                      "li",
+                      [
+                        _c("h4", [
+                          _vm._v(
+                            "\n                    Vêtements et Quantiter:\n                    "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(JSON.parse(order.carts).carts, function(
+                          cart,
+                          n
+                        ) {
+                          return _c("div", { key: n }, [
+                            _vm._v(
+                              "\n\n                    Nom du vêtement: " +
+                                _vm._s(cart.product.name) +
+                                "\n                    "
+                            ),
+                            _c("p", [
+                              _c("em", [
+                                _vm._v("Prix du service: " + _vm._s(cart.price))
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [
+                              _c("strong", [_vm._v("Quantités :")]),
+                              _vm._v("  " + _vm._s(cart.quantity))
+                            ]),
+                            _vm._v(" "),
+                            _c("br")
+                          ])
+                        }),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("strong", [
+                            _vm._v(" Prix total de la commande : ")
+                          ]),
+                          _vm._v(_vm._s(order.all_prices) + " f")
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("strong", [_vm._v("Type de livraison :")]),
+                          _vm._v(
+                            " " +
+                              _vm._s(order.deliverable_type) +
+                              " " +
+                              _vm._s(
+                                order.deliverable_type == "Simple"
+                                  ? " | delais d'attente 48 heures "
+                                  : " | delais d'attente 4 heures "
+                              )
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("strong", [
+                            _vm._v("Date et heure de recuperation : ")
+                          ]),
+                          _vm._v(_vm._s(order.deliverable_date))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("strong", [_vm._v("Lieu de récupération :")]),
+                          _vm._v(
+                            _vm._s(
+                              JSON.parse(order.adress_details).details_lieu
+                            )
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("hr")
+                      ],
+                      2
+                    )
+                  : _vm._e()
               ])
             }),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c("p", [
-              _c("strong", [_vm._v(" Prix total de la commande : ")]),
-              _vm._v(_vm._s(order.all_prices) + " f")
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _c("strong", [_vm._v("Type de livraison :")]),
-              _vm._v(" " + _vm._s(order.deliverable_type))
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _c("strong", [_vm._v("Date de livraison :")]),
-              _vm._v(_vm._s(order.deliverable_date))
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _c("strong", [_vm._v("Lieu de récupération :")]),
-              _vm._v(_vm._s(JSON.parse(order.adress_details).details_lieu))
-            ]),
-            _vm._v(" "),
-            _c("hr")
-          ],
-          2
-        )
-      }),
-      0
-    )
+            0
+          )
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
@@ -43783,7 +43980,7 @@ var render = function() {
         _c(
           "button",
           { staticClass: "menu_profil btn", on: { click: _vm.activer } },
-          [_vm._v("Menu")]
+          [_vm._v(_vm._s(!_vm.active ? "Afficher le menu" : "Masquer le menu"))]
         )
       ]),
       _vm._v(" "),
@@ -43807,7 +44004,9 @@ var render = function() {
       _vm._v(" "),
       _c("menu-profil", { staticClass: "menu_profil_desktop" }),
       _vm._v(" "),
-      _c("router-view")
+      _c("transition", { attrs: { name: "slide-fade" } }, [
+        _vm.show ? _c("div", [_c("router-view")], 1) : _vm._e()
+      ])
     ],
     1
   )
