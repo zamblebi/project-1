@@ -137,6 +137,15 @@ class OrdersController extends Controller
     }
 
 
+    public function checked(Request $request,$id)
+    {
+        $order = Order::all();
+        $order->where('id', $id)->update(['deliver' => 1]);
+        // $order->update($request->all());
+        // $order->update($request['deliver'] = $request->deliver);
+        return back();
+    }
+
 
 
 }

@@ -1,6 +1,8 @@
 <template>
     <div>
-        <div>
+        <transition name="slide-fade">
+
+        <div v-if="show">
 
      <h1 class="delivery-title">Choisisssez un moyen de livraison</h1>
                         <h4 class="display_subtitle">
@@ -51,6 +53,7 @@
         </div>
 
        </div>
+    </transition>
 
         </div>
 
@@ -66,10 +69,12 @@ export default {
                 express: 5000
             },
             deliverableType: '',
+            show: false
             // typeD : ''
         }
     },
     mounted(){
+        this.show = true
         this.viewDeliverable()
         if(localStorage.getItem('store')){
             if(JSON.parse(localStorage.getItem('store')).carts.allPrice > 5000){

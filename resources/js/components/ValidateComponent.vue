@@ -1,5 +1,9 @@
 <template>
 <div>
+    <transition name="slide-fade">
+
+    <div v-if="show">
+
     <h1>Validation de la commande</h1>
 
 
@@ -39,6 +43,8 @@
             </router-link>
         </div>
 
+    </div>
+    </transition>
 </div>
 </template>
 <script>
@@ -47,6 +53,7 @@ export default {
 
     data(){
         return{
+            show: false,
             adressMaps: localStorage.adressMaps,
             allPrice: JSON.parse(localStorage.getItem('store')).carts.allPrice,
             deliverableType: localStorage.deliverableType,
@@ -72,7 +79,7 @@ export default {
     },
     
     mounted(){
-
+        this.show = true
 
         axios.get('/get-user').then(response => {
             this.user_id = response.data.id

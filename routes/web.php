@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,3 +112,6 @@ Route::get('dashboard/category/edit/{id}', 'CategoryController@edit')->name('edi
 
 //Update
 Route::post('dashboard/category/update/{id}', 'CategoryController@update')->name('update-category');
+
+//Order checked
+Route::post('dashboard/checked/{id}', 'OrdersController@checked')->name('order_checked');

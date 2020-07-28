@@ -1,5 +1,9 @@
-<template>
+<template> 
 <div>
+    <transition name="slide-fade">
+
+    <div v-if="show">
+
         <h2 class="adress_title">Vos coordonnées</h2>
         <google-maps/>
         <br>
@@ -7,6 +11,7 @@
            
         </div>
         <br>
+
         <div class="more_details">
             <div>
                 <label for="">Détails supplémentaires</label> <br>
@@ -33,6 +38,8 @@
                 <router-link to="/order-validate" class="btn" >Continuer</router-link>
             </div>
         </div>
+    </div>
+    </transition>
 </div>
 </template>
 
@@ -45,6 +52,8 @@ export default {
             details_lieu: '',
             other_details: '',
             // checkedLieu: '',
+            show: false,
+
             mapsPosition: '',
             adress: localStorage.adress,
             selected: "Domicile",
@@ -70,7 +79,7 @@ export default {
     },
     
     mounted(){
-        
+        this.show = true
         if(localStorage.adressMaps){
             this.adress = localStorage.adressMaps
             // console.log(JSON.parse(this.adress).long_name)
