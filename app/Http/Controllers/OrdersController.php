@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Clothing;
 use App\Order;
 use App\User;
-// use Session;
+use DB;
 use Auth;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Auth;
@@ -43,7 +43,7 @@ class OrdersController extends Controller
 
     public function getOrderOfUser(){
         $user = Auth::user()->id;
-        $user_order = Order::where('user_id',$user)->get();
+        $user_order = Order::where('user_id',$user)->orderBy('id', 'desc')->get();
 
         return response()->json($user_order);
     }
@@ -59,7 +59,7 @@ class OrdersController extends Controller
     }
 
     public function getOrder(){
-        $orders = Order::all();
+        $orders = Order::orderBy('id', 'desc')->get();
 
         return view('admin.dashboard', ['orders' => $orders]);
     }
@@ -140,7 +140,7 @@ class OrdersController extends Controller
     public function checked(Request $request,$id)
     {
         $order = Order::all();
-        $order->where('id', $id)->update(['deliver' => 1]);
+        DB::table('orders')->where('id', $id)->update(['deliver' => 1]);
         // $order->update($request->all());
         // $order->update($request['deliver'] = $request->deliver);
         return back();
