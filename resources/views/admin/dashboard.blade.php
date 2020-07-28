@@ -5,7 +5,7 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Nom du clients</th>
+      <th scope="col">Nom et prénom du client</th>
       <th scope="col">Adresse</th>
       <th scope="col">Prix total</th>
       <th scope="col">Livrer</th>
@@ -16,14 +16,19 @@
     @foreach ($orders as $order)
     <tr>
     <th scope="row">{{$order->id}}</th>
-      <td>{{$order->user->firstName}}</td>
+    <td>{{$order->user->firstName}} {{$order->user->lastName}}</td>
       <td>{{json_decode($order->adress_maps)->long_name}}</td>
       <td>{{$order->all_prices}}</td>
       <td>{{$order->deliver == 0 ? 'Non' : 'Oui' }}</td>
       <td>
-      <form action="{{route('order_checked', $order->id)}}" method="post">
-        <input type="hidden"  name="deliver">
-        <button class="btn btn-success" type="submit">Livrer</button>
+      <form action="{{route('order.checked', $order->id)}}" method="post">
+        @csrf
+        <input type="hidden"  name="deliver" value="1">
+        @if ($order->deliver == 0)
+          <button class="btn btn-danger" type="submit">Pas encore livrer</button>
+        @else
+          <button class="btn btn-success" type="submit">Livrer</button>
+        @endif
       </form>
       </td>
     </tr>

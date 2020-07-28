@@ -114,4 +114,4 @@ Route::get('dashboard/category/edit/{id}', 'CategoryController@edit')->name('edi
 Route::post('dashboard/category/update/{id}', 'CategoryController@update')->name('update-category');
 
 //Order checked
-Route::post('dashboard/checked/{id}', 'OrdersController@checked')->name('order_checked');
+Route::post('dashboard/checked/{id}', 'OrdersController@checked')->name('order.checked');
