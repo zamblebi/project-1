@@ -5,15 +5,43 @@
            Modification reussi
        </p>
            </transition>
-       <form>
-            <h1>Modifier mon Profil</h1>
-            Votre nom <input type="text" v-model="user.lastName">
-            <br>
-            Votre prenom <input type="text" v-model="user.firstName">
-            <br>
-            Votre email <input type="text" v-model="user.email">
-            <br>
-            Votre numero de telephone <input type="text" v-model="user.phone_number">
+            <h1 class="title_edit_profil">Modifier mon Profil</h1>
+       <form class="edit_profil">
+            <div>
+                <label for="">Votre nom </label>
+                <!-- <br> -->
+                <div>
+                    <input type="text" v-model="user.lastName">
+                </div>
+            </div>
+
+            <div>
+                <br>
+                <label for="">Votre prénom </label>
+
+                <!-- <br> -->
+                <div>
+                    <input type="text" v-model="user.firstName">
+                </div>
+            </div>
+
+            <div>
+                <br>
+                <label for="">Votre email </label>
+                <!-- <br> -->
+                <div>
+                    <input type="text" v-model="user.email">
+                </div>
+            </div>
+
+            <div>
+                <br>
+                <label for="">Votre numéro de téléphone </label>
+                <!-- <br> -->
+                <div>
+                    <input type="text" v-model="user.phone_number">
+                </div>
+            </div>
             <br>
             <button class="btn" @click.prevent="editProfil">Modifier</button>
        </form>
@@ -60,10 +88,36 @@ export default {
 </script>
 
 <style lang="scss">
+.title_edit_profil{
+    text-align: center;
+}
+
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+.edit_profil{
+    display: grid;
+    width: 100%;
+    grid-auto-columns: 1fr 1fr;
+    // grid-auto-row.#1c2d3417s: 1fr 1fr;
+        place-items: center;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    input[type=text], input[type=email],input[type=password]{
+        // margin: 0 auto;
+                width: 270px;
+                height: 30px;
+                border-radius: none;
+                padding: 3px 10px;
+                border: 1px solid #11111177;
+                margin: 20px 0;
+            }
+
 }
 </style>

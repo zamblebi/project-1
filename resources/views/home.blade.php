@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            <div class="card-header"><h2>{{ __( 'Mon compte') }}</h2></div>
+            {{-- <div class="card-header"><h2>{{ __( 'Mon compte') }}</h2></div> --}}
                     <div class="small-menu-dashboard">
                        <user-profil></user-profil> 
                     </div>
