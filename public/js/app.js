@@ -2172,12 +2172,63 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      value: '',
+      value: 'all',
       show: false
     };
   },
@@ -3109,7 +3160,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap);", ""]);
 
 // module
-exports.push([module.i, ".clothing-title {\n  text-align: center;\n}\n.list-clothing {\n  font-family: \"Quicksand\", sans-serif;\n  flex-direction: column;\n}\n.list-clothing li {\n  border-radius: 7px;\n  background-color: #d650471f;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: nowrap;\n  width: 70%;\n  margin: 10px 0;\n  padding: 20px 10px !important;\n}\n.list-clothing li img {\n  width: 72px !important;\n}\n.list-clothing .clothing_info {\n  display: flex;\n  align-items: center;\n}\n.list-clothing .clothing_info h3 {\n  margin: 0;\n}\n.list-clothing .clothing_info .info_clothing {\n  display: flex;\n  flex-direction: column;\n  /* justify-content: start; */\n  align-items: flex-start;\n  padding-left: 15px;\n}\n@media (max-width: 900px) {\n.carts_list_clothing {\n    margin: 0 15px;\n}\n.list-clothing {\n    overflow: hidden !important;\n}\n.list-clothing li {\n    width: 80%;\n}\n}\n@media (max-width: 420px) {\n.btn {\n    font-size: 0.7rem;\n    padding: 0.7rem 1.4rem !important;\n}\n.info_clothing {\n    padding-left: 10px;\n    font-size: 0.7rem;\n}\n}", ""]);
+exports.push([module.i, ".select_category {\n  display: flex;\n  padding: 10px 10px;\n  margin: 0 auto;\n  background-color: #D65047;\n  color: #fff;\n}\n.clothing-title {\n  text-align: center;\n}\n.list-clothing {\n  font-family: \"Quicksand\", sans-serif;\n  flex-direction: column;\n}\n.list-clothing li {\n  border-radius: 7px;\n  background-color: #d650471f;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: nowrap;\n  width: 70%;\n  margin: 10px 0;\n  padding: 20px 10px !important;\n}\n.list-clothing li img {\n  width: 72px !important;\n}\n.list-clothing .clothing_info {\n  display: flex;\n  align-items: center;\n}\n.list-clothing .clothing_info h3 {\n  margin: 0;\n}\n.list-clothing .clothing_info .info_clothing {\n  display: flex;\n  flex-direction: column;\n  /* justify-content: start; */\n  align-items: flex-start;\n  padding-left: 15px;\n}\n@media (max-width: 900px) {\n.carts_list_clothing {\n    margin: 0 15px;\n}\n.list-clothing {\n    overflow: hidden !important;\n}\n.list-clothing li {\n    width: 80%;\n}\n}\n@media (max-width: 420px) {\n.btn {\n    font-size: 0.7rem;\n    padding: 0.7rem 1.4rem !important;\n}\n.info_clothing {\n    padding-left: 10px;\n    font-size: 0.7rem;\n}\n}", ""]);
 
 // exports
 
@@ -42781,6 +42832,47 @@ var render = function() {
         _vm._v("Choisir une quantité")
       ]),
       _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.value,
+              expression: "value"
+            }
+          ],
+          staticClass: "select_category",
+          attrs: { name: "", id: "" },
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.value = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            }
+          }
+        },
+        [
+          _c("option", { attrs: { value: "all" } }, [_vm._v("Tous afficher")]),
+          _vm._v(" "),
+          _vm._l(_vm.categories, function(category, k) {
+            return _c("option", { key: k, domProps: { value: category.id } }, [
+              _vm._v(_vm._s(category.name))
+            ])
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
       _c("transition", { attrs: { name: "fade" } }, [
         _vm.show
           ? _c(
@@ -42790,19 +42882,15 @@ var render = function() {
                 _c(
                   "div",
                   { staticClass: "list_clothing_position" },
-                  _vm._l(_vm.categories, function(category, i) {
-                    return _c(
-                      "ul",
-                      { key: i, staticClass: "list-clothing" },
-                      [
-                        _c("h4", [_vm._v(_vm._s(category.name))]),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm._v(" "),
-                        _vm._l(_vm.products, function(product) {
-                          return _c("div", { key: product.id }, [
-                            product.category_id == category.id
-                              ? _c("li", [
+                  [
+                    _c("br"),
+                    _vm._v(" "),
+                    _vm._l(_vm.products, function(product) {
+                      return _c("div", { key: product.id }, [
+                        _vm.value == "all"
+                          ? _c("div", [
+                              _c("ul", { staticClass: "list-clothing" }, [
+                                _c("li", [
                                   _c("div", { staticClass: "clothing_info" }, [
                                     _c("img", {
                                       attrs: {
@@ -42817,9 +42905,9 @@ var render = function() {
                                       [
                                         _c("h3", [
                                           _vm._v(
-                                            "\n                                    " +
+                                            "\n                                       " +
                                               _vm._s(product.name) +
-                                              "\n                                "
+                                              "\n                                   "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -42861,14 +42949,79 @@ var render = function() {
                                     [_vm._v("Ajouter")]
                                   )
                                 ])
-                              : _vm._e()
-                          ])
-                        })
-                      ],
-                      2
-                    )
-                  }),
-                  0
+                              ])
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        product.category_id == _vm.value
+                          ? _c("div", [
+                              _c("ul", { staticClass: "list-clothing" }, [
+                                _c("li", [
+                                  _c("div", { staticClass: "clothing_info" }, [
+                                    _c("img", {
+                                      attrs: {
+                                        src: "/" + product.image,
+                                        alt: ""
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "info_clothing" },
+                                      [
+                                        _c("h3", [
+                                          _vm._v(
+                                            "\n                                       " +
+                                              _vm._s(product.name) +
+                                              "\n                                   "
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("div", [
+                                          _c("em", [
+                                            _vm._v(_vm._s(product.prix) + "f")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("br")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("div", [
+                                          _c("p", [
+                                            _vm._v(" Catégorie :  "),
+                                            _c("em", [
+                                              _vm._v(
+                                                _vm._s(product.category.name)
+                                              )
+                                            ])
+                                          ])
+                                        ])
+                                      ]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn",
+                                      attrs: { type: "button" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.addProductToCart(product)
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Ajouter")]
+                                  )
+                                ])
+                              ])
+                            ])
+                          : _vm._e()
+                      ])
+                    })
+                  ],
+                  2
                 ),
                 _vm._v(" "),
                 _c("cart-component", {

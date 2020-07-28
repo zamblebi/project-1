@@ -1,22 +1,29 @@
 <template>
     <div>
 
-        <!-- <select name="" id="" >
-            <option v-for="(category, k) in categories" :key="k" v-bind:value="category.id">{{category.name}}</option>
-        </select> -->
 
 
       <h2 class="clothing-title">Choisir une quantité</h2>
+        <select v-model="value" name="" id="" class="select_category" >
+            <option value="all">Tous afficher</option>
+            <option v-for="(category, k) in categories" :key="k" v-bind:value="category.id">{{category.name}}</option>
+        </select>
       <transition name="fade">
 
     <div class="order-clothing-list" v-if="show">
-        <div class="list_clothing_position">
-
-        <ul class="list-clothing" v-for="(category, i) in categories" :key="i">
-                    <h4>{{category.name}}</h4>
+        <div class="list_clothing_position" >
+ <!--  -->
                     <br>
+
             <div v-for="product in products" :key="product.id">
-                <li v-if="product.category_id == category.id">
+
+
+                <!-- display all -->
+
+                <div v-if="value == 'all'">
+                    <ul class="list-clothing">
+
+                <li >
 
                     <div class="clothing_info" >
                         <img v-bind:src="'/'+product.image" alt="">
@@ -41,10 +48,54 @@
                         <button type="button" @click="addProductToCart(product)"  class="btn">Ajouter</button>
 
                 </li>
+            </ul>
+                </div>
+
+
+                <!-- end display all -->
+
+
+                <!-- display by category -->
+
+                <!-- <div v-for="(category, i) in categories" :key="i"> -->
+                    <!-- <h4>{{category.name}}</h4> -->
+            <div v-if="product.category_id == value">
+
+                    <ul class="list-clothing">
+
+                <li >
+
+                    <div class="clothing_info" >
+                        <img v-bind:src="'/'+product.image" alt="">
+
+                                <div class="info_clothing">
+                                    <h3>
+                                        {{product.name}}
+                                    </h3>
+                                    <div>
+                                        <em>{{ product.prix }}f</em>
+                                        <br>
+                                    </div>
+                                    <div>
+                                        <p> Catégorie :  <em>{{product.category.name}}</em></p>
+                                    </div>
+
+                                </div>
+
+                    </div>
+                    <br>
+                     <!-- Le bouton pour ajouter un vetement a la cart -->
+                        <button type="button" @click="addProductToCart(product)"  class="btn">Ajouter</button>
+
+                 </li>
+                </ul>
+                <!-- </div> -->
             </div>
 
-        </ul>
+            <!-- end display by category -->
         </div>
+
+    </div>
         <cart-component :clt-qty-all="clothingQty" :clt-in-carts="carts" ></cart-component>
         
     </div>
@@ -62,7 +113,7 @@
 
         data: function(){
             return{
-                value: '',
+                value: 'all',
                 show: false
             } 
         },
@@ -97,9 +148,12 @@
 <style lang="scss">
 
 
-    .list_clothing_position{
-        // display: flex;
-        // flex-direction: column;
+    .select_category{
+        display: flex;
+        padding: 10px 10px;
+        margin: 0 auto;
+        background-color: #D65047;
+        color: #fff;
     }
 
   .clothing-title{
