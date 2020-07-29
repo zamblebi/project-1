@@ -52,12 +52,14 @@ import EditProfilComponent from './components/profils/EditProfilComponent';
 import EditPasswordComponent from './components/profils/EditPasswordComponent';
 import OrderProfilComponent from './components/profils/OrderProfilComponent';
 import GlobalOrderComponent from "./components/GlobalOrderComponent";
+import LoaderComponent from "./components/LoaderComponent";
 
 
 
 import store from './store'
 import state from "./store/modules/carts/state";
 import mutation from "./store/modules/carts/mutations";
+import { method } from "lodash";
 
 // debugger
 store.subscribe((mutation,state) => {
@@ -110,5 +112,44 @@ const app = new Vue({
        'adress-component': AdressComponent,
        'user-profil': UserProfilComponent,
        'global-order': GlobalOrderComponent,
+       'loader': LoaderComponent,
+    }
+    ,mounted(){
+      this.enableInterceptor()
+    },
+    data(){
+      return{
+      isLoading: false,
+      axiosInterceptor: null,
+    }
+  },
+    methods: {
+      enableInterceptor(){
+        this.axiosInterceptor = window.axios.interceptors.request.use((config) => {
+          this.isLoading = true
+          return config
+        }, (error) => {
+          this.isLoading = false
+          return Promise.reject(error)
+        }
+        )
+
+        window.axios.interceptors.response.use((respone) => {
+          this.isLoading = false 
+          return response
+
+        }, function(error) {
+          this.isLoading = false
+          return Promise.reject(error)
+        }, 
+        )
+      },
+
+      disableInterceptor(){
+        window.axios.interceptors.request.reject(this.axiosInterceptor)
+      }
+
+
+
     }
 });
