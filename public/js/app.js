@@ -3331,7 +3331,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".my_title_order {\n  text-align: center;\n}\n.all_orders {\n  padding-left: 0;\n}\n.all_orders li {\n  margin: 15px 10px;\n  padding: 5px 10px;\n  border-radius: 7px;\n  background-color: #1c2d3417;\n}\n.all_orders p {\n  text-align: left;\n}\n\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.slide-fade-enter-active {\n  transition: all 0.3s ease;\n}\n.slide-fade-leave-active {\n  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter, .slide-fade-leave-to {\n  transform: translateX(10px);\n  opacity: 0;\n}", ""]);
+exports.push([module.i, "body, html {\n  height: 100%;\n}\nbody {\n  display: flex;\n  flex-direction: column;\n  margin: 0;\n}\nfooter {\n  flex-shrink: 0;\n  margin-bottom: -50px;\n}\n.my_order_list_all {\n  flex: 1 0 auto;\n}\n.my_title_order {\n  text-align: center;\n}\n.all_orders {\n  padding-left: 0;\n}\n.all_orders li {\n  margin: 15px 10px;\n  padding: 5px 10px;\n  border-radius: 7px;\n  background-color: #1c2d3417;\n}\n.all_orders p {\n  text-align: left;\n}\n\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.slide-fade-enter-active {\n  transition: all 0.3s ease;\n}\n.slide-fade-leave-active {\n  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter, .slide-fade-leave-to {\n  transform: translateX(10px);\n  opacity: 0;\n}", ""]);
 
 // exports
 
@@ -3350,7 +3350,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n@media (min-width: 800px) {\n.menu_profil {\n    display: none;\n}\n}\n@media (max-width: 800px) {\n.menu_center {\n    display: grid;\n    place-items: center;\n}\n.menu_profil_desktop {\n    display: none;\n}\n}\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.slide-fade-enter-active {\n  transition: all 0.3s ease;\n}\n.slide-fade-leave-active {\n  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter, .slide-fade-leave-to {\n  transform: translateX(10px);\n  opacity: 0;\n}", ""]);
+exports.push([module.i, ".user_profil {\n  min-height: 100% !important;\n}\n.fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n@media (min-width: 800px) {\n.menu_profil {\n    display: none;\n}\n}\n@media (max-width: 800px) {\n.menu_center {\n    display: grid;\n    place-items: center;\n}\n.menu_profil_desktop {\n    display: none;\n}\n}\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.slide-fade-enter-active {\n  transition: all 0.3s ease;\n}\n.slide-fade-leave-active {\n  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter, .slide-fade-leave-to {\n  transform: translateX(10px);\n  opacity: 0;\n}", ""]);
 
 // exports
 
@@ -44128,6 +44128,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "user_profil" },
     [
       _c("div", { staticClass: "menu_center" }, [
         _c(
@@ -64831,8 +64832,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/samuel/Documents/code/PHP/project-1/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/samuel/Documents/code/PHP/project-1/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\bouye\Documents\workspace\PHP\project-1\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\bouye\Documents\workspace\PHP\project-1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

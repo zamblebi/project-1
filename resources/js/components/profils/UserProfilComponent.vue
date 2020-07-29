@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="user_profil">
         <!-- <h1>Votre profils depuis vuejs</h1> -->
         <div class="menu_center">
             <button @click="activer" class="menu_profil btn">{{!active ? 'Afficher le menu' : 'Masquer le menu'}}</button>
@@ -50,6 +50,10 @@ export default {
 </script>
 
 <style lang="scss">
+.user_profil{
+    min-height: 100% !important;
+
+}
     .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }

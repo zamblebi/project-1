@@ -429,9 +429,14 @@
   padding: 30px 0;
 }
 
-html,
-body {
-  height: 100%;
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100% !important;
+}
+
+.container {
+  min-height: 100% !important;
 }
 
 .loader {
@@ -938,7 +943,7 @@ ul {
   }
 }
 
-@media (min-width: 805px) {
+@media (min-width: 875px) {
   .navbar-nav {
     display: none !important;
   }

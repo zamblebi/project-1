@@ -69,6 +69,24 @@
     }
 </script>
 <style lang="scss">
+body, html{
+    height: 100%;
+}
+body{
+ display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+footer{
+    flex-shrink: 0;
+    margin-bottom: -50px;
+}
+    .my_order_list_all{
+        // min-height: 100%;    
+        flex: 1 0 auto;
+    }
+
     .my_title_order{
         text-align: center;
     }

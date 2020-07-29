@@ -20,6 +20,8 @@
         {{-- @section('navigation-bar') --}}
             {{-- @parent        --}}
 @section('content')
+<div class="shoot">
+
         <div class="content">
 
 
@@ -183,27 +185,10 @@
                 </ul>
             </section>
 
+            @include('includes.footer')
+</div>
 
-
-            <footer>
-                   <ul class="contacts">
-                       <li>
-                           <p><i class="fa fa-envelope-o"></i> exemple@gmail.com</p>
-                       </li>
-                       <li>
-                           <p><i class="fa fa-phone"></i> 99 002 22 33</p>
-                       </li>
-                       <li>
-                           <p><i class="fa fa-map-marker"></i> Abidjan, Rivera Abatta</p>
-                       </li>
-                   </ul>
-                   <ul class="social-networks">
-                       <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                       <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
-                       <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                   </ul>
-                   <p>®Tous droits réservés Pressing 2020 </p>
-               </footer>
+            
 @endsection
 
 

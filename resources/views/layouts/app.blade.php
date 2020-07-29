@@ -172,14 +172,6 @@
         </div>
     </div>
 
-    <script>
-    //     let loader = document.querySelector('.load')
-    //  var lo = window.onload = (event) => {
-    //      return true
-    // } 
-    // console.log(lo)
-    
-    </script>
 
 </body>
 </html>

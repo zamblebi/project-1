@@ -123,7 +123,7 @@ menu.addEventListener("click", function (e) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/samuel/Documents/code/PHP/project-1/resources/js/script.js */"./resources/js/script.js");
+module.exports = __webpack_require__(/*! C:\Users\bouye\Documents\workspace\PHP\project-1\resources\js\script.js */"./resources/js/script.js");
 
 
 /***/ })

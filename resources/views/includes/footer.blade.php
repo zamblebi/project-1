@@ -1,8 +1,8 @@
-<div class="push" style="height: 7rem"></div>
+{{-- <div class="push" style="height: 7rem"></div> --}}
 <br>
 
     <footer style=" heigth: 4rem; width:100%">
-        <hr>
+        {{-- <hr> --}}
                 <ul class="contacts">
                     <li>
                         <p><i class="fa fa-envelope-o"></i> exemple@gmail.com</p>

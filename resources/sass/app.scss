@@ -19,8 +19,22 @@
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
 html,body{
-    height: 100%;
+    // height: 100%;
 }
+
+// fixed footer
+.user_profil{
+
+}
+main{
+    display: flex;
+    flex-direction: column;
+    height: 100%  !important;
+}
+.container{
+     min-height: 100% !important;
+}
+
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
     border-top: 16px solid $green; /* Blue */
@@ -546,7 +560,7 @@ footer{
 }
 //Desktop Responsive
 
-@media(min-width: 805px){
+@media(min-width: 875px){
     .navbar-nav{
         display: none !important;
     }
