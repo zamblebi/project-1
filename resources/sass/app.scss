@@ -20,6 +20,12 @@
 // @import '~bootstrap/scss/bootstrap';
 html,body{
     height: 100%;
+
+}
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
@@ -43,7 +49,7 @@ html,body{
 body{
     overflow-x: hidden;
     // overflow-x: hidden;
-      min-height: 100%;
+    //   min-height: 100%;
     margin: 0;
     padding: 0;
     // font-family: 'Raleway', sans-serif;
@@ -478,7 +484,13 @@ footer{
     color: #ffff;
     padding: 50px 0;
     width: 100%;
+    // display: relative;
     text-align: center;
+    // margin-top: -100px;
+    // clear: both;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: flex-end;
 }
     .contacts{
         padding-left: 0;

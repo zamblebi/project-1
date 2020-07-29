@@ -2,6 +2,7 @@
     <div>
 
 
+        <Loader :is-visible="isLoading"></loader>
 
       <h2 class="clothing-title">Choisir une quantité</h2>
         <select v-model="value" name="" id="" class="select_category" >
@@ -107,14 +108,19 @@
 
 <script>
     import CartComponent from './CartComponent'
+    import LoaderComponent from './LoaderComponent'
     import {mapState, mapActions, mapGetters} from 'vuex'
 
     export default{
+        components: {
+            'loader' : LoaderComponent
+        },
 
         data: function(){
             return{
                 value: 'all',
-                show: false
+                show: false,
+                isLoading: true
             } 
         },
         updated(){
