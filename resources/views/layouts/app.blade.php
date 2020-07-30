@@ -26,6 +26,7 @@
 </head>
 <body>
     <div id="app">
+        <loader-component :is-visible="isLoading"></loader-component>
         <div class="load"></div>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             {{-- <menu-component></menu-component> --}}

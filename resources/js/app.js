@@ -15,6 +15,10 @@ import VueCtkDateTimePicker from 'vue-ctk-date-time-picker';
 import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';
 import * as VueGoogleMaps from "vue2-google-maps";
 
+
+import axios from 'axios'
+
+
 Vue.use(VueRouter)
 Vue.use(VCalendar, {
   componentPrefix: 'vc',
@@ -52,12 +56,14 @@ import EditProfilComponent from './components/profils/EditProfilComponent';
 import EditPasswordComponent from './components/profils/EditPasswordComponent';
 import OrderProfilComponent from './components/profils/OrderProfilComponent';
 import GlobalOrderComponent from "./components/GlobalOrderComponent";
+import LoaderComponent from "./components/LoaderComponent";
 
 
 
 import store from './store'
 import state from "./store/modules/carts/state";
 import mutation from "./store/modules/carts/mutations";
+import { method } from "lodash";
 
 // debugger
 store.subscribe((mutation,state) => {
@@ -91,6 +97,7 @@ const router = new VueRouter({
     routes
 })
 
+// Vue.component('loader-component',LoaderComponent)
 
 const app = new Vue({
     router,
@@ -110,5 +117,49 @@ const app = new Vue({
        'adress-component': AdressComponent,
        'user-profil': UserProfilComponent,
        'global-order': GlobalOrderComponent,
+       'LoaderComponent': LoaderComponent,
+    }
+    ,mounted(){
+      this.enableInterceptor()
+      // console.log(axios.interceptors.request.use)
+    },
+    data(){
+      return{
+      isLoading: false,
+      axiosInterceptor: null,
+    }
+  },
+    methods: {
+      enableInterceptor(){
+        this.axiosInterceptor = axios.interceptors.request.use((config) => {
+          this.isLoading = true
+          console.log(config);
+          return config
+        }, (error) => {
+          this.isLoading = false
+          console.log('axios');
+          return Promise.reject(error)
+        }
+        )
+
+        axios.interceptors.response.use((respone) => {
+          this.isLoading = false 
+          console.log('axios');
+          return response
+
+        }, function(error) {
+          this.isLoading = false
+          console.log('axios');
+          return Promise.reject(error)
+        }, 
+        )
+      },
+
+      disableInterceptor(){
+        axios.interceptors.request.reject(this.axiosInterceptor)
+      }
+
+
+
     }
 });

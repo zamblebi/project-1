@@ -1,7 +1,8 @@
 <template>
     <div>
 
-
+        
+        <!-- <loader-component :is-visible="isLoading"></loader-component> -->
 
       <h2 class="clothing-title">Choisir une quantité</h2>
         <select v-model="value" name="" id="" class="select_category" >
@@ -12,7 +13,7 @@
 
     <div class="order-clothing-list" v-if="show">
         <div class="list_clothing_position" >
- <!--  -->
+
                     <br>
 
             <div v-for="product in products" :key="product.id">
@@ -107,14 +108,20 @@
 
 <script>
     import CartComponent from './CartComponent'
+    import LoaderComponent from './LoaderComponent'
     import {mapState, mapActions, mapGetters} from 'vuex'
 
     export default{
+        name: 'ClothingComponent',
+        components: {
+            'LoaderComponent' : LoaderComponent
+        },
 
         data: function(){
             return{
                 value: 'all',
-                show: false
+                show: false,
+                isLoading: true
             } 
         },
         updated(){
