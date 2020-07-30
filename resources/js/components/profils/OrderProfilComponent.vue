@@ -24,7 +24,7 @@
                 <p> <strong> Prix total de la commande : </strong>{{order.all_prices}} f</p>
 <!--                <p>Mon adresse de livraison et de recuperation : {{JSON.parse(order.adress_maps).long_name}}</p>-->
                <p> <strong>Type de livraison :</strong> {{order.deliverable_type}} {{order.deliverable_type == 'Simple' ? " | delais d'attente 48 heures " : " | delais d'attente 4 heures "}}</p>
-               <p> <strong>Date et heure de recuperation : </strong>{{order.deliverable_date}}</p>
+               <p> <strong>Date et heure de récupération : </strong>{{order.deliverable_date}}</p>
                <p> <strong>Lieu de récupération :</strong>{{JSON.parse(order.adress_details).details_lieu}}</p>
                <hr>
 
