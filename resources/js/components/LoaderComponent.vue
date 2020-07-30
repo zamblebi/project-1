@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    name: "Loader",
+    name: "LoaderComponent",
     props: {
         isVisible: {type: Boolean,required: true},
         text: {type: String, required: false, default: ""}

@@ -2111,7 +2111,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CartComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CartComponent */ "./resources/js/components/CartComponent.vue");
 /* harmony import */ var _LoaderComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LoaderComponent */ "./resources/js/components/LoaderComponent.vue");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-var _components$data$upda;
+var _name$components$data;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -2230,9 +2230,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (_components$data$upda = {
+/* harmony default export */ __webpack_exports__["default"] = (_name$components$data = {
+  name: 'ClothingComponent',
   components: {
-    'loader': _LoaderComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
+    'LoaderComponent': _LoaderComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -2244,9 +2245,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   updated: function updated() {
     console.log(this.value);
   }
-}, _defineProperty(_components$data$upda, "components", {
+}, _defineProperty(_name$components$data, "components", {
   'cart-component': _CartComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
-}), _defineProperty(_components$data$upda, "computed", _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapState"])({
+}), _defineProperty(_name$components$data, "computed", _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapState"])({
   products: function products(state) {
     return state.products.products;
   },
@@ -2256,10 +2257,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   categories: function categories(state) {
     return state.products.categories;
   }
-})), Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])('carts', ['clothingQty']))), _defineProperty(_components$data$upda, "mounted", function mounted() {
+})), Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])('carts', ['clothingQty']))), _defineProperty(_name$components$data, "mounted", function mounted() {
   this.show = true;
   this.$store.dispatch('products/getProducts'), this.$store.dispatch('products/getCategories'); // console.log(this.categories)
-}), _defineProperty(_components$data$upda, "methods", Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])('carts', ['addProductToCart'])), _components$data$upda);
+}), _defineProperty(_name$components$data, "methods", Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])('carts', ['addProductToCart'])), _name$components$data);
 
 /***/ }),
 
@@ -2434,7 +2435,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Loader",
+  name: "LoaderComponent",
   props: {
     isVisible: {
       type: Boolean,
@@ -60080,8 +60081,6 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("Loader", { attrs: { "is-visible": _vm.isLoading } }),
-      _vm._v(" "),
       _c("h2", { staticClass: "clothing-title" }, [
         _vm._v("Choisir une quantité")
       ]),
@@ -60159,9 +60158,9 @@ var render = function() {
                                       [
                                         _c("h3", [
                                           _vm._v(
-                                            "\n                                       " +
+                                            "\n                                    " +
                                               _vm._s(product.name) +
-                                              "\n                                   "
+                                              "\n                                "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -60225,9 +60224,9 @@ var render = function() {
                                       [
                                         _c("h3", [
                                           _vm._v(
-                                            "\n                                       " +
+                                            "\n                                    " +
                                               _vm._s(product.name) +
-                                              "\n                                   "
+                                              "\n                                "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -80464,23 +80463,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_ctk_date_time_picker_dist_vue_ctk_date_time_picker_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_ctk_date_time_picker_dist_vue_ctk_date_time_picker_css__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var vue2_google_maps__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue2-google-maps */ "./node_modules/vue2-google-maps/dist/main.js");
 /* harmony import */ var vue2_google_maps__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue2_google_maps__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _components_ClothingComponent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/ClothingComponent */ "./resources/js/components/ClothingComponent.vue");
-/* harmony import */ var _components_CartComponent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/CartComponent */ "./resources/js/components/CartComponent.vue");
-/* harmony import */ var _components_DeliverableComponent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/DeliverableComponent */ "./resources/js/components/DeliverableComponent.vue");
-/* harmony import */ var _components_SlotsComponent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/SlotsComponent */ "./resources/js/components/SlotsComponent.vue");
-/* harmony import */ var _components_AdressComponent__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/AdressComponent */ "./resources/js/components/AdressComponent.vue");
-/* harmony import */ var _components_ValidateComponent__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/ValidateComponent */ "./resources/js/components/ValidateComponent.vue");
-/* harmony import */ var _components_profils_UserProfilComponent__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/profils/UserProfilComponent */ "./resources/js/components/profils/UserProfilComponent.vue");
-/* harmony import */ var _components_profils_EditProfilComponent__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/profils/EditProfilComponent */ "./resources/js/components/profils/EditProfilComponent.vue");
-/* harmony import */ var _components_profils_EditPasswordComponent__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/profils/EditPasswordComponent */ "./resources/js/components/profils/EditPasswordComponent.vue");
-/* harmony import */ var _components_profils_OrderProfilComponent__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/profils/OrderProfilComponent */ "./resources/js/components/profils/OrderProfilComponent.vue");
-/* harmony import */ var _components_GlobalOrderComponent__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/GlobalOrderComponent */ "./resources/js/components/GlobalOrderComponent.vue");
-/* harmony import */ var _components_LoaderComponent__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/LoaderComponent */ "./resources/js/components/LoaderComponent.vue");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
-/* harmony import */ var _store_modules_carts_state__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./store/modules/carts/state */ "./resources/js/store/modules/carts/state.js");
-/* harmony import */ var _store_modules_carts_mutations__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./store/modules/carts/mutations */ "./resources/js/store/modules/carts/mutations.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_21__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_ClothingComponent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/ClothingComponent */ "./resources/js/components/ClothingComponent.vue");
+/* harmony import */ var _components_CartComponent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/CartComponent */ "./resources/js/components/CartComponent.vue");
+/* harmony import */ var _components_DeliverableComponent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/DeliverableComponent */ "./resources/js/components/DeliverableComponent.vue");
+/* harmony import */ var _components_SlotsComponent__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/SlotsComponent */ "./resources/js/components/SlotsComponent.vue");
+/* harmony import */ var _components_AdressComponent__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/AdressComponent */ "./resources/js/components/AdressComponent.vue");
+/* harmony import */ var _components_ValidateComponent__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/ValidateComponent */ "./resources/js/components/ValidateComponent.vue");
+/* harmony import */ var _components_profils_UserProfilComponent__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/profils/UserProfilComponent */ "./resources/js/components/profils/UserProfilComponent.vue");
+/* harmony import */ var _components_profils_EditProfilComponent__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/profils/EditProfilComponent */ "./resources/js/components/profils/EditProfilComponent.vue");
+/* harmony import */ var _components_profils_EditPasswordComponent__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/profils/EditPasswordComponent */ "./resources/js/components/profils/EditPasswordComponent.vue");
+/* harmony import */ var _components_profils_OrderProfilComponent__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/profils/OrderProfilComponent */ "./resources/js/components/profils/OrderProfilComponent.vue");
+/* harmony import */ var _components_GlobalOrderComponent__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/GlobalOrderComponent */ "./resources/js/components/GlobalOrderComponent.vue");
+/* harmony import */ var _components_LoaderComponent__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/LoaderComponent */ "./resources/js/components/LoaderComponent.vue");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+/* harmony import */ var _store_modules_carts_state__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./store/modules/carts/state */ "./resources/js/store/modules/carts/state.js");
+/* harmony import */ var _store_modules_carts_mutations__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./store/modules/carts/mutations */ "./resources/js/store/modules/carts/mutations.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_22__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -80489,6 +80490,7 @@ __webpack_require__.r(__webpack_exports__);
 // require('./bootstrap');
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
 
 
 
@@ -80533,7 +80535,7 @@ Vue.component('VueCtkDateTimePicker', vue_ctk_date_time_picker__WEBPACK_IMPORTED
 
  // debugger
 
-_store__WEBPACK_IMPORTED_MODULE_18__["default"].subscribe(function (mutation, state) {
+_store__WEBPACK_IMPORTED_MODULE_19__["default"].subscribe(function (mutation, state) {
   localStorage.setItem('store', JSON.stringify(state));
 }); // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
@@ -80545,59 +80547,60 @@ _store__WEBPACK_IMPORTED_MODULE_18__["default"].subscribe(function (mutation, st
 
 var routes = [{
   path: '/order',
-  component: _components_ClothingComponent__WEBPACK_IMPORTED_MODULE_6__["default"]
+  component: _components_ClothingComponent__WEBPACK_IMPORTED_MODULE_7__["default"]
 }, {
   path: '/order-deliverable',
-  component: _components_DeliverableComponent__WEBPACK_IMPORTED_MODULE_8__["default"]
+  component: _components_DeliverableComponent__WEBPACK_IMPORTED_MODULE_9__["default"]
 }, {
   path: '/order-slots',
-  component: _components_SlotsComponent__WEBPACK_IMPORTED_MODULE_9__["default"]
+  component: _components_SlotsComponent__WEBPACK_IMPORTED_MODULE_10__["default"]
 }, {
   path: '/order-maps',
-  component: _components_AdressComponent__WEBPACK_IMPORTED_MODULE_10__["default"]
+  component: _components_AdressComponent__WEBPACK_IMPORTED_MODULE_11__["default"]
 }, {
   path: '/order-validate',
-  component: _components_ValidateComponent__WEBPACK_IMPORTED_MODULE_11__["default"]
+  component: _components_ValidateComponent__WEBPACK_IMPORTED_MODULE_12__["default"]
 }, {
   path: '/order-success',
   component: _components_SuccesComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, {
   path: '/home/profil',
-  component: _components_ValidateComponent__WEBPACK_IMPORTED_MODULE_11__["default"]
+  component: _components_ValidateComponent__WEBPACK_IMPORTED_MODULE_12__["default"]
 }, {
   path: '/home/edit-profil',
-  component: _components_profils_EditProfilComponent__WEBPACK_IMPORTED_MODULE_13__["default"]
+  component: _components_profils_EditProfilComponent__WEBPACK_IMPORTED_MODULE_14__["default"]
 }, {
   path: '/home/edit-password',
-  component: _components_profils_EditPasswordComponent__WEBPACK_IMPORTED_MODULE_14__["default"]
+  component: _components_profils_EditPasswordComponent__WEBPACK_IMPORTED_MODULE_15__["default"]
 }, {
   path: '/home/my-order-list',
-  component: _components_profils_OrderProfilComponent__WEBPACK_IMPORTED_MODULE_15__["default"]
+  component: _components_profils_OrderProfilComponent__WEBPACK_IMPORTED_MODULE_16__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: routes
-});
+}); // Vue.component('loader-component',LoaderComponent)
+
 var app = new Vue({
   router: router,
   el: '#app',
-  store: _store__WEBPACK_IMPORTED_MODULE_18__["default"],
+  store: _store__WEBPACK_IMPORTED_MODULE_19__["default"],
   beforeCreate: function beforeCreate() {
     // debugger
     this.$store.commit('carts/INITIALISE_STORE');
   },
   components: {
-    'clothing-component': _components_ClothingComponent__WEBPACK_IMPORTED_MODULE_6__["default"],
-    'cart-component': _components_CartComponent__WEBPACK_IMPORTED_MODULE_7__["default"],
-    'deliverable-component': _components_DeliverableComponent__WEBPACK_IMPORTED_MODULE_8__["default"],
-    'slots-component': _components_DeliverableComponent__WEBPACK_IMPORTED_MODULE_8__["default"],
-    'adress-component': _components_AdressComponent__WEBPACK_IMPORTED_MODULE_10__["default"],
-    'user-profil': _components_profils_UserProfilComponent__WEBPACK_IMPORTED_MODULE_12__["default"],
-    'global-order': _components_GlobalOrderComponent__WEBPACK_IMPORTED_MODULE_16__["default"],
-    'loader': _components_LoaderComponent__WEBPACK_IMPORTED_MODULE_17__["default"]
+    'clothing-component': _components_ClothingComponent__WEBPACK_IMPORTED_MODULE_7__["default"],
+    'cart-component': _components_CartComponent__WEBPACK_IMPORTED_MODULE_8__["default"],
+    'deliverable-component': _components_DeliverableComponent__WEBPACK_IMPORTED_MODULE_9__["default"],
+    'slots-component': _components_DeliverableComponent__WEBPACK_IMPORTED_MODULE_9__["default"],
+    'adress-component': _components_AdressComponent__WEBPACK_IMPORTED_MODULE_11__["default"],
+    'user-profil': _components_profils_UserProfilComponent__WEBPACK_IMPORTED_MODULE_13__["default"],
+    'global-order': _components_GlobalOrderComponent__WEBPACK_IMPORTED_MODULE_17__["default"],
+    'LoaderComponent': _components_LoaderComponent__WEBPACK_IMPORTED_MODULE_18__["default"]
   },
   mounted: function mounted() {
-    this.enableInterceptor();
+    this.enableInterceptor(); // console.log(axios.interceptors.request.use)
   },
   data: function data() {
     return {
@@ -80609,23 +80612,27 @@ var app = new Vue({
     enableInterceptor: function enableInterceptor() {
       var _this = this;
 
-      this.axiosInterceptor = window.axios.interceptors.request.use(function (config) {
+      this.axiosInterceptor = axios__WEBPACK_IMPORTED_MODULE_6___default.a.interceptors.request.use(function (config) {
         _this.isLoading = true;
+        console.log(config);
         return config;
       }, function (error) {
         _this.isLoading = false;
+        console.log('axios');
         return Promise.reject(error);
       });
-      window.axios.interceptors.response.use(function (respone) {
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.interceptors.response.use(function (respone) {
         _this.isLoading = false;
+        console.log('axios');
         return response;
       }, function (error) {
         this.isLoading = false;
+        console.log('axios');
         return Promise.reject(error);
       });
     },
     disableInterceptor: function disableInterceptor() {
-      window.axios.interceptors.request.reject(this.axiosInterceptor);
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.interceptors.request.reject(this.axiosInterceptor);
     }
   }
 });
@@ -82266,7 +82273,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: expected \"{\".\n   ╷\n25 │     height: 100%;\n   │                 ^\n   ╵\n  C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\resources\\sass\\app.scss 25:17  root stylesheet\n    at C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\loader-runner\\lib\\LoaderRunner.js:233:18\n    at context.callback (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass-loader\\dist\\index.js:73:7\n    at Function.call$2 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:88152:16)\n    at _render_closure1.call$2 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:77577:12)\n    at _RootZone.runBinary$3$3 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:26142:18)\n    at _RootZone.runBinary$3 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:26146:19)\n    at _FutureListener.handleError$1 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:24590:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:24887:40)\n    at Object._Future__propagateToListeners (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:4311:88)\n    at _Future._completeError$2 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:24715:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:24107:12)\n    at Object._asyncRethrow (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:4065:17)\n    at C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:14085:20\n    at _wrapJsFunctionForAsync_closure.$protected (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:4090:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:24128:12)\n    at _awaitOnObject_closure0.call$2 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:24120:25)\n    at _RootZone.runBinary$3$3 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:26142:18)\n    at _RootZone.runBinary$3 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:26146:19)\n    at _FutureListener.handleError$1 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:24590:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:24887:40)\n    at Object._Future__propagateToListeners (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:4311:88)\n    at _Future._completeError$2 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:24715:9)\n    at _Future__asyncCompleteError_closure.call$0 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:24810:18)\n    at Object._microtaskLoop (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:4361:21)\n    at StaticClosure._startMicrotaskLoop (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:4367:11)\n    at _AsyncRun__scheduleImmediateJsOverride_internalCallback.call$0 (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:24022:21)\n    at invokeClosure (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:1363:26)\n    at Immediate.<anonymous> (C:\\Users\\bouye\\Documents\\workspace\\PHP\\project-1\\node_modules\\sass\\sass.dart.js:1384:18)\n    at processImmediate (internal/timers.js:439:21)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
