@@ -6,7 +6,7 @@
                 <strong>
                 <!-- Voir la quantiter total -->
                 
-                    <p>Type de vetement Total : {{cltQtyAll}}</p>
+                    <p>Type de vêtement Total : {{cltQtyAll}}</p>
 
                         <div class="all_clothing_list">
 

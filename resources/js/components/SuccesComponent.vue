@@ -4,7 +4,7 @@
             <img  :src="'/icons/check.svg'" alt="check">
         </transition>
         <br>
-        <h1>Commande effectuez !</h1>
+        <h1>Commande effectuez avec succès !</h1>
         <br>
         <router-link class="btn" to="home/my-order-list">Continuer</router-link>
         <!-- <div class="loader"></div> -->
