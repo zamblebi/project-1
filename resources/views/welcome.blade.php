@@ -158,15 +158,15 @@
                             <ul>
                                 <li>
                                     <h4>Sophi Koudio</h4>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima perspiciatis beatae quisquam reprehenderit, doloribus odio illo quod et natus. Mollitia dolores nostrum veniam dignissimos quod, nemo esse ea atque quis.</p>
+                                    <p>Très pros, mes Hermés sont revenues comme neuves, tout comme mes robes. Merci pour la rapidité et la qualité du travail.</p>
                                 </li>
                                 <li>
                                     <h4>Alice Nadine</h4>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima perspiciatis beatae quisquam reprehenderit, doloribus odio illo quod et natus. Mollitia dolores nostrum veniam dignissimos quod, nemo esse ea atque quis.</p>
+                                    <p>Super service de pressing à domicile. Essayé pendant le confinement avec livraison sans contact. Mes chemises m'ont été rendues comme neuves. Merci PRESSANDCO!!</p>
                                 </li>
                                 <li>
                                     <h4>Jacob Williams</h4>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima perspiciatis beatae quisquam reprehenderit, doloribus odio illo quod et natus. Mollitia dolores nostrum veniam dignissimos quod, nemo esse ea atque quis.</p>
+                                    <p>Excellent prestation de ce pressing à domicile, même en plein confinement. Le travail est de qualité et ils vous appellent pour vérifier que vous êtes disponibles.</p>
                                 </li>
                             </ul>
                         </div>
