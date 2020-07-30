@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Project 01</title>
+        <title>Mon pressing</title>
 
         <!-- Fonts -->
 
@@ -29,9 +29,9 @@
             <div class="intro wrapper">
                 <div class="layer"></div>
                 <div class="groups-intro">
-                    <h1>Pressing a domicile haute qualiter livre partout a abidjan </h1>
+                    <h1>Pressing à domicile haute qualité livre partout à Abidjan</h1>
 
-                    <p>Nous recuperons et livrons vos vetements </p>
+                    <p>Nous récupérons et livrons vos vêtements</p>
                 </div>
 
                 <div class="cta">
@@ -45,27 +45,27 @@
             {{-- Section services --}}
             <section class="wrapper">
                 <div class="services">
-                    <h1 class="title title-services">Comment ca marche ?</h1>
+                    <h1 class="title title-services">Comment ça marche ?</h1>
                     <div class="list-service">
                         <ul>
                             <li>
                                 <img class="icon-item" src="/icons/phone.svg" alt="phone">
                                 <div>
-                                    <p class="step">Etape  1</p>
+                                    <p class="step">Étape 1</p>
                                     <p>Réservez en ligne votre créneau</p>
                                 </div>
                             </li>
                             <li>
                                 <img class="icon-item" src="/icons/iron.svg" alt="iron">
                                 <div>
-                                    <p class="step">Etape  2</p>
+                                    <p class="step">Étape  2</p>
                                     <p>Confiez-nous votre linge</p>
                                 </div>
                             </li>
                             <li>
                                 <img class="icon-item" src="/icons/suit.svg" alt="suit">
                                 <div>
-                                    <p class="step">Etape  3</p>
+                                    <p class="step">Étape  3</p>
                                     <p>Récupérez votre linge propre </p>
                                 </div>
                             </li>
@@ -79,7 +79,7 @@
                 <div class="about-us-list wrapper">
                     <div class="groups-title">
                         <h1 class="title title-about-us">Pressing</h1>
-                    <p class="small-details-title">Les services d'un pressing de haute qualite a votre porte</p>
+                    <p class="small-details-title">Les services d'un pressing de haute qualité à votre porte</p>
                     </div>
                     <ul>
                         <li class="about-item">
@@ -88,7 +88,7 @@
                                 <p class="small-title">En un clin d'oeil</p>
                                 <p class="small-details">
                                     Gagnez du temps !
-                                    Nous récupérons, lavons et livrons vos vêtements en 48h, vous profitez.
+                                    Nous récupérons, lavons et livrons vos vêtements en 48 h, vous profitez.
                                 </p>
                             </div>
                         </li>
@@ -97,7 +97,7 @@
                             <div class="details">
                                 <p class="small-title">10 ans de qualité</p>
                                 <p class="small-details">
-                                    Pressing haute qualité depuis 40 ans.
+                                    Pressing haute qualité depuis 10 ans.
                                     Maintenant profitez de nos services, sans vous déplacer !
                                 </p>
                             </div>
@@ -137,7 +137,7 @@
                             </li>
                             <li>
                                 <img src="/icons/sneakers.svg" alt="">
-                                <p class="name-article">Netoyage Chaussure</p>
+                                <p class="name-article">Nettoyage Chaussure</p>
                             </li>
                         </ul>
                     </div>
@@ -178,7 +178,7 @@
 
             {{-- Section about us  --}}
             <section class="contact-us">
-                <h2  class="ct-us">Nous contactez</h2>
+                <h2  class="ct-us">Contacté nous</h2>
                 <ul>
                     <li class="contact-us-item"><img src="/icons/whatsapp.svg" alt="whatsapp"></li>
                     <li class="contact-us-item"><img src="/icons/messenger.svg" alt="messenger"></li>
