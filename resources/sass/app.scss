@@ -353,6 +353,11 @@ body{
     }
         .details{
             padding: 20px;
+            p{
+                font-size: 20px;
+                padding-top: 10px;
+                font-weight: bold;
+            }
             .name-article{
                 color: rgba(24, 22, 22, 0.616);
             }
