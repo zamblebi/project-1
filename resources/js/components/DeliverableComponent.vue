@@ -4,7 +4,7 @@
 
         <div v-if="show">
 
-     <h1 class="delivery-title">Choisisssez un moyen de livraison</h1>
+     <h1 class="delivery-title">Choisissez un moyen de livraison</h1>
                         <h4 class="display_subtitle">
                             Type de livraison choisie : {{deliverableType}}
                         </h4>
@@ -19,7 +19,7 @@
                     <img class="icon-delivery" src="/icons/delivery.svg" alt="">
                     <div class="small-datails">
                         <strong>
-                            <em>Votre vetement sera livrer 48h apres recuperation</em>
+                            <em>Vos vêtements serons livrées 48h après récupération</em>
                         </strong>
                     </div>
                     <div class="frais">
@@ -40,7 +40,7 @@
                         <img class="icon-delivery" src="/icons/express-delivery.svg" alt="">
                         <div class="small-datails">
                             <strong>
-                                <em>Votre vetement sera livrer 4h apres recuperation</em>
+                                <em>Vos vêtements serons livrées 4h après récupération</em>
                             </strong>
                         </div>
                         <div class="frais">

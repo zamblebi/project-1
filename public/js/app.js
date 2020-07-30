@@ -59938,7 +59938,7 @@ var render = function() {
       _c("div", { staticClass: "carts_list_clothing" }, [
         _c("strong", [
           _c("p", [
-            _vm._v("Type de vetement Total : " + _vm._s(_vm.cltQtyAll))
+            _vm._v("Type de vêtement Total : " + _vm._s(_vm.cltQtyAll))
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "all_clothing_list" }, [
@@ -60321,7 +60321,7 @@ var render = function() {
         _vm.show
           ? _c("div", [
               _c("h1", { staticClass: "delivery-title" }, [
-                _vm._v("Choisisssez un moyen de livraison")
+                _vm._v("Choisissez un moyen de livraison")
               ]),
               _vm._v(" "),
               _c("h4", { staticClass: "display_subtitle" }, [
@@ -60349,7 +60349,7 @@ var render = function() {
                         _c("strong", [
                           _c("em", [
                             _vm._v(
-                              "Votre vetement sera livrer 48h apres recuperation"
+                              "Vos vêtements serons livrées 48h après récupération"
                             )
                           ])
                         ])
@@ -60411,7 +60411,7 @@ var render = function() {
                         _c("strong", [
                           _c("em", [
                             _vm._v(
-                              "Votre vetement sera livrer 4h apres recuperation"
+                              "Vos vêtements serons livrées 4h après récupération"
                             )
                           ])
                         ])
@@ -60733,7 +60733,7 @@ var render = function() {
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _c("h1", [_vm._v("Commande effectuez !")]),
+      _c("h1", [_vm._v("Commande effectuez avec succès !")]),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
@@ -60850,7 +60850,7 @@ var render = function() {
                         1
                       ),
                       _vm._v("\n            ou\n        "),
-                      _c("h3", [_vm._v("Aucun vêtement n'a ete choisi")])
+                      _c("h3", [_vm._v("Aucun vêtement n'a été choisi")])
                     ])
                   : _vm._e(),
                 _vm._v(" "),

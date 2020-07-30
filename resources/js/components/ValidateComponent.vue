@@ -25,9 +25,9 @@
 <!--    {{user_id}}-->
     <!-- Post al -->
     <span v-if="allPrice == 0">
-        <h3 >Veuillez calculer votre commande dans <router-link to="/order">Le panier</router-link></h3>
+        <h3>Veuillez calculer votre commande dans <router-link to="/order">Le panier</router-link></h3>
             ou
-        <h3>Aucun vêtement n'a ete choisi</h3>
+        <h3>Aucun vêtement n'a été choisi</h3>
     </span>
     <h3 v-if="!deliverableType">Veillez Choisir un type de livraison</h3>
     <h3 v-if="!dateChoose">Veillez Choisir une date de récupération</h3>
