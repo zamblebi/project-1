@@ -61052,7 +61052,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("\n        Modification reussi\n    ")]
+              [_vm._v("\n        Modification réussie\n    ")]
             )
           : _vm._e()
       ]),
@@ -61363,7 +61363,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("p", [
                           _c("strong", [
-                            _vm._v("Date et heure de recuperation : ")
+                            _vm._v("Date et heure de récupération : ")
                           ]),
                           _vm._v(_vm._s(order.deliverable_date))
                         ]),

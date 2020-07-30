@@ -2,7 +2,7 @@
    <div>
            <transition name="fade">
        <p v-if="show" style="color: green"  v-on:click="show = !show">
-           Modification reussi
+           Modification réussie
        </p>
            </transition>
     <transition name="slide-fade">
