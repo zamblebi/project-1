@@ -118,10 +118,13 @@ const app = new Vue({
        'user-profil': UserProfilComponent,
        'global-order': GlobalOrderComponent,
        'LoaderComponent': LoaderComponent,
-    }
-    ,mounted(){
+    },
+    // mounted(){
+    //   // console.log(axios.interceptors.request.use)
+    // },
+    created(){
+      
       this.enableInterceptor()
-      // console.log(axios.interceptors.request.use)
     },
     data(){
       return{
