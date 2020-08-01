@@ -3,7 +3,7 @@
 @section('content')
 <div class="main_profil" style="height: 100%">
 
-        <loader-component :is-visible="isLoading"></loader-component>
+        {{-- <loader-component :is-visible="isLoading"></loader-component> --}}
     @php
         $getSession = Session::get('cart');
         if($getSession){

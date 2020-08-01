@@ -1,7 +1,10 @@
 <template>
   <div v-if="isVisible" class="loader-overlay">
-      <div class="loader"></div>
-      <span class="text" v-html="text"></span>
+      <div class="load_loader">
+        <h1>Chargement cours...</h1>
+      </div>
+      <!-- <div class="loader"></div>
+      <span class="text" v-html="text"></span> -->
   </div>
 </template>
 
@@ -17,6 +20,14 @@ export default {
 </script>
 
 <style lang="scss">
+.load_loader{
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+}
+h1{
+    color: #ffff;
+}
     .loader-overlay{
         position: fixed;
         width: 100%;
