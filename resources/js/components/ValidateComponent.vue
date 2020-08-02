@@ -1,25 +1,30 @@
 <template>
-<div>
+<div class="validation">
     <transition name="slide-fade">
 
-    <div v-if="show">
+    <div v-if="show" class="valide_">
 
     <h1>Validation de la commande</h1>
 
 
-     <strong><label>Adresse : </label></strong>{{JSON.parse(adressMaps).long_name}} | <router-link to="/order-maps">Modifier</router-link>
-    <br>
-    <strong>Prix total des articles :  </strong> {{allPrice}} |  <router-link to="/order">Modifier</router-link>
-    <br>
-    <strong>Type de livraison choisie : {{deliverableType}}</strong>  | <router-link to="/order-deliverable">Modifier</router-link>
-    <br>
-    <strong>Date de récupération: {{dateChoose}}</strong>  |   <router-link to="/order-slots">Modifier</router-link>
-    <br>
-        <!-- <div v-if="adress_details"> -->
-            <strong>Details de l'adresse :</strong> Lieu : {{details_lieu ? details_lieu : "Aucun"}}, Details du lieu : {{details_adress ? details_adress : "Aucun"}}
-        <!-- </div> -->
+    <p>
+        <strong><label>Adresse : </label></strong> <span class="reponse_">{{JSON.parse(adressMaps).long_name}}</span> | <router-link to="/order-maps"><i class="fa fa-edit"></i></router-link>
+    </p>
+    
+    <p>
+        <strong>Prix total des articles :  </strong> <span class="reponse_"> {{allPrice}}f</span> |  <router-link to="/order"><i class="fa fa-edit"></i></router-link>
+    </p>
 
-        <!-- <p>{{carts}}</p> -->
+      <p>
+        <strong>Type de livraison choisie : </strong> <span class="reponse_"> {{deliverableType}}</span> | <router-link to="/order-deliverable"><i class="fa fa-edit"></i></router-link>
+      </p> 
+    <p>
+        <strong>Date de récupération: </strong> <span class="reponse_">{{dateChoose}}</span>  |   <router-link to="/order-slots"><i class="fa fa-edit"></i></router-link>
+    </p>
+    <p>
+       <strong>Details de l'adresse :</strong> Lieu :<span class="reponse_">  {{details_lieu ? details_lieu : "Aucun"}} </span> , Details du lieu<span class="reponse_"> : {{details_adress ? details_adress : "Aucun"}}</span>
+    </p>
+
     <br>
     <h3 v-if="!user_id">Veuillez vous connecter sinon votre commande ne sera pas valide</h3>
 <!--    {{user_id}}-->
@@ -33,12 +38,12 @@
     <h3 v-if="!dateChoose">Veillez Choisir une date de récupération</h3>
     <!-- <div>
     <h3 v-if="!adress_details">Vous n'avez pas preciser les details sur le lieu choisi </h3>
-        <p><router-link to="/order-maps">Voulez vous Modifier ?</router-link></p>
+        <p><router-link to="/order-maps">Voulez vous <i class="fa fa-edit"></i> ?</router-link></p>
     </div> -->
 
     <br>
-        <div v-if="user_id && carts && allPrice && deliverableType && dateChoose">
-            <router-link class="btn" @click.native="orderStore" to="/order-success">
+        <div class="commander_" v-if="user_id && carts && allPrice && deliverableType && dateChoose">
+            <router-link class="btn commande_ok" @click.native="orderStore" to="/order-success">
                 <span  >Commender</span>
             </router-link>
         </div>
@@ -112,5 +117,42 @@ export default {
 }
 </script>
 <style lang="scss">
-
+.reponse_{
+    color: #8C4452;
+}
+.valide_{
+    .fa{
+        color: #d65047;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px 10px;
+    height: 100%;
+}
+.validation{
+    display: grid;
+    
+    place-content: center;
+    // flex-direction: column;
+    // align-items: center;
+    p{
+        padding: 10px 0;
+        text-align: left;
+    }
+}
+.commander_{
+    display: flex;
+    justify-content: center;
+}
+@media(max-width: 800px){
+    .commander_{
+        width: 100%;
+    }
+    .commande_ok{
+        display: flex;
+        width: 70%;
+        justify-content: center;
+    }
+}
 </style>

@@ -2,7 +2,7 @@
     <div class="menu-profil">
         <ul class="menu">
             <li><router-link to="/home/my-order-list">Mes Commande</router-link></li>
-            <li><router-link to="/home/edit-profil">Modifier le profil </router-link></li>
+            <li><router-link to="/home/edit-profil">Modifier mes informations</router-link></li>
             <li><a href="/change-password">Modifier votre mot de passe</a></li>
         </ul>
     </div>
