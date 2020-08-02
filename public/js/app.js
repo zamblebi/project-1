@@ -3247,7 +3247,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".order-menu {\n  display: flex;\n  justify-content: center;\n}\n.order-menu li {\n  padding: 0 20px;\n}\n.order-menu li a {\n  /*text-decoration: none;*/\n  color: black;\n}", ""]);
+exports.push([module.i, ".order-menu {\n  display: flex;\n  justify-content: center;\n}\n.order-menu li {\n  padding: 0 20px;\n}\n.order-menu li a {\n  /*text-decoration: none;*/\n  color: black;\n}\n.global {\n  margin-bottom: 200px;\n}", ""]);
 
 // exports
 
@@ -60540,7 +60540,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("router-view")], 1)
+  return _c("div", { staticClass: "global" }, [_c("router-view")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -24,9 +24,9 @@ html,body{
 
 // fixed footer
 // app has control on all heigth
-#app{
-    height: 100%;
-}
+// #app{
+//     height: 100%;
+// }
 main{
     display: flex;
     flex-direction: column;
@@ -529,6 +529,7 @@ body{
 
 footer{
     // position: fixed;
+    display: block;
     background-color: #1c2d34;
     line-height: 28px;
     margin-top: 20px;

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="global">
         <!-- <ul class="order-menu">
             <li v-if="carts"><router-link to="/order">Vetement</router-link></li>
             <li v-if="deliverableType"><router-link to="/order-deliverable">Livraison</router-link></li>
@@ -41,5 +41,8 @@
                 color: black;
             }
         }
+    }
+    .global{
+        margin-bottom: 200px;
     }
 </style>
