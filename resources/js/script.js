@@ -18,7 +18,15 @@ menu.addEventListener("click",(e) =>{
 }, false)
 
 // loader
+window.addEventListener("load", function(e){
+    // setTimeout(function(){
+    let loading = document.querySelector('#theLoader');
+        loading.style.display = "none";
+        console.log('Loaded')
+    // }, 3000)
+})
 
+// window.
 // loader end
 
 

@@ -1,5 +1,5 @@
 <template> 
-<div>
+<div class="All_adress">
     <transition name="slide-fade">
 
     <div v-if="show">
@@ -14,20 +14,22 @@
 
         <div class="more_details">
             <div>
-                <label for="">Détails supplémentaires</label> <br>
+                <label for="" class="marg">Détails supplémentaires</label> <br>
                 <input class="search_"  v-model="details_adress"  type="text" placeholder="Etage, Code porte, Batiment,Quartier" @input="addOtherAdress">
             </div>
 
             <br>
             <div>
-                <label for="">Lieu</label> <br>
-                <label for="domiciel">Domicile</label>
-                <!-- <br> -->
-               <input type="radio" id="domicile" value="Domicile" v-model="details_lieu" @change="addLieu">
-               <br>
-                <label for="bureau">Bureau</label>
-                <!-- <br> -->
-                <input type="radio" id="bureau" value="Bureau" v-model="details_lieu" @change="addLieu">
+                <label for="" class="marg">Lieu</label> <br>
+                <div class="locate">
+                    <label for="domiciel">Domicile</label>
+                    <!-- <br> -->
+                <input type="radio" id="domicile" value="Domicile" v-model="details_lieu" @change="addLieu">
+                <br>
+                    <label for="bureau">Bureau</label>
+                    <!-- <br> -->
+                    <input type="radio" id="bureau" value="Bureau" v-model="details_lieu" @change="addLieu">
+                </div>
                 
             </div>
         </div>
@@ -113,6 +115,15 @@ export default {
 </script>
 
 <style lang="scss">
+.All_adress{
+    margin-bottom: 234px;
+}
+.search_,.locate{
+    margin: 10px 0;
+}
+.locate{
+    padding: 0 !important;
+}
 .adress_recup{
     text-align: center;
     display: flex;
@@ -122,6 +133,9 @@ export default {
 .lieu{
     width: 200px;
     height: 50px;
+}
+.marg{
+    color: #d65047;
 }
 .more_details{
     display: flex;
@@ -150,8 +164,12 @@ export default {
     .adress_title{
         text-align: center;
     }
+    .locate{
+        input{
+            margin: 10px 0;
+        }
+    }
     @media(max-width: 700px){
-        
         .more_details{
             text-align: center;
             flex-direction: column;

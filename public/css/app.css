@@ -434,10 +434,6 @@ body {
   min-height: 100%;
 }
 
-#app {
-  height: 100%;
-}
-
 main {
   display: flex;
   flex-direction: column;
@@ -461,7 +457,40 @@ main {
   z-index: 900000;
 }
 
+#theLoader {
+  background-color: #c2c2c2;
+  width: 100%;
+  height: 100vh;
+  z-index: 999999999;
+  display: grid;
+  position: fixed;
+  place-items: center;
+  overflow: hidden;
+}
+
+.spinner {
+  border: 7px solid #f3f3f3;
+  /* Light grey */
+  border-top: 7px solid #D65047;
+  /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+}
+
 @-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
   0% {
     transform: rotate(0deg);
   }
@@ -909,8 +938,10 @@ body {
 }
 
 footer {
+  display: block;
   background-color: #1c2d34;
   line-height: 28px;
+  margin-top: 20px;
   width: 100%;
   text-align: center;
   color: #ffff;

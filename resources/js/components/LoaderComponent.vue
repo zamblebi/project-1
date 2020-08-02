@@ -1,7 +1,7 @@
 <template>
   <div v-if="isVisible" class="loader-overlay">
       <div class="load_loader">
-        <h1>Chargement cours...</h1>
+    <span class="vue_loading"></span>
       </div>
       <!-- <div class="loader"></div>
       <span class="text" v-html="text"></span> -->
@@ -25,9 +25,21 @@ export default {
     display: grid;
     place-items: center;
 }
-h1{
-    color: #ffff;
+.vue_loading {
+  border: 7px solid #f3f3f3;
+  border-top: 7px solid #D65047;
+  border-bottom: 7px solid #D65047;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
 }
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
     .loader-overlay{
         position: fixed;
         width: 100%;

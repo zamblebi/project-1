@@ -5,7 +5,7 @@
 
    <div v-if="show" class="my_order_list_all">
 
-       <h1 class="my_title_order">Mes Commandes : </h1>
+       <h1 class="my_title_order">Mes Commandes </h1>
        <ul class="all_orders">
                 <div v-for="(order, n) in my_order" :key="n" >
             <li v-if="order.deliver == 0">

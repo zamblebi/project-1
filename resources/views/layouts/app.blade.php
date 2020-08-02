@@ -26,6 +26,9 @@
 </head>
 <body>
     <div id="app">
+        <div id="theLoader">
+           <span class="spinner"></span>
+        </div>
         <loader-component :is-visible="isLoading"></loader-component>
         <div class="load"></div>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">

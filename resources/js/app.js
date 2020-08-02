@@ -119,12 +119,9 @@ const app = new Vue({
        'global-order': GlobalOrderComponent,
        'LoaderComponent': LoaderComponent,
     },
-    // mounted(){
+    mounted(){
+      // this.enableInterceptor()
     //   // console.log(axios.interceptors.request.use)
-    // },
-    created(){
-      
-      this.enableInterceptor()
     },
     data(){
       return{

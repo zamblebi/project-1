@@ -8,7 +8,7 @@
     <transition name="slide-fade">
         <div v-if="showUp">
 
-            <h1 class="title_edit_profil">Modifier mon Profil</h1>
+            <h1 class="title_edit_profil">Modifier mes informations </h1>
             
        <form  class="edit_profil">
             <div>

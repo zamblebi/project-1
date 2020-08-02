@@ -110,6 +110,13 @@ menu.addEventListener("click", function (e) {
     stateNav = false;
   }
 }, false); // loader
+
+window.addEventListener("load", function (e) {
+  // setTimeout(function(){
+  var loading = document.querySelector('#theLoader');
+  loading.style.display = "none";
+  console.log('Loaded'); // }, 3000)
+}); // window.
 // loader end
 //ajax request
 //end ajax request
