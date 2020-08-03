@@ -73,7 +73,7 @@ export default {
 
         if(localStorage.deliverableType == 'Express'){
            this.allPrice *= 2
-        }else if(localStorage.deliverableType == 'Simple'){
+        }else if(localStorage.deliverableType == 'Standard'){
             if(this.allPrice > 5000){
                 this.allPrice += 1000
             }

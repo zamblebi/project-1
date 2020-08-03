@@ -31,7 +31,7 @@
                             </span>
 
                     </div>
-                    <router-link to="/order-slots" @click.native="addDeliverable('standard')" class="btn">Sélectionner</router-link>
+                    <router-link to="/order-slots" @click.native="addDeliverable('Standard')" class="btn">Sélectionner</router-link>
                 </div>
                 </div>
                 <div class="express">
@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import Noty from 'noty'
 
 export default {
     data(){
@@ -74,13 +75,31 @@ export default {
         }
     },
     mounted(){
+        
         this.show = true
         this.viewDeliverable()
         if(localStorage.getItem('store')){
-            if(JSON.parse(localStorage.getItem('store')).carts.allPrice > 5000){
+            if(JSON.parse(localStorage.getItem('store')).carts.allPrice < 5000){
                 this.deliverablePrices.standard = 1000 
+                new Noty({
+                    // theme: 'metroui',
+                    type: 'error',
+                    text: "Votre commande est en dessous de 5000f alors la livraison Standard sera à 1000f", 
+                    layout: 'topRight',
+                    timeout: 3500,
+                }).show();
             }
             this.deliverablePrices.express = JSON.parse(localStorage.getItem('store')).carts.allPrice
+
+            //notification
+            if(JSON.parse(localStorage.getItem('store')).carts.allPrice > 5000){
+                new Noty({
+                   type: 'success',
+                   text: "La livraison Standard sera gratuite !", 
+                   layout: 'topRight'
+               }).show();
+            }
+
         }
     },
     methods: {
