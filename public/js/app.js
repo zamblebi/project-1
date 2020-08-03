@@ -3209,7 +3209,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".qty_ {\n  width: 20px;\n  height: 23px;\n}\n.btn_button {\n  display: inline-block;\n  border: none;\n  border-radius: 7px;\n  padding: 5px 10px;\n  margin: 0;\n  text-decoration: none;\n  background: #D65047;\n  color: #ffffff;\n  font-family: sans-serif;\n  font-size: 1rem;\n  cursor: pointer;\n  text-align: center;\n  transition: background 250ms ease-in-out, transform 150ms ease;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n}\n.btn_button:hover {\n  background: #b8524b;\n}\n.btn_button:focus {\n  background: #b8524b;\n  outline: 1px solid #fff;\n  outline-offset: -4px;\n}\n.btn_button:active {\n  transform: scale(0.99);\n}\n.all_price {\n  padding-top: 5px;\n}\n.clothing_list {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n}\n.clothing_list li {\n  padding: 3px 0 !important;\n}\n.carts_list_clothing {\n  padding: 40px 20px;\n  color: #fff;\n  border-radius: 7px;\n  background-color: #8C4452;\n}\n@media (max-width: 800px) {\n.all_clothing_list {\n    display: grid;\n    place-items: center;\n}\n.all_clothing_list .clothing_list {\n    padding-left: 0;\n}\n.all_clothing_list .clothing_list li {\n    padding: 3px 0 !important;\n}\n}", ""]);
+exports.push([module.i, "#app {\n  min-height: 100%;\n}\n.qty_ {\n  width: 20px;\n  height: 23px;\n}\n.btn_button {\n  display: inline-block;\n  border: none;\n  border-radius: 7px;\n  padding: 5px 10px;\n  margin: 0;\n  text-decoration: none;\n  background: #D65047;\n  color: #ffffff;\n  font-family: sans-serif;\n  font-size: 1rem;\n  cursor: pointer;\n  text-align: center;\n  transition: background 250ms ease-in-out, transform 150ms ease;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n}\n.btn_button:hover {\n  background: #b8524b;\n}\n.btn_button:focus {\n  background: #b8524b;\n  outline: 1px solid #fff;\n  outline-offset: -4px;\n}\n.btn_button:active {\n  transform: scale(0.99);\n}\n.all_price {\n  padding-top: 5px;\n}\n.clothing_list {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n}\n.clothing_list li {\n  padding: 3px 0 !important;\n}\n.carts_list_clothing {\n  padding: 40px 20px;\n  color: #fff;\n  border-radius: 7px;\n  background-color: #8C4452;\n}\n@media (max-width: 800px) {\n.cart_component {\n    grid-row: 1;\n}\n.all_clothing_list {\n    display: grid;\n    place-items: center;\n}\n.all_clothing_list .clothing_list {\n    padding-left: 0;\n}\n.all_clothing_list .clothing_list li {\n    padding: 3px 0 !important;\n}\n}", ""]);
 
 // exports
 
@@ -63145,6 +63145,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "cart_component" },
     [
       _c("h3", [_vm._v("Estimation du prix (hors livraison)")]),
       _vm._v(" "),
