@@ -10,12 +10,12 @@
                         </h4>
 
         <div class="container-deliverys">
-            <div class="simple">
+            <div class="standard">
 
 
 
                 <div class="delivery">
-                    <h3>Simple</h3>
+                    <h3>Standard</h3>
                     <img class="icon-delivery" src="/icons/delivery.svg" alt="">
                     <div class="small-datails">
                         <strong>
@@ -23,15 +23,15 @@
                         </strong>
                     </div>
                     <div class="frais">
-                            <span v-if="deliverablePrices.simple == 'Gratuit' ">
+                            <span v-if="deliverablePrices.standard == 'Gratuit' ">
                                 <h4>Frais de transport Gratuit</h4>
                             </span>
-                            <span v-if="deliverablePrices.simple != 'Gratuit'" class="simple_del">
-                                 <h4 >Frais de transport : </h4> <em> {{deliverablePrices.simple}} f </em>
+                            <span v-if="deliverablePrices.standard != 'Gratuit'" class="standard_del">
+                                 <h4 >Frais de transport :  </h4> <em> {{deliverablePrices.standard}} f </em>
                             </span>
 
                     </div>
-                    <router-link to="/order-slots" @click.native="addDeliverable('Simple')" class="btn">Sélectionner</router-link>
+                    <router-link to="/order-slots" @click.native="addDeliverable('standard')" class="btn">Sélectionner</router-link>
                 </div>
                 </div>
                 <div class="express">
@@ -65,7 +65,7 @@ export default {
     data(){
         return{
             deliverablePrices : {
-                simple : 'Gratuit',
+                standard : 'Gratuit',
                 express: 5000
             },
             deliverableType: '',
@@ -78,7 +78,7 @@ export default {
         this.viewDeliverable()
         if(localStorage.getItem('store')){
             if(JSON.parse(localStorage.getItem('store')).carts.allPrice > 5000){
-                this.deliverablePrices.simple = 1000 
+                this.deliverablePrices.standard = 1000 
             }
             this.deliverablePrices.express = JSON.parse(localStorage.getItem('store')).carts.allPrice
         }
@@ -114,7 +114,8 @@ export default {
 .delivery-title{
     margin: 0;
 }
-.simple_del{
+.standard_del{
     display: flex;
+    align-items: center;
 }
 </style>

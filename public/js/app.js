@@ -2340,7 +2340,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       deliverablePrices: {
-        simple: 'Gratuit',
+        standard: 'Gratuit',
         express: 5000
       },
       deliverableType: '',
@@ -2354,7 +2354,7 @@ __webpack_require__.r(__webpack_exports__);
 
     if (localStorage.getItem('store')) {
       if (JSON.parse(localStorage.getItem('store')).carts.allPrice > 5000) {
-        this.deliverablePrices.simple = 1000;
+        this.deliverablePrices.standard = 1000;
       }
 
       this.deliverablePrices.express = JSON.parse(localStorage.getItem('store')).carts.allPrice;
@@ -3228,7 +3228,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".display_subtitle {\n  text-align: center;\n  margin-top: 0;\n  padding-bottom: 20px;\n}\n.delivery-title {\n  margin: 0;\n}\n.simple_del {\n  display: flex;\n}", ""]);
+exports.push([module.i, ".display_subtitle {\n  text-align: center;\n  margin-top: 0;\n  padding-bottom: 20px;\n}\n.delivery-title {\n  margin: 0;\n}\n.standard_del {\n  display: flex;\n  align-items: center;\n}", ""]);
 
 // exports
 
@@ -60399,12 +60399,12 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "container-deliverys" }, [
-                _c("div", { staticClass: "simple" }, [
+                _c("div", { staticClass: "standard" }, [
                   _c(
                     "div",
                     { staticClass: "delivery" },
                     [
-                      _c("h3", [_vm._v("Simple")]),
+                      _c("h3", [_vm._v("Standard")]),
                       _vm._v(" "),
                       _c("img", {
                         staticClass: "icon-delivery",
@@ -60422,20 +60422,20 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "frais" }, [
-                        _vm.deliverablePrices.simple == "Gratuit"
+                        _vm.deliverablePrices.standard == "Gratuit"
                           ? _c("span", [
                               _c("h4", [_vm._v("Frais de transport Gratuit")])
                             ])
                           : _vm._e(),
                         _vm._v(" "),
-                        _vm.deliverablePrices.simple != "Gratuit"
-                          ? _c("span", { staticClass: "simple_del" }, [
-                              _c("h4", [_vm._v("Frais de transport : ")]),
+                        _vm.deliverablePrices.standard != "Gratuit"
+                          ? _c("span", { staticClass: "standard_del" }, [
+                              _c("h4", [_vm._v("Frais de transport :  ")]),
                               _vm._v(" "),
                               _c("em", [
                                 _vm._v(
                                   " " +
-                                    _vm._s(_vm.deliverablePrices.simple) +
+                                    _vm._s(_vm.deliverablePrices.standard) +
                                     " f "
                                 )
                               ])
@@ -60450,7 +60450,7 @@ var render = function() {
                           attrs: { to: "/order-slots" },
                           nativeOn: {
                             click: function($event) {
-                              return _vm.addDeliverable("Simple")
+                              return _vm.addDeliverable("standard")
                             }
                           }
                         },
