@@ -2373,7 +2373,8 @@ __webpack_require__.r(__webpack_exports__);
         new noty__WEBPACK_IMPORTED_MODULE_0___default.a({
           type: 'success',
           text: "La livraison Standard sera gratuite !",
-          layout: 'topRight'
+          layout: 'topRight',
+          timeout: 3500
         }).show();
       }
     }
