@@ -136,5 +136,6 @@ export default {
 .standard_del{
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 </style>

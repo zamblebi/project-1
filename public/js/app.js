@@ -3246,7 +3246,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".display_subtitle {\n  text-align: center;\n  margin-top: 0;\n  padding-bottom: 20px;\n}\n.delivery-title {\n  margin: 0;\n}\n.standard_del {\n  display: flex;\n  align-items: center;\n}", ""]);
+exports.push([module.i, ".display_subtitle {\n  text-align: center;\n  margin-top: 0;\n  padding-bottom: 20px;\n}\n.delivery-title {\n  margin: 0;\n}\n.standard_del {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}", ""]);
 
 // exports
 
