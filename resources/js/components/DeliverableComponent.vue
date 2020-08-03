@@ -96,7 +96,8 @@ export default {
                 new Noty({
                    type: 'success',
                    text: "La livraison Standard sera gratuite !", 
-                   layout: 'topRight'
+                   layout: 'topRight',
+                   timeout: 3500,
                }).show();
             }
 
@@ -136,5 +137,6 @@ export default {
 .standard_del{
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 </style>
