@@ -65,7 +65,7 @@
   <div class="form-group">
       <label for="image_clothing" class="image_clothing">Changer d'image</label>
       <br>
-      <input type="file" style="display: none;" id="image_clothing" name="image_clothing" placeholder="Choisir une image">
+  <input type="file" style="display: none;" id="image_clothing" name="image_clothing" value="{{ $clothing->image }}" placeholder="Choisir une image">
   </div>
 
   <div class="form-group">

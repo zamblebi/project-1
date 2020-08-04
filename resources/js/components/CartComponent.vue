@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="cart_component">
             <h3>Estimation du prix (hors livraison)</h3>
             <!-- <hr> -->
             <div class="carts_list_clothing">
@@ -65,6 +65,10 @@ export default {
 }
 </script>
 <style lang="scss">
+
+#app{
+    min-height: 100%;
+}
 $orange: #D65047;
 $orange-bold: #b8524b;
  .qty_{
@@ -123,6 +127,10 @@ $orange-bold: #b8524b;
 
  }
  @media(max-width: 800px){
+     .cart_component{
+         grid-row: 1;
+    
+    }
      .all_clothing_list{
          display: grid;
         place-items: center;

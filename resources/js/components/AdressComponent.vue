@@ -115,8 +115,9 @@ export default {
 </script>
 
 <style lang="scss">
-.All_adress{
-    margin-bottom: 234px;
+
+.more_details div {
+    padding: 0 40px 0 0;
 }
 .search_,.locate{
     margin: 10px 0;
@@ -170,6 +171,9 @@ export default {
         }
     }
     @media(max-width: 700px){
+        .more_details div{
+            padding: 0;
+        }
         .more_details{
             text-align: center;
             flex-direction: column;

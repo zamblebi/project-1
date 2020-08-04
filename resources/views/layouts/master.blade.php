@@ -99,7 +99,7 @@
       </div> --}}
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>Pages</span>
@@ -107,26 +107,50 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Autres pages</h6>
-          <a class="collapse-item" href="{{url('/home')}}">Mon profile utilisateur</a>
-          <a class="collapse-item" href="{{url('/')}}">Acceuil</a>
-          <a class="collapse-item" href="{{url('/dashboard/clothing')}}">Ajouter des vetements</a>
-          <a class="collapse-item" href="{{url('/dashboard/category')}}">Ajouter des Catégories</a>
+          <a class="collapse-item" ></a>
+          <a class="collapse-item" ></a>
+          <a class="collapse-item" ></a>
+          <a class="collapse-item" ></a>
             {{-- <a class="collapse-item" href="register.html">Register</a> --}}
             {{-- <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>
             <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a> --}}
+            <a class="collapse-item" href="blank.html">Blank Page</a> 
            </div>
         </div>
+      </li> --}}
+
+
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('/')}}">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Acceuil</span></a>
+      </li>
+
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('/home')}}">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Mon profile utilisateur</span></a>
+      </li>
+
+      
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('/dashboard/clothing')}}">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Ajouter des vetements</span></a>
+      </li>
+
+ <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('/dashboard/category')}}">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Ajouter des Catégories</span></a>
       </li>
 {{--
-      <!-- Nav Item - Charts -->
-      {{-- <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li> --}}
 
       <!-- Nav Item - Tables -->
       {{-- <li class="nav-item">

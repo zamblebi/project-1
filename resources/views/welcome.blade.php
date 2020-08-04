@@ -29,9 +29,9 @@
             <div class="intro wrapper">
                 <div class="layer"></div>
                 <div class="groups-intro">
-                    <h1>Pressing à domicile haute qualité livre partout à Abidjan</h1>
-
-                    <p>Nous récupérons et livrons vos vêtements</p>
+                    <h1>Pressing à domicile haute qualité livré partout à Abidjan et banlieue</h1>
+                    <br>
+                    <p>Nous récupérons et livrons vos vêtement gratuitement*</p>
                 </div>
 
                 <div class="cta">
@@ -162,7 +162,7 @@
                                 </li>
                                 <li>
                                     <h4>Alice Nadine</h4>
-                                    <p>Super service de pressing à domicile. Essayé pendant le confinement avec livraison sans contact. Mes chemises m'ont été rendues comme neuves. Merci PRESSANDCO!!</p>
+                                    <p>Super service de pressing à domicile. Essayé pendant le confinement avec livraison sans contact. Mes chemises m'ont été rendues comme neuves. Merci MONPRESSING!!</p>
                                 </li>
                                 <li>
                                     <h4>Jacob Williams</h4>

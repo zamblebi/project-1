@@ -118,11 +118,12 @@ class ClothingController extends Controller
             'prix' => 'required|numeric|min:500'
         ]);
         $clothing = Clothing::find($id);
-
-        $imageName = $request->file('image_clothing')->getClientOriginalName();
-        $imageFile = $request->file('image_clothing')->move('images/clothing_images', $imageName);
-        $request['image'] = $imageFile;
-
+            if($request->file('image_clothing')){
+                $imageName = $request->file('image_clothing')->getClientOriginalName();
+                $imageFile = $request->file('image_clothing')->move('images/clothing_images', $imageName);
+                $request['image'] = $imageFile;
+            }
+ 
         $clothing->update($request->all());
         // return dd($imageFile);
         return back()->with('update', 'Le vetement mis a jour');

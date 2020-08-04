@@ -7,6 +7,7 @@
       <th scope="col">#</th>
       <th scope="col">Nom et prénom du client</th>
       <th scope="col">Adresse</th>
+      <th scope="col">Numero de téléphone</th>
       <th scope="col">Prix total</th>
       <th scope="col">Livrer</th>
       <th scope="col">Valider</th>
@@ -18,6 +19,7 @@
     <th scope="row">{{$order->id}}</th>
     <td>{{$order->user->firstName}} {{$order->user->lastName}}</td>
       <td>{{json_decode($order->adress_maps)->long_name}}</td>
+      <td>{{$order->user->phone_number}}</td>
       <td>{{$order->all_prices}}</td>
       <td>{{$order->deliver == 0 ? 'Non' : 'Oui' }}</td>
       <td>
