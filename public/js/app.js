@@ -63329,7 +63329,7 @@ var render = function() {
           }
         },
         [
-          _c("option", { attrs: { value: "all" } }, [_vm._v("Tous afficher")]),
+          _c("option", { attrs: { value: "all" } }, [_vm._v("Nos services")]),
           _vm._v(" "),
           _vm._l(_vm.categories, function(category, k) {
             return _c("option", { key: k, domProps: { value: category.id } }, [

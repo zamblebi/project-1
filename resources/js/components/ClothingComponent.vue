@@ -6,7 +6,7 @@
 
       <h2 class="clothing-title">Choisir une quantité</h2>
         <select v-model="value" name="" id="" class="select_category" >
-            <option value="all">Tous afficher</option>
+            <option value="all">Nos services</option>
             <option v-for="(category, k) in categories" :key="k" v-bind:value="category.id">{{category.name}}</option>
         </select>
       <transition name="fade">
