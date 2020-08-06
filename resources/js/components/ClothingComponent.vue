@@ -4,7 +4,7 @@
         
         <!-- <loader-component :is-visible="isLoading"></loader-component> -->
 
-      <h2 class="clothing-title">Choisir une quantité</h2>
+      <h2 class="clothing-title">Choisir un service</h2>
         <select v-model="value" name="" id="" class="select_category" >
             <option value="all">Nos services</option>
             <option v-for="(category, k) in categories" :key="k" v-bind:value="category.id">{{category.name}}</option>

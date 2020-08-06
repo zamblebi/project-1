@@ -52,21 +52,21 @@
                                 <img class="icon-item" src="/icons/phone.svg" alt="phone">
                                 <div>
                                     <p class="step">Étape 1</p>
-                                    <p>Réservez en ligne votre créneau</p>
+                                    <p>Choisissez les dates et les horaires les plus pratiques pour vous.</p>
                                 </div>
                             </li>
                             <li>
                                 <img class="icon-item" src="/icons/iron.svg" alt="iron">
                                 <div>
                                     <p class="step">Étape  2</p>
-                                    <p>Confiez-nous votre linge</p>
+                                    <p>Nous collectons et nettoyons votre linge dans nos pressing haute qualité.</p>
                                 </div>
                             </li>
                             <li>
                                 <img class="icon-item" src="/icons/suit.svg" alt="suit">
                                 <div>
                                     <p class="step">Étape  3</p>
-                                    <p>Récupérez votre linge propre </p>
+                                    <p>Nous vous livrons votre linge propre et repassé en 48h et 7J/7 ! </p>
                                 </div>
                             </li>
                         </ul>
@@ -78,7 +78,7 @@
             <section class="about-us ">
                 <div class="about-us-list wrapper">
                     <div class="groups-title">
-                        <h1 class="title title-about-us">Pressing</h1>
+                        <h1 class="title title-about-us">MONPRESSING</h1>
                     <p class="small-details-title">Les services d'un pressing de haute qualité à votre porte</p>
                     </div>
                     <ul>

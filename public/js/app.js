@@ -63296,7 +63296,7 @@ var render = function() {
     "div",
     [
       _c("h2", { staticClass: "clothing-title" }, [
-        _vm._v("Choisir une quantité")
+        _vm._v("Choisir un service")
       ]),
       _vm._v(" "),
       _c(
