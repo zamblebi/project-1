@@ -1,7 +1,13 @@
 <template>
     <div>
-
-        
+        <order-menu-component/>
+        <!-- <ul class="order-menu">
+            <li v-if="carts"><router-link to="/order">Vetement</router-link></li>
+            <li v-if="deliverableType"><router-link to="/order-deliverable">Livraison</router-link></li>
+            <li v-if="dateChoose"><router-link to="/order-slots">Choix de date de recuperation</router-link></li>
+            <li v-if="adressMaps"><router-link to="/order-maps">Adresse</router-link></li>
+            <li v-if="deliverableType && dateChoose && adressMaps"><router-link to="/order-validate">Validation</router-link></li>
+        </ul> -->
         <!-- <loader-component :is-visible="isLoading"></loader-component> -->
 
       <h2 class="clothing-title">Choisir un service</h2>
@@ -110,22 +116,25 @@
     import CartComponent from './CartComponent'
     import LoaderComponent from './LoaderComponent'
     import {mapState, mapActions, mapGetters} from 'vuex'
+    import OrderMenuComponent from './OrderMenuComponent'
 
     export default{
         name: 'ClothingComponent',
         components: {
-            'LoaderComponent' : LoaderComponent
+             LoaderComponent
         },
 
         data: function(){
             return{
                 value: 'all',
                 show: false,
-                isLoading: true
+                isLoading: true,
+                // carts: localStorage.getItem('store'),
+                
             } 
         },
         updated(){
-            console.log(this.value)
+            // console.log(this.value)
         },
         components: {
             'cart-component' : CartComponent
@@ -141,6 +150,7 @@
                 'carts', ['clothingQty']
             )},
         mounted(){
+            
             this.show = true
             this.$store.dispatch('products/getProducts'),
             this.$store.dispatch('products/getCategories')

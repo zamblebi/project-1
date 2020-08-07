@@ -114,8 +114,8 @@ menu.addEventListener("click", function (e) {
 window.addEventListener("load", function (e) {
   // setTimeout(function(){
   var loading = document.querySelector('#theLoader');
-  loading.style.display = "none";
-  console.log('Loaded'); // }, 3000)
+  loading.style.display = "none"; // console.log('Loaded')
+  // }, 3000)
 }); // window.
 // loader end
 //ajax request

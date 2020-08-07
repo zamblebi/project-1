@@ -12,6 +12,7 @@ export const CHANGE_QUANTITY = (state, {cartIndex,cartQty}) => {
     console.log(cartQty)
     state.carts[cartIndex].price = state.carts[cartIndex].product.prix * state.carts[cartIndex].quantity  
     // state.allPrice.push(state.carts[cartIndex].price)
+    
 }
 
 export const DELETE_ON_CART = (state, cartIndex) => {
@@ -24,6 +25,11 @@ export const INCREMENT = (state, n) => {
     state.carts[n].quantity++
     // debugger
     state.carts[n].price = state.carts[n].product.prix * state.carts[n].quantity  
+    var total = 0;
+    state.carts.forEach(element => {
+        console.log(total += element.price)
+    });
+    state.allPrice = total
 }
 
 // decrementer la quantiter

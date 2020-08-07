@@ -48,6 +48,7 @@ Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);
 
 import ClothingComponent from './components/ClothingComponent';
 import CartComponent from './components/CartComponent';
+import OrderMenuComponent from './components/OrderMenuComponent';
 import DeliverableComponent from './components/DeliverableComponent';
 import SlotsComponent from './components/SlotsComponent';
 import AdressComponent from './components/AdressComponent';
@@ -113,6 +114,7 @@ const app = new Vue({
     components: {
        'clothing-component': ClothingComponent,
        'cart-component': CartComponent,
+       OrderMenuComponent,
        'deliverable-component': DeliverableComponent,
        'slots-component': DeliverableComponent,
        'adress-component': AdressComponent,

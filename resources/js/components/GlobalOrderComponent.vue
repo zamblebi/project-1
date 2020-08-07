@@ -16,16 +16,11 @@
         name: "GlobalOrderComponent.vue",
         data(){
             return{
-                adressMaps: localStorage.adressMaps,
-                allPrice: localStorage.totalPrice,
-                deliverableType: localStorage.deliverableType,
-                dateChoose: localStorage.dateStored,
-                adress_details: localStorage.allOtherAdress,
-                carts: localStorage.getItem('carts'),
+                
             }
         }
         ,updated() {
-
+                
         }
     }
 </script>

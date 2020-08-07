@@ -22,7 +22,7 @@ window.addEventListener("load", function(e){
     // setTimeout(function(){
     let loading = document.querySelector('#theLoader');
         loading.style.display = "none";
-        console.log('Loaded')
+        // console.log('Loaded')
     // }, 3000)
 })
 

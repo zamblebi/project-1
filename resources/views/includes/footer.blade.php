@@ -5,10 +5,10 @@
         {{-- <hr> --}}
                 <ul class="contacts">
                     <li>
-                        <p><i class="fa fa-envelope-o"></i> exemple@gmail.com</p>
+                        <p><i class="fa fa-envelope-o"></i> info@monpressing.ci</p>
                     </li>
                     <li>
-                        <p><i class="fa fa-phone"></i> 99 002 22 33</p>
+                        <p><i class="fa fa-phone"></i> +225 50 06 06 20</p>
                     </li>
                     <li>
                         <p><i class="fa fa-map-marker"></i> Abidjan, Rivera Abatta</p>

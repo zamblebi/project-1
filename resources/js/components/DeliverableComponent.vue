@@ -1,5 +1,6 @@
 <template>
     <div>
+        <router-link v-if="deliverableType" to="/order-deliverable">Livraison</router-link>
         <transition name="slide-fade">
 
         <div v-if="show">
@@ -70,7 +71,8 @@ export default {
                 express: 5000
             },
             deliverableType: '',
-            show: false
+            show: false,
+            deliverableType: localStorage.deliverableType,
             // typeD : ''
         }
     },
