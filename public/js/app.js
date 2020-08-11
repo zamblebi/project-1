@@ -85359,6 +85359,12 @@ var PUSH_PRODUCT_ON_CART = function PUSH_PRODUCT_ON_CART(state, product) {
     quantity: 1,
     price: product.prix
   });
+  console.log(state.allPrice);
+  var total = 0;
+  state.carts.forEach(function (element) {
+    console.log(total += element.price);
+  });
+  state.allPrice = total;
 }; //change value quantity on the state
 
 var CHANGE_QUANTITY = function CHANGE_QUANTITY(state, _ref) {
@@ -85366,22 +85372,32 @@ var CHANGE_QUANTITY = function CHANGE_QUANTITY(state, _ref) {
       cartQty = _ref.cartQty;
   state.carts[cartIndex].quantity = cartQty;
   console.log(cartQty);
-  state.carts[cartIndex].price = state.carts[cartIndex].product.prix * state.carts[cartIndex].quantity; // state.allPrice.push(state.carts[cartIndex].price)
+  state.carts[cartIndex].price = state.carts[cartIndex].product.prix * state.carts[cartIndex].quantity;
+  state.allPrice.push(state.carts[cartIndex].price);
 };
 var DELETE_ON_CART = function DELETE_ON_CART(state, cartIndex) {
   state.carts.splice(cartIndex, 1);
+  var total = 0;
+  state.carts.forEach(function (element) {
+    console.log(total -= element.price);
+  });
+  state.allPrice = total;
 }; // incrementer la quantiter
 
 var INCREMENT = function INCREMENT(state, n) {
-  state.carts[n].quantity++; // debugger
+  state.carts[n].quantity++;
+  state.carts[n].price = state.carts[n].product.prix * state.carts[n].quantity; // var total = 0;
+  // debugger
 
-  state.carts[n].price = state.carts[n].product.prix * state.carts[n].quantity;
+  console.log('this is all price :  ', state.allPrice);
+  state.allPrice += state.carts[n].price;
 }; // decrementer la quantiter
 
 var DECREMENT = function DECREMENT(state, n) {
   if (state.carts[n].quantity != 1) {
     state.carts[n].quantity--;
     state.carts[n].price -= state.carts[n].product.prix;
+    state.allPrice -= state.carts[n].price;
   }
 }; //calculer le prix total
 
@@ -85550,8 +85566,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\bouye\Documents\workspace\PHP\project-1\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\bouye\Documents\workspace\PHP\project-1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/samuel/Documents/code/project-1/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/samuel/Documents/code/project-1/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
