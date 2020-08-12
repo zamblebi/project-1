@@ -48,13 +48,16 @@
                             @if (Route::has('login'))
                                         @auth
                                         <li class="nav-item">
+                                                <a href="{{ url('/order') }}" class="panier"><img class="shopping-icon" src="/icons/shopping-cart.svg" alt=""> <span>Mon Panier</span></a>
+                                            </li>
+                                            <li class="nav-item">
                                                 <a href="{{ url('/home/my-order-list') }}">Mon Profils</a>
                                             </li>
                                             @if(Auth::user()->usertype == 'admin')
-                                                <li class="nav-item">
+                                            <li class="nav-item">
                                                     <a href="{{url('dashboard')}}">Dashboard</a>
                                                 </li>
-                                            @endif
+                                                @endif
                                             {{-- @else
                                                 <a href="{{ route('login') }}">Connexion</a>
 
@@ -62,16 +65,19 @@
                                                 <a href="{{ route('register') }}">Inscription</a>
                                                 @endif --}}
                                                 @endauth
-
+                                                
                                                 {{-- </div>--}}
                                                 @endif
                                                 {{-- </nav> --}}
                                                 {{-- @show --}}
                                                 <!-- Authentication Links -->
-                            @guest
-
-
-                            <li class="nav-item">
+                                @guest
+                                
+                                <li class="nav-item">
+                                        <a href="{{ url('/order') }}"><img class="shopping-icon" src="/icons/shopping-cart.svg" alt=""></a>
+                                    </li>
+                                
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
                                 </li>
                                 @if (Route::has('register'))

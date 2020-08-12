@@ -83791,7 +83791,8 @@ _store__WEBPACK_IMPORTED_MODULE_19__["default"].subscribe(function (mutation, st
 var routes = [{
   path: '/order',
   component: _components_ClothingComponent__WEBPACK_IMPORTED_MODULE_7__["default"]
-}, {
+}, // {path: '/order-cart', component: CartComponent },
+{
   path: '/order-deliverable',
   component: _components_DeliverableComponent__WEBPACK_IMPORTED_MODULE_9__["default"]
 }, {
