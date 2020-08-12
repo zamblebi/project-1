@@ -35,7 +35,12 @@
             </div>
             <!-- <hr> -->
             <br>
-            <router-link to="/order-deliverable" class="btn" >Passer une commande</router-link>
+            <div v-if="!orderingCart">
+                <button class="btn btn-desable">Choisissez un service</button>
+            </div>
+            <div v-if="orderingCart">
+                <router-link to="/order-deliverable" class="btn" >Passer une commande</router-link>
+            </div>
         <!-- <a href="#" class="btn">Passer la commande</a> -->
         </div>
 
@@ -48,10 +53,29 @@ import { mapActions, mapGetters, mapState } from 'vuex'
 export default {
     data(){
         return {
-            
+                orderingCart: false
             }
             
     },
+    updated(){
+        // debugger
+        var myCart = JSON.parse(localStorage.getItem('store')).carts
+        if(myCart.allPrice != 0){
+            this.orderingCart = true
+            console.log('cart updated order true', myCart.carts.length)
+        }else if(myCart.allPrice == 0){
+            this.orderingCart = false
+            console.log('cart updated order false', this.orderingCart)
+        }
+        myCart
+    },
+    // mounted(){
+    //     if(this.myCart.allPrice != 0){
+    //         this.orderingCart = true
+    //     }else if(this.myCart.allPrice == 0){
+    //         this.orderingCart = false
+    //     }
+    // },
     computed: {...mapGetters(
         'carts', ['priceClt', 'totalPrice','getAllCarts']
     ),
@@ -65,6 +89,10 @@ export default {
 }
 </script>
 <style lang="scss">
+
+.btn-desable{
+        background: rgb(138, 138, 138) !important;
+    }
 
 #app{
     min-height: 100%;
