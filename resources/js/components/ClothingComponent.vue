@@ -125,7 +125,7 @@
             } 
         },
         updated(){
-            console.log(this.value)
+            // console.log(this.value)
         },
         components: {
             'cart-component' : CartComponent

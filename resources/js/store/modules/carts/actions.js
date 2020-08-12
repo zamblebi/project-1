@@ -34,6 +34,6 @@ export const decrement = ({commit}, index) => {
 }
 
 
-export const count = ({commit}) => {
-    commit("COUNT_ALL")
-}
+// export const count = ({commit}) => {
+//     commit("COUNT_ALL")
+// }
