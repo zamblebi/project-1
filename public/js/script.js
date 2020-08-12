@@ -106,7 +106,7 @@ menu.addEventListener("click", function (e) {
     var _nav = document.querySelector('.navbar-nav'); // nav.style.display = "none"
 
 
-    _nav.style.top = "-150px";
+    _nav.style.top = "-250px";
     stateNav = false;
   }
 }, false); // loader
