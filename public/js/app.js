@@ -2096,7 +2096,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('carts', ['priceClt', 'totalPrice', 'getAllCarts'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('carts', ['allPrice'])),
   props: ['cltQtyAll', 'cltInCarts'],
-  methods: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('carts', ['changeProductQuantity', 'removeOnCart', 'increment', 'decrement', 'count'])
+  methods: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('carts', ['changeProductQuantity', 'removeOnCart', 'increment', 'decrement'])
 });
 
 /***/ }),
@@ -63252,10 +63252,6 @@ var render = function() {
               0
             )
           ])
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn", on: { click: _vm.count } }, [
-          _vm._v("Calculer")
         ])
       ]),
       _vm._v(" "),
@@ -64100,7 +64096,7 @@ var render = function() {
                       ],
                       1
                     ),
-                    _vm._v("\n            ou\n        "),
+                    _vm._v("\r\n            ou\r\n        "),
                     _c("h3", [_vm._v("Aucun vêtement n'a été choisi")])
                   ])
                 : _vm._e(),
@@ -85224,7 +85220,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*!*****************************************************!*\
   !*** ./resources/js/store/modules/carts/actions.js ***!
   \*****************************************************/
-/*! exports provided: addProductToCart, changeProductQuantity, removeOnCart, increment, decrement, count */
+/*! exports provided: addProductToCart, changeProductQuantity, removeOnCart, increment, decrement */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -85234,7 +85230,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeOnCart", function() { return removeOnCart; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "increment", function() { return increment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decrement", function() { return decrement; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "count", function() { return count; });
 // export const addProductToCart = ({commit}, product) => {
 //     commit("ADD_PRODUCT_TO_CART", product)
 // }
@@ -85271,11 +85266,9 @@ var increment = function increment(_ref5, index) {
 var decrement = function decrement(_ref6, index) {
   var commit = _ref6.commit;
   commit("DECREMENT", index);
-};
-var count = function count(_ref7) {
-  var commit = _ref7.commit;
-  commit("COUNT_ALL");
-};
+}; // export const count = ({commit}) => {
+//     commit("COUNT_ALL")
+// }
 
 /***/ }),
 
@@ -85334,7 +85327,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************************!*\
   !*** ./resources/js/store/modules/carts/mutations.js ***!
   \*******************************************************/
-/*! exports provided: PUSH_PRODUCT_ON_CART, CHANGE_QUANTITY, DELETE_ON_CART, INCREMENT, DECREMENT, COUNT_ALL, INITIALISE_STORE */
+/*! exports provided: PUSH_PRODUCT_ON_CART, CHANGE_QUANTITY, DELETE_ON_CART, INCREMENT, DECREMENT, INITIALISE_STORE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -85344,7 +85337,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_ON_CART", function() { return DELETE_ON_CART; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "INCREMENT", function() { return INCREMENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DECREMENT", function() { return DECREMENT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "COUNT_ALL", function() { return COUNT_ALL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "INITIALISE_STORE", function() { return INITIALISE_STORE; });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
@@ -85362,7 +85354,7 @@ var PUSH_PRODUCT_ON_CART = function PUSH_PRODUCT_ON_CART(state, product) {
   console.log(state.allPrice);
   var total = 0;
   state.carts.forEach(function (element) {
-    console.log(total += element.price);
+    console.log('ceci est le prix total avant : ', total += element.price);
   });
   state.allPrice = total;
 }; //change value quantity on the state
@@ -85385,30 +85377,38 @@ var DELETE_ON_CART = function DELETE_ON_CART(state, cartIndex) {
 }; // incrementer la quantiter
 
 var INCREMENT = function INCREMENT(state, n) {
+  // debugger
   state.carts[n].quantity++;
   state.carts[n].price = state.carts[n].product.prix * state.carts[n].quantity; // var total = 0;
   // debugger
 
-  console.log('this is all price :  ', state.allPrice);
-  state.allPrice += state.carts[n].price;
+  var total = 0;
+  state.carts.forEach(function (element) {
+    console.log('ceci est le prix total avant : ', total += element.price);
+  });
+  state.allPrice = total; // state.allPrice = state.carts[n].price
 }; // decrementer la quantiter
 
 var DECREMENT = function DECREMENT(state, n) {
   if (state.carts[n].quantity != 1) {
     state.carts[n].quantity--;
     state.carts[n].price -= state.carts[n].product.prix;
-    state.allPrice -= state.carts[n].price;
+    var total = 0;
+    state.carts.forEach(function (element) {
+      console.log('ceci est le prix total avant : ', total += element.price);
+    });
+    state.allPrice = total;
   }
 }; //calculer le prix total
+// export const COUNT_ALL = (state) => {
+//     // console.log(state.carts)
+//     var total = 0;
+//     state.carts.forEach(element => {
+//         console.log(total += element.price)
+//     });
+//     state.allPrice = total
+// }
 
-var COUNT_ALL = function COUNT_ALL(state) {
-  // console.log(state.carts)
-  var total = 0;
-  state.carts.forEach(function (element) {
-    console.log(total += element.price);
-  });
-  state.allPrice = total;
-};
 var INITIALISE_STORE = function INITIALISE_STORE(state) {
   var self = _this;
 
@@ -85566,8 +85566,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/samuel/Documents/code/project-1/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/samuel/Documents/code/project-1/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\bouye\Documents\code\project-1\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\bouye\Documents\code\project-1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -7,7 +7,7 @@ export const PUSH_PRODUCT_ON_CART = (state, product) => {
     console.log(state.allPrice)
     var total = 0;
     state.carts.forEach(element => {
-        console.log(total += element.price)
+        console.log('ceci est le prix total avant : ' ,total += element.price)
     });
     state.allPrice = total
 
@@ -35,14 +35,19 @@ export const DELETE_ON_CART = (state, cartIndex) => {
 
 // incrementer la quantiter
 export const INCREMENT = (state, n) => {
+    // debugger
     state.carts[n].quantity++
     state.carts[n].price = state.carts[n].product.prix * state.carts[n].quantity 
     
     
     // var total = 0;
     // debugger
-    console.log('this is all price :  ' ,state.allPrice )
-    state.allPrice += state.carts[n].price
+    var total = 0;
+    state.carts.forEach(element => {
+        console.log('ceci est le prix total avant : ' ,total += element.price)
+    });
+    state.allPrice = total
+    // state.allPrice = state.carts[n].price
 }
 
 // decrementer la quantiter
@@ -50,20 +55,24 @@ export const DECREMENT = (state, n) => {
     if(state.carts[n].quantity != 1){
         state.carts[n].quantity--
         state.carts[n].price -= state.carts[n].product.prix
-        state.allPrice -= state.carts[n].price
+        var total = 0;
+            state.carts.forEach(element => {
+                console.log('ceci est le prix total avant : ' ,total += element.price)
+            });
+            state.allPrice = total
 
     }
 }
 
 //calculer le prix total
-export const COUNT_ALL = (state) => {
-    // console.log(state.carts)
-    var total = 0;
-    state.carts.forEach(element => {
-        console.log(total += element.price)
-    });
-    state.allPrice = total
-}
+// export const COUNT_ALL = (state) => {
+//     // console.log(state.carts)
+//     var total = 0;
+//     state.carts.forEach(element => {
+//         console.log(total += element.price)
+//     });
+//     state.allPrice = total
+// }
 
 
 export const INITIALISE_STORE = (state) => {

@@ -30,7 +30,7 @@
                         </div>
                 </strong>
 
-                <button @click="count" class="btn">Calculer</button>
+                <!-- <button @click="count" class="btn">Calculer</button> -->
 
             </div>
             <!-- <hr> -->
@@ -60,7 +60,7 @@ export default {
     )},
     props: ['cltQtyAll','cltInCarts'],
     methods: mapActions(
-        'carts', ['changeProductQuantity', 'removeOnCart', 'increment', 'decrement', 'count']
+        'carts', ['changeProductQuantity', 'removeOnCart', 'increment', 'decrement']
     )
 }
 </script>
