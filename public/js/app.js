@@ -2087,13 +2087,41 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
  // console.log(ctlInCarts)
 // console.log(priceClt(n))
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      orderingCart: false
+    };
   },
+  updated: function updated() {
+    // debugger
+    var myCart = JSON.parse(localStorage.getItem('store')).carts;
+
+    if (myCart.allPrice != 0) {
+      this.orderingCart = true;
+      console.log('cart updated order true', myCart.carts.length);
+    } else if (myCart.allPrice == 0) {
+      this.orderingCart = false;
+      console.log('cart updated order false', this.orderingCart);
+    }
+
+    myCart;
+  },
+  // mounted(){
+  //     if(this.myCart.allPrice != 0){
+  //         this.orderingCart = true
+  //     }else if(this.myCart.allPrice == 0){
+  //         this.orderingCart = false
+  //     }
+  // },
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('carts', ['priceClt', 'totalPrice', 'getAllCarts'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('carts', ['allPrice'])),
   props: ['cltQtyAll', 'cltInCarts'],
   methods: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('carts', ['changeProductQuantity', 'removeOnCart', 'increment', 'decrement'])
@@ -3208,7 +3236,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#app {\n  min-height: 100%;\n}\n.qty_ {\n  width: 20px;\n  height: 23px;\n}\n.btn_button {\n  display: inline-block;\n  border: none;\n  border-radius: 7px;\n  padding: 5px 10px;\n  margin: 0;\n  text-decoration: none;\n  background: #D65047;\n  color: #ffffff;\n  font-family: sans-serif;\n  font-size: 1rem;\n  cursor: pointer;\n  text-align: center;\n  transition: background 250ms ease-in-out, transform 150ms ease;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n}\n.btn_button:hover {\n  background: #b8524b;\n}\n.btn_button:focus {\n  background: #b8524b;\n  outline: 1px solid #fff;\n  outline-offset: -4px;\n}\n.btn_button:active {\n  transform: scale(0.99);\n}\n.all_price {\n  padding-top: 5px;\n}\n.clothing_list {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n}\n.clothing_list li {\n  padding: 3px 0 !important;\n}\n.carts_list_clothing {\n  padding: 40px 20px;\n  color: #fff;\n  border-radius: 7px;\n  background-color: #8C4452;\n}\n@media (max-width: 800px) {\n.cart_component {\n    grid-row: 1;\n}\n.all_clothing_list {\n    display: grid;\n    place-items: center;\n}\n.all_clothing_list .clothing_list {\n    padding-left: 0;\n}\n.all_clothing_list .clothing_list li {\n    padding: 3px 0 !important;\n}\n}", ""]);
+exports.push([module.i, ".btn-desable {\n  background: #8a8a8a !important;\n}\n#app {\n  min-height: 100%;\n}\n.qty_ {\n  width: 20px;\n  height: 23px;\n}\n.btn_button {\n  display: inline-block;\n  border: none;\n  border-radius: 7px;\n  padding: 5px 10px;\n  margin: 0;\n  text-decoration: none;\n  background: #D65047;\n  color: #ffffff;\n  font-family: sans-serif;\n  font-size: 1rem;\n  cursor: pointer;\n  text-align: center;\n  transition: background 250ms ease-in-out, transform 150ms ease;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n}\n.btn_button:hover {\n  background: #b8524b;\n}\n.btn_button:focus {\n  background: #b8524b;\n  outline: 1px solid #fff;\n  outline-offset: -4px;\n}\n.btn_button:active {\n  transform: scale(0.99);\n}\n.all_price {\n  padding-top: 5px;\n}\n.clothing_list {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n}\n.clothing_list li {\n  padding: 3px 0 !important;\n}\n.carts_list_clothing {\n  padding: 40px 20px;\n  color: #fff;\n  border-radius: 7px;\n  background-color: #8C4452;\n}\n@media (max-width: 800px) {\n.cart_component {\n    grid-row: 1;\n}\n.all_clothing_list {\n    display: grid;\n    place-items: center;\n}\n.all_clothing_list .clothing_list {\n    padding-left: 0;\n}\n.all_clothing_list .clothing_list li {\n    padding: 3px 0 !important;\n}\n}", ""]);
 
 // exports
 
@@ -63142,128 +63170,133 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "cart_component" },
-    [
-      _c("h3", [_vm._v("Estimation du prix (hors livraison)")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "carts_list_clothing" }, [
-        _c("strong", [
-          _c("p", [
-            _vm._v("Type de vêtement Total : " + _vm._s(_vm.cltQtyAll))
+  return _c("div", { staticClass: "cart_component" }, [
+    _c("h3", [_vm._v("Estimation du prix (hors livraison)")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "carts_list_clothing" }, [
+      _c("strong", [
+        _c("p", [_vm._v("Type de vêtement Total : " + _vm._s(_vm.cltQtyAll))]),
+        _vm._v(" "),
+        _c("div", { staticClass: "all_clothing_list" }, [
+          _c("p", { staticClass: "all_price" }, [
+            _vm._v("Prix : " + _vm._s(_vm.allPrice) + "f")
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "all_clothing_list" }, [
-            _c("p", { staticClass: "all_price" }, [
-              _vm._v("Prix : " + _vm._s(_vm.allPrice) + "f")
-            ]),
-            _vm._v(" "),
-            _c(
-              "ul",
-              { staticClass: "clothing_list" },
-              _vm._l(_vm.cltInCarts, function(cart, n) {
-                return _c("li", { key: cart.id }, [
-                  _vm._v(
-                    "\n                                " +
-                      _vm._s(_vm.priceClt(cart)) +
-                      "f -  " +
-                      _vm._s(cart.product.name) +
-                      " \n                                "
-                  ),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn_button",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          return _vm.increment(n)
-                        }
-                      }
-                    },
-                    [_vm._v(" + ")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model.number",
-                        value: cart.quantity,
-                        expression: "cart.quantity",
-                        modifiers: { number: true }
-                      }
-                    ],
-                    staticClass: "qty_",
-                    attrs: { type: "text" },
-                    domProps: { value: cart.quantity },
+          _c(
+            "ul",
+            { staticClass: "clothing_list" },
+            _vm._l(_vm.cltInCarts, function(cart, n) {
+              return _c("li", { key: cart.id }, [
+                _vm._v(
+                  "\n                                " +
+                    _vm._s(_vm.priceClt(cart)) +
+                    "f -  " +
+                    _vm._s(cart.product.name) +
+                    " \n                                "
+                ),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn_button",
+                    attrs: { type: "button" },
                     on: {
-                      input: [
-                        function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            cart,
-                            "quantity",
-                            _vm._n($event.target.value)
-                          )
-                        },
-                        function($event) {
-                          return _vm.changeProductQuantity({ cart: cart, n: n })
-                        }
-                      ],
-                      blur: function($event) {
-                        return _vm.$forceUpdate()
+                      click: function($event) {
+                        return _vm.increment(n)
                       }
                     }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "button",
+                  },
+                  [_vm._v(" + ")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
                     {
-                      staticClass: "btn_button",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          return _vm.decrement(n)
+                      name: "model",
+                      rawName: "v-model.number",
+                      value: cart.quantity,
+                      expression: "cart.quantity",
+                      modifiers: { number: true }
+                    }
+                  ],
+                  staticClass: "qty_",
+                  attrs: { type: "text" },
+                  domProps: { value: cart.quantity },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
                         }
+                        _vm.$set(cart, "quantity", _vm._n($event.target.value))
+                      },
+                      function($event) {
+                        return _vm.changeProductQuantity({ cart: cart, n: n })
                       }
-                    },
-                    [_vm._v(" - ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          return _vm.removeOnCart(n)
-                        }
+                    ],
+                    blur: function($event) {
+                      return _vm.$forceUpdate()
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn_button",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.decrement(n)
                       }
-                    },
-                    [_c("i", { staticClass: "fa fa-remove" })]
-                  )
-                ])
-              }),
-              0
-            )
+                    }
+                  },
+                  [_vm._v(" - ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.removeOnCart(n)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-remove" })]
+                )
+              ])
+            }),
+            0
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    !_vm.orderingCart
+      ? _c("div", [
+          _c("button", { staticClass: "btn btn-desable" }, [
+            _vm._v("Choisissez un service")
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        { staticClass: "btn", attrs: { to: "/order-deliverable" } },
-        [_vm._v("Passer une commande")]
-      )
-    ],
-    1
-  )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.orderingCart
+      ? _c(
+          "div",
+          [
+            _c(
+              "router-link",
+              { staticClass: "btn", attrs: { to: "/order-deliverable" } },
+              [_vm._v("Passer une commande")]
+            )
+          ],
+          1
+        )
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -83791,7 +83824,8 @@ _store__WEBPACK_IMPORTED_MODULE_19__["default"].subscribe(function (mutation, st
 var routes = [{
   path: '/order',
   component: _components_ClothingComponent__WEBPACK_IMPORTED_MODULE_7__["default"]
-}, {
+}, // {path: '/order-cart', component: CartComponent },
+{
   path: '/order-deliverable',
   component: _components_DeliverableComponent__WEBPACK_IMPORTED_MODULE_9__["default"]
 }, {
@@ -85361,21 +85395,19 @@ var PUSH_PRODUCT_ON_CART = function PUSH_PRODUCT_ON_CART(state, product) {
 var CHANGE_QUANTITY = function CHANGE_QUANTITY(state, _ref) {
   var cartIndex = _ref.cartIndex,
       cartQty = _ref.cartQty;
+  // if(cartQty == ''){
+  //     state.carts[cartIndex].quantity = 1;
+  //     console.log('ok')
+  // }else{
+  state.carts[cartIndex].quantity = cartQty; // console.log(cartQty)
 
-  if (cartQty == '') {
-    state.carts[cartIndex].quantity = 1;
-    console.log('ok');
-  } else {
-    state.carts[cartIndex].quantity = cartQty; // console.log(cartQty)
+  state.carts[cartIndex].price = state.carts[cartIndex].product.prix * state.carts[cartIndex].quantity; // state.allPrice.push(state.carts[cartIndex].price)
 
-    state.carts[cartIndex].price = state.carts[cartIndex].product.prix * state.carts[cartIndex].quantity; // state.allPrice.push(state.carts[cartIndex].price)
-
-    var total = 0;
-    state.carts.forEach(function (element) {
-      total += element.price; // console.log('ceci est le prix total avant : ' ,total += element.price)
-    });
-    state.allPrice = total;
-  }
+  var total = 0;
+  state.carts.forEach(function (element) {
+    total += element.price; // console.log('ceci est le prix total avant : ' ,total += element.price)
+  });
+  state.allPrice = total; // }   
 };
 var DELETE_ON_CART = function DELETE_ON_CART(state, cartIndex) {
   state.carts.splice(cartIndex, 1);

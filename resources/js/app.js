@@ -81,6 +81,7 @@ store.subscribe((mutation,state) => {
 
 const routes = [
     {path: '/order', component: ClothingComponent },
+    // {path: '/order-cart', component: CartComponent },
     {path: '/order-deliverable', component: DeliverableComponent },
     {path: '/order-slots', component: SlotsComponent },
     {path: '/order-maps', component: AdressComponent },
