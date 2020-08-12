@@ -12,7 +12,7 @@ menu.addEventListener("click",(e) =>{
     }else{
         let nav = document.querySelector('.navbar-nav')
         // nav.style.display = "none"
-        nav.style.top = "-150px"
+        nav.style.top = "-250px"
         stateNav = false
     }
 }, false)

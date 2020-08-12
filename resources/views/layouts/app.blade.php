@@ -74,7 +74,9 @@
                                 @guest
                                 
                                 <li class="nav-item">
-                                        <a href="{{ url('/order') }}"><img class="shopping-icon" src="/icons/shopping-cart.svg" alt=""></a>
+                                        
+                                                <a href="{{ url('/order') }}" class="panier"><img class="shopping-icon" src="/icons/shopping-cart.svg" alt=""> <span>Mon Panier</span></a>
+
                                     </li>
                                 
                                 <li class="nav-item">
@@ -113,13 +115,16 @@
                                 <img id="menu-burger" src="/icons/menu.svg" alt="">
                             </div>
                         </div>
-
+                                                <!-- <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a> -->
                         {{-- Mobile menu  --}}
                         <ul class="navbar-nav">
 
                             @if (Route::has('login'))
                                 <div class="top-right links">
                                     @auth
+                                    <li class="nav-item">
+                                        <a href="{{ url('/order') }}" class="panier"><img class="shopping-icon" src="/icons/shopping-cart.svg" alt=""> <span>Mon Panier</span></a>
+                                    </li>
                                     <li class="nav-item">
                                         <a href="{{ url('/home') }}">Mon profil</a>
                                     </li>
@@ -137,6 +142,12 @@
                                             {{-- @show --}}
                         <!-- Authentication Links -->
                         @guest
+                        <li class="nav-item">
+                        <a href="{{ url('/order') }}" class="panier"><img class="shopping-icon" src="/icons/shopping-cart.svg" alt=""> <span>Mon Panier</span></a>
+                            </li>
+                        <li class="nav-item">
+                                <a href="{{ url('/home') }}">Mon profil</a>
+                            </li>
                         <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
                             </li>
