@@ -16,10 +16,10 @@ export const PUSH_PRODUCT_ON_CART = (state, product) => {
 
 //change value quantity on the state
 export const CHANGE_QUANTITY = (state, {cartIndex,cartQty}) => {
-    if(cartQty == ''){
-        state.carts[cartIndex].quantity = 1;
-        console.log('ok')
-    }else{
+    // if(cartQty == ''){
+    //     state.carts[cartIndex].quantity = 1;
+    //     console.log('ok')
+    // }else{
 
         state.carts[cartIndex].quantity = cartQty 
         // console.log(cartQty)
@@ -31,7 +31,7 @@ export const CHANGE_QUANTITY = (state, {cartIndex,cartQty}) => {
             // console.log('ceci est le prix total avant : ' ,total += element.price)
         });
         state.allPrice = total
-    }   
+    // }   
 }
 
 export const DELETE_ON_CART = (state, cartIndex) => {
