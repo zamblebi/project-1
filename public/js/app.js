@@ -2244,8 +2244,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       isLoading: true
     };
   },
-  updated: function updated() {
-    console.log(this.value);
+  updated: function updated() {// console.log(this.value)
   }
 }, _defineProperty(_name$components$data, "components", {
   'cart-component': _CartComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -64096,7 +64095,7 @@ var render = function() {
                       ],
                       1
                     ),
-                    _vm._v("\r\n            ou\r\n        "),
+                    _vm._v("\n            ou\n        "),
                     _c("h3", [_vm._v("Aucun vêtement n'a été choisi")])
                   ])
                 : _vm._e(),
@@ -85350,11 +85349,11 @@ var PUSH_PRODUCT_ON_CART = function PUSH_PRODUCT_ON_CART(state, product) {
     product: product,
     quantity: 1,
     price: product.prix
-  });
-  console.log(state.allPrice);
+  }); // console.log(state.allPrice)
+
   var total = 0;
   state.carts.forEach(function (element) {
-    console.log('ceci est le prix total avant : ', total += element.price);
+    total += element.price; // console.log('ceci est le prix total avant : ' ,total += element.price)
   });
   state.allPrice = total;
 }; //change value quantity on the state
@@ -85362,16 +85361,27 @@ var PUSH_PRODUCT_ON_CART = function PUSH_PRODUCT_ON_CART(state, product) {
 var CHANGE_QUANTITY = function CHANGE_QUANTITY(state, _ref) {
   var cartIndex = _ref.cartIndex,
       cartQty = _ref.cartQty;
-  state.carts[cartIndex].quantity = cartQty;
-  console.log(cartQty);
-  state.carts[cartIndex].price = state.carts[cartIndex].product.prix * state.carts[cartIndex].quantity;
-  state.allPrice.push(state.carts[cartIndex].price);
+
+  if (cartQty == '') {
+    state.carts[cartIndex].quantity = 1;
+    console.log('ok');
+  } else {
+    state.carts[cartIndex].quantity = cartQty; // console.log(cartQty)
+
+    state.carts[cartIndex].price = state.carts[cartIndex].product.prix * state.carts[cartIndex].quantity; // state.allPrice.push(state.carts[cartIndex].price)
+
+    var total = 0;
+    state.carts.forEach(function (element) {
+      total += element.price; // console.log('ceci est le prix total avant : ' ,total += element.price)
+    });
+    state.allPrice = total;
+  }
 };
 var DELETE_ON_CART = function DELETE_ON_CART(state, cartIndex) {
   state.carts.splice(cartIndex, 1);
   var total = 0;
   state.carts.forEach(function (element) {
-    console.log(total -= element.price);
+    total += element.price; // console.log(total += element.price)
   });
   state.allPrice = total;
 }; // incrementer la quantiter
@@ -85379,14 +85389,12 @@ var DELETE_ON_CART = function DELETE_ON_CART(state, cartIndex) {
 var INCREMENT = function INCREMENT(state, n) {
   // debugger
   state.carts[n].quantity++;
-  state.carts[n].price = state.carts[n].product.prix * state.carts[n].quantity; // var total = 0;
-  // debugger
-
+  state.carts[n].price = state.carts[n].product.prix * state.carts[n].quantity;
   var total = 0;
   state.carts.forEach(function (element) {
-    console.log('ceci est le prix total avant : ', total += element.price);
+    total += element.price; // console.log('ceci est le prix total avant : ' ,total += element.price)
   });
-  state.allPrice = total; // state.allPrice = state.carts[n].price
+  state.allPrice = total;
 }; // decrementer la quantiter
 
 var DECREMENT = function DECREMENT(state, n) {
@@ -85395,7 +85403,7 @@ var DECREMENT = function DECREMENT(state, n) {
     state.carts[n].price -= state.carts[n].product.prix;
     var total = 0;
     state.carts.forEach(function (element) {
-      console.log('ceci est le prix total avant : ', total += element.price);
+      total += element.price; // console.log('ceci est le prix total avant : ' ,total += element.price)
     });
     state.allPrice = total;
   }
@@ -85566,8 +85574,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\bouye\Documents\code\project-1\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\bouye\Documents\code\project-1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/samuel/code/project-1/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/samuel/code/project-1/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
