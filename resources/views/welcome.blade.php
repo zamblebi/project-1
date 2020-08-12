@@ -108,7 +108,7 @@
                                 <p class="small-title">Jusqu'à votre porte</p>
                                 <p class="small-details">
                                     Le pressing c'est nous,
-                                    la livraison c'est Stuart.
+                                    la livraison c'est Grouilleur 225.
                                     Deux experts à votre service !
                                 </p>
                             </div>
