@@ -7,9 +7,19 @@
         <div>
             
         <h2 class="date-title">Choisissez la date et l'heure de récupération des vêtements</h2>
-        <h4 class="display_subtitle">Date choisi: {{dateStored}}</h4>
+        <h4 class="display_subtitle">Date et crénaux choisi : {{ dateStored }}</h4>
         <div class="date_time">
-            <VueCtkDateTimePicker locale="fr" :inline="true" color="#D65047" minuteInterval="60" :disabled-hours="['00','01','02','03','04','05','06','07','19','20','21','22','23']"  button-now-translation="Maintenant" format="DD-MM-YYYY HH:mm" v-model="date" />
+            <VueCtkDateTimePicker locale="fr" :inline="true" color="#D65047" inputSize="lg" :noTime=true  button-now-translation="Maintenant" :noButtonNow=true format="DD-MM-YYYY" :noLabel=true  formatted="ll" :onlyDate=true v-model="date">
+                <!-- <input type="text" /> -->
+            </VueCtkDateTimePicker>
+        </div>
+
+        <div class="horaire">
+            <ul>
+               <li v-for="(h, i) in horaire" :key="i" >
+                   <button @click="getSlot(h)" class="btn btn-slot" :value=h >{{h}}</button>
+                   </li> 
+            </ul>
         </div>
 
           <div class="add-date">
@@ -32,7 +42,12 @@ export default {
         return{
             date : '',
             dateStored: '',
-            show: false
+            show: false,
+            horaire: [
+                "8h-10h","10h-12h","13-15h","13h-15h","15h-17h"
+            ],
+            value: '',
+            slot: ''
         }
 
         },
@@ -42,16 +57,17 @@ export default {
 
             if(localStorage.dateStored){
                 this.dateStored = localStorage.dateStored
-                console.log('date', this.dateStored)
+                // console.log('date', this.dateStored)
             }
             this.viewDate()
             },
         methods: {
             addDate(){
                 if(this.dateStored && this.date == ''){
-                    localStorage.dateStored = this.dateStored   
+                    localStorage.dateStored = this.dateStored
+                    // localStorage.slot = this.slot 
                 }else{
-                    localStorage.dateStored = this.date
+                    localStorage.dateStored = [this.date, this.slot]
                     console.log(this.date)
                 }
                     this.viewDate();
@@ -61,6 +77,10 @@ export default {
                     this.dateStored = localStorage.dateStored
                     console.log('date', this.dateStored)
                 }
+            },
+            getSlot(slot){
+                this.slot = slot
+                console.log(slot)
             }
 
         }
@@ -68,6 +88,38 @@ export default {
 
 </script>
 <style lang="scss">
+
+// Horaire style 
+.horaire{
+    ul{
+        padding-left: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        li{
+            padding: 10px 20px;
+        }
+    }
+
+    .btn-slot{
+        border: 1px solid #D65047;
+        background:#EFEFEF;
+        color: black;
+        &:hover{
+        background:#9b9b9b;
+        color: #ffff;
+        }
+    }
+
+}
+// Horaire style End 
+
+
+
+
+
+
+
 .date-title{
     text-align: center;
 }

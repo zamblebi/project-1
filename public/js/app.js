@@ -2653,20 +2653,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       date: '',
       dateStored: '',
-      show: false
+      show: false,
+      horaire: ["8h-10h", "10h-12h", "13-15h", "13h-15h", "15h-17h"],
+      value: '',
+      slot: ''
     };
   },
   mounted: function mounted() {
     this.show = true;
 
     if (localStorage.dateStored) {
-      this.dateStored = localStorage.dateStored;
-      console.log('date', this.dateStored);
+      this.dateStored = localStorage.dateStored; // console.log('date', this.dateStored)
     }
 
     this.viewDate();
@@ -2674,9 +2686,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     addDate: function addDate() {
       if (this.dateStored && this.date == '') {
-        localStorage.dateStored = this.dateStored;
+        localStorage.dateStored = this.dateStored; // localStorage.slot = this.slot 
       } else {
-        localStorage.dateStored = this.date;
+        localStorage.dateStored = [this.date, this.slot];
         console.log(this.date);
       }
 
@@ -2687,6 +2699,10 @@ __webpack_require__.r(__webpack_exports__);
         this.dateStored = localStorage.dateStored;
         console.log('date', this.dateStored);
       }
+    },
+    getSlot: function getSlot(slot) {
+      this.slot = slot;
+      console.log(slot);
     }
   }
 });
@@ -3350,7 +3366,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".date-title {\n  text-align: center;\n}\n@media (max-width: 800px) {\n.date_time {\n    margin: 0 30px;\n}\n}\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}", ""]);
+exports.push([module.i, ".horaire ul {\n  padding-left: 0;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n.horaire ul li {\n  padding: 10px 20px;\n}\n.horaire .btn-slot {\n  border: 1px solid #D65047;\n  background: #EFEFEF;\n  color: black;\n}\n.horaire .btn-slot:hover {\n  background: #9b9b9b;\n  color: #ffff;\n}\n.date-title {\n  text-align: center;\n}\n@media (max-width: 800px) {\n.date_time {\n    margin: 0 30px;\n}\n}\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}", ""]);
 
 // exports
 
@@ -63874,7 +63890,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("h4", { staticClass: "display_subtitle" }, [
-                  _vm._v("Date choisi: " + _vm._s(_vm.dateStored))
+                  _vm._v("Date et crénaux choisi : " + _vm._s(_vm.dateStored))
                 ]),
                 _vm._v(" "),
                 _c(
@@ -63886,24 +63902,14 @@ var render = function() {
                         locale: "fr",
                         inline: true,
                         color: "#D65047",
-                        minuteInterval: "60",
-                        "disabled-hours": [
-                          "00",
-                          "01",
-                          "02",
-                          "03",
-                          "04",
-                          "05",
-                          "06",
-                          "07",
-                          "19",
-                          "20",
-                          "21",
-                          "22",
-                          "23"
-                        ],
+                        inputSize: "lg",
+                        noTime: true,
                         "button-now-translation": "Maintenant",
-                        format: "DD-MM-YYYY HH:mm"
+                        noButtonNow: true,
+                        format: "DD-MM-YYYY",
+                        noLabel: true,
+                        formatted: "ll",
+                        onlyDate: true
                       },
                       model: {
                         value: _vm.date,
@@ -63916,6 +63922,30 @@ var render = function() {
                   ],
                   1
                 ),
+                _vm._v(" "),
+                _c("div", { staticClass: "horaire" }, [
+                  _c(
+                    "ul",
+                    _vm._l(_vm.horaire, function(h, i) {
+                      return _c("li", { key: i }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-slot",
+                            attrs: { value: h },
+                            on: {
+                              click: function($event) {
+                                return _vm.getSlot(h)
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(h))]
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                ]),
                 _vm._v(" "),
                 _c(
                   "div",
