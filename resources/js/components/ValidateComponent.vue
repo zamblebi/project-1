@@ -19,7 +19,7 @@
         <strong>Type de livraison choisie : </strong> <span class="reponse_"> {{deliverableType}}</span> | <router-link to="/order-deliverable"><i class="fa fa-edit"></i></router-link>
       </p> 
     <p>
-        <strong>Date de récupération: </strong> <span class="reponse_">{{dateChoose[0]}} et {{dateChoose[1]}}</span>  |   <router-link to="/order-slots"><i class="fa fa-edit"></i></router-link>
+        <strong>Date de récupération et auraire: </strong> <span class="reponse_">{{dateOfRecuperation}} et entre {{dateChoose[1]}} ( {{slotDeliverableHours ? ` Vous serez livrer le ${dateOfDeviverable} ` : 'Vous serez livrer dans 4h'}} )</span>  |   <router-link to="/order-slots"><i class="fa fa-edit"></i></router-link>
     </p>
     <p>
        <strong>Details de l'adresse :</strong> Lieu :<span class="reponse_">  {{details_lieu ? details_lieu : "Aucun"}} </span> , Details du lieu<span class="reponse_"> : {{details_adress ? details_adress : "Aucun"}}</span>
@@ -67,6 +67,9 @@ export default {
             details_lieu: localStorage.details_lieu,
             carts: JSON.parse(localStorage.getItem('store')).carts,
             user_id : '',
+            slotDeliverableHours: false,
+            dateOfDeviverable: '',
+            dateOfRecuperation: ''
         }
     },
     created(){
@@ -84,6 +87,23 @@ export default {
     },
     
     mounted(){
+        // option de changement d'ecriture de la date (variable declarer en global)
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+
+        // Pour afficher la date de recuperation en format francais
+        let recDate = new Date(localStorage.dateStored).toLocaleDateString('fr-FR', options)
+        this.dateOfRecuperation = recDate
+
+
+        if(this.deliverableType == "Standard"){
+            this.slotDeliverableHours = true
+            var gDate = localStorage.dateStored
+            var dateH = new Date(gDate)
+            dateH.setDate(dateH.getDate() + 2)
+            this.dateOfDeviverable = dateH.toLocaleDateString("fr-FR", options)
+        }
+
+
         this.show = true
 
         axios.get('/get-user').then(response => {

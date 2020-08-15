@@ -2854,7 +2854,10 @@ __webpack_require__.r(__webpack_exports__);
       details_adress: localStorage.details_adress,
       details_lieu: localStorage.details_lieu,
       carts: JSON.parse(localStorage.getItem('store')).carts,
-      user_id: ''
+      user_id: '',
+      slotDeliverableHours: false,
+      dateOfDeviverable: '',
+      dateOfRecuperation: ''
     };
   },
   created: function created() {
@@ -2871,6 +2874,25 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     var _this = this;
+
+    // option de changement d'ecriture de la date (variable declarer en global)
+    var options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }; // Pour afficher la date de recuperation en format francais
+
+    var recDate = new Date(localStorage.dateStored).toLocaleDateString('fr-FR', options);
+    this.dateOfRecuperation = recDate;
+
+    if (this.deliverableType == "Standard") {
+      this.slotDeliverableHours = true;
+      var gDate = localStorage.dateStored;
+      var dateH = new Date(gDate);
+      dateH.setDate(dateH.getDate() + 2);
+      this.dateOfDeviverable = dateH.toLocaleDateString("fr-FR", options);
+    }
 
     this.show = true;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/get-user').then(function (response) {
@@ -63937,7 +63959,7 @@ var render = function() {
                         noTime: true,
                         "button-now-translation": "Maintenant",
                         noButtonNow: true,
-                        format: "DD-MM-YYYY",
+                        format: "YYYY-MM-DD",
                         noLabel: true,
                         formatted: "ll",
                         onlyDate: true
@@ -64134,13 +64156,22 @@ var render = function() {
               _c(
                 "p",
                 [
-                  _c("strong", [_vm._v("Date de récupération: ")]),
+                  _c("strong", [_vm._v("Date de récupération et auraire: ")]),
                   _vm._v(" "),
                   _c("span", { staticClass: "reponse_" }, [
                     _vm._v(
-                      _vm._s(_vm.dateChoose[0]) +
-                        " et " +
-                        _vm._s(_vm.dateChoose[1])
+                      _vm._s(_vm.dateOfRecuperation) +
+                        " et entre " +
+                        _vm._s(_vm.dateChoose[1]) +
+                        " ( " +
+                        _vm._s(
+                          _vm.slotDeliverableHours
+                            ? " Vous serez livrer le " +
+                                _vm.dateOfDeviverable +
+                                " "
+                            : "Vous serez livrer dans 4h"
+                        ) +
+                        " )"
                     )
                   ]),
                   _vm._v("  |   "),
