@@ -2626,6 +2626,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2655,38 +2663,72 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
+    return _defineProperty({
       date: '',
+      show: false,
       dateStored: '',
-      show: false
-    };
+      slotStored: '',
+      horaire: ["8h-10h", "10h-12h", "13-15h", "15h-17h"],
+      value: '',
+      slot: ''
+    }, "value", '');
   },
   mounted: function mounted() {
-    this.show = true;
+    this.show = true; // this.slot
+    // afficher la date choisie si il est dans le localstorage 
 
     if (localStorage.dateStored) {
       this.dateStored = localStorage.dateStored;
-      console.log('date', this.dateStored);
-    }
+    } // afficher l'horaire choisie si il est dans le localstorage 
+
+
+    if (localStorage.slotStored) {
+      this.slotStored = localStorage.slotStored;
+    } // Voir ce qui et dans le localstorage 
+
 
     this.viewDate();
   },
+  updated: function updated() {
+    // debugger
+    this.slotStored = localStorage.slotStored;
+  },
   methods: {
+    // Ajouter la date dans le localStorage 
     addDate: function addDate() {
       if (this.dateStored && this.date == '') {
         localStorage.dateStored = this.dateStored;
       } else {
         localStorage.dateStored = this.date;
-        console.log(this.date);
       }
 
       this.viewDate();
     },
+    // Afficher les element depuis le localStorage 
     viewDate: function viewDate() {
       if (localStorage.dateStored) {
         this.dateStored = localStorage.dateStored;
         console.log('date', this.dateStored);
       }
+
+      if (localStorage.slotStored) {
+        this.slotStored = localStorage.slotStored;
+        console.log(this.slotStored);
+      }
+    },
+    // Recuperer l'horaire  
+    getSlot: function getSlot(slot) {
+      // debugger
+      // if(this.slotStored && this.slot == ''){
+      localStorage.slotStored = this.slotStored; // localStorage.dateStored = this.dateStored
+      // console.log(slot)
+      // }
+      // else{
+      // debugger
+
+      this.slot = slot;
+      localStorage.slotStored = this.slot; // }
+      // console.log(slot)
     }
   }
 });
@@ -2808,7 +2850,7 @@ __webpack_require__.r(__webpack_exports__);
       adressMaps: localStorage.adressMaps,
       allPrice: JSON.parse(localStorage.getItem('store')).carts.allPrice,
       deliverableType: localStorage.deliverableType,
-      dateChoose: localStorage.dateStored,
+      dateChoose: [localStorage.dateStored, localStorage.slotStored],
       details_adress: localStorage.details_adress,
       details_lieu: localStorage.details_lieu,
       carts: JSON.parse(localStorage.getItem('store')).carts,
@@ -3350,7 +3392,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".date-title {\n  text-align: center;\n}\n@media (max-width: 800px) {\n.date_time {\n    margin: 0 30px;\n}\n}\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}", ""]);
+exports.push([module.i, ".horaire ul {\n  padding-left: 0;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n.horaire ul li {\n  padding: 10px 20px;\n}\n.horaire .btn-slot {\n  border: 1px solid #D65047;\n  background: #EFEFEF;\n  color: black;\n}\n.horaire .btn-slot:hover {\n  background: #9b9b9b;\n  color: #ffff;\n}\n.date-title {\n  text-align: center;\n}\n@media (max-width: 800px) {\n.date_time {\n    margin: 0 30px;\n}\n}\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}", ""]);
 
 // exports
 
@@ -63874,7 +63916,12 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("h4", { staticClass: "display_subtitle" }, [
-                  _vm._v("Date choisi: " + _vm._s(_vm.dateStored))
+                  _vm._v(
+                    "Date et crénaux choisi : " +
+                      _vm._s(_vm.dateStored) +
+                      " et " +
+                      _vm._s(_vm.slotStored)
+                  )
                 ]),
                 _vm._v(" "),
                 _c(
@@ -63886,24 +63933,14 @@ var render = function() {
                         locale: "fr",
                         inline: true,
                         color: "#D65047",
-                        minuteInterval: "60",
-                        "disabled-hours": [
-                          "00",
-                          "01",
-                          "02",
-                          "03",
-                          "04",
-                          "05",
-                          "06",
-                          "07",
-                          "19",
-                          "20",
-                          "21",
-                          "22",
-                          "23"
-                        ],
+                        inputSize: "lg",
+                        noTime: true,
                         "button-now-translation": "Maintenant",
-                        format: "DD-MM-YYYY HH:mm"
+                        noButtonNow: true,
+                        format: "DD-MM-YYYY",
+                        noLabel: true,
+                        formatted: "ll",
+                        onlyDate: true
                       },
                       model: {
                         value: _vm.date,
@@ -63916,6 +63953,29 @@ var render = function() {
                   ],
                   1
                 ),
+                _vm._v(" "),
+                _c("div", { staticClass: "horaire" }, [
+                  _c(
+                    "ul",
+                    _vm._l(_vm.horaire, function(h, i) {
+                      return _c("li", { key: i }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-slot",
+                            on: {
+                              click: function($event) {
+                                return _vm.getSlot(h)
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(h))]
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                ]),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -64077,7 +64137,11 @@ var render = function() {
                   _c("strong", [_vm._v("Date de récupération: ")]),
                   _vm._v(" "),
                   _c("span", { staticClass: "reponse_" }, [
-                    _vm._v(_vm._s(_vm.dateChoose))
+                    _vm._v(
+                      _vm._s(_vm.dateChoose[0]) +
+                        " et " +
+                        _vm._s(_vm.dateChoose[1])
+                    )
                   ]),
                   _vm._v("  |   "),
                   _c("router-link", { attrs: { to: "/order-slots" } }, [
