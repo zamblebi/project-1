@@ -26,20 +26,28 @@
     </p>
 
     <br>
-    <h3 v-if="!user_id">Veuillez vous connecter sinon votre commande ne sera pas valide</h3>
-<!--    {{user_id}}-->
-    <!-- Post al -->
-    <span v-if="allPrice == 0">
-        <h3>Veuillez calculer votre commande dans <router-link to="/order">Le panier</router-link></h3>
-            ou
-        <h3>Aucun vêtement n'a été choisi</h3>
-    </span>
-    <h3 v-if="!deliverableType">Veillez Choisir un type de livraison</h3>
-    <h3 v-if="!dateChoose">Veillez Choisir une date de récupération</h3>
-    <!-- <div>
-    <h3 v-if="!adress_details">Vous n'avez pas preciser les details sur le lieu choisi </h3>
-        <p><router-link to="/order-maps">Voulez vous <i class="fa fa-edit"></i> ?</router-link></p>
-    </div> -->
+
+    <div class="restriction-validation">
+
+            <h4 v-if="!user_id">Merci de renseigner vos coordonnées pour la récupération et livraison de votre linge.
+
+                <br>
+                Déjà client ? <a href="/login" class="login-validation"> Connectez-vous</a>
+            </h4>
+        <!--    {{user_id}}-->
+            <!-- Post al -->
+            <span v-if="allPrice == 0">
+                <h3>Veuillez calculer votre commande dans <router-link to="/order">Le panier</router-link></h3>
+                    ou
+                <h3>Aucun vêtement n'a été choisi</h3>
+            </span>
+            <h3 v-if="!deliverableType">Veillez Choisir un type de livraison</h3>
+            <h3 v-if="!dateChoose">Veillez Choisir une date de récupération</h3>
+            <!-- <div>
+            <h3 v-if="!adress_details">Vous n'avez pas preciser les details sur le lieu choisi </h3>
+                <p><router-link to="/order-maps">Voulez vous <i class="fa fa-edit"></i> ?</router-link></p>
+            </div> -->
+    </div>
 
     <br>
         <div class="commander_" v-if="user_id && carts && allPrice && deliverableType && dateChoose">
@@ -137,6 +145,18 @@ export default {
 }
 </script>
 <style lang="scss">
+
+.restriction-validation{
+    background-color: #E8E8E8;
+    padding: 30px;
+    color: #787A7B;
+    border-radius: 7px;
+}
+.login-validation{
+    text-decoration: none;
+    color:#33B8EC;
+}
+
 .reponse_{
     color: #8C4452;
 }
