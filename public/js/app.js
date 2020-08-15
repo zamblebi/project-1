@@ -2101,6 +2101,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       orderingCart: false
     };
   },
+  mounted: function mounted() {
+    var myCart = JSON.parse(localStorage.getItem('store')).carts;
+
+    if (myCart.allPrice != 0) {
+      this.orderingCart = true;
+      console.log('cart updated order true', myCart.carts.length);
+    } else if (myCart.allPrice == 0) {
+      this.orderingCart = false;
+      console.log('cart updated order false', this.orderingCart);
+    }
+
+    myCart;
+  },
   updated: function updated() {
     // debugger
     var myCart = JSON.parse(localStorage.getItem('store')).carts;

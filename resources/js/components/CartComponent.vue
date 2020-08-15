@@ -57,6 +57,19 @@ export default {
             }
             
     },
+    mounted(){
+        var myCart = JSON.parse(localStorage.getItem('store')).carts
+        if(myCart.allPrice != 0){
+            this.orderingCart = true
+            console.log('cart updated order true', myCart.carts.length)
+        }else if(myCart.allPrice == 0){
+            this.orderingCart = false
+            console.log('cart updated order false', this.orderingCart)
+        }
+        myCart
+
+    }
+    ,
     updated(){
         // debugger
         var myCart = JSON.parse(localStorage.getItem('store')).carts
