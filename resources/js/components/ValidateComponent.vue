@@ -19,27 +19,35 @@
         <strong>Type de livraison choisie : </strong> <span class="reponse_"> {{deliverableType}}</span> | <router-link to="/order-deliverable"><i class="fa fa-edit"></i></router-link>
       </p> 
     <p>
-        <strong>Date de récupération: </strong> <span class="reponse_">{{dateChoose[0]}} et {{dateChoose[1]}}</span>  |   <router-link to="/order-slots"><i class="fa fa-edit"></i></router-link>
+        <strong>Date de récupération et auraire: </strong> <span class="reponse_">{{dateOfRecuperation}} et entre {{dateChoose[1]}} ( {{slotDeliverableHours ? ` Vous serez livrer le ${dateOfDeviverable} ` : 'Vous serez livrer dans 4h'}} )</span>  |   <router-link to="/order-slots"><i class="fa fa-edit"></i></router-link>
     </p>
     <p>
        <strong>Details de l'adresse :</strong> Lieu :<span class="reponse_">  {{details_lieu ? details_lieu : "Aucun"}} </span> , Details du lieu<span class="reponse_"> : {{details_adress ? details_adress : "Aucun"}}</span>
     </p>
 
     <br>
-    <h3 v-if="!user_id">Veuillez vous connecter sinon votre commande ne sera pas valide</h3>
-<!--    {{user_id}}-->
-    <!-- Post al -->
-    <span v-if="allPrice == 0">
-        <h3>Veuillez calculer votre commande dans <router-link to="/order">Le panier</router-link></h3>
-            ou
-        <h3>Aucun vêtement n'a été choisi</h3>
-    </span>
-    <h3 v-if="!deliverableType">Veillez Choisir un type de livraison</h3>
-    <h3 v-if="!dateChoose">Veillez Choisir une date de récupération</h3>
-    <!-- <div>
-    <h3 v-if="!adress_details">Vous n'avez pas preciser les details sur le lieu choisi </h3>
-        <p><router-link to="/order-maps">Voulez vous <i class="fa fa-edit"></i> ?</router-link></p>
-    </div> -->
+
+    <div class="restriction-validation">
+
+            <h4 v-if="!user_id">Merci de renseigner vos coordonnées pour la récupération et livraison de votre linge.
+
+                <br>
+                Déjà client ? <a href="/login" class="login-validation"> Connectez-vous</a>
+            </h4>
+        <!--    {{user_id}}-->
+            <!-- Post al -->
+            <span v-if="allPrice == 0">
+                <h3>Veuillez calculer votre commande dans <router-link to="/order">Le panier</router-link></h3>
+                    ou
+                <h3>Aucun vêtement n'a été choisi</h3>
+            </span>
+            <h3 v-if="!deliverableType">Veillez Choisir un type de livraison</h3>
+            <h3 v-if="!dateChoose">Veillez Choisir une date de récupération</h3>
+            <!-- <div>
+            <h3 v-if="!adress_details">Vous n'avez pas preciser les details sur le lieu choisi </h3>
+                <p><router-link to="/order-maps">Voulez vous <i class="fa fa-edit"></i> ?</router-link></p>
+            </div> -->
+    </div>
 
     <br>
         <div class="commander_" v-if="user_id && carts && allPrice && deliverableType && dateChoose">
@@ -67,6 +75,9 @@ export default {
             details_lieu: localStorage.details_lieu,
             carts: JSON.parse(localStorage.getItem('store')).carts,
             user_id : '',
+            slotDeliverableHours: false,
+            dateOfDeviverable: '',
+            dateOfRecuperation: ''
         }
     },
     created(){
@@ -84,6 +95,23 @@ export default {
     },
     
     mounted(){
+        // option de changement d'ecriture de la date (variable declarer en global)
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+
+        // Pour afficher la date de recuperation en format francais
+        let recDate = new Date(localStorage.dateStored).toLocaleDateString('fr-FR', options)
+        this.dateOfRecuperation = recDate
+
+
+        if(this.deliverableType == "Standard"){
+            this.slotDeliverableHours = true
+            var gDate = localStorage.dateStored
+            var dateH = new Date(gDate)
+            dateH.setDate(dateH.getDate() + 2)
+            this.dateOfDeviverable = dateH.toLocaleDateString("fr-FR", options)
+        }
+
+
         this.show = true
 
         axios.get('/get-user').then(response => {
@@ -117,6 +145,18 @@ export default {
 }
 </script>
 <style lang="scss">
+
+.restriction-validation{
+    background-color: #E8E8E8;
+    padding: 30px;
+    color: #787A7B;
+    border-radius: 7px;
+}
+.login-validation{
+    text-decoration: none;
+    color:#33B8EC;
+}
+
 .reponse_{
     color: #8C4452;
 }

@@ -2842,6 +2842,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2854,7 +2862,10 @@ __webpack_require__.r(__webpack_exports__);
       details_adress: localStorage.details_adress,
       details_lieu: localStorage.details_lieu,
       carts: JSON.parse(localStorage.getItem('store')).carts,
-      user_id: ''
+      user_id: '',
+      slotDeliverableHours: false,
+      dateOfDeviverable: '',
+      dateOfRecuperation: ''
     };
   },
   created: function created() {
@@ -2871,6 +2882,25 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     var _this = this;
+
+    // option de changement d'ecriture de la date (variable declarer en global)
+    var options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }; // Pour afficher la date de recuperation en format francais
+
+    var recDate = new Date(localStorage.dateStored).toLocaleDateString('fr-FR', options);
+    this.dateOfRecuperation = recDate;
+
+    if (this.deliverableType == "Standard") {
+      this.slotDeliverableHours = true;
+      var gDate = localStorage.dateStored;
+      var dateH = new Date(gDate);
+      dateH.setDate(dateH.getDate() + 2);
+      this.dateOfDeviverable = dateH.toLocaleDateString("fr-FR", options);
+    }
 
     this.show = true;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/get-user').then(function (response) {
@@ -3430,7 +3460,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".reponse_ {\n  color: #8C4452;\n}\n.valide_ {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  padding: 50px 10px;\n  height: 100%;\n}\n.valide_ .fa {\n  color: #d65047;\n}\n.validation {\n  display: grid;\n  place-content: center;\n}\n.validation p {\n  padding: 10px 0;\n  text-align: left;\n}\n.commander_ {\n  display: flex;\n  justify-content: center;\n}\n@media (max-width: 800px) {\n.commander_ {\n    width: 100%;\n}\n.commande_ok {\n    display: flex;\n    width: 70%;\n    justify-content: center;\n}\n}", ""]);
+exports.push([module.i, ".restriction-validation {\n  background-color: #E8E8E8;\n  padding: 30px;\n  color: #787A7B;\n  border-radius: 7px;\n}\n.login-validation {\n  text-decoration: none;\n  color: #33B8EC;\n}\n.reponse_ {\n  color: #8C4452;\n}\n.valide_ {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  padding: 50px 10px;\n  height: 100%;\n}\n.valide_ .fa {\n  color: #d65047;\n}\n.validation {\n  display: grid;\n  place-content: center;\n}\n.validation p {\n  padding: 10px 0;\n  text-align: left;\n}\n.commander_ {\n  display: flex;\n  justify-content: center;\n}\n@media (max-width: 800px) {\n.commander_ {\n    width: 100%;\n}\n.commande_ok {\n    display: flex;\n    width: 70%;\n    justify-content: center;\n}\n}", ""]);
 
 // exports
 
@@ -63937,7 +63967,7 @@ var render = function() {
                         noTime: true,
                         "button-now-translation": "Maintenant",
                         noButtonNow: true,
-                        format: "DD-MM-YYYY",
+                        format: "YYYY-MM-DD",
                         noLabel: true,
                         formatted: "ll",
                         onlyDate: true
@@ -64134,13 +64164,22 @@ var render = function() {
               _c(
                 "p",
                 [
-                  _c("strong", [_vm._v("Date de récupération: ")]),
+                  _c("strong", [_vm._v("Date de récupération et auraire: ")]),
                   _vm._v(" "),
                   _c("span", { staticClass: "reponse_" }, [
                     _vm._v(
-                      _vm._s(_vm.dateChoose[0]) +
-                        " et " +
-                        _vm._s(_vm.dateChoose[1])
+                      _vm._s(_vm.dateOfRecuperation) +
+                        " et entre " +
+                        _vm._s(_vm.dateChoose[1]) +
+                        " ( " +
+                        _vm._s(
+                          _vm.slotDeliverableHours
+                            ? " Vous serez livrer le " +
+                                _vm.dateOfDeviverable +
+                                " "
+                            : "Vous serez livrer dans 4h"
+                        ) +
+                        " )"
                     )
                   ]),
                   _vm._v("  |   "),
@@ -64172,38 +64211,52 @@ var render = function() {
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
-              !_vm.user_id
-                ? _c("h3", [
-                    _vm._v(
-                      "Veuillez vous connecter sinon votre commande ne sera pas valide"
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.allPrice == 0
-                ? _c("span", [
-                    _c(
-                      "h3",
-                      [
-                        _vm._v("Veuillez calculer votre commande dans "),
-                        _c("router-link", { attrs: { to: "/order" } }, [
-                          _vm._v("Le panier")
-                        ])
-                      ],
-                      1
-                    ),
-                    _vm._v("\n            ou\n        "),
-                    _c("h3", [_vm._v("Aucun vêtement n'a été choisi")])
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              !_vm.deliverableType
-                ? _c("h3", [_vm._v("Veillez Choisir un type de livraison")])
-                : _vm._e(),
-              _vm._v(" "),
-              !_vm.dateChoose
-                ? _c("h3", [_vm._v("Veillez Choisir une date de récupération")])
-                : _vm._e(),
+              _c("div", { staticClass: "restriction-validation" }, [
+                !_vm.user_id
+                  ? _c("h4", [
+                      _vm._v(
+                        "Merci de renseigner vos coordonnées pour la récupération et livraison de votre linge.\n\n                "
+                      ),
+                      _c("br"),
+                      _vm._v("\n                Déjà client ? "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "login-validation",
+                          attrs: { href: "/login" }
+                        },
+                        [_vm._v(" Connectez-vous")]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.allPrice == 0
+                  ? _c("span", [
+                      _c(
+                        "h3",
+                        [
+                          _vm._v("Veuillez calculer votre commande dans "),
+                          _c("router-link", { attrs: { to: "/order" } }, [
+                            _vm._v("Le panier")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v("\n                    ou\n                "),
+                      _c("h3", [_vm._v("Aucun vêtement n'a été choisi")])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                !_vm.deliverableType
+                  ? _c("h3", [_vm._v("Veillez Choisir un type de livraison")])
+                  : _vm._e(),
+                _vm._v(" "),
+                !_vm.dateChoose
+                  ? _c("h3", [
+                      _vm._v("Veillez Choisir une date de récupération")
+                    ])
+                  : _vm._e()
+              ]),
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
