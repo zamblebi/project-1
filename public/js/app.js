@@ -64224,52 +64224,60 @@ var render = function() {
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
-              _c("div", { staticClass: "restriction-validation" }, [
-                !_vm.user_id
-                  ? _c("h4", [
-                      _vm._v(
-                        "Merci de renseigner vos coordonnées pour la récupération et livraison de votre linge.\n\n                "
-                      ),
-                      _c("br"),
-                      _vm._v("\n                Déjà client ? "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "login-validation",
-                          attrs: { href: "/login" }
-                        },
-                        [_vm._v(" Connectez-vous")]
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.allPrice == 0
-                  ? _c("span", [
-                      _c(
-                        "h3",
-                        [
-                          _vm._v("Veuillez calculer votre commande dans "),
-                          _c("router-link", { attrs: { to: "/order" } }, [
-                            _vm._v("Le panier")
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v("\n                    ou\n                "),
-                      _c("h3", [_vm._v("Aucun vêtement n'a été choisi")])
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                !_vm.deliverableType
-                  ? _c("h3", [_vm._v("Veillez Choisir un type de livraison")])
-                  : _vm._e(),
-                _vm._v(" "),
-                !_vm.dateChoose
-                  ? _c("h3", [
-                      _vm._v("Veillez Choisir une date de récupération")
-                    ])
-                  : _vm._e()
-              ]),
+              !_vm.user_id ||
+              !_vm.carts ||
+              !_vm.allPrice ||
+              !_vm.deliverableType ||
+              !_vm.dateChoose
+                ? _c("div", { staticClass: "restriction-validation" }, [
+                    !_vm.user_id
+                      ? _c("h4", [
+                          _vm._v(
+                            "Merci de renseigner vos coordonnées pour la récupération et livraison de votre linge.\n\n                "
+                          ),
+                          _c("br"),
+                          _vm._v("\n                Déjà client ? "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "login-validation",
+                              attrs: { href: "/login" }
+                            },
+                            [_vm._v(" Connectez-vous")]
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.allPrice == 0
+                      ? _c("span", [
+                          _c(
+                            "h3",
+                            [
+                              _vm._v("Veuillez calculer votre commande dans "),
+                              _c("router-link", { attrs: { to: "/order" } }, [
+                                _vm._v("Le panier")
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v("\n                    ou\n                "),
+                          _c("h3", [_vm._v("Aucun vêtement n'a été choisi")])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.deliverableType
+                      ? _c("h3", [
+                          _vm._v("Veillez Choisir un type de livraison")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.dateChoose
+                      ? _c("h3", [
+                          _vm._v("Veillez Choisir une date de récupération")
+                        ])
+                      : _vm._e()
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),

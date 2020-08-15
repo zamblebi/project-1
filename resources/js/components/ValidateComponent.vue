@@ -27,7 +27,7 @@
 
     <br>
 
-    <div class="restriction-validation">
+    <div v-if="!user_id || !carts || !allPrice || !deliverableType || !dateChoose" class="restriction-validation">
 
             <h4 v-if="!user_id">Merci de renseigner vos coordonnées pour la récupération et livraison de votre linge.
 
