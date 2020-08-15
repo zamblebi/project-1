@@ -19,7 +19,7 @@
         <strong>Type de livraison choisie : </strong> <span class="reponse_"> {{deliverableType}}</span> | <router-link to="/order-deliverable"><i class="fa fa-edit"></i></router-link>
       </p> 
     <p>
-        <strong>Date de récupération: </strong> <span class="reponse_">{{dateChoose}}</span>  |   <router-link to="/order-slots"><i class="fa fa-edit"></i></router-link>
+        <strong>Date de récupération: </strong> <span class="reponse_">{{dateChoose[0]}} et {{dateChoose[1]}}</span>  |   <router-link to="/order-slots"><i class="fa fa-edit"></i></router-link>
     </p>
     <p>
        <strong>Details de l'adresse :</strong> Lieu :<span class="reponse_">  {{details_lieu ? details_lieu : "Aucun"}} </span> , Details du lieu<span class="reponse_"> : {{details_adress ? details_adress : "Aucun"}}</span>
@@ -62,7 +62,7 @@ export default {
             adressMaps: localStorage.adressMaps,
             allPrice: JSON.parse(localStorage.getItem('store')).carts.allPrice,
             deliverableType: localStorage.deliverableType,
-            dateChoose: localStorage.dateStored,
+            dateChoose: [localStorage.dateStored, localStorage.slotStored],
             details_adress: localStorage.details_adress,
             details_lieu: localStorage.details_lieu,
             carts: JSON.parse(localStorage.getItem('store')).carts,

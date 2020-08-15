@@ -7,26 +7,22 @@
         <div>
             
         <h2 class="date-title">Choisissez la date et l'heure de récupération des vêtements</h2>
-        <h4 class="display_subtitle">Date et crénaux choisi : {{ dateStored }}</h4>
+        <h4 class="display_subtitle">Date et crénaux choisi : {{ dateStored }} et {{ slotStored }}</h4>
         <div class="date_time">
             <VueCtkDateTimePicker locale="fr" :inline="true" color="#D65047" inputSize="lg" :noTime=true  button-now-translation="Maintenant" :noButtonNow=true format="DD-MM-YYYY" :noLabel=true  formatted="ll" :onlyDate=true v-model="date">
-                <!-- <input type="text" /> -->
             </VueCtkDateTimePicker>
         </div>
 
         <div class="horaire">
-            <ul>
-               <li v-for="(h, i) in horaire" :key="i" >
-                   <button @click="getSlot(h)" class="btn btn-slot" :value=h >{{h}}</button>
+            <ul >
+                   <li v-for="(h, i) in horaire" :key="i">
+                     <button @click="getSlot(h)" class="btn btn-slot" >{{h}}</button>
                    </li> 
             </ul>
         </div>
 
           <div class="add-date">
                 <router-link to="/order-maps" class="btn" @click.native="addDate">Continuer</router-link>
-              <!-- <div style="padding: 0 60px">
-                  <router-link class="btn" to="/order-maps">Continuer</router-link>
-              </div> -->
           </div>
         </div>
     </div>
@@ -41,46 +37,80 @@ export default {
     data(){
         return{
             date : '',
-            dateStored: '',
             show: false,
+            dateStored: '',
+            slotStored: '',
             horaire: [
-                "8h-10h","10h-12h","13-15h","13h-15h","15h-17h"
+                "8h-10h","10h-12h","13-15h","15h-17h"
             ],
             value: '',
-            slot: ''
+            slot: '',
+            value: ''
+            // slotChoose: false,
         }
 
         },
         
         mounted(){
-            this.show = true
+                this.show = true
 
-            if(localStorage.dateStored){
-                this.dateStored = localStorage.dateStored
-                // console.log('date', this.dateStored)
-            }
-            this.viewDate()
+                // this.slot
+                // afficher la date choisie si il est dans le localstorage 
+                if(localStorage.dateStored){
+                    this.dateStored = localStorage.dateStored
+                }
+
+                // afficher l'horaire choisie si il est dans le localstorage 
+                if(localStorage.slotStored){
+                    this.slotStored = localStorage.slotStored
+                }
+
+                // Voir ce qui et dans le localstorage 
+                this.viewDate()
+
             },
+            updated(){
+                // debugger
+                this.slotStored = localStorage.slotStored
+            },
+
         methods: {
+            // Ajouter la date dans le localStorage 
             addDate(){
                 if(this.dateStored && this.date == ''){
                     localStorage.dateStored = this.dateStored
-                    // localStorage.slot = this.slot 
-                }else{
-                    localStorage.dateStored = [this.date, this.slot]
-                    console.log(this.date)
+                }
+                else{
+                    localStorage.dateStored = this.date
                 }
                     this.viewDate();
             },
+        // Afficher les element depuis le localStorage 
             viewDate(){
                 if(localStorage.dateStored){
                     this.dateStored = localStorage.dateStored
                     console.log('date', this.dateStored)
                 }
+                if(localStorage.slotStored){
+                    this.slotStored = localStorage.slotStored
+                    console.log(this.slotStored)
+                }
             },
+
+            // Recuperer l'horaire  
             getSlot(slot){
-                this.slot = slot
-                console.log(slot)
+                // debugger
+                // if(this.slotStored && this.slot == ''){
+                    localStorage.slotStored = this.slotStored
+                    // localStorage.dateStored = this.dateStored
+                    // console.log(slot)
+                // }
+                // else{
+                    // debugger
+                    this.slot = slot
+                    localStorage.slotStored = this.slot
+                // }
+                    // console.log(slot)
             }
 
         }
@@ -88,6 +118,11 @@ export default {
 
 </script>
 <style lang="scss">
+
+// .active{
+//     background: red;
+// }
+
 
 // Horaire style 
 .horaire{

@@ -2626,10 +2626,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2665,44 +2663,72 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
+    return _defineProperty({
       date: '',
-      dateStored: '',
       show: false,
-      horaire: ["8h-10h", "10h-12h", "13-15h", "13h-15h", "15h-17h"],
+      dateStored: '',
+      slotStored: '',
+      horaire: ["8h-10h", "10h-12h", "13-15h", "15h-17h"],
       value: '',
       slot: ''
-    };
+    }, "value", '');
   },
   mounted: function mounted() {
-    this.show = true;
+    this.show = true; // this.slot
+    // afficher la date choisie si il est dans le localstorage 
 
     if (localStorage.dateStored) {
-      this.dateStored = localStorage.dateStored; // console.log('date', this.dateStored)
-    }
+      this.dateStored = localStorage.dateStored;
+    } // afficher l'horaire choisie si il est dans le localstorage 
+
+
+    if (localStorage.slotStored) {
+      this.slotStored = localStorage.slotStored;
+    } // Voir ce qui et dans le localstorage 
+
 
     this.viewDate();
   },
+  updated: function updated() {
+    // debugger
+    this.slotStored = localStorage.slotStored;
+  },
   methods: {
+    // Ajouter la date dans le localStorage 
     addDate: function addDate() {
       if (this.dateStored && this.date == '') {
-        localStorage.dateStored = this.dateStored; // localStorage.slot = this.slot 
+        localStorage.dateStored = this.dateStored;
       } else {
-        localStorage.dateStored = [this.date, this.slot];
-        console.log(this.date);
+        localStorage.dateStored = this.date;
       }
 
       this.viewDate();
     },
+    // Afficher les element depuis le localStorage 
     viewDate: function viewDate() {
       if (localStorage.dateStored) {
         this.dateStored = localStorage.dateStored;
         console.log('date', this.dateStored);
       }
+
+      if (localStorage.slotStored) {
+        this.slotStored = localStorage.slotStored;
+        console.log(this.slotStored);
+      }
     },
+    // Recuperer l'horaire  
     getSlot: function getSlot(slot) {
+      // debugger
+      // if(this.slotStored && this.slot == ''){
+      localStorage.slotStored = this.slotStored; // localStorage.dateStored = this.dateStored
+      // console.log(slot)
+      // }
+      // else{
+      // debugger
+
       this.slot = slot;
-      console.log(slot);
+      localStorage.slotStored = this.slot; // }
+      // console.log(slot)
     }
   }
 });
@@ -2824,7 +2850,7 @@ __webpack_require__.r(__webpack_exports__);
       adressMaps: localStorage.adressMaps,
       allPrice: JSON.parse(localStorage.getItem('store')).carts.allPrice,
       deliverableType: localStorage.deliverableType,
-      dateChoose: localStorage.dateStored,
+      dateChoose: [localStorage.dateStored, localStorage.slotStored],
       details_adress: localStorage.details_adress,
       details_lieu: localStorage.details_lieu,
       carts: JSON.parse(localStorage.getItem('store')).carts,
@@ -63890,7 +63916,12 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("h4", { staticClass: "display_subtitle" }, [
-                  _vm._v("Date et crénaux choisi : " + _vm._s(_vm.dateStored))
+                  _vm._v(
+                    "Date et crénaux choisi : " +
+                      _vm._s(_vm.dateStored) +
+                      " et " +
+                      _vm._s(_vm.slotStored)
+                  )
                 ]),
                 _vm._v(" "),
                 _c(
@@ -63932,7 +63963,6 @@ var render = function() {
                           "button",
                           {
                             staticClass: "btn btn-slot",
-                            attrs: { value: h },
                             on: {
                               click: function($event) {
                                 return _vm.getSlot(h)
@@ -64107,7 +64137,11 @@ var render = function() {
                   _c("strong", [_vm._v("Date de récupération: ")]),
                   _vm._v(" "),
                   _c("span", { staticClass: "reponse_" }, [
-                    _vm._v(_vm._s(_vm.dateChoose))
+                    _vm._v(
+                      _vm._s(_vm.dateChoose[0]) +
+                        " et " +
+                        _vm._s(_vm.dateChoose[1])
+                    )
                   ]),
                   _vm._v("  |   "),
                   _c("router-link", { attrs: { to: "/order-slots" } }, [
