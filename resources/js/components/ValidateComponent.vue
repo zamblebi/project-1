@@ -139,7 +139,7 @@ export default {
 
             // localStorage.clear();
             // window.location.href = '/success-order'
-
+            window.location.href= '/send'
         }
     }
 }

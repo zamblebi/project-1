@@ -2775,6 +2775,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SuccesComponent.vue",
   data: function data() {
@@ -2950,6 +2953,8 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(error);
       }); // localStorage.clear();
       // window.location.href = '/success-order'
+
+      window.location.href = '/send';
     }
   }
 });
@@ -3479,7 +3484,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".space {\n  margin-bottom: 150px;\n}\n.success-order {\n  margin-top: 50px;\n  text-align: center;\n}\n.success-order img {\n  width: 200px;\n  padding-bottom: 30px;\n}\n.fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n@media (max-width: 800px) {\n.checked_ok {\n    display: flex;\n    justify-content: center;\n    width: 70%;\n    margin: 0 auto;\n}\n}", ""]);
+exports.push([module.i, ".loader {\n  margin: 0 auto;\n  border: 7px solid #f3f3f3;\n  /* Light grey */\n  border-top: 7px solid #11AF22;\n  /* Blue */\n  border-radius: 50%;\n  width: 40px;\n  height: 40px;\n  -webkit-animation: spin 2s linear infinite;\n          animation: spin 2s linear infinite;\n}\n@-webkit-keyframes spin {\n0% {\n    transform: rotate(0deg);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes spin {\n0% {\n    transform: rotate(0deg);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.space {\n  margin-bottom: 150px;\n}\n.success-order {\n  margin-top: 50px;\n  text-align: center;\n}\n.success-order img {\n  width: 200px;\n  padding-bottom: 30px;\n}\n.fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n@media (max-width: 800px) {\n.checked_ok {\n    display: flex;\n    justify-content: center;\n    width: 70%;\n    margin: 0 auto;\n}\n}", ""]);
 
 // exports
 
@@ -64108,30 +64113,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "success-order" },
-    [
-      _c("transition", { attrs: { name: "fade" } }, [
-        _c("img", { attrs: { src: "/icons/check.svg", alt: "check" } })
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("h1", [_vm._v("Commande effectuez avec succès !")]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        { staticClass: "btn checked_ok", attrs: { to: "home/my-order-list" } },
-        [_vm._v("Continuer")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "space" })
-    ],
-    1
-  )
+  return _c("div", { staticClass: "success-order" }, [
+    _c("img", { attrs: { src: "/icons/check.svg", alt: "check" } }),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("h4", [
+      _vm._v(
+        "Veillez patienter un moments votre commande est en cours de validation!"
+      )
+    ]),
+    _vm._v(" "),
+    _c("p", [_vm._v("Vous serez redirigez vers votre profil")]),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "loader" }),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "space" })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

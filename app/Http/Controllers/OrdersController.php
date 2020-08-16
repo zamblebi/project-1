@@ -83,7 +83,7 @@ class OrdersController extends Controller
 
             $orders = new Order();
             $orders->create($request->all());
-
+            // return dd($order->id);
             // $user->order_id = 12;
             // $user->save();
             // $user-->save();
@@ -150,14 +150,15 @@ class OrdersController extends Controller
     }
 
 
-    public function sendNotification(Request $request, $orderId)
+    public function sendNotification(Request $request)
     {
-        $order = Order::findOrFail($orderId);
         $user = Auth::user();
+        $order = Order::where('user_id', $user->id)->latest()->first();
         // $email
         // $order->find($user->id);
         Notification::route('mail', 'info@monpressing.ci')->notify(new OrderTicket($order));
-        dd("done");
+        // dd("done");
+        return redirect('/home');
     }
 
 

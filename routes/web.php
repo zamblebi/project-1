@@ -119,4 +119,4 @@ Route::post('dashboard/checked/{id}', 'OrdersController@checked')->name('order.c
 
 
 //Send Notification
-Route::get('send/{orderId}', "OrdersController@sendNotification");
+Route::get('send', "OrdersController@sendNotification");

@@ -32,7 +32,8 @@ html,body{
 main{
     display: flex;
     flex-direction: column;
-    height: 100%  !important;
+    height: 100% !important;
+    min-height: 100% !important;
 }
 .container{
      min-height: 100% !important;
