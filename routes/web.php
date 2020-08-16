@@ -115,3 +115,8 @@ Route::post('dashboard/category/update/{id}', 'CategoryController@update')->name
 
 //Order checked
 Route::post('dashboard/checked/{id}', 'OrdersController@checked')->name('order.checked');
+
+
+
+//Send Notification
+Route::get('send/{orderId}', "OrdersController@sendNotification");
