@@ -743,6 +743,7 @@ main {
   display: flex;
   flex-direction: column;
   height: 100% !important;
+  min-height: 100% !important;
 }
 
 .container {
@@ -886,14 +887,20 @@ body {
   position: relative;
   background-color: #ffffff;
   width: 100%;
-  z-index: 12;
+  z-index: 300;
   display: flex;
   justify-content: space-between;
 }
 
 .header-bar .navbar-brand,
 .header-bar .toggle-menu {
+  display: flex;
   padding: 7px 10px;
+}
+
+.header-bar .navbar-brand .toggle-panier,
+.header-bar .toggle-menu .toggle-panier {
+  padding: 12px 19px;
 }
 
 .header-bar #menu-burger {
@@ -914,7 +921,7 @@ body {
 }
 
 .navbar .navbar-nav {
-  z-index: 2;
+  z-index: 200;
   position: absolute;
   width: 100%;
   padding: 20px 0;
@@ -1322,7 +1329,7 @@ ul {
   }
 
   .toggle-menu {
-    display: none;
+    display: none !important;
   }
 
   .navbar-nav-desktop {

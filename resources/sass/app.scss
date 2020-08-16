@@ -32,7 +32,8 @@ html,body{
 main{
     display: flex;
     flex-direction: column;
-    height: 100%  !important;
+    height: 100% !important;
+    min-height: 100% !important;
 }
 .container{
      min-height: 100% !important;
@@ -155,12 +156,16 @@ body{
     padding-right: 0px;
 
     .navbar-brand, .toggle-menu{
+        display: flex;
         padding: 7px 10px;
+        .toggle-panier{
+            padding: 12px 19px;
+        }
     }
     position: relative;
     background-color: #ffffff;
     width: 100%;
-    z-index: 12;
+    z-index: 300;
     // position: fixed;
     display: flex;
     // padding: 0 5px;
@@ -188,7 +193,7 @@ body{
         }
     }
     .navbar-nav{
-        z-index: 2;
+        z-index: 200;
         position: absolute;
         width: 100%;
         padding: 20px 0;
@@ -633,8 +638,8 @@ footer{
     .navbar-nav{
         display: none !important;
     }
-    .toggle-menu{
-        display: none;
+     .toggle-menu{
+        display: none !important;
     }
     
     .navbar-nav-desktop{

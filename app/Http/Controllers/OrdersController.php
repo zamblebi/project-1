@@ -10,6 +10,9 @@ use DB;
 use Auth;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Auth;
+use App\Notifications\OrderTicket;
+use Notification;
+use Illuminate\Support\Facades\Mail;
 
 class OrdersController extends Controller
 {
@@ -80,7 +83,7 @@ class OrdersController extends Controller
 
             $orders = new Order();
             $orders->create($request->all());
-
+            // return dd($order->id);
             // $user->order_id = 12;
             // $user->save();
             // $user-->save();
@@ -144,6 +147,18 @@ class OrdersController extends Controller
         // $order->update($request->all());
         // $order->update($request['deliver'] = $request->deliver);
         return back();
+    }
+
+
+    public function sendNotification(Request $request)
+    {
+        $user = Auth::user();
+        $order = Order::where('user_id', $user->id)->latest()->first();
+        // $email
+        // $order->find($user->id);
+        Notification::route('mail', 'info@monpressing.ci')->notify(new OrderTicket($order));
+        // dd("done");
+        return redirect('/home');
     }
 
 

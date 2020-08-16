@@ -1,9 +1,11 @@
 <template>
-    <div>
+    <div @scroll.passive="handleScroll">
 
         
         <!-- <loader-component :is-visible="isLoading"></loader-component> -->
-
+        <!-- <div class="parentTop"> -->
+            <a v-show="dsp" href="#top" class="top"><i class="fa fa-angle-up"></i></a>
+        <!-- </div> -->
       <h2 class="clothing-title">Choisir un service</h2>
         <select v-model="value" name="" id="" class="select_category" >
             <option value="all">Nos services</option>
@@ -121,12 +123,12 @@
             return{
                 value: 'all',
                 show: false,
-                isLoading: true
+                isLoading: true,
+                dsp: true
             } 
         },
         updated(){
-            // console.log(this.value)
-        },
+            },
         components: {
             'cart-component' : CartComponent
         },
@@ -140,20 +142,56 @@
             ...mapGetters(
                 'carts', ['clothingQty']
             )},
+            created(){
+                // window.addEventListener('scoll', this.handleScroll)
+                window.document.body.onscroll = function() {
+                    if(window.scrollY >= 700){
+                        this.dsp = true;
+                    console.log(window.scrollY, "top")
+                    }else{
+                        this.dsp = false;
+                    }
+                    // console.log(123);
+}
+            },
         mounted(){
             this.show = true
             this.$store.dispatch('products/getProducts'),
             this.$store.dispatch('products/getCategories')
             // console.log(this.categories)
         },
-        methods: mapActions(
+        methods: {...mapActions(
             'carts', ['addProductToCart']
-        ) 
+        ) },
+        handleScroll(e){
+            console.log(e.target.scrollY)
+        }
 
     }
 </script>
 <style lang="scss">
-
+// .parentTop{
+//     visibility: visible;
+// }
+.top{
+    // visibility: ;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    // border-radius: 100px;
+    text-align: center;
+    display: grid;
+    place-content: center;
+    text-decoration: none;
+    color: #ffff;
+    font-size: 20px;
+    z-index: 500;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #D65047;
+    
+}
 
     .select_category{
         display: flex;

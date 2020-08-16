@@ -2092,6 +2092,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
  // console.log(ctlInCarts)
 // console.log(priceClt(n))
 
@@ -2100,6 +2101,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       orderingCart: false
     };
+  },
+  mounted: function mounted() {
+    var myCart = JSON.parse(localStorage.getItem('store')).carts;
+
+    if (myCart.allPrice != 0) {
+      this.orderingCart = true;
+      console.log('cart updated order true', myCart.carts.length);
+    } else if (myCart.allPrice == 0) {
+      this.orderingCart = false;
+      console.log('cart updated order false', this.orderingCart);
+    }
+
+    myCart;
   },
   updated: function updated() {
     // debugger
@@ -2124,7 +2138,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   // },
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('carts', ['priceClt', 'totalPrice', 'getAllCarts'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('carts', ['allPrice'])),
   props: ['cltQtyAll', 'cltInCarts'],
-  methods: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('carts', ['changeProductQuantity', 'removeOnCart', 'increment', 'decrement'])
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('carts', ['changeProductQuantity', 'removeOnCart', 'increment', 'decrement'])), {}, {
+    clearCart: function clearCart() {
+      localStorage.removeItem('store');
+      location.reload();
+    }
+  })
 });
 
 /***/ }),
@@ -2257,6 +2276,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -2269,11 +2290,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       value: 'all',
       show: false,
-      isLoading: true
+      isLoading: true,
+      dsp: true
     };
   },
-  updated: function updated() {// console.log(this.value)
-  }
+  updated: function updated() {}
 }, _defineProperty(_name$components$data, "components", {
   'cart-component': _CartComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
 }), _defineProperty(_name$components$data, "computed", _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapState"])({
@@ -2286,10 +2307,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   categories: function categories(state) {
     return state.products.categories;
   }
-})), Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])('carts', ['clothingQty']))), _defineProperty(_name$components$data, "mounted", function mounted() {
+})), Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])('carts', ['clothingQty']))), _defineProperty(_name$components$data, "created", function created() {
+  // window.addEventListener('scoll', this.handleScroll)
+  window.document.body.onscroll = function () {
+    if (window.scrollY >= 700) {
+      this.dsp = true;
+      console.log(window.scrollY, "top");
+    } else {
+      this.dsp = false;
+    } // console.log(123);
+
+  };
+}), _defineProperty(_name$components$data, "mounted", function mounted() {
   this.show = true;
   this.$store.dispatch('products/getProducts'), this.$store.dispatch('products/getCategories'); // console.log(this.categories)
-}), _defineProperty(_name$components$data, "methods", Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])('carts', ['addProductToCart'])), _name$components$data);
+}), _defineProperty(_name$components$data, "methods", _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])('carts', ['addProductToCart']))), _defineProperty(_name$components$data, "handleScroll", function handleScroll(e) {
+  console.log(e.target.scrollY);
+}), _name$components$data);
 
 /***/ }),
 
@@ -2661,6 +2695,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return _defineProperty({
@@ -2683,7 +2720,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
     if (localStorage.slotStored) {
-      this.slotStored = localStorage.slotStored;
+      this.slot = localStorage.slotStored;
     } // Voir ce qui et dans le localstorage 
 
 
@@ -2692,12 +2729,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   updated: function updated() {
     // debugger
     this.slotStored = localStorage.slotStored;
+    console.log(this.slot);
   },
   methods: {
     // Ajouter la date dans le localStorage 
     addDate: function addDate() {
       if (this.dateStored && this.date == '') {
         localStorage.dateStored = this.dateStored;
+        localStorage.slotStored = this.slotStored;
+        localStorage.slotStored = this.slot;
       } else {
         localStorage.dateStored = this.date;
       }
@@ -2715,21 +2755,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.slotStored = localStorage.slotStored;
         console.log(this.slotStored);
       }
-    },
-    // Recuperer l'horaire  
-    getSlot: function getSlot(slot) {
-      // debugger
-      // if(this.slotStored && this.slot == ''){
-      localStorage.slotStored = this.slotStored; // localStorage.dateStored = this.dateStored
-      // console.log(slot)
-      // }
-      // else{
-      // debugger
+    } // Recuperer l'horaire  
+    // getSlot(slot){
+    // debugger
+    // if(this.slotStored && this.slot == ''){
+    // localStorage.dateStored = this.dateStored
+    // console.log(slot)
+    // }
+    // else{
+    // debugger
+    // }
+    // console.log(slot)
+    // }
 
-      this.slot = slot;
-      localStorage.slotStored = this.slot; // }
-      // console.log(slot)
-    }
   }
 });
 
@@ -2744,6 +2782,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -2858,7 +2899,10 @@ __webpack_require__.r(__webpack_exports__);
       adressMaps: localStorage.adressMaps,
       allPrice: JSON.parse(localStorage.getItem('store')).carts.allPrice,
       deliverableType: localStorage.deliverableType,
-      dateChoose: [localStorage.dateStored, localStorage.slotStored],
+      dateChoose: JSON.stringify({
+        "date": localStorage.dateStored,
+        "slot": localStorage.slotStored
+      }),
       details_adress: localStorage.details_adress,
       details_lieu: localStorage.details_lieu,
       carts: JSON.parse(localStorage.getItem('store')).carts,
@@ -2928,8 +2972,10 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(response);
       })["catch"](function (error) {
         return console.log(error);
-      });
-      localStorage.clear(); // window.location.href = '/success-order'
+      }); // localStorage.clear();
+      // window.location.href = '/success-order'
+
+      window.location.href = '/send';
     }
   }
 });
@@ -3192,7 +3238,13 @@ __webpack_require__.r(__webpack_exports__);
     return {
       user: '',
       my_order: '',
-      show: false
+      show: false,
+      options: {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }
     };
   },
   mounted: function mounted() {
@@ -3211,6 +3263,18 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       return console.log(error, _this.user);
     });
+  },
+  methods: {
+    convertDate: function convertDate(dateConvert) {
+      var changeDate = new Date(dateConvert);
+      return changeDate.toLocaleString('fr-FR', this.options);
+    },
+    deliverableConvertDate: function deliverableConvertDate(deliverableDate) {
+      // var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+      var changeDate = new Date(deliverableDate);
+      changeDate.setDate(changeDate.getDate() + 2);
+      return changeDate.toLocaleString('fr-FR', this.options);
+    }
   }
 });
 
@@ -3308,7 +3372,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".btn-desable {\n  background: #8a8a8a !important;\n}\n#app {\n  min-height: 100%;\n}\n.qty_ {\n  width: 20px;\n  height: 23px;\n}\n.btn_button {\n  display: inline-block;\n  border: none;\n  border-radius: 7px;\n  padding: 5px 10px;\n  margin: 0;\n  text-decoration: none;\n  background: #D65047;\n  color: #ffffff;\n  font-family: sans-serif;\n  font-size: 1rem;\n  cursor: pointer;\n  text-align: center;\n  transition: background 250ms ease-in-out, transform 150ms ease;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n}\n.btn_button:hover {\n  background: #b8524b;\n}\n.btn_button:focus {\n  background: #b8524b;\n  outline: 1px solid #fff;\n  outline-offset: -4px;\n}\n.btn_button:active {\n  transform: scale(0.99);\n}\n.all_price {\n  padding-top: 5px;\n}\n.clothing_list {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n}\n.clothing_list li {\n  padding: 3px 0 !important;\n}\n.carts_list_clothing {\n  padding: 40px 20px;\n  color: #fff;\n  border-radius: 7px;\n  background-color: #8C4452;\n}\n@media (max-width: 800px) {\n.cart_component {\n    grid-row: 1;\n}\n.all_clothing_list {\n    display: grid;\n    place-items: center;\n}\n.all_clothing_list .clothing_list {\n    padding-left: 0;\n}\n.all_clothing_list .clothing_list li {\n    padding: 3px 0 !important;\n}\n}", ""]);
+exports.push([module.i, ".clear_cart {\n  width: 150px;\n  margin: 0 auto;\n  cursor: pointer;\n  border: 1px solid #ffff;\n  border-radius: 7px;\n}\n.btn-desable {\n  background: #8a8a8a !important;\n}\n#app {\n  min-height: 100%;\n}\n.qty_ {\n  width: 20px;\n  height: 23px;\n}\n.btn_button {\n  display: inline-block;\n  border: none;\n  border-radius: 7px;\n  padding: 5px 10px;\n  margin: 0;\n  text-decoration: none;\n  background: #D65047;\n  color: #ffffff;\n  font-family: sans-serif;\n  font-size: 1rem;\n  cursor: pointer;\n  text-align: center;\n  transition: background 250ms ease-in-out, transform 150ms ease;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n}\n.btn_button:hover {\n  background: #b8524b;\n}\n.btn_button:focus {\n  background: #b8524b;\n  outline: 1px solid #fff;\n  outline-offset: -4px;\n}\n.btn_button:active {\n  transform: scale(0.99);\n}\n.all_price {\n  padding-top: 5px;\n}\n.clothing_list {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n}\n.clothing_list li {\n  padding: 3px 0 !important;\n}\n.carts_list_clothing {\n  padding: 40px 20px;\n  color: #fff;\n  border-radius: 7px;\n  background-color: #8C4452;\n}\n@media (max-width: 800px) {\n.cart_component {\n    grid-row: 1;\n}\n.all_clothing_list {\n    display: grid;\n    place-items: center;\n}\n.all_clothing_list .clothing_list {\n    padding-left: 0;\n}\n.all_clothing_list .clothing_list li {\n    padding: 3px 0 !important;\n}\n}", ""]);
 
 // exports
 
@@ -3327,7 +3391,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap);", ""]);
 
 // module
-exports.push([module.i, ".select_category {\n  display: flex;\n  padding: 10px 10px;\n  margin: 0 auto;\n  background-color: #D65047;\n  color: #fff;\n}\n.clothing-title {\n  text-align: center;\n}\n.list-clothing {\n  font-family: \"Quicksand\", sans-serif;\n  flex-direction: column;\n  align-items: center;\n}\n.list-clothing li {\n  border-radius: 7px;\n  background-color: #d650471f;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: nowrap;\n  width: 70%;\n  margin: 10px 0;\n  padding: 20px 10px !important;\n}\n.list-clothing li img {\n  width: 72px !important;\n}\n.list-clothing .clothing_info {\n  display: flex;\n  align-items: center;\n}\n.list-clothing .clothing_info h3 {\n  margin: 0;\n}\n.list-clothing .clothing_info .info_clothing {\n  display: flex;\n  flex-direction: column;\n  /* justify-content: start; */\n  align-items: flex-start;\n  padding-left: 15px;\n}\n@media (max-width: 900px) {\n.carts_list_clothing {\n    margin: 0 15px;\n}\n.list-clothing {\n    overflow: hidden !important;\n}\n.list-clothing li {\n    width: 80%;\n}\n}\n@media (max-width: 420px) {\n.btn {\n    font-size: 0.7rem;\n    padding: 0.7rem 1.4rem !important;\n}\n.info_clothing {\n    padding-left: 10px;\n    font-size: 0.7rem;\n}\n}", ""]);
+exports.push([module.i, ".top {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  text-align: center;\n  display: grid;\n  place-content: center;\n  text-decoration: none;\n  color: #ffff;\n  font-size: 20px;\n  z-index: 500;\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  background-color: #D65047;\n}\n.select_category {\n  display: flex;\n  padding: 10px 10px;\n  margin: 0 auto;\n  background-color: #D65047;\n  color: #fff;\n}\n.clothing-title {\n  text-align: center;\n}\n.list-clothing {\n  font-family: \"Quicksand\", sans-serif;\n  flex-direction: column;\n  align-items: center;\n}\n.list-clothing li {\n  border-radius: 7px;\n  background-color: #d650471f;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: nowrap;\n  width: 70%;\n  margin: 10px 0;\n  padding: 20px 10px !important;\n}\n.list-clothing li img {\n  width: 72px !important;\n}\n.list-clothing .clothing_info {\n  display: flex;\n  align-items: center;\n}\n.list-clothing .clothing_info h3 {\n  margin: 0;\n}\n.list-clothing .clothing_info .info_clothing {\n  display: flex;\n  flex-direction: column;\n  /* justify-content: start; */\n  align-items: flex-start;\n  padding-left: 15px;\n}\n@media (max-width: 900px) {\n.carts_list_clothing {\n    margin: 0 15px;\n}\n.list-clothing {\n    overflow: hidden !important;\n}\n.list-clothing li {\n    width: 80%;\n}\n}\n@media (max-width: 420px) {\n.btn {\n    font-size: 0.7rem;\n    padding: 0.7rem 1.4rem !important;\n}\n.info_clothing {\n    padding-left: 10px;\n    font-size: 0.7rem;\n}\n}", ""]);
 
 // exports
 
@@ -3422,7 +3486,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".horaire ul {\n  padding-left: 0;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n.horaire ul li {\n  padding: 10px 20px;\n}\n.horaire .btn-slot {\n  border: 1px solid #D65047;\n  background: #EFEFEF;\n  color: black;\n}\n.horaire .btn-slot:hover {\n  background: #9b9b9b;\n  color: #ffff;\n}\n.date-title {\n  text-align: center;\n}\n@media (max-width: 800px) {\n.date_time {\n    margin: 0 30px;\n}\n}\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}", ""]);
+exports.push([module.i, ".display_subtitle {\n  color: #D65047;\n}\n.horaire ul {\n  padding-left: 0;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n.horaire ul li {\n  padding: 10px 20px;\n}\n.horaire ul li input:checked + label {\n  background-color: red !important;\n  color: red !important;\n  box-shadow: red !important;\n  border-color: red !important;\n  z-index: 1;\n}\n.horaire .btn-slot {\n  border: 1px solid #D65047;\n  background: #EFEFEF;\n  color: black;\n}\n.horaire .btn-slot:hover {\n  background: #9b9b9b;\n  color: #ffff;\n}\n.date-title {\n  text-align: center;\n}\n@media (max-width: 800px) {\n.date_time {\n    margin: 0 30px;\n}\n}\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}", ""]);
 
 // exports
 
@@ -3441,7 +3505,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".space {\n  margin-bottom: 150px;\n}\n.success-order {\n  margin-top: 50px;\n  text-align: center;\n}\n.success-order img {\n  width: 200px;\n  padding-bottom: 30px;\n}\n.fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n@media (max-width: 800px) {\n.checked_ok {\n    display: flex;\n    justify-content: center;\n    width: 70%;\n    margin: 0 auto;\n}\n}", ""]);
+exports.push([module.i, ".loader {\n  margin: 0 auto;\n  border: 7px solid #f3f3f3;\n  /* Light grey */\n  border-top: 7px solid #11AF22;\n  /* Blue */\n  border-radius: 50%;\n  width: 40px;\n  height: 40px;\n  -webkit-animation: spin 2s linear infinite;\n          animation: spin 2s linear infinite;\n}\n@-webkit-keyframes spin {\n0% {\n    transform: rotate(0deg);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes spin {\n0% {\n    transform: rotate(0deg);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.space {\n  margin-bottom: 150px;\n}\n.success-order {\n  margin-top: 50px;\n  text-align: center;\n}\n.success-order img {\n  width: 200px;\n  padding-bottom: 30px;\n}\n.fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n@media (max-width: 800px) {\n.checked_ok {\n    display: flex;\n    justify-content: center;\n    width: 70%;\n    margin: 0 auto;\n}\n}", ""]);
 
 // exports
 
@@ -63120,14 +63184,16 @@ var render = function() {
                   _c("br"),
                   _vm._v(" "),
                   _c("div", [
-                    _c("label", { staticClass: "marg", attrs: { for: "" } }, [
-                      _vm._v("Lieu")
-                    ]),
+                    _c(
+                      "label",
+                      { staticClass: "marg", attrs: { for: "lieu" } },
+                      [_vm._v("Lieu")]
+                    ),
                     _vm._v(" "),
                     _c("br"),
                     _vm._v(" "),
                     _c("div", { staticClass: "locate" }, [
-                      _c("label", { attrs: { for: "domiciel" } }, [
+                      _c("label", { attrs: { for: "domicile" } }, [
                         _vm._v("Domicile")
                       ]),
                       _vm._v(" "),
@@ -63342,6 +63408,10 @@ var render = function() {
             0
           )
         ])
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "clear_cart", on: { click: _vm.clearCart } }, [
+        _vm._v("Vider le panier")
       ])
     ]),
     _vm._v(" "),
@@ -63394,7 +63464,31 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    {
+      on: {
+        "&scroll": function($event) {
+          return _vm.handleScroll($event)
+        }
+      }
+    },
     [
+      _c(
+        "a",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.dsp,
+              expression: "dsp"
+            }
+          ],
+          staticClass: "top",
+          attrs: { href: "#top" }
+        },
+        [_c("i", { staticClass: "fa fa-angle-up" })]
+      ),
+      _vm._v(" "),
       _c("h2", { staticClass: "clothing-title" }, [
         _vm._v("Choisir un service")
       ]),
@@ -63945,14 +64039,16 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("h4", { staticClass: "display_subtitle" }, [
-                  _vm._v(
-                    "Date et crénaux choisi : " +
-                      _vm._s(_vm.dateStored) +
-                      " et " +
-                      _vm._s(_vm.slotStored)
-                  )
-                ]),
+                _vm.dateStored
+                  ? _c("h4", { staticClass: "display_subtitle" }, [
+                      _vm._v(
+                        "Date et crénaux choisi : " +
+                          _vm._s(_vm.dateStored) +
+                          " et " +
+                          _vm._s(_vm.slotStored)
+                      )
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -63990,17 +64086,28 @@ var render = function() {
                     _vm._l(_vm.horaire, function(h, i) {
                       return _c("li", { key: i }, [
                         _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-slot",
-                            on: {
-                              click: function($event) {
-                                return _vm.getSlot(h)
-                              }
-                            }
-                          },
+                          "label",
+                          { staticClass: "btn btn-slot", attrs: { for: i } },
                           [_vm._v(_vm._s(h))]
-                        )
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.slot,
+                              expression: "slot"
+                            }
+                          ],
+                          attrs: { type: "radio", id: i },
+                          domProps: { value: h, checked: _vm._q(_vm.slot, h) },
+                          on: {
+                            change: function($event) {
+                              _vm.slot = h
+                            }
+                          }
+                        })
                       ])
                     }),
                     0
@@ -64057,30 +64164,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "success-order" },
-    [
-      _c("transition", { attrs: { name: "fade" } }, [
-        _c("img", { attrs: { src: "/icons/check.svg", alt: "check" } })
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("h1", [_vm._v("Commande effectuez avec succès !")]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        { staticClass: "btn checked_ok", attrs: { to: "home/my-order-list" } },
-        [_vm._v("Continuer")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "space" })
-    ],
-    1
-  )
+  return _c("div", { staticClass: "success-order" }, [
+    _c("img", { attrs: { src: "/icons/check.svg", alt: "check" } }),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("h4", [
+      _vm._v(
+        "Veillez patienter un moments votre commande est en cours de validation!"
+      )
+    ]),
+    _vm._v(" "),
+    _c("p", [_vm._v("Vous serez redirigez vers votre profil")]),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "loader" }),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "space" })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -64170,7 +64274,7 @@ var render = function() {
                     _vm._v(
                       _vm._s(_vm.dateOfRecuperation) +
                         " et entre " +
-                        _vm._s(_vm.dateChoose[1]) +
+                        _vm._s(JSON.parse(_vm.dateChoose).slot) +
                         " ( " +
                         _vm._s(
                           _vm.slotDeliverableHours
@@ -64211,52 +64315,60 @@ var render = function() {
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
-              _c("div", { staticClass: "restriction-validation" }, [
-                !_vm.user_id
-                  ? _c("h4", [
-                      _vm._v(
-                        "Merci de renseigner vos coordonnées pour la récupération et livraison de votre linge.\n\n                "
-                      ),
-                      _c("br"),
-                      _vm._v("\n                Déjà client ? "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "login-validation",
-                          attrs: { href: "/login" }
-                        },
-                        [_vm._v(" Connectez-vous")]
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.allPrice == 0
-                  ? _c("span", [
-                      _c(
-                        "h3",
-                        [
-                          _vm._v("Veuillez calculer votre commande dans "),
-                          _c("router-link", { attrs: { to: "/order" } }, [
-                            _vm._v("Le panier")
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v("\n                    ou\n                "),
-                      _c("h3", [_vm._v("Aucun vêtement n'a été choisi")])
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                !_vm.deliverableType
-                  ? _c("h3", [_vm._v("Veillez Choisir un type de livraison")])
-                  : _vm._e(),
-                _vm._v(" "),
-                !_vm.dateChoose
-                  ? _c("h3", [
-                      _vm._v("Veillez Choisir une date de récupération")
-                    ])
-                  : _vm._e()
-              ]),
+              !_vm.user_id ||
+              !_vm.carts ||
+              !_vm.allPrice ||
+              !_vm.deliverableType ||
+              !_vm.dateChoose
+                ? _c("div", { staticClass: "restriction-validation" }, [
+                    !_vm.user_id
+                      ? _c("h4", [
+                          _vm._v(
+                            "Merci de renseigner vos coordonnées pour la récupération et livraison de votre linge.\n\n                "
+                          ),
+                          _c("br"),
+                          _vm._v("\n                Déjà client ? "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "login-validation",
+                              attrs: { href: "/login" }
+                            },
+                            [_vm._v(" Connectez-vous")]
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.allPrice == 0
+                      ? _c("span", [
+                          _c(
+                            "h3",
+                            [
+                              _vm._v("Veuillez calculer votre commande dans "),
+                              _c("router-link", { attrs: { to: "/order" } }, [
+                                _vm._v("Le panier")
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v("\n                    ou\n                "),
+                          _c("h3", [_vm._v("Aucun vêtement n'a été choisi")])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.deliverableType
+                      ? _c("h3", [
+                          _vm._v("Veillez Choisir un type de livraison")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.dateChoose
+                      ? _c("h3", [
+                          _vm._v("Veillez Choisir une date de récupération")
+                        ])
+                      : _vm._e()
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
@@ -64756,9 +64868,30 @@ var render = function() {
                         _vm._v(" "),
                         _c("p", [
                           _c("strong", [
-                            _vm._v("Date et heure de récupération : ")
+                            _vm._v("Date et horaire de récupération : ")
                           ]),
-                          _vm._v(_vm._s(order.deliverable_date))
+                          _vm._v(
+                            _vm._s(
+                              _vm.convertDate(
+                                JSON.parse(order.deliverable_date).date
+                              )
+                            ) +
+                              " et entre " +
+                              _vm._s(JSON.parse(order.deliverable_date).slot) +
+                              " | "
+                          ),
+                          _c("strong", [_vm._v("Date de livraison : ")]),
+                          _vm._v(
+                            " " +
+                              _vm._s(
+                                order.deliverable_type == "Express"
+                                  ? "Dans quelque instant"
+                                  : _vm.deliverableConvertDate(
+                                      JSON.parse(order.deliverable_date).date
+                                    )
+                              ) +
+                              " "
+                          )
                         ]),
                         _vm._v(" "),
                         _c("p", [

@@ -20,9 +20,9 @@
 
             <br>
             <div>
-                <label for="" class="marg">Lieu</label> <br>
+                <label for="lieu" class="marg">Lieu</label> <br>
                 <div class="locate">
-                    <label for="domiciel">Domicile</label>
+                    <label for="domicile">Domicile</label>
                     <!-- <br> -->
                 <input type="radio" id="domicile" value="Domicile" v-model="details_lieu" @change="addLieu">
                 <br>

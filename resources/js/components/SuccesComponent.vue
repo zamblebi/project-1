@@ -1,12 +1,15 @@
 <template>
     <div class="success-order">
-        <transition name="fade">
+        <!-- <transition name="fade"> -->
             <img  :src="'/icons/check.svg'" alt="check">
-        </transition>
+        <!-- </transition> -->
         <br>
-        <h1>Commande effectuez avec succès !</h1>
+        <h4>Veillez patienter un moments votre commande est en cours de validation!</h4>
+            <p>Vous serez redirigez vers votre profil</p>
+            <br>
+        <div class="loader"></div>
         <br>
-        <router-link class="btn checked_ok" to="home/my-order-list">Continuer</router-link>
+        <!-- <router-link class="btn checked_ok" to="home/my-order-list">Continuer</router-link> -->
         <!-- <div class="loader"></div> -->
         <div class="space"></div>
     </div>
@@ -32,6 +35,22 @@
 </script>
 
 <style lang="scss">
+.loader {
+    margin: 0 auto;
+  border: 7px solid #f3f3f3; /* Light grey */
+  border-top: 7px solid #11AF22; /* Blue */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
     .space{
         margin-bottom: 150px;
     }
