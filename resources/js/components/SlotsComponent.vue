@@ -7,7 +7,7 @@
         <div>
             
         <h2 class="date-title">Choisissez la date et l'heure de récupération des vêtements</h2>
-        <h4 class="display_subtitle">Date et crénaux choisi : {{ dateStored }} et {{ slotStored }}</h4>
+        <h4 class="display_subtitle" v-if="dateStored">Date et crénaux choisi : {{ dateStored }} et {{ slotStored }}</h4>
         <div class="date_time">
             <VueCtkDateTimePicker locale="fr" :inline="true" color="#D65047" inputSize="lg" :noTime=true  button-now-translation="Maintenant" :noButtonNow=true format="YYYY-MM-DD" :noLabel=true  formatted="ll" :onlyDate=true v-model="date">
             </VueCtkDateTimePicker>
@@ -127,6 +127,9 @@ export default {
 //     background: red;
 // }
 
+.display_subtitle{
+    color: #D65047;
+}
 
 // Horaire style 
 .horaire{

@@ -3486,7 +3486,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".horaire ul {\n  padding-left: 0;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n.horaire ul li {\n  padding: 10px 20px;\n}\n.horaire ul li input:checked + label {\n  background-color: red !important;\n  color: red !important;\n  box-shadow: red !important;\n  border-color: red !important;\n  z-index: 1;\n}\n.horaire .btn-slot {\n  border: 1px solid #D65047;\n  background: #EFEFEF;\n  color: black;\n}\n.horaire .btn-slot:hover {\n  background: #9b9b9b;\n  color: #ffff;\n}\n.date-title {\n  text-align: center;\n}\n@media (max-width: 800px) {\n.date_time {\n    margin: 0 30px;\n}\n}\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}", ""]);
+exports.push([module.i, ".display_subtitle {\n  color: #D65047;\n}\n.horaire ul {\n  padding-left: 0;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n.horaire ul li {\n  padding: 10px 20px;\n}\n.horaire ul li input:checked + label {\n  background-color: red !important;\n  color: red !important;\n  box-shadow: red !important;\n  border-color: red !important;\n  z-index: 1;\n}\n.horaire .btn-slot {\n  border: 1px solid #D65047;\n  background: #EFEFEF;\n  color: black;\n}\n.horaire .btn-slot:hover {\n  background: #9b9b9b;\n  color: #ffff;\n}\n.date-title {\n  text-align: center;\n}\n@media (max-width: 800px) {\n.date_time {\n    margin: 0 30px;\n}\n}\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}", ""]);
 
 // exports
 
@@ -64039,14 +64039,16 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("h4", { staticClass: "display_subtitle" }, [
-                  _vm._v(
-                    "Date et crénaux choisi : " +
-                      _vm._s(_vm.dateStored) +
-                      " et " +
-                      _vm._s(_vm.slotStored)
-                  )
-                ]),
+                _vm.dateStored
+                  ? _c("h4", { staticClass: "display_subtitle" }, [
+                      _vm._v(
+                        "Date et crénaux choisi : " +
+                          _vm._s(_vm.dateStored) +
+                          " et " +
+                          _vm._s(_vm.slotStored)
+                      )
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
                   "div",
