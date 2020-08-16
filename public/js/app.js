@@ -63732,13 +63732,15 @@ var render = function() {
                 _vm._v("Choisissez un moyen de livraison")
               ]),
               _vm._v(" "),
-              _c("h4", { staticClass: "display_subtitle" }, [
-                _vm._v(
-                  "\n                        Type de livraison choisie : " +
-                    _vm._s(_vm.deliverableType) +
-                    "\n                    "
-                )
-              ]),
+              _vm.deliverableType
+                ? _c("h4", { staticClass: "display_subtitle" }, [
+                    _vm._v(
+                      "\n                        Type de livraison choisie : " +
+                        _vm._s(_vm.deliverableType) +
+                        "\n                    "
+                    )
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c("div", { staticClass: "container-deliverys" }, [
                 _c("div", { staticClass: "standard" }, [

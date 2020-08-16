@@ -5,7 +5,7 @@
         <div v-if="show">
 
      <h1 class="delivery-title">Choisissez un moyen de livraison</h1>
-                        <h4 class="display_subtitle">
+                        <h4 class="display_subtitle" v-if="deliverableType">
                             Type de livraison choisie : {{deliverableType}}
                         </h4>
 
