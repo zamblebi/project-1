@@ -894,7 +894,13 @@ body {
 
 .header-bar .navbar-brand,
 .header-bar .toggle-menu {
+  display: flex;
   padding: 7px 10px;
+}
+
+.header-bar .navbar-brand .toggle-panier,
+.header-bar .toggle-menu .toggle-panier {
+  padding: 12px 19px;
 }
 
 .header-bar #menu-burger {
@@ -1323,7 +1329,7 @@ ul {
   }
 
   .toggle-menu {
-    display: none;
+    display: none !important;
   }
 
   .navbar-nav-desktop {

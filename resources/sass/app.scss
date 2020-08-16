@@ -156,7 +156,11 @@ body{
     padding-right: 0px;
 
     .navbar-brand, .toggle-menu{
+        display: flex;
         padding: 7px 10px;
+        .toggle-panier{
+            padding: 12px 19px;
+        }
     }
     position: relative;
     background-color: #ffffff;
@@ -634,8 +638,8 @@ footer{
     .navbar-nav{
         display: none !important;
     }
-    .toggle-menu{
-        display: none;
+     .toggle-menu{
+        display: none !important;
     }
     
     .navbar-nav-desktop{

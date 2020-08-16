@@ -111,8 +111,13 @@
                             {{-- End Desktop menu  --}}
 
 
+                            {{-- <p>test</p> --}}
                             <div class="toggle-menu">
-                                <img id="menu-burger" src="/icons/menu.svg" alt="">
+                                <div class="toggle-panier">
+                                    <a href="{{ url('/order') }}" class="panier"><img class="shopping-icon" src="/icons/shopping-cart.svg" alt=""> </a>
+                                </div>
+                                    
+                                    <img id="menu-burger" src="/icons/menu.svg" alt="">
                             </div>
                         </div>
                                                 <!-- <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a> -->
@@ -122,9 +127,8 @@
                             @if (Route::has('login'))
                                 <div class="top-right links">
                                     @auth
-                                    <li class="nav-item">
-                                        <a href="{{ url('/order') }}" class="panier"><img class="shopping-icon" src="/icons/shopping-cart.svg" alt=""> <span>Mon Panier</span></a>
-                                    </li>
+                                    {{-- <li class="nav-item">
+                                    </li> --}}
                                     <li class="nav-item">
                                         <a href="{{ url('/home') }}">Mon profil</a>
                                     </li>
@@ -142,9 +146,9 @@
                                             {{-- @show --}}
                         <!-- Authentication Links -->
                         @guest
-                        <li class="nav-item">
-                        <a href="{{ url('/order') }}" class="panier"><img class="shopping-icon" src="/icons/shopping-cart.svg" alt=""> <span>Mon Panier</span></a>
-                            </li>
+                            {{-- <li class="nav-item">
+                                <a href="{{ url('/order') }}" class="panier"><img class="shopping-icon" src="/icons/shopping-cart.svg" alt=""> <span>Mon Panier</span></a>
+                            </li> --}}
                         <li class="nav-item">
                                 <a href="{{ url('/home') }}">Mon profil</a>
                             </li>
