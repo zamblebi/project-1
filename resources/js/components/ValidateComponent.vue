@@ -19,7 +19,7 @@
         <strong>Type de livraison choisie : </strong> <span class="reponse_"> {{deliverableType}}</span> | <router-link to="/order-deliverable"><i class="fa fa-edit"></i></router-link>
       </p> 
     <p>
-        <strong>Date de récupération et auraire: </strong> <span class="reponse_">{{dateOfRecuperation}} et entre {{dateChoose[1]}} ( {{slotDeliverableHours ? ` Vous serez livrer le ${dateOfDeviverable} ` : 'Vous serez livrer dans 4h'}} )</span>  |   <router-link to="/order-slots"><i class="fa fa-edit"></i></router-link>
+        <strong>Date de récupération et auraire: </strong> <span class="reponse_">{{dateOfRecuperation}} et entre {{JSON.parse(dateChoose).slot}} ( {{slotDeliverableHours ? ` Vous serez livrer le ${dateOfDeviverable} ` : 'Vous serez livrer dans 4h'}} )</span>  |   <router-link to="/order-slots"><i class="fa fa-edit"></i></router-link>
     </p>
     <p>
        <strong>Details de l'adresse :</strong> Lieu :<span class="reponse_">  {{details_lieu ? details_lieu : "Aucun"}} </span> , Details du lieu<span class="reponse_"> : {{details_adress ? details_adress : "Aucun"}}</span>
@@ -70,7 +70,7 @@ export default {
             adressMaps: localStorage.adressMaps,
             allPrice: JSON.parse(localStorage.getItem('store')).carts.allPrice,
             deliverableType: localStorage.deliverableType,
-            dateChoose: [localStorage.dateStored, localStorage.slotStored],
+            dateChoose: JSON.stringify({"date" : localStorage.dateStored, "slot": localStorage.slotStored}),
             details_adress: localStorage.details_adress,
             details_lieu: localStorage.details_lieu,
             carts: JSON.parse(localStorage.getItem('store')).carts,
@@ -137,7 +137,7 @@ export default {
             .then(response => console.log(response))
             .catch(error => console.log(error))
 
-            localStorage.clear();
+            // localStorage.clear();
             // window.location.href = '/success-order'
 
         }

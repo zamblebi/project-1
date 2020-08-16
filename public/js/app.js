@@ -2674,6 +2674,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return _defineProperty({
@@ -2696,7 +2699,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
     if (localStorage.slotStored) {
-      this.slotStored = localStorage.slotStored;
+      this.slot = localStorage.slotStored;
     } // Voir ce qui et dans le localstorage 
 
 
@@ -2705,12 +2708,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   updated: function updated() {
     // debugger
     this.slotStored = localStorage.slotStored;
+    console.log(this.slot);
   },
   methods: {
     // Ajouter la date dans le localStorage 
     addDate: function addDate() {
       if (this.dateStored && this.date == '') {
         localStorage.dateStored = this.dateStored;
+        localStorage.slotStored = this.slotStored;
+        localStorage.slotStored = this.slot;
       } else {
         localStorage.dateStored = this.date;
       }
@@ -2728,21 +2734,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.slotStored = localStorage.slotStored;
         console.log(this.slotStored);
       }
-    },
-    // Recuperer l'horaire  
-    getSlot: function getSlot(slot) {
-      // debugger
-      // if(this.slotStored && this.slot == ''){
-      localStorage.slotStored = this.slotStored; // localStorage.dateStored = this.dateStored
-      // console.log(slot)
-      // }
-      // else{
-      // debugger
+    } // Recuperer l'horaire  
+    // getSlot(slot){
+    // debugger
+    // if(this.slotStored && this.slot == ''){
+    // localStorage.dateStored = this.dateStored
+    // console.log(slot)
+    // }
+    // else{
+    // debugger
+    // }
+    // console.log(slot)
+    // }
 
-      this.slot = slot;
-      localStorage.slotStored = this.slot; // }
-      // console.log(slot)
-    }
   }
 });
 
@@ -2871,7 +2875,10 @@ __webpack_require__.r(__webpack_exports__);
       adressMaps: localStorage.adressMaps,
       allPrice: JSON.parse(localStorage.getItem('store')).carts.allPrice,
       deliverableType: localStorage.deliverableType,
-      dateChoose: [localStorage.dateStored, localStorage.slotStored],
+      dateChoose: JSON.stringify({
+        "date": localStorage.dateStored,
+        "slot": localStorage.slotStored
+      }),
       details_adress: localStorage.details_adress,
       details_lieu: localStorage.details_lieu,
       carts: JSON.parse(localStorage.getItem('store')).carts,
@@ -2941,8 +2948,8 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(response);
       })["catch"](function (error) {
         return console.log(error);
-      });
-      localStorage.clear(); // window.location.href = '/success-order'
+      }); // localStorage.clear();
+      // window.location.href = '/success-order'
     }
   }
 });
@@ -3205,7 +3212,13 @@ __webpack_require__.r(__webpack_exports__);
     return {
       user: '',
       my_order: '',
-      show: false
+      show: false,
+      options: {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }
     };
   },
   mounted: function mounted() {
@@ -3224,6 +3237,18 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       return console.log(error, _this.user);
     });
+  },
+  methods: {
+    convertDate: function convertDate(dateConvert) {
+      var changeDate = new Date(dateToConvert);
+      return changeDate.toLocaleString('fr-FR', this.options);
+    },
+    deliverableConvertDate: function deliverableConvertDate(deliverableDate) {
+      // var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+      var changeDate = new Date(dateToConvert);
+      changeDate.getDate(changeDate.getDate() + 2);
+      return changeDate.toLocaleString('fr-FR', this.options);
+    }
   }
 });
 
@@ -3435,7 +3460,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".horaire ul {\n  padding-left: 0;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n.horaire ul li {\n  padding: 10px 20px;\n}\n.horaire .btn-slot {\n  border: 1px solid #D65047;\n  background: #EFEFEF;\n  color: black;\n}\n.horaire .btn-slot:hover {\n  background: #9b9b9b;\n  color: #ffff;\n}\n.date-title {\n  text-align: center;\n}\n@media (max-width: 800px) {\n.date_time {\n    margin: 0 30px;\n}\n}\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}", ""]);
+exports.push([module.i, ".horaire ul {\n  padding-left: 0;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n.horaire ul li {\n  padding: 10px 20px;\n}\n.horaire ul li input:checked + label {\n  background-color: red !important;\n  color: red !important;\n  box-shadow: red !important;\n  border-color: red !important;\n  z-index: 1;\n}\n.horaire .btn-slot {\n  border: 1px solid #D65047;\n  background: #EFEFEF;\n  color: black;\n}\n.horaire .btn-slot:hover {\n  background: #9b9b9b;\n  color: #ffff;\n}\n.date-title {\n  text-align: center;\n}\n@media (max-width: 800px) {\n.date_time {\n    margin: 0 30px;\n}\n}\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.fade-enter-active, .fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}", ""]);
 
 // exports
 
@@ -63133,14 +63158,16 @@ var render = function() {
                   _c("br"),
                   _vm._v(" "),
                   _c("div", [
-                    _c("label", { staticClass: "marg", attrs: { for: "" } }, [
-                      _vm._v("Lieu")
-                    ]),
+                    _c(
+                      "label",
+                      { staticClass: "marg", attrs: { for: "lieu" } },
+                      [_vm._v("Lieu")]
+                    ),
                     _vm._v(" "),
                     _c("br"),
                     _vm._v(" "),
                     _c("div", { staticClass: "locate" }, [
-                      _c("label", { attrs: { for: "domiciel" } }, [
+                      _c("label", { attrs: { for: "domicile" } }, [
                         _vm._v("Domicile")
                       ]),
                       _vm._v(" "),
@@ -64003,17 +64030,28 @@ var render = function() {
                     _vm._l(_vm.horaire, function(h, i) {
                       return _c("li", { key: i }, [
                         _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-slot",
-                            on: {
-                              click: function($event) {
-                                return _vm.getSlot(h)
-                              }
-                            }
-                          },
+                          "label",
+                          { staticClass: "btn btn-slot", attrs: { for: i } },
                           [_vm._v(_vm._s(h))]
-                        )
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.slot,
+                              expression: "slot"
+                            }
+                          ],
+                          attrs: { type: "radio", id: i },
+                          domProps: { value: h, checked: _vm._q(_vm.slot, h) },
+                          on: {
+                            change: function($event) {
+                              _vm.slot = h
+                            }
+                          }
+                        })
                       ])
                     }),
                     0
@@ -64183,7 +64221,7 @@ var render = function() {
                     _vm._v(
                       _vm._s(_vm.dateOfRecuperation) +
                         " et entre " +
-                        _vm._s(_vm.dateChoose[1]) +
+                        _vm._s(JSON.parse(_vm.dateChoose).slot) +
                         " ( " +
                         _vm._s(
                           _vm.slotDeliverableHours
@@ -64779,7 +64817,23 @@ var render = function() {
                           _c("strong", [
                             _vm._v("Date et heure de récupération : ")
                           ]),
-                          _vm._v(_vm._s(order.deliverable_date))
+                          _vm._v(
+                            _vm._s(
+                              _vm.convertDate(
+                                JSON.parse(order.deliverable_date).date
+                              )
+                            ) + " | "
+                          ),
+                          _c("strong", [_vm._v("Date de livraison : ")]),
+                          _vm._v(
+                            " " +
+                              _vm._s(
+                                _vm.deliverableConvertDate(
+                                  JSON.parse(order.deliverable_date).date
+                                )
+                              ) +
+                              " "
+                          )
                         ]),
                         _vm._v(" "),
                         _c("p", [

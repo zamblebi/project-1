@@ -24,7 +24,7 @@
                 <p> <strong> Prix total de la commande : </strong>{{order.all_prices}} f</p>
 <!--                <p>Mon adresse de livraison et de recuperation : {{JSON.parse(order.adress_maps).long_name}}</p>-->
                <p> <strong>Type de livraison :</strong> {{order.deliverable_type}} {{order.deliverable_type == 'Simple' ? " | delais d'attente 48 heures " : " | delais d'attente 4 heures "}}</p>
-               <p> <strong>Date et heure de récupération : </strong>{{order.deliverable_date}}</p>
+               <p> <strong>Date et heure de récupération : </strong>{{convertDate(JSON.parse(order.deliverable_date).date)}} | <strong>Date de livraison : </strong> {{deliverableConvertDate(JSON.parse(order.deliverable_date).date)}} </p> 
                <p> <strong>Lieu de récupération :</strong>{{JSON.parse(order.adress_details).details_lieu}}</p>
                <hr>
 
@@ -45,7 +45,8 @@
             return{
                 user: '',
                 my_order: '',
-                show: false
+                show: false,
+             options: { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
             }
         },
         mounted() {
@@ -65,6 +66,18 @@
                     console.log(response.data)
                 })
                 .catch(error => console.log(error, this.user));
+        },
+        methods:{
+            convertDate(dateConvert){
+                let changeDate = new Date(dateToConvert);
+               return changeDate.toLocaleString('fr-FR', this.options)
+            },
+            deliverableConvertDate(deliverableDate){
+                // var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+                let changeDate = new Date(dateToConvert);
+                changeDate.getDate(changeDate.getDate() + 2)
+               return changeDate.toLocaleString('fr-FR', this.options)
+            }
         }
     }
 </script>
