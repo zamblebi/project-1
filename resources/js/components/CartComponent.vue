@@ -32,6 +32,7 @@
 
                 <!-- <button @click="count" class="btn">Calculer</button> -->
 
+                <p @click="clearCart" class="clear_cart">Vider le panier</p>
             </div>
             <!-- <hr> -->
             <br>
@@ -96,13 +97,23 @@ export default {
         'carts', ['allPrice']
     )},
     props: ['cltQtyAll','cltInCarts'],
-    methods: mapActions(
-        'carts', ['changeProductQuantity', 'removeOnCart', 'increment', 'decrement']
-    )
+    methods:{ ...mapActions(
+        'carts', ['changeProductQuantity', 'removeOnCart', 'increment', 'decrement', ]
+    ), clearCart(){
+        localStorage.removeItem('store');
+        location.reload()
+    }
+    }
 }
 </script>
 <style lang="scss">
-
+.clear_cart{
+    width: 150px;
+    margin: 0 auto;
+    cursor: pointer;
+    border: 1px solid #ffff;
+    border-radius: 7px;
+}
 .btn-desable{
         background: rgb(138, 138, 138) !important;
     }
