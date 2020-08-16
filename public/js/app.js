@@ -3240,13 +3240,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     convertDate: function convertDate(dateConvert) {
-      var changeDate = new Date(dateToConvert);
+      var changeDate = new Date(dateConvert);
       return changeDate.toLocaleString('fr-FR', this.options);
     },
     deliverableConvertDate: function deliverableConvertDate(deliverableDate) {
       // var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-      var changeDate = new Date(dateToConvert);
-      changeDate.getDate(changeDate.getDate() + 2);
+      var changeDate = new Date(deliverableDate);
+      changeDate.setDate(changeDate.getDate() + 2);
       return changeDate.toLocaleString('fr-FR', this.options);
     }
   }
@@ -64815,22 +64815,27 @@ var render = function() {
                         _vm._v(" "),
                         _c("p", [
                           _c("strong", [
-                            _vm._v("Date et heure de récupération : ")
+                            _vm._v("Date et horaire de récupération : ")
                           ]),
                           _vm._v(
                             _vm._s(
                               _vm.convertDate(
                                 JSON.parse(order.deliverable_date).date
                               )
-                            ) + " | "
+                            ) +
+                              " et entre " +
+                              _vm._s(JSON.parse(order.deliverable_date).slot) +
+                              " | "
                           ),
                           _c("strong", [_vm._v("Date de livraison : ")]),
                           _vm._v(
                             " " +
                               _vm._s(
-                                _vm.deliverableConvertDate(
-                                  JSON.parse(order.deliverable_date).date
-                                )
+                                order.deliverable_type == "Express"
+                                  ? "Dans quelque instant"
+                                  : _vm.deliverableConvertDate(
+                                      JSON.parse(order.deliverable_date).date
+                                    )
                               ) +
                               " "
                           )

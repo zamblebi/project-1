@@ -24,7 +24,7 @@
                 <p> <strong> Prix total de la commande : </strong>{{order.all_prices}} f</p>
 <!--                <p>Mon adresse de livraison et de recuperation : {{JSON.parse(order.adress_maps).long_name}}</p>-->
                <p> <strong>Type de livraison :</strong> {{order.deliverable_type}} {{order.deliverable_type == 'Simple' ? " | delais d'attente 48 heures " : " | delais d'attente 4 heures "}}</p>
-               <p> <strong>Date et heure de récupération : </strong>{{convertDate(JSON.parse(order.deliverable_date).date)}} | <strong>Date de livraison : </strong> {{deliverableConvertDate(JSON.parse(order.deliverable_date).date)}} </p> 
+               <p> <strong>Date et horaire de récupération : </strong>{{convertDate(JSON.parse(order.deliverable_date).date)}} et entre {{JSON.parse(order.deliverable_date).slot}} | <strong>Date de livraison : </strong> {{order.deliverable_type == "Express" ? "Dans quelque instant" : deliverableConvertDate(JSON.parse(order.deliverable_date).date)}} </p> 
                <p> <strong>Lieu de récupération :</strong>{{JSON.parse(order.adress_details).details_lieu}}</p>
                <hr>
 
@@ -69,13 +69,13 @@
         },
         methods:{
             convertDate(dateConvert){
-                let changeDate = new Date(dateToConvert);
+                let changeDate = new Date(dateConvert);
                return changeDate.toLocaleString('fr-FR', this.options)
             },
             deliverableConvertDate(deliverableDate){
                 // var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-                let changeDate = new Date(dateToConvert);
-                changeDate.getDate(changeDate.getDate() + 2)
+                let changeDate = new Date(deliverableDate);
+                changeDate.setDate(changeDate.getDate() + 2)
                return changeDate.toLocaleString('fr-FR', this.options)
             }
         }
