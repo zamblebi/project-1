@@ -2276,6 +2276,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -2288,11 +2290,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       value: 'all',
       show: false,
-      isLoading: true
+      isLoading: true,
+      dsp: true
     };
   },
-  updated: function updated() {// console.log(this.value)
-  }
+  updated: function updated() {}
 }, _defineProperty(_name$components$data, "components", {
   'cart-component': _CartComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
 }), _defineProperty(_name$components$data, "computed", _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapState"])({
@@ -2305,10 +2307,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   categories: function categories(state) {
     return state.products.categories;
   }
-})), Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])('carts', ['clothingQty']))), _defineProperty(_name$components$data, "mounted", function mounted() {
+})), Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])('carts', ['clothingQty']))), _defineProperty(_name$components$data, "created", function created() {
+  // window.addEventListener('scoll', this.handleScroll)
+  window.document.body.onscroll = function () {
+    if (window.scrollY >= 700) {
+      this.dsp = true;
+      console.log(window.scrollY, "top");
+    } else {
+      this.dsp = false;
+    } // console.log(123);
+
+  };
+}), _defineProperty(_name$components$data, "mounted", function mounted() {
   this.show = true;
   this.$store.dispatch('products/getProducts'), this.$store.dispatch('products/getCategories'); // console.log(this.categories)
-}), _defineProperty(_name$components$data, "methods", Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])('carts', ['addProductToCart'])), _name$components$data);
+}), _defineProperty(_name$components$data, "methods", _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])('carts', ['addProductToCart']))), _defineProperty(_name$components$data, "handleScroll", function handleScroll(e) {
+  console.log(e.target.scrollY);
+}), _name$components$data);
 
 /***/ }),
 
@@ -3376,7 +3391,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap);", ""]);
 
 // module
-exports.push([module.i, ".select_category {\n  display: flex;\n  padding: 10px 10px;\n  margin: 0 auto;\n  background-color: #D65047;\n  color: #fff;\n}\n.clothing-title {\n  text-align: center;\n}\n.list-clothing {\n  font-family: \"Quicksand\", sans-serif;\n  flex-direction: column;\n  align-items: center;\n}\n.list-clothing li {\n  border-radius: 7px;\n  background-color: #d650471f;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: nowrap;\n  width: 70%;\n  margin: 10px 0;\n  padding: 20px 10px !important;\n}\n.list-clothing li img {\n  width: 72px !important;\n}\n.list-clothing .clothing_info {\n  display: flex;\n  align-items: center;\n}\n.list-clothing .clothing_info h3 {\n  margin: 0;\n}\n.list-clothing .clothing_info .info_clothing {\n  display: flex;\n  flex-direction: column;\n  /* justify-content: start; */\n  align-items: flex-start;\n  padding-left: 15px;\n}\n@media (max-width: 900px) {\n.carts_list_clothing {\n    margin: 0 15px;\n}\n.list-clothing {\n    overflow: hidden !important;\n}\n.list-clothing li {\n    width: 80%;\n}\n}\n@media (max-width: 420px) {\n.btn {\n    font-size: 0.7rem;\n    padding: 0.7rem 1.4rem !important;\n}\n.info_clothing {\n    padding-left: 10px;\n    font-size: 0.7rem;\n}\n}", ""]);
+exports.push([module.i, ".top {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  text-align: center;\n  display: grid;\n  place-content: center;\n  text-decoration: none;\n  color: #ffff;\n  font-size: 20px;\n  z-index: 500;\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  background-color: #D65047;\n}\n.select_category {\n  display: flex;\n  padding: 10px 10px;\n  margin: 0 auto;\n  background-color: #D65047;\n  color: #fff;\n}\n.clothing-title {\n  text-align: center;\n}\n.list-clothing {\n  font-family: \"Quicksand\", sans-serif;\n  flex-direction: column;\n  align-items: center;\n}\n.list-clothing li {\n  border-radius: 7px;\n  background-color: #d650471f;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: nowrap;\n  width: 70%;\n  margin: 10px 0;\n  padding: 20px 10px !important;\n}\n.list-clothing li img {\n  width: 72px !important;\n}\n.list-clothing .clothing_info {\n  display: flex;\n  align-items: center;\n}\n.list-clothing .clothing_info h3 {\n  margin: 0;\n}\n.list-clothing .clothing_info .info_clothing {\n  display: flex;\n  flex-direction: column;\n  /* justify-content: start; */\n  align-items: flex-start;\n  padding-left: 15px;\n}\n@media (max-width: 900px) {\n.carts_list_clothing {\n    margin: 0 15px;\n}\n.list-clothing {\n    overflow: hidden !important;\n}\n.list-clothing li {\n    width: 80%;\n}\n}\n@media (max-width: 420px) {\n.btn {\n    font-size: 0.7rem;\n    padding: 0.7rem 1.4rem !important;\n}\n.info_clothing {\n    padding-left: 10px;\n    font-size: 0.7rem;\n}\n}", ""]);
 
 // exports
 
@@ -63449,7 +63464,31 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    {
+      on: {
+        "&scroll": function($event) {
+          return _vm.handleScroll($event)
+        }
+      }
+    },
     [
+      _c(
+        "a",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.dsp,
+              expression: "dsp"
+            }
+          ],
+          staticClass: "top",
+          attrs: { href: "#top" }
+        },
+        [_c("i", { staticClass: "fa fa-angle-up" })]
+      ),
+      _vm._v(" "),
       _c("h2", { staticClass: "clothing-title" }, [
         _vm._v("Choisir un service")
       ]),

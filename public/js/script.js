@@ -120,6 +120,14 @@ window.addEventListener("load", function (e) {
 // loader end
 //ajax request
 //end ajax request
+// document.addEventListener('scroll', function(e){
+//     let top = document.querySelector('.parentTop');
+//     if(window.scrollY >= 700){
+//         top.style.display = 'block'
+//      console.log('Display Top')   
+//     }
+//     // console.log(window.scrollY);
+// })
 
 /***/ }),
 
