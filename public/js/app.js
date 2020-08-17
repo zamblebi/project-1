@@ -3222,6 +3222,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3590,7 +3592,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "body, html {\n  height: 100%;\n}\nbody {\n  display: flex;\n  flex-direction: column;\n  margin: 0;\n}\nfooter {\n  flex-shrink: 0;\n  margin-bottom: -50px;\n}\n.my_order_list_all {\n  flex: 1 0 auto;\n}\n.my_title_order {\n  text-align: center;\n}\n.all_orders {\n  padding-left: 0;\n}\n.all_orders li {\n  margin: 15px 10px;\n  padding: 5px 10px;\n  border-radius: 7px;\n  background-color: #1c2d3417;\n}\n.all_orders p {\n  text-align: left;\n}\n\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.slide-fade-enter-active {\n  transition: all 0.3s ease;\n}\n.slide-fade-leave-active {\n  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter, .slide-fade-leave-to {\n  transform: translateX(10px);\n  opacity: 0;\n}", ""]);
+exports.push([module.i, ".status_re {\n  display: flex;\n  align-items: center;\n}\n.status_re .circle {\n  margin: 0 5px;\n}\n.circle {\n  width: 10px;\n  height: 10px;\n  line-height: 10px;\n  border-radius: 50%;\n  /* the magic */\n  -moz-border-radius: 50%;\n  -webkit-border-radius: 50%;\n  text-align: center;\n  color: white;\n  font-size: 16px;\n  text-transform: uppercase;\n  font-weight: 700;\n}\n.green {\n  background-color: #16a085;\n}\n.red {\n  background-color: #e74c3c;\n}\nbody, html {\n  height: 100%;\n}\nbody {\n  display: flex;\n  flex-direction: column;\n  margin: 0;\n}\nfooter {\n  flex-shrink: 0;\n  margin-bottom: -50px;\n}\n.my_order_list_all {\n  flex: 1 0 auto;\n}\n.my_title_order {\n  text-align: center;\n}\n.all_orders {\n  padding-left: 0;\n}\n.all_orders li {\n  margin: 15px 10px;\n  padding: 5px 10px;\n  border-radius: 7px;\n  background-color: #1c2d3417;\n}\n.all_orders p {\n  text-align: left;\n}\n\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.slide-fade-enter-active {\n  transition: all 0.3s ease;\n}\n.slide-fade-leave-active {\n  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter, .slide-fade-leave-to {\n  transform: translateX(10px);\n  opacity: 0;\n}", ""]);
 
 // exports
 
@@ -64871,6 +64873,31 @@ var render = function() {
                             _vm._s(
                               JSON.parse(order.adress_details).details_lieu
                             )
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "status_re" }, [
+                          _c("div", {
+                            class:
+                              order.recuperation == 1
+                                ? "circle green"
+                                : "circle red"
+                          }),
+                          _vm._v(
+                            _vm._s(
+                              order.recuperation == 1
+                                ? "Vêtements récupérés"
+                                : "Vêtements pas encore récupérés"
+                            ) +
+                              " | " +
+                              _vm._s(
+                                order.recuperation == 1
+                                  ? "Service en cours..."
+                                  : " Le service sur cette commande n'a pas encore débuté"
+                              ) +
+                              "  "
                           )
                         ]),
                         _vm._v(" "),

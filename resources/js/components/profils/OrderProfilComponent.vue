@@ -26,6 +26,8 @@
                <p> <strong>Type de livraison :</strong> {{order.deliverable_type}} {{order.deliverable_type == 'Simple' ? " | delais d'attente 48 heures " : " | delais d'attente 4 heures "}}</p>
                <p> <strong>Date et horaire de récupération : </strong>{{convertDate(JSON.parse(order.deliverable_date).date)}} et entre {{JSON.parse(order.deliverable_date).slot}} | <strong>Date de livraison : </strong> {{order.deliverable_type == "Express" ? "Dans quelque instant" : deliverableConvertDate(JSON.parse(order.deliverable_date).date)}} </p> 
                <p> <strong>Lieu de récupération :</strong>{{JSON.parse(order.adress_details).details_lieu}}</p>
+               <br>
+               <span class="status_re"><div :class="order.recuperation == 1 ? 'circle green' : 'circle red' "></div>{{order.recuperation == 1 ? "Vêtements récupérés" : "Vêtements pas encore récupérés"}} | {{order.recuperation == 1 ? "Service en cours..." : " Le service sur cette commande n'a pas encore débuté"}}  </span> 
                <hr>
 
 <!--           </div>-->
@@ -82,6 +84,40 @@
     }
 </script>
 <style lang="scss">
+.status_re{
+    display: flex;
+    align-items: center;
+    .circle{
+        margin: 0 5px;
+    }
+}
+.circle {
+  width: 10px;
+  height: 10px;
+  line-height: 10px;
+  border-radius: 50%; /* the magic */
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+//   margin: 0 auto 40px;
+}
+
+.green {
+  background-color: #16a085;
+}
+
+.red {
+  background-color: #e74c3c;
+}
+
+
+
+
+
 body, html{
     height: 100%;
 }
