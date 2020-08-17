@@ -122,7 +122,9 @@ export default {
 
 </script>
 <style lang="scss">
-
+.date-time-picker{
+    z-index: -22;
+}
 // .active{
 //     background: red;
 // }
