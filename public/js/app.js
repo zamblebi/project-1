@@ -3412,9 +3412,17 @@ exports.push([module.i, ".display_subtitle {\n  text-align: center;\n  margin-to
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/GlobalOrderComponent.vue?vue&type=style&index=0&lang=scss& ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: expected \"{\".\n   ╷\n49 │         margin-bottom: 0px;\n   │                           ^\n   ╵\n  /Users/macbookpro/Desktop/Autres/project-1/resources/js/components/GlobalOrderComponent.vue 49:27  root stylesheet");
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".order-menu {\n  display: flex;\n  justify-content: center;\n}\n.order-menu li {\n  padding: 0 20px;\n}\n.order-menu li a {\n  /*text-decoration: none;*/\n  color: black;\n}\n.global {\n  margin-bottom: 0px;\n}", ""]);
+
+// exports
+
 
 /***/ }),
 
