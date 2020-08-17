@@ -31,7 +31,7 @@
         </div>
         <loader-component :is-visible="isLoading"></loader-component>
         <div class="load"></div>
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm navbar-sticky-top">
             {{-- <menu-component></menu-component> --}}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="container wrapper">
@@ -40,7 +40,7 @@
                         {{-- header brand  --}}
                     <a class="navbar-brand"  href="{{ url('/') }}">
                         <img class="logo" src="/logo.png" alt="">
-                      MON PRESSING 
+                      MON PRESSING
                     </a>
                     {{-- Desktop menu  --}}
                         <ul class="navbar-nav-desktop" >
@@ -65,20 +65,20 @@
                                                 <a href="{{ route('register') }}">Inscription</a>
                                                 @endif --}}
                                                 @endauth
-                                                
+
                                                 {{-- </div>--}}
                                                 @endif
                                                 {{-- </nav> --}}
                                                 {{-- @show --}}
                                                 <!-- Authentication Links -->
                                 @guest
-                                
+
                                 <li class="nav-item">
-                                        
+
                                                 <a href="{{ url('/order') }}" class="panier"><img class="shopping-icon" src="/icons/shopping-cart.svg" alt=""> <span>Mon Panier</span></a>
 
                                     </li>
-                                
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
                                 </li>
@@ -116,7 +116,7 @@
                                 <div class="toggle-panier">
                                     <a href="{{ url('/order') }}" class="panier"><img class="shopping-icon" src="/icons/shopping-cart.svg" alt=""> </a>
                                 </div>
-                                    
+
                                     <img id="menu-burger" src="/icons/menu.svg" alt="">
                             </div>
                         </div>
@@ -189,6 +189,7 @@
                 </div>
             </div>
         </nav>
+        <div class="header-space"></div>
 
         <main class="py-4">
             @yield('content')

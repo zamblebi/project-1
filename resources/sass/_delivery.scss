@@ -32,7 +32,7 @@
 
     }
     .simple, .express{
-        .frais{ 
+        .frais{
             display: flex;
             justify-content: center;
             padding: 20px 0;
@@ -56,5 +56,9 @@
             .delivery{
                 margin: 30px 20px;
             }
+    }
+
+    .delivery-title {
+        padding: 5px !important;
     }
 }

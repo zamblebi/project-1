@@ -364,6 +364,10 @@
   .container-deliverys .delivery {
     margin: 30px 20px;
   }
+
+  .delivery-title {
+    padding: 5px !important;
+  }
 }
 
 .change_password {
@@ -1457,6 +1461,48 @@ ul {
     flex-direction: column;
     text-align: center;
     align-items: center;
+  }
+}
+
+/*
+custom css
+ */
+
+@media (min-width: 875px) {
+  .commands ul li img {
+    width: 100px;
+  }
+}
+
+.navbar-sticky-top {
+  width: 100%;
+  position: fixed;
+}
+
+.container-deliverys .icon-delivery {
+  width: 90px;
+  padding: 5px 0;
+}
+
+.header-space {
+  width: 100%;
+  height: 65px;
+}
+
+.container {
+  background-color: white;
+}
+
+.standard,
+.express {
+  width: 100%;
+  max-width: 420px;
+}
+
+@media (max-width: 505px) {
+  .container-deliverys .icon-delivery {
+    width: 60px !important;
+    padding: 5px 0;
   }
 }
 

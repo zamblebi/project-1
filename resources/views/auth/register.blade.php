@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="inscription">
-        
+
                 <div class="inscription-title">{{ __('Incription') }}</div>
 
                 <div class="inscription-form">
@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="form-name-inscription">
-                            <label for="firstName">{{ __('Prenom') }}</label>
+                            <label for="firstName">{{ __('Prénoms') }}</label>
 
                             <div class="">
                                 <input id="firstName" placeholder="Leandre" type="text" class="@error('FistName') is-invalid @enderror" name="firstName" value="{{ old('firstaName') }}" required autocomplete="fitstName" autofocus>
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="form-email-inscription">
-                            <label for="email">{{ __('Adresse E-Mail') }}</label>
+                            <label for="email">{{ __('Adresse email') }}</label>
 
                             <div class="">
                                 <input id="email" type="email" placeholder="exemple@exemple.com" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -50,9 +50,9 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
                         <div class="form-email-inscription">
-                            <label for="phone_number">{{ __('Numero de telephone') }}</label>
+                            <label for="phone_number">{{ __('Numéro de téléphone') }}</label>
 
                             <div class="">
                                 <input id="phone_number" type="text" placeholder="012345678" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number">

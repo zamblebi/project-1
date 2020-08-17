@@ -2265,30 +2265,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (_name$components$data = {
-  name: 'ClothingComponent',
+  name: "ClothingComponent",
   components: {
-    'LoaderComponent': _LoaderComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
+    LoaderComponent: _LoaderComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
-      value: 'all',
+      value: "all",
       show: false,
       isLoading: true,
       dsp: true
@@ -2296,7 +2283,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   updated: function updated() {}
 }, _defineProperty(_name$components$data, "components", {
-  'cart-component': _CartComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
+  "cart-component": _CartComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
 }), _defineProperty(_name$components$data, "computed", _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapState"])({
   products: function products(state) {
     return state.products.products;
@@ -2307,7 +2294,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   categories: function categories(state) {
     return state.products.categories;
   }
-})), Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])('carts', ['clothingQty']))), _defineProperty(_name$components$data, "created", function created() {
+})), Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])("carts", ["clothingQty"]))), _defineProperty(_name$components$data, "created", function created() {
   // window.addEventListener('scoll', this.handleScroll)
   window.document.body.onscroll = function () {
     if (window.scrollY >= 700) {
@@ -2320,8 +2307,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   };
 }), _defineProperty(_name$components$data, "mounted", function mounted() {
   this.show = true;
-  this.$store.dispatch('products/getProducts'), this.$store.dispatch('products/getCategories'); // console.log(this.categories)
-}), _defineProperty(_name$components$data, "methods", _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])('carts', ['addProductToCart']))), _defineProperty(_name$components$data, "handleScroll", function handleScroll(e) {
+  this.$store.dispatch("products/getProducts"), this.$store.dispatch("products/getCategories"); // console.log(this.categories)
+}), _defineProperty(_name$components$data, "methods", _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])("carts", ["addProductToCart"]))), _defineProperty(_name$components$data, "handleScroll", function handleScroll(e) {
   console.log(e.target.scrollY);
 }), _name$components$data);
 
@@ -2399,15 +2386,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       deliverablePrices: {
-        standard: 'Gratuit',
+        standard: "Gratuit",
         express: 5000
       },
-      deliverableType: '',
+      deliverableType: "",
       show: false // typeD : ''
 
     };
@@ -2416,25 +2406,25 @@ __webpack_require__.r(__webpack_exports__);
     this.show = true;
     this.viewDeliverable();
 
-    if (localStorage.getItem('store')) {
-      if (JSON.parse(localStorage.getItem('store')).carts.allPrice < 5000) {
+    if (localStorage.getItem("store")) {
+      if (JSON.parse(localStorage.getItem("store")).carts.allPrice < 5000) {
         this.deliverablePrices.standard = 1000;
         new noty__WEBPACK_IMPORTED_MODULE_0___default.a({
           // theme: 'metroui',
-          type: 'error',
+          type: "error",
           text: "Votre commande est en dessous de 5000f alors la livraison Standard sera à 1000f",
-          layout: 'topRight',
+          layout: "topRight",
           timeout: 3500
         }).show();
       }
 
-      this.deliverablePrices.express = JSON.parse(localStorage.getItem('store')).carts.allPrice; //notification
+      this.deliverablePrices.express = JSON.parse(localStorage.getItem("store")).carts.allPrice; //notification
 
-      if (JSON.parse(localStorage.getItem('store')).carts.allPrice > 5000) {
+      if (JSON.parse(localStorage.getItem("store")).carts.allPrice > 5000) {
         new noty__WEBPACK_IMPORTED_MODULE_0___default.a({
-          type: 'success',
+          type: "success",
           text: "La livraison Standard sera gratuite !",
-          layout: 'topRight',
+          layout: "topRight",
           timeout: 3500
         }).show();
       }
@@ -3391,7 +3381,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap);", ""]);
 
 // module
-exports.push([module.i, ".top {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  text-align: center;\n  display: grid;\n  place-content: center;\n  text-decoration: none;\n  color: #ffff;\n  font-size: 20px;\n  z-index: 500;\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  background-color: #D65047;\n}\n.select_category {\n  display: flex;\n  padding: 10px 10px;\n  margin: 0 auto;\n  background-color: #D65047;\n  color: #fff;\n}\n.clothing-title {\n  text-align: center;\n}\n.list-clothing {\n  font-family: \"Quicksand\", sans-serif;\n  flex-direction: column;\n  align-items: center;\n}\n.list-clothing li {\n  border-radius: 7px;\n  background-color: #d650471f;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: nowrap;\n  width: 70%;\n  margin: 10px 0;\n  padding: 20px 10px !important;\n}\n.list-clothing li img {\n  width: 72px !important;\n}\n.list-clothing .clothing_info {\n  display: flex;\n  align-items: center;\n}\n.list-clothing .clothing_info h3 {\n  margin: 0;\n}\n.list-clothing .clothing_info .info_clothing {\n  display: flex;\n  flex-direction: column;\n  /* justify-content: start; */\n  align-items: flex-start;\n  padding-left: 15px;\n}\n@media (max-width: 900px) {\n.carts_list_clothing {\n    margin: 0 15px;\n}\n.list-clothing {\n    overflow: hidden !important;\n}\n.list-clothing li {\n    width: 80%;\n}\n}\n@media (max-width: 420px) {\n.btn {\n    font-size: 0.7rem;\n    padding: 0.7rem 1.4rem !important;\n}\n.info_clothing {\n    padding-left: 10px;\n    font-size: 0.7rem;\n}\n}", ""]);
+exports.push([module.i, ".top {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  text-align: center;\n  display: grid;\n  place-content: center;\n  text-decoration: none;\n  color: #ffff;\n  font-size: 20px;\n  z-index: 500;\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  background-color: #d65047;\n}\n.select_category {\n  display: flex;\n  padding: 10px 10px;\n  width: 75%;\n  max-width: 200px;\n  text-align: left;\n  margin: 0 auto;\n  background-color: #d65047;\n  color: #fff;\n}\n.clothing-title {\n  text-align: center;\n}\n.list-clothing {\n  font-family: \"Quicksand\", sans-serif;\n  flex-direction: column;\n  align-items: center;\n}\n.list-clothing li {\n  border-radius: 7px;\n  background-color: #d650471f;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: nowrap;\n  width: 70%;\n  margin: 10px 0;\n  padding: 20px 10px !important;\n}\n.list-clothing li img {\n  width: 72px !important;\n}\n.list-clothing .clothing_info {\n  display: flex;\n  align-items: center;\n}\n.list-clothing .clothing_info h3 {\n  margin: 0;\n}\n.list-clothing .clothing_info .info_clothing {\n  display: flex;\n  flex-direction: column;\n  /* justify-content: start; */\n  align-items: flex-start;\n  padding-left: 15px;\n}\n@media (max-width: 900px) {\n.carts_list_clothing {\n    margin: 0 15px;\n}\n.list-clothing {\n    overflow: hidden !important;\n}\n.list-clothing li {\n    width: 80%;\n}\n}\n@media (max-width: 420px) {\n.btn {\n    font-size: 0.7rem;\n    padding: 0.7rem 1.4rem !important;\n}\n.info_clothing {\n    padding-left: 10px;\n    font-size: 0.7rem;\n}\n}", ""]);
 
 // exports
 
@@ -3422,17 +3412,9 @@ exports.push([module.i, ".display_subtitle {\n  text-align: center;\n  margin-to
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/GlobalOrderComponent.vue?vue&type=style&index=0&lang=scss& ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".order-menu {\n  display: flex;\n  justify-content: center;\n}\n.order-menu li {\n  padding: 0 20px;\n}\n.order-menu li a {\n  /*text-decoration: none;*/\n  color: black;\n}\n.global {\n  margin-bottom: 200px;\n}", ""]);
-
-// exports
-
+throw new Error("Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: expected \"{\".\n   ╷\n49 │         margin-bottom: 0px;\n   │                           ^\n   ╵\n  /Users/macbookpro/Desktop/Autres/project-1/resources/js/components/GlobalOrderComponent.vue 49:27  root stylesheet");
 
 /***/ }),
 
@@ -63489,7 +63471,7 @@ var render = function() {
         [_c("i", { staticClass: "fa fa-angle-up" })]
       ),
       _vm._v(" "),
-      _c("h2", { staticClass: "clothing-title" }, [
+      _c("h2", { staticClass: "clothing-title mt-4" }, [
         _vm._v("Choisir un service")
       ]),
       _vm._v(" "),
@@ -63565,11 +63547,7 @@ var render = function() {
                                       { staticClass: "info_clothing" },
                                       [
                                         _c("h3", [
-                                          _vm._v(
-                                            "\n                                    " +
-                                              _vm._s(product.name) +
-                                              "\n                                "
-                                          )
+                                          _vm._v(_vm._s(product.name))
                                         ]),
                                         _vm._v(" "),
                                         _c("div", [
@@ -63582,7 +63560,9 @@ var render = function() {
                                         _vm._v(" "),
                                         _c("div", [
                                           _c("p", [
-                                            _vm._v(" Catégorie :  "),
+                                            _vm._v(
+                                              "\n                        Catégorie :\n                        "
+                                            ),
                                             _c("em", [
                                               _vm._v(
                                                 _vm._s(product.category.name)
@@ -63631,11 +63611,7 @@ var render = function() {
                                       { staticClass: "info_clothing" },
                                       [
                                         _c("h3", [
-                                          _vm._v(
-                                            "\n                                    " +
-                                              _vm._s(product.name) +
-                                              "\n                                "
-                                          )
+                                          _vm._v(_vm._s(product.name))
                                         ]),
                                         _vm._v(" "),
                                         _c("div", [
@@ -63648,7 +63624,9 @@ var render = function() {
                                         _vm._v(" "),
                                         _c("div", [
                                           _c("p", [
-                                            _vm._v(" Catégorie :  "),
+                                            _vm._v(
+                                              "\n                        Catégorie :\n                        "
+                                            ),
                                             _c("em", [
                                               _vm._v(
                                                 _vm._s(product.category.name)
@@ -63729,18 +63707,8 @@ var render = function() {
         _vm.show
           ? _c("div", [
               _c("h1", { staticClass: "delivery-title" }, [
-                _vm._v("Choisissez un moyen de livraison")
+                _vm._v("Moyen de livraison")
               ]),
-              _vm._v(" "),
-              _vm.deliverableType
-                ? _c("h4", { staticClass: "display_subtitle" }, [
-                    _vm._v(
-                      "\n                        Type de livraison choisie : " +
-                        _vm._s(_vm.deliverableType) +
-                        "\n                    "
-                    )
-                  ])
-                : _vm._e(),
               _vm._v(" "),
               _c("div", { staticClass: "container-deliverys" }, [
                 _c("div", { staticClass: "standard" }, [
@@ -63750,17 +63718,17 @@ var render = function() {
                     [
                       _c("h3", [_vm._v("Standard")]),
                       _vm._v(" "),
-                      _c("img", {
-                        staticClass: "icon-delivery",
-                        attrs: { src: "/icons/delivery.svg", alt: "" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "small-datails" }, [
-                        _c("strong", [
-                          _c("em", [
-                            _vm._v(
-                              "Vos vêtements serons livrées 48h après récupération"
-                            )
+                      _c("div", { staticClass: "row" }, [
+                        _c("img", {
+                          staticClass: "icon-delivery",
+                          attrs: { src: "/icons/delivery.svg", alt: "" }
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "small-datails" }, [
+                          _c("strong", [
+                            _c("em", [
+                              _vm._v("Livrés sous 48h après récupération")
+                            ])
                           ])
                         ])
                       ]),
@@ -63774,13 +63742,11 @@ var render = function() {
                         _vm._v(" "),
                         _vm.deliverablePrices.standard != "Gratuit"
                           ? _c("span", { staticClass: "standard_del" }, [
-                              _c("h4", [_vm._v("Frais de transport :  ")]),
+                              _c("h4", [_vm._v("Frais de transport :")]),
                               _vm._v(" "),
                               _c("em", [
                                 _vm._v(
-                                  " " +
-                                    _vm._s(_vm.deliverablePrices.standard) +
-                                    " f "
+                                  _vm._s(_vm.deliverablePrices.standard) + " f"
                                 )
                               ])
                             ])
@@ -63819,20 +63785,14 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "small-datails" }, [
                         _c("strong", [
-                          _c("em", [
-                            _vm._v(
-                              "Vos vêtements serons livrées 4h après récupération"
-                            )
-                          ])
+                          _c("em", [_vm._v("Livrés 4h après récupération")])
                         ])
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "frais" }, [
                         _c("em", [
                           _vm._v(
-                            " " +
-                              _vm._s(_vm.deliverablePrices.express) +
-                              "f x 2 "
+                            _vm._s(_vm.deliverablePrices.express) + "f x 2"
                           )
                         ])
                       ]),
@@ -85859,8 +85819,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/samuel/code/project-1/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/samuel/code/project-1/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/macbookpro/Desktop/Autres/project-1/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/macbookpro/Desktop/Autres/project-1/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
