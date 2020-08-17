@@ -43,6 +43,6 @@
         }
     }
     .global{
-        margin-bottom: 200px;
+        margin-bottom: 0px;
     }
 </style>
