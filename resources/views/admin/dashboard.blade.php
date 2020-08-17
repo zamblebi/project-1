@@ -11,12 +11,13 @@
       <th scope="col">Prix total</th>
       <th scope="col">Livrer</th>
       <th scope="col">Valider</th>
+      <th scope="col">Recuperation</th>
     </tr>
   </thead>
   <tbody>
     @foreach ($orders as $order)
     <tr>
-    <th scope="row">{{$order->id}}</th>
+    <th scope="row"><a href="{{route('show-order', $order->id)}}">Voir</a></th>
     <td>{{$order->user->firstName}} {{$order->user->lastName}}</td>
       <td>{{json_decode($order->adress_maps)->long_name}}</td>
       <td>{{$order->user->phone_number}}</td>
@@ -31,6 +32,17 @@
         @else
           <button class="btn btn-success" type="submit">Livrer</button>
         @endif
+      </form>
+      </td>
+      <td>
+      <form method="post">
+        @csrf
+        <input type="hidden"  name="recup" value="1">
+        {{-- @if ($order->deliver == 0) --}}
+          <button class="btn btn-danger" type="submit">Pas encore recuperer</button>
+        {{-- @else --}}
+          {{-- <button class="btn btn-success" type="submit">Recuperer</button> --}}
+        {{-- @endif --}}
       </form>
       </td>
     </tr>

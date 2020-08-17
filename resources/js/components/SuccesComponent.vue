@@ -4,12 +4,13 @@
             <img  :src="'/icons/check.svg'" alt="check">
         <!-- </transition> -->
         <br>
-        <h4>Veillez patienter un moments votre commande est en cours de validation!</h4>
-            <p>Vous serez redirigez vers votre profil</p>
-            <br>
-        <div class="loader"></div>
+        <h4>Votre commande a bien été effectuez</h4>
+        <!-- <h4>Veillez patienter un moments votre commande est en cours de validation!</h4> -->
+            <!-- <p>Vous serez redirigez vers votre profil</p> -->
+            <!-- <br> -->
+        <!-- <div class="loader"></div> -->
         <br>
-        <!-- <router-link class="btn checked_ok" to="home/my-order-list">Continuer</router-link> -->
+        <router-link class="btn checked_ok" to="home/my-order-list">Continuer</router-link>
         <!-- <div class="loader"></div> -->
         <div class="space"></div>
     </div>

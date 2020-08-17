@@ -137,9 +137,9 @@ export default {
             .then(response => console.log(response))
             .catch(error => console.log(error))
 
-            localStorage.clear();
+            // localStorage.clear();
             // window.location.href = '/success-order'
-            window.location.href= '/send'
+            // window.location.href= '/send'
         }
     }
 }

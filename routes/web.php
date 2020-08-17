@@ -41,6 +41,9 @@ if(Auth::check())
 // });
 // Route::get('/dashboard')->middleware('auth');
 
+// See one order in dashboard 
+Route::get('ddashboard/show/{id}', 'OrdersController@show')->name('show-order')->middleware('auth');
+
 Route::get('/dashboard', 'OrdersController@getOrder')->name('dashboard')->middleware('auth');
 
 //Clothing

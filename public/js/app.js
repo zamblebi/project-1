@@ -2799,6 +2799,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SuccesComponent.vue",
   data: function data() {
@@ -2972,10 +2973,9 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(response);
       })["catch"](function (error) {
         return console.log(error);
-      });
-      localStorage.clear(); // window.location.href = '/success-order'
-
-      window.location.href = '/send';
+      }); // localStorage.clear();
+      // window.location.href = '/success-order'
+      // window.location.href= '/send'
     }
   }
 });
@@ -64166,27 +64166,28 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "success-order" }, [
-    _c("img", { attrs: { src: "/icons/check.svg", alt: "check" } }),
-    _vm._v(" "),
-    _c("br"),
-    _vm._v(" "),
-    _c("h4", [
-      _vm._v(
-        "Veillez patienter un moments votre commande est en cours de validation!"
-      )
-    ]),
-    _vm._v(" "),
-    _c("p", [_vm._v("Vous serez redirigez vers votre profil")]),
-    _vm._v(" "),
-    _c("br"),
-    _vm._v(" "),
-    _c("div", { staticClass: "loader" }),
-    _vm._v(" "),
-    _c("br"),
-    _vm._v(" "),
-    _c("div", { staticClass: "space" })
-  ])
+  return _c(
+    "div",
+    { staticClass: "success-order" },
+    [
+      _c("img", { attrs: { src: "/icons/check.svg", alt: "check" } }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("h4", [_vm._v("Votre commande a bien été effectuez")]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "router-link",
+        { staticClass: "btn checked_ok", attrs: { to: "home/my-order-list" } },
+        [_vm._v("Continuer")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "space" })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
