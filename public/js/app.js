@@ -2399,15 +2399,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       deliverablePrices: {
-        standard: 'Gratuit',
+        standard: "Gratuit",
         express: 5000
       },
-      deliverableType: '',
+      deliverableType: "",
       show: false // typeD : ''
 
     };
@@ -2416,25 +2419,25 @@ __webpack_require__.r(__webpack_exports__);
     this.show = true;
     this.viewDeliverable();
 
-    if (localStorage.getItem('store')) {
-      if (JSON.parse(localStorage.getItem('store')).carts.allPrice < 5000) {
+    if (localStorage.getItem("store")) {
+      if (JSON.parse(localStorage.getItem("store")).carts.allPrice < 5000) {
         this.deliverablePrices.standard = 1000;
         new noty__WEBPACK_IMPORTED_MODULE_0___default.a({
           // theme: 'metroui',
-          type: 'error',
+          type: "error",
           text: "Votre commande est en dessous de 5000f alors la livraison Standard sera à 1000f",
-          layout: 'topRight',
+          layout: "topRight",
           timeout: 3500
         }).show();
       }
 
-      this.deliverablePrices.express = JSON.parse(localStorage.getItem('store')).carts.allPrice; //notification
+      this.deliverablePrices.express = JSON.parse(localStorage.getItem("store")).carts.allPrice; //notification
 
-      if (JSON.parse(localStorage.getItem('store')).carts.allPrice > 5000) {
+      if (JSON.parse(localStorage.getItem("store")).carts.allPrice > 5000) {
         new noty__WEBPACK_IMPORTED_MODULE_0___default.a({
-          type: 'success',
+          type: "success",
           text: "La livraison Standard sera gratuite !",
-          layout: 'topRight',
+          layout: "topRight",
           timeout: 3500
         }).show();
       }
@@ -3429,7 +3432,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".order-menu {\n  display: flex;\n  justify-content: center;\n}\n.order-menu li {\n  padding: 0 20px;\n}\n.order-menu li a {\n  /*text-decoration: none;*/\n  color: black;\n}\n.global {\n  margin-bottom: 200px;\n}", ""]);
+exports.push([module.i, ".order-menu {\n  display: flex;\n  justify-content: center;\n}\n.order-menu li {\n  padding: 0 20px;\n}\n.order-menu li a {\n  /*text-decoration: none;*/\n  color: black;\n}", ""]);
 
 // exports
 
@@ -63729,18 +63732,8 @@ var render = function() {
         _vm.show
           ? _c("div", [
               _c("h1", { staticClass: "delivery-title" }, [
-                _vm._v("Choisissez un moyen de livraison")
+                _vm._v("Moyen de livraison")
               ]),
-              _vm._v(" "),
-              _vm.deliverableType
-                ? _c("h4", { staticClass: "display_subtitle" }, [
-                    _vm._v(
-                      "\n                        Type de livraison choisie : " +
-                        _vm._s(_vm.deliverableType) +
-                        "\n                    "
-                    )
-                  ])
-                : _vm._e(),
               _vm._v(" "),
               _c("div", { staticClass: "container-deliverys" }, [
                 _c("div", { staticClass: "standard" }, [
@@ -63750,17 +63743,17 @@ var render = function() {
                     [
                       _c("h3", [_vm._v("Standard")]),
                       _vm._v(" "),
-                      _c("img", {
-                        staticClass: "icon-delivery",
-                        attrs: { src: "/icons/delivery.svg", alt: "" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "small-datails" }, [
-                        _c("strong", [
-                          _c("em", [
-                            _vm._v(
-                              "Vos vêtements serons livrées 48h après récupération"
-                            )
+                      _c("div", { staticClass: "row" }, [
+                        _c("img", {
+                          staticClass: "icon-delivery",
+                          attrs: { src: "/icons/delivery.svg", alt: "" }
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "small-datails" }, [
+                          _c("strong", [
+                            _c("em", [
+                              _vm._v("Livrés sous 48h après récupération")
+                            ])
                           ])
                         ])
                       ]),
@@ -63774,13 +63767,11 @@ var render = function() {
                         _vm._v(" "),
                         _vm.deliverablePrices.standard != "Gratuit"
                           ? _c("span", { staticClass: "standard_del" }, [
-                              _c("h4", [_vm._v("Frais de transport :  ")]),
+                              _c("h4", [_vm._v("Frais de transport :")]),
                               _vm._v(" "),
                               _c("em", [
                                 _vm._v(
-                                  " " +
-                                    _vm._s(_vm.deliverablePrices.standard) +
-                                    " f "
+                                  _vm._s(_vm.deliverablePrices.standard) + " f"
                                 )
                               ])
                             ])
@@ -63819,20 +63810,14 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "small-datails" }, [
                         _c("strong", [
-                          _c("em", [
-                            _vm._v(
-                              "Vos vêtements serons livrées 4h après récupération"
-                            )
-                          ])
+                          _c("em", [_vm._v("Livrés 4h après récupération")])
                         ])
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "frais" }, [
                         _c("em", [
                           _vm._v(
-                            " " +
-                              _vm._s(_vm.deliverablePrices.express) +
-                              "f x 2 "
+                            _vm._s(_vm.deliverablePrices.express) + "f x 2"
                           )
                         ])
                       ]),
@@ -85859,8 +85844,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/samuel/code/project-1/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/samuel/code/project-1/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/macbookpro/Desktop/Autres/project-1/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/macbookpro/Desktop/Autres/project-1/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
