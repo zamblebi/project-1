@@ -118,6 +118,7 @@ Route::post('dashboard/category/update/{id}', 'CategoryController@update')->name
 
 //Order checked
 Route::post('dashboard/checked/{id}', 'OrdersController@checked')->name('order.checked');
+Route::post('dashboard/checked_recup/{id}', 'OrdersController@check_recup')->name('order.check_recup');
 
 
 

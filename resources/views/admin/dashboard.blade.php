@@ -35,14 +35,14 @@
       </form>
       </td>
       <td>
-      <form method="post">
+      <form action="{{ route('order.check_recup', $order->id) }}" method="post">
         @csrf
-        <input type="hidden"  name="recup" value="1">
-        {{-- @if ($order->deliver == 0) --}}
+        <input type="hidden"  name="recuperation" value="1">
+        @if ($order->recuperation == 0)
           <button class="btn btn-danger" type="submit">Pas encore recuperer</button>
-        {{-- @else --}}
-          {{-- <button class="btn btn-success" type="submit">Recuperer</button> --}}
-        {{-- @endif --}}
+        @else
+          <button class="btn btn-success" type="submit">Recuperer</button>
+        @endif
       </form>
       </td>
     </tr>

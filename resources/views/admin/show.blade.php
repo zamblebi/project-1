@@ -49,6 +49,26 @@
 
 <p> <strong>Adresse </strong>  {{json_decode($order->adress_maps)->long_name}} </p>
 <p> <strong> </strong>  {{json_decode($order->adress_maps)->long_name}} </p>
-
+<div>
+    <form action="{{route('order.checked', $order->id)}}" method="post">
+        @csrf
+        <input type="hidden"  name="deliver" value="1">
+        @if ($order->deliver == 0)
+          <button class="btn btn-danger" type="submit">Pas encore livrer</button>
+        @else
+          <button class="btn btn-success" type="submit">Livrer</button>
+        @endif
+      </form>
+      <br>
+      <form action="{{ route('order.check_recup', $order->id) }}" method="post">
+        @csrf
+        <input type="hidden"  name="recuperation" value="1">
+        @if ($order->recuperation == 0)
+          <button class="btn btn-danger" type="submit">Pas encore recuperer</button>
+        @else
+          <button class="btn btn-success" type="submit">Recuperer</button>
+        @endif
+      </form>
+</div>
 
 @endsection
